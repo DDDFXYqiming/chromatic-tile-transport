@@ -1,0 +1,25 @@
+test_bad_timing_rejected (test_build.BuildTests.test_bad_timing_rejected) ... ok
+test_default_reproducible (test_build.BuildTests.test_default_reproducible) ... ok
+test_duplicate_slug (test_build.BuildTests.test_duplicate_slug) ... ok
+test_focal_outside_range (test_build.BuildTests.test_focal_outside_range) ... ok
+test_html_in_scene_is_not_script (test_build.BuildTests.test_html_in_scene_is_not_script) ... ok
+test_image_info (test_build.BuildTests.test_image_info) ... ok
+test_image_metadata_checked (test_build.BuildTests.test_image_metadata_checked) ... ok
+test_invalid_boolean_rejected (test_build.BuildTests.test_invalid_boolean_rejected) ... ok
+test_manifest_count (test_build.BuildTests.test_manifest_count) ... ok
+test_outside_project_input_rejected (test_build.BuildTests.test_outside_project_input_rejected) ... ok
+test_two_scene_build (test_build.BuildTests.test_two_scene_build) ... ok
+test_unknown_config_rejected (test_build.BuildTests.test_unknown_config_rejected) ... ok
+test_bad_repository_name_stops (test_publish.PublishTests.test_bad_repository_name_stops) ... ok
+test_create_failure_never_pushes (test_publish.PublishTests.test_create_failure_never_pushes) ... ok
+test_public_remote_never_receives_files (test_publish.PublishTests.test_public_remote_never_receives_files) ... ok
+test_remote_sha_must_match (test_publish.PublishTests.test_remote_sha_must_match) ... ok
+test_resume_still_checks_private (test_publish.PublishTests.test_resume_still_checks_private) ... ok
+test_success_verifies_private_before_push (test_publish.PublishTests.test_success_verifies_private_before_push) ... ok
+test_wrong_account_stops_before_git_changes (test_publish.PublishTests.test_wrong_account_stops_before_git_changes) ... ok
+test_wrong_existing_origin_stops (test_publish.PublishTests.test_wrong_existing_origin_stops) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.343s
+
+OK

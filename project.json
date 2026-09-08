@@ -1,0 +1,7 @@
+{
+  "name": "chromatic-tile-transport",
+  "version": "3.1.0",
+  "entry": "dist/index.html",
+  "intendedVisibility": "private",
+  "description": "Content-driven image tile transport with continuous split/move/fill timing"
+}

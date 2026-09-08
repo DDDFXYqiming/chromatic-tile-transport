@@ -1,0 +1,4 @@
+# Runtime / standard builds need neither package. Used only for image preparation,
+# screenshots and browser tests; install into an isolated virtual environment.
+Pillow>=10,<13
+playwright>=1.50,<2

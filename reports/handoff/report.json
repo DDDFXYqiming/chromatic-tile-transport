@@ -1,0 +1,182 @@
+{
+  "version": "3.1.0",
+  "environment": "Chromium headless / Mesa llvmpipe; deterministic progress samples, not a hardware FPS benchmark",
+  "checks": [
+    {
+      "test": "All five original colour assignments are unchanged, hash for hash",
+      "passed": true,
+      "detail": {
+        "0:1": "63b9642d",
+        "1:2": "4a737b5",
+        "2:3": "d4f0825d",
+        "3:4": "354d401b",
+        "4:0": "416a5ebb"
+      }
+    },
+    {
+      "test": "Actual-image plans have no stationary timing samples in either handoff",
+      "passed": true,
+      "detail": [
+        {
+          "pair": "0:1",
+          "minimumNewSpeed": 1.1525249364934265,
+          "oldStationarySamples": 51220,
+          "newStationarySamples": 0,
+          "samples": 84952
+        },
+        {
+          "pair": "1:2",
+          "minimumNewSpeed": 1.1524513863224728,
+          "oldStationarySamples": 57650,
+          "newStationarySamples": 0,
+          "samples": 84959
+        },
+        {
+          "pair": "2:3",
+          "minimumNewSpeed": 1.1496730888957973,
+          "oldStationarySamples": 48860,
+          "newStationarySamples": 0,
+          "samples": 85029
+        },
+        {
+          "pair": "3:4",
+          "minimumNewSpeed": 1.1533501130442936,
+          "oldStationarySamples": 57273,
+          "newStationarySamples": 0,
+          "samples": 84966
+        },
+        {
+          "pair": "4:0",
+          "minimumNewSpeed": 1.1540791399908823,
+          "oldStationarySamples": 53770,
+          "newStationarySamples": 0,
+          "samples": 84889
+        }
+      ]
+    },
+    {
+      "test": "Actual GPU pixels change across both formerly stagnant windows in every pair",
+      "passed": true,
+      "detail": [
+        {
+          "pair": 0,
+          "range": [
+            0.14,
+            0.2
+          ],
+          "meanRGBPixelDifference": 63.93070939990711
+        },
+        {
+          "pair": 0,
+          "range": [
+            0.81,
+            0.87
+          ],
+          "meanRGBPixelDifference": 73.16696574146431
+        },
+        {
+          "pair": 1,
+          "range": [
+            0.14,
+            0.2
+          ],
+          "meanRGBPixelDifference": 70.54991758215255
+        },
+        {
+          "pair": 1,
+          "range": [
+            0.81,
+            0.87
+          ],
+          "meanRGBPixelDifference": 49.908397661979315
+        },
+        {
+          "pair": 2,
+          "range": [
+            0.14,
+            0.2
+          ],
+          "meanRGBPixelDifference": 47.99181678981106
+        },
+        {
+          "pair": 2,
+          "range": [
+            0.81,
+            0.87
+          ],
+          "meanRGBPixelDifference": 64.31398408977206
+        },
+        {
+          "pair": 3,
+          "range": [
+            0.14,
+            0.2
+          ],
+          "meanRGBPixelDifference": 65.9280694101611
+        },
+        {
+          "pair": 3,
+          "range": [
+            0.81,
+            0.87
+          ],
+          "meanRGBPixelDifference": 58.658888310034435
+        },
+        {
+          "pair": 4,
+          "range": [
+            0.14,
+            0.2
+          ],
+          "meanRGBPixelDifference": 55.60658226417539
+        },
+        {
+          "pair": 4,
+          "range": [
+            0.81,
+            0.87
+          ],
+          "meanRGBPixelDifference": 60.890003183699456
+        }
+      ]
+    },
+    {
+      "test": "Five cyclic seams finish at pixel-identical complete images",
+      "passed": true,
+      "detail": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "test": "Runtime exposes the shared deterministic timing used by both renderers",
+      "passed": true,
+      "detail": {
+        "raw": 0.14004285615538814,
+        "t": 0.10874223495150884,
+        "mosaic": 1,
+        "start": 0.04012820512820513,
+        "end": 0.9675
+      }
+    },
+    {
+      "test": "Runtime rejects invalid density, duration, booleans and mapping",
+      "passed": true,
+      "detail": 4
+    },
+    {
+      "test": "Generic two-image project builds and renders the reverse loop",
+      "passed": true,
+      "detail": "2 scene sources; 2 plans; loop transition 1→0 rendered"
+    },
+    {
+      "test": "No uncaught browser errors",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "allPassed": true
+}

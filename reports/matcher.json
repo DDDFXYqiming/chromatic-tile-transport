@@ -1,0 +1,126 @@
+{
+  "environment": "v22.16.0",
+  "tests": [
+    {
+      "test": "Identical image has identity map and zero motion",
+      "passed": true,
+      "detail": {
+        "count": 192,
+        "bijection": true,
+        "uniqueTargets": 192,
+        "identity": true,
+        "fixed": 192,
+        "meanColorError": 0,
+        "samePositionError": 0,
+        "geometryBaselineError": 0.28539072090067136,
+        "colorReductionVsSame": 0,
+        "meanTravel": 0,
+        "p90Travel": 0,
+        "initialObjective": 0,
+        "finalObjective": 0,
+        "swaps": 0,
+        "spatial": 0.022,
+        "hash": "d0a86585",
+        "computeMs": 13.348865
+      }
+    },
+    {
+      "test": "Every target is assigned once, including non-8-multiple dimensions",
+      "passed": true,
+      "detail": {
+        "count": 192,
+        "bijection": true,
+        "uniqueTargets": 192,
+        "identity": false,
+        "fixed": 3,
+        "meanColorError": 0.08230884736215123,
+        "samePositionError": 0.35825158758596015,
+        "geometryBaselineError": 0.32939092809883014,
+        "colorReductionVsSame": 0.770248478403737,
+        "meanTravel": 0.2802649244510809,
+        "p90Travel": 0.4716990566028302,
+        "initialObjective": 0.010741402414407906,
+        "finalObjective": 0.010526325635473144,
+        "swaps": 6,
+        "spatial": 0.022,
+        "hash": "cf4054dd",
+        "computeMs": 30.328615000000006
+      }
+    },
+    {
+      "test": "Same inputs reproduce the exact permutation",
+      "passed": true,
+      "detail": {
+        "hash": "cf4054dd"
+      }
+    },
+    {
+      "test": "Refinement never raises its stated total objective",
+      "passed": true,
+      "detail": {
+        "initial": 0.010741402414407906,
+        "final": 0.010526325635473144
+      }
+    },
+    {
+      "test": "Changing image colours changes the map",
+      "passed": true,
+      "detail": {
+        "changed": 191,
+        "total": 192
+      }
+    },
+    {
+      "test": "Uniform palettes cannot preserve colour but remain bijective",
+      "passed": true,
+      "detail": {
+        "count": 192,
+        "bijection": true,
+        "uniqueTargets": 192,
+        "identity": false,
+        "fixed": 192,
+        "meanColorError": 0.6000000089406967,
+        "samePositionError": 0.6000000089406967,
+        "geometryBaselineError": 0.6000000089406967,
+        "colorReductionVsSame": 0,
+        "meanTravel": 0,
+        "p90Travel": 0,
+        "initialObjective": 0.36000001072883786,
+        "finalObjective": 0.36000001072883786,
+        "swaps": 0,
+        "spatial": 0.022,
+        "hash": "d0a86585",
+        "computeMs": 5.04336099999999
+      }
+    },
+    {
+      "test": "Permutation of separated colours matches the same colours",
+      "passed": true,
+      "detail": {
+        "count": 192,
+        "bijection": true,
+        "uniqueTargets": 192,
+        "identity": false,
+        "fixed": 0,
+        "meanColorError": 0,
+        "samePositionError": 0.5403711161683026,
+        "geometryBaselineError": 0.4266326454079334,
+        "colorReductionVsSame": 1,
+        "meanTravel": 0.06944148378475709,
+        "p90Travel": 0.11180339887498954,
+        "initialObjective": 0.000012187499785154985,
+        "finalObjective": 0.000011822916440950453,
+        "swaps": 1,
+        "spatial": 0.002,
+        "hash": "aa0cfe5d",
+        "computeMs": 7.318125000000009
+      }
+    },
+    {
+      "test": "Malformed descriptors fail explicitly",
+      "passed": true,
+      "detail": "dimension and NaN checks"
+    }
+  ],
+  "passed": true
+}

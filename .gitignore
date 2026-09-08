@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+.env
+.env.*
+*.pem
+*.key
+*.p12
+.DS_Store
+Thumbs.db
+.publish-result.json
+reports/*.pid
+reports/*-log.txt
+reports/frames/

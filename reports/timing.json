@@ -1,0 +1,77 @@
+{
+  "version": "3.1.0",
+  "environment": "v22.16.0",
+  "tests": [
+    {
+      "test": "Exact endpoint positions and no endpoint mosaic gaps",
+      "passed": true
+    },
+    {
+      "test": "All default launches <=5%, all arrivals >=95%",
+      "passed": true,
+      "detail": {
+        "launchBase": 0.015,
+        "launchSpread": 0.035,
+        "landBase": 0.95,
+        "landSpread": 0.035,
+        "ramp": 0.08,
+        "splitEnd": 0.1,
+        "fillStart": 0.88
+      }
+    },
+    {
+      "test": "Monotonic, finite, reversible deterministic travel",
+      "passed": true
+    },
+    {
+      "test": "C1 speed continuity at ramp seams and zero endpoint velocity",
+      "passed": true
+    },
+    {
+      "test": "No timing plateau while tiles have fully opened gaps",
+      "passed": true,
+      "detail": {
+        "minimumNormalizedSpeed": 1.0869565217341837
+      }
+    },
+    {
+      "test": "Splitting and filling overlap with travel, rather than wait for it",
+      "passed": true
+    },
+    {
+      "test": "Twenty millisecond steps keep both handoff windows moving (4 / 5.8 / 8 sec)",
+      "passed": true,
+      "detail": [
+        {
+          "duration": 4,
+          "minProgressSpeed": 1.1598087039392857
+        },
+        {
+          "duration": 5.8,
+          "minProgressSpeed": 1.1593468168615502
+        },
+        {
+          "duration": 8,
+          "minProgressSpeed": 1.1587980199914083
+        }
+      ]
+    },
+    {
+      "test": "Palettes retain the old relative launch/arrival ordering",
+      "passed": true
+    },
+    {
+      "test": "Out of range, unknown and non-finite motion values fail explicitly",
+      "passed": true
+    },
+    {
+      "test": "GLSL timing constants derive from the same validated parameters",
+      "passed": true
+    },
+    {
+      "test": "Boundary-clamped input returns finite bounded state",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

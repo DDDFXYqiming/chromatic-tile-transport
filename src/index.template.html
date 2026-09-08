@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090c13">
+  <meta name="description" content="{{DESCRIPTION}}">
+  <title>{{TITLE}}</title>
+  <!-- BUILD:STYLE -->
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <main class="app" id="archive">
+    <header class="header">
+      <a class="brand" href="#archive" id="home" aria-label="返回第一幕">
+        <svg class="brand-emblem" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 3 26.4 17.6 41 22 26.4 26.4 22 41 17.6 26.4 3 22 17.6 17.6Z" fill="currentColor"/><ellipse cx="22" cy="22" rx="21" ry="7.2" transform="rotate(-34 22 22)" stroke="currentColor" stroke-width=".8"/><path d="M4 35h13M29 9h11" stroke="currentColor" stroke-width=".65"/></svg>
+        <span class="brand-text"><strong>{{BRAND}}</strong><small>CHROMATIC TRANSPORT <span> / </span> 寻色迁移 · V3.1</small></span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <button type="button" data-open="galleryDialog" class="nav-link selected"><span class="tiny-star">✦</span> 影像档案</button>
+        <button type="button" data-open="settingsDialog" class="nav-link">寻色引擎 <span class="external-mark">↗</span></button>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="auto-button" id="autoButton" aria-label="暂停自动巡航" aria-pressed="true"><svg class="auto-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 3h2.5v10H4zm5.5 0H12v10H9.5z"/></svg><span id="autoText">暂停巡航</span></button>
+        <button type="button" class="icon-button mobile-settings" data-open="settingsDialog" aria-label="跃迁设置"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 4h12M4 10h12M4 16h12"/><circle cx="7" cy="4" r="2" fill="#090c13"/><circle cx="13" cy="10" r="2" fill="#090c13"/><circle cx="8" cy="16" r="2" fill="#090c13"/></svg></button>
+        <button type="button" class="icon-button immerse-button" id="immerseButton" aria-label="进入沉浸模式，快捷键 F" title="沉浸模式 · F"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 7V3.1h4m6 0h4v4M3 13v4h4m6 0h4v-4"/></svg></button>
+      </div>
+    </header>
+
+    <section class="stage" id="stage" aria-label="互动影像舞台，可滚动或左右滑动切换" tabindex="0">
+      <canvas id="visual" aria-label="图像驱动的实时格阵转场"></canvas>
+      <div class="art-shade" aria-hidden="true"></div>
+      <div class="frame-corner tl" aria-hidden="true"></div><div class="frame-corner tr" aria-hidden="true"></div><div class="frame-corner bl" aria-hidden="true"></div><div class="frame-corner br" aria-hidden="true"></div>
+
+      <div class="stage-tag"><span class="tag-line"></span><span id="mappingBadge">OKLAB · CONTENT TRANSPORT</span><b>非官方视觉实验</b></div>
+      <div class="telemetry" aria-hidden="true"><div class="telemetry-top"><span class="signal-dot"></span><span id="phaseText">影像已就绪</span><span class="telemetry-star">✧</span></div><div class="telemetry-line"></div><div class="telemetry-bottom"><span id="engineText">INITIALIZING</span><span id="cellText">— CELLS</span></div></div>
+
+      <div class="hero-copy" id="heroCopy">
+        <div class="eyebrow"><span id="sceneEnglish">NEON CIRCUIT</span><span class="eyebrow-line"></span><span id="sceneOrdinal">01 / {{COUNT}}</span></div>
+        <h1 id="heroTitle"><span>跃入霓虹，</span><span>改写下一帧。</span></h1>
+        <p id="heroCaption">将无数种可能，写入同一片星海。</p>
+        <button class="next-hero" type="button" id="nextHero"><span>跃迁至下一幕</span><span class="circle-arrow">↗</span></button>
+      </div>
+
+      <aside class="scene-rail" aria-label="快速切换场景" id="sceneRail"></aside>
+      <div class="stage-bottom"><span class="bottom-credit">A JOURNEY BEYOND THE STARS <span>—</span> <b id="sceneTag">光速之外 · 仍有想象</b></span><span class="scroll-hint"><svg viewBox="0 0 16 22" fill="none" stroke="currentColor" aria-hidden="true"><rect x="3.5" y="1" width="9" height="16" rx="4.5"/><path d="M8 4v4m-3 11 3 2 3-2"/></svg><span>滚动探索 <i> / </i> SCROLL TO WARP</span></span></div>
+      <div class="load-status" id="loadStatus" role="status"><span class="loading-orbit"></span><span id="loadText">正在装载影像 0 / {{COUNT}}</span></div>
+      <div class="error-box" id="errorBox" role="alert" hidden></div>
+      <div class="manual-indicator" id="manualIndicator">手动跃迁 <span>·</span> 空格键恢复巡航</div>
+      <button type="button" id="exitImmersive" class="exit-immersive" aria-label="退出沉浸模式">退出沉浸 <span>ESC</span></button>
+    </section>
+
+    <footer class="footer">
+      <div class="transport-caption"><span class="folio-label">THE MEMORY ATLAS</span><div class="folio-numbers"><b id="currentNumber">01</b><span>/ {{COUNT}}</span><span class="orbit-dot"></span></div><span class="folio-note">让每一种颜色，找到下一站</span></div>
+      <div class="filmstrip-wrap">
+        <div class="timeline-track"><div class="timeline-base"></div><div id="timelineFill" class="timeline-fill"></div><input id="timeline" type="range" min="0" max="{{TIMELINE_MAX}}" step="1" value="0" aria-label="全局影像时间轴：拖动可停在转场中间"></div>
+        <div class="filmstrip" id="filmstrip" aria-label="影像选择"></div>
+      </div>
+      <div class="transport"><div class="transport-buttons"><button type="button" id="prevButton" class="step-button" aria-label="上一幕，左方向键">←</button><button type="button" id="nextButton" class="step-button" aria-label="下一幕，右方向键">→</button></div><span class="transport-note"><kbd>SPACE</kbd> 播放 / 暂停</span></div>
+    </footer>
+  </main>
+
+  <dialog id="galleryDialog" class="dialog gallery-dialog" aria-labelledby="galleryTitle">
+    <div class="dialog-top"><span>THE MEMORY ATLAS / 01—{{COUNT}}</span><button type="button" class="close-dialog" aria-label="关闭影像档案">×</button></div>
+    <h2 id="galleryTitle">每一帧，都是下一站。</h2><p class="dialog-intro">选择一幕影像，重新出发。</p>
+    <div id="galleryGrid" class="gallery-grid"></div>
+    <p class="legal">{{NOTICE}}</p>
+  </dialog>
+
+  <dialog id="settingsDialog" class="dialog settings-dialog" aria-labelledby="settingsTitle">
+    <div class="dialog-top"><span>WARP ENGINE / SETTINGS</span><button type="button" class="close-dialog" aria-label="关闭跃迁设置">×</button></div>
+    <h2 id="settingsTitle">颜色，自有去处。</h2><p class="dialog-intro">不再套用固定的动画路径。每一张图，都有它自己的迁移地图。</p>
+    <section class="match-panel" aria-label="当前颜色匹配数据">
+      <div class="match-top"><span>CONTENT-DRIVEN / V3.1</span><b id="pairLabel">正在准备影像</b></div>
+      <p id="matchSummary">正在读取颜色…</p>
+      <div class="match-metrics"><div><strong id="baselineMetric">—</strong><small>同坐标色差</small></div><div><strong id="colorMetric">—</strong><small>匹配后色差</small></div><div><strong id="gainMetric">—</strong><small>色差变化</small></div><div><strong id="travelMetric">—</strong><small>平均移动 / 对角线</small></div></div>
+      <small class="metric-note">这里始终对比 V3.1 寻色与同坐标映射。色差 = 100 × 平均加权 OKLab 距离，不是视觉效果评分。</small>
+      <div id="matchingTiming" class="matching-timing">浏览器内计算 · 不上传图片</div>
+    </section>
+    <div class="setting-row"><div><label for="mappingMode">映射方式 / A–B 对照</label><small>保留相同动画，只改变格片的目标位置。</small></div><select id="mappingMode"><option value="color" selected>内容寻色 · V3.1</option><option value="geometry">固定块旋 · 对照</option><option value="position">同位置 · 对照</option></select></div>
+    <div class="setting-row"><div><label for="spatialWeight">颜色与距离的取舍</label><small>颜色优先走得更远；邻域优先更集中。更改后重新计算。</small></div><select id="spatialWeight"><option value="0.002">颜色优先</option><option value="0.022" selected>平衡迁移</option><option value="0.095">邻域优先</option></select></div>
+    <div class="setting-row"><div><label for="holdColor">原色追踪</label><small>前 86% 转场保留原图色彩，最后才换成目标纹理。</small></div><input type="checkbox" id="holdColor" class="switch"></div>
+    <div class="setting-row"><div><label for="trails">微光尾迹</label><small>仅移动中的亮色格片留下轻微轨迹。</small></div><input type="checkbox" id="trails" class="switch" checked></div>
+    <div class="inspect-actions"><button type="button" id="inspectTransport">暂停在原色搬运现场 <span>↗</span></button><button type="button" id="resetView">恢复常规视图</button></div>
+    <div class="setting-row"><div><label for="density">格阵密度</label><small>粗颗粒更有结构感，细颗粒保留更多轮廓。</small></div><select id="density"><option value="96">粗格阵</option><option value="152" selected>标准格阵</option><option value="216">细格阵</option></select></div>
+    <div class="setting-row"><div><label for="duration">跃迁时长</label><small>自动巡航与点击切换时使用。</small></div><select id="duration"><option value="4.0">4 秒 / 干脆</option><option value="5.8" selected>5.8 秒 / 标准</option><option value="8.0">8 秒 / 慢镜头</option></select></div>
+    <div class="setting-row"><div><label for="holdTime">原图停留</label><small>看清完整画面，再进入下一幕。</small></div><select id="holdTime"><option value="2.5">2.5 秒</option><option value="3.2" selected>3.2 秒</option><option value="7">7 秒</option></select></div>
+    <div class="setting-row"><div><label for="cleanView">纯画面模式</label><small>隐藏画面上的标题、状态和场景标记。</small></div><input type="checkbox" id="cleanView" class="switch"></div>
+    <div class="setting-row"><div><label for="reducedMotion">降低动态效果</label><small>关闭自动巡航与格阵形变，切换时直接显示原图。</small></div><input type="checkbox" id="reducedMotion" class="switch"></div>
+    <details class="engine-details"><summary>每块格片如何找到目的地？ <span>＋</span></summary><p>先对实际可见区域逐格采样，把平均颜色转换到 OKLab；再在颜色、位置和局部明暗变化组成的空间里做等量分组，同组按排名配对，并通过局部交换降低色差和相邻流向的不协调。所有目标格子只能占用一次。迁移时携带原图纹理，沿由匹配结果计算的曲线前进，抵达后才逐渐换成目标纹理。</p><p>这是近似的一对一颜色搬运，不保证全局最优，也不认识人物、头发或天空。两张图的色彩比例不同时，无法让所有格片始终不变色，因此在落位阶段修正剩余色差。正常情况下匹配在 Web Worker 中完成；WebGL 2 负责显示。不支持 WebGL 2 时，Canvas 2D 仍使用同一套颜色映射。</p><p>V3.1 连续时间轴：格片边分离边启程、边落位边填缝；保留颜色相关的先后次序，不再等所有格片完成一个阶段才进入下个阶段。</p><div class="engine-stats" id="engineStats">引擎正在初始化…</div></details>
+    <p class="keyboard-help"><kbd>←</kbd><kbd>→</kbd> 切换 <span>·</span> <kbd>SPACE</kbd> 暂停 <span>·</span> <kbd>F</kbd> 沉浸 <span>·</span> 滚轮 / 触屏滑动可逆向控制</p>
+  </dialog>
+  <noscript><div class="noscript">此互动页面需要 JavaScript。请在浏览器中启用 JavaScript 后重新打开。</div></noscript>
+  <!-- BUILD:ASSETS -->
+  <!-- BUILD:SCRIPT -->
+</body>
+</html>

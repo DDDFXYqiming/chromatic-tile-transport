@@ -1,0 +1,26 @@
+{
+  "title": "寻色迁移 · 双图最小示例",
+  "brand": "双图 · 寻色迁移",
+  "description": "最小的双图内容迁移示例",
+  "notice": "非官方同人视觉实验。图像素材由用户提供；游戏及美术版权归原权利人所有。本页面不代表游戏官方，不提供账号登录、游戏充值或下载。",
+  "autoplay": false,
+  "cleanView": true,
+  "options": {
+    "density": 152,
+    "duration": 5.8,
+    "holdTime": 3.2,
+    "mapping": "color",
+    "spatial": 0.022,
+    "holdColor": false,
+    "trails": true
+  },
+  "motion": {
+    "launchBase": 0.015,
+    "launchSpread": 0.035,
+    "landBase": 0.95,
+    "landSpread": 0.035,
+    "ramp": 0.08,
+    "splitEnd": 0.1,
+    "fillStart": 0.88
+  }
+}

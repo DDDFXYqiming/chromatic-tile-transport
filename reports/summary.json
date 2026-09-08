@@ -1,0 +1,74 @@
+{
+  "version": "3.1.0",
+  "date": "2026-09-09",
+  "total": 72,
+  "passed": 72,
+  "suites": [
+    {
+      "name": "matcher",
+      "total": 8,
+      "passed": 8,
+      "report": "reports/matcher.json"
+    },
+    {
+      "name": "timing",
+      "total": 11,
+      "passed": 11,
+      "report": "reports/timing.json"
+    },
+    {
+      "name": "browser",
+      "total": 25,
+      "passed": 25,
+      "report": "reports/browser/browser_report.json"
+    },
+    {
+      "name": "handoff",
+      "total": 8,
+      "passed": 8,
+      "report": "reports/handoff/report.json"
+    },
+    {
+      "name": "builder",
+      "total": 12,
+      "passed": 12,
+      "report": "reports/build-tests.txt"
+    },
+    {
+      "name": "private-publisher-safety-mocks",
+      "total": 8,
+      "passed": 8,
+      "report": "reports/build-tests.txt",
+      "actualRemotePublication": false
+    }
+  ],
+  "additionalTwoImageAcceptance": {
+    "allPlansReady": true,
+    "bijections": true,
+    "reversePixelIdentical": true,
+    "noExternalRequests": true,
+    "noBrowserErrors": true,
+    "noGraphicsErrors": true,
+    "noHorizontalOverflow": true
+  },
+  "unchangedSourceFiles": {
+    "matcher.js": true,
+    "transport.js": true
+  },
+  "skillCopiesIdentical": true,
+  "remotePublication": {
+    "created": false,
+    "pushed": false,
+    "reason": "Available connector has no repository creation action; no authenticated gh CLI in this environment.",
+    "intendedTarget": "DDDFXYqiming/chromatic-tile-transport",
+    "intendedVisibility": "private",
+    "localPublisherDryRunOnly": true
+  },
+  "environment": {
+    "python": "3.13.5",
+    "node": "v22.16.0",
+    "chromium": "Chromium 144.0.7559.96 built on Debian GNU/Linux 13 (trixie)",
+    "renderer": "Mesa llvmpipe software EGL",
+    "notes": "Deterministic screenshots and frame export; not end-user realtime FPS measurements."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "title": "跃迁影像档案 V3.1 · 连续寻色迁移 · 崩坏：星穹铁道",
+  "brand": "崩坏：星穹铁道",
+  "description": "五张星穹铁道插画的内容驱动格阵跃迁：边拆边启程，边落位边填缝。",
+  "notice": "非官方同人视觉实验。图像素材由用户提供；游戏及美术版权归原权利人所有。本页面不代表游戏官方，不提供账号登录、游戏充值或下载。",
+  "autoplay": true,
+  "cleanView": false,
+  "options": {
+    "density": 152,
+    "duration": 5.8,
+    "holdTime": 3.2,
+    "mapping": "color",
+    "spatial": 0.022,
+    "holdColor": false,
+    "trails": true
+  },
+  "motion": {
+    "launchBase": 0.015,
+    "launchSpread": 0.035,
+    "landBase": 0.95,
+    "landSpread": 0.035,
+    "ramp": 0.08,
+    "splitEnd": 0.1,
+    "fillStart": 0.88
+  }
+}

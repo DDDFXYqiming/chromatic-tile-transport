@@ -1,0 +1,36 @@
+[
+  {
+    "slug": "neon",
+    "name": "霓虹疾行",
+    "en": "NEON CIRCUIT",
+    "line1": "跃入霓虹，",
+    "line2": "改写下一帧。",
+    "caption": "将无数种可能，写入同一片星海。",
+    "accent": "#bdb4ff",
+    "position": [
+      0.64,
+      0.46
+    ],
+    "tag": "光速之外 · 仍有想象",
+    "width": 2048,
+    "height": 1152,
+    "src": "../../assets/starrail/01-neon.webp"
+  },
+  {
+    "slug": "spring",
+    "name": "春日剑影",
+    "en": "SPRING REVERIE",
+    "line1": "循着春光，",
+    "line2": "再赴一场远行。",
+    "caption": "风穿过庭院，旅途在此刻变得轻盈。",
+    "accent": "#d8e7ac",
+    "position": [
+      0.35,
+      0.43
+    ],
+    "tag": "剑锋所指 · 春日正好",
+    "width": 1920,
+    "height": 1080,
+    "src": "../../assets/starrail/02-spring.webp"
+  }
+]

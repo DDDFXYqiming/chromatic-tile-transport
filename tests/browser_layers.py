@@ -28,6 +28,8 @@ try:
     page.goto(f'http://127.0.0.1:{server.server_port}/dist/matrix-motion.html');page.wait_for_function('MatrixMotion.getState().ready',timeout=45000)
     page.evaluate('MatrixMotion.pause()');state=lambda:page.evaluate('MatrixMotion.getState()')
     snap=lambda t:decode(page.evaluate('(t)=>{MatrixMotion.seek(t);return MatrixMotion.snapshot()}',t))
+    shot=state()['config']['shotSeconds'];active=shot-state()['config']['bridgeSeconds']
+    wide_time=shot*.3;close_time=shot+active*.8;air_time=2*shot+active*.56
     def ready():
         s=state();require(s['engine']=='WEBGL 2' and s['glError']==0 and not s['warnings']);require(s['sceneCount']==3 and len(s['composition']['layers'])==5);return s['engine']
     check('Default 02 uses five independent layer instances and three original-art shots',ready)
@@ -37,9 +39,20 @@ try:
             im=Image.open(ROOT/f'assets/matrix-botanical/{name}.png');require(im.mode=='RGBA');h=im.getchannel('A').histogram();ratio=h[0]/(im.width*im.height);require(.15<ratio<.9);rows.append({'asset':name,'fullyTransparentFraction':ratio})
         return rows
     check('The three cutouts contain genuine transparent alpha',alpha)
+    def pacing():
+        budget=state()['timing'];require(state()['config']['mode']=='auto');require(budget['originalSeconds']>budget['bridgeSeconds']>budget['accentSeconds'])
+        for t in [.2,1.7,3.0]:
+            page.evaluate('MatrixMotion.configure({mode:"auto"})');automatic=snap(t)
+            page.evaluate('MatrixMotion.configure({mode:"original"})');original=snap(t)
+            require(automatic.tobytes()==original.tobytes(),'Original-art dwell must render the actual unfiltered composition')
+        page.evaluate('MatrixMotion.configure({mode:"auto"})');page.locator('#settingsOpen').click()
+        require('3.04' in page.locator('#timingSummary').inner_text() and '1.20' in page.locator('#timingSummary').inner_text());page.locator('#settingsClose').click()
+        return budget
+    check('Director pacing gives the original art the longest unfiltered dwell',pacing)
     def poses():
+        page.evaluate('MatrixMotion.configure({mode:"original"})')
         images=[]
-        for name,t in [('wide',1.2),('closeup',6.7),('negative-space',9.8)]:
+        for name,t in [('wide',wide_time),('closeup',close_time),('negative-space',air_time)]:
             im=snap(t);images.append(im);im.save(OUT/(name+'.png'));page.screenshot(path=str(OUT/(name+'-ui.png')))
         require(min(mad(a,b) for a,b in zip(images,images[1:]))>15)
         cover=images[0].copy();cover.thumbnail((1440,900));cover.save(ROOT/'assets/matrix-botanical/cover.webp',quality=90)
@@ -60,7 +73,7 @@ try:
         result=[]
         for mode in ['original','auto']:
             page.evaluate('(mode)=>MatrixMotion.configure({mode})',mode)
-            for t in [4,8,12]:
+            for t in [shot,2*shot,3*shot]:
                 delta=mad(snap(t-.00001),snap(t));require(delta<.5,f'{mode} seam at {t}: {delta}');result.append(delta)
         page.evaluate('MatrixMotion.configure({mode:"original"})');return result
     check('All three camera joins and Matrix bridges are continuous',seams)
@@ -83,7 +96,7 @@ try:
     def mobile():
         values=[]
         for width,height in [(390,844),(320,568),(844,390)]:
-            page.set_viewport_size({'width':width,'height':height});page.wait_for_timeout(100);snap(6.7)
+            page.set_viewport_size({'width':width,'height':height});page.wait_for_timeout(100);snap(close_time)
             v=page.evaluate('({width:innerWidth,scrollWidth:document.documentElement.scrollWidth})');require(v['width']==v['scrollWidth']);require(state()['glError']==0);values.append(v)
         page.set_viewport_size({'width':390,'height':844});snap(1.2);page.screenshot(path=str(OUT/'mobile.png'));return values
     check('Portrait and landscape layouts keep navigation and artwork inside the viewport',mobile)

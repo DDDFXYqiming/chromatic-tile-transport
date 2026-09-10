@@ -3,8 +3,16 @@ const assert=require('node:assert/strict');
 const T=require('../src/matrix/timeline.js');
 const tests=[];
 function check(name,fn){try{fn();tests.push({name,passed:true});}catch(e){tests.push({name,passed:false,error:e.message});}}
+check('Shipped director timing prioritizes original art, then the complete grid transition',()=>{
+ const c=T.validate(JSON.parse(require('node:fs').readFileSync('examples/matrix-motion/config.json','utf8')).options);
+ assert.equal(c.mode,'auto');const budget=T.timing(c),counts={original:0,bridge:0,accent:0};
+ for(let t=.0005;t<c.shotSeconds;t+=.001){const f=T.frame(t,3,c);counts[f.bridge>0?'bridge':f.from===0&&f.to===0?'original':'accent']+=.001;}
+ assert.ok(Math.abs(counts.original-3.04)<.002);assert.ok(Math.abs(counts.bridge-1.2)<.002);assert.ok(Math.abs(counts.accent-.96)<.002);
+ assert.ok(budget.originalSeconds>budget.bridgeSeconds&&budget.bridgeSeconds>budget.accentSeconds);
+ assert.ok(Math.abs(budget.originalSeconds+budget.bridgeSeconds+budget.accentSeconds-budget.shotSeconds)<1e-10);
+});
 check('Card preview holds both fully developed originals and slows both bridge crossings',()=>{
- for(const [shotSeconds,bridgeSeconds] of [[4,.3],[6.8,.48],[14,.85]]){
+ for(const [shotSeconds,bridgeSeconds] of [[4,.3],[5.2,1.2],[4,1.6],[6.8,.48],[14,.85]]){
   const config=T.validate({shotSeconds,bridgeSeconds});
   for(const scene of [0,4]){
    const cycle=T.previewPosition(0,scene,5,config).cycleSeconds;
@@ -30,7 +38,7 @@ check('Configuration rejects unknown keys, NaN, infinities and numeric booleans'
 });
 check('Every supported setting validates at both ends of its documented range',()=>{
  T.validate({shotSeconds:4,bridgeSeconds:.3,density:48,zoom:1,parallax:0});
- T.validate({shotSeconds:14,bridgeSeconds:.85,density:224,zoom:2.1,parallax:1});
+ T.validate({shotSeconds:14,bridgeSeconds:1.6,density:224,zoom:2.1,parallax:1});
 });
 check('All five exact chapter boundaries identify the intended image',()=>{
  for(let i=0;i<5;i++){const f=T.frame(i*6.8,5);assert.equal(f.scene,i);assert.ok(f.local<1e-10);assert.equal(f.from,3);assert.equal(f.reveal,0);}

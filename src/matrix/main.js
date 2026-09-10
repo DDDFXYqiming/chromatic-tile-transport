@@ -66,6 +66,8 @@
       for(const key of ['cameraX','cameraY']){$(key).value=config[key];$(key+'Value').textContent=Math.round(config[key]*100)+'%';}
     }
     document.querySelectorAll('#modeButtons button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===config.mode)));
+    const budget=T.timing(config);
+    $('timingSummary').textContent=`导演编排 · 每幕 ${budget.shotSeconds.toFixed(2)} 秒：原画 ${budget.originalSeconds.toFixed(2)} 秒 / 点阵含进出 ${budget.bridgeSeconds.toFixed(2)} 秒 / 其他显影 ${budget.accentSeconds.toFixed(2)} 秒。`;
   }
   function configure(patch){const next=T.validate(patch,config);seconds=seconds/config.shotSeconds*next.shotSeconds;config=next;loop=null;
     if('autoplay'in patch)playing=config.autoplay&&!reduced;syncControls();dirty=true;render();return getState();}
@@ -73,7 +75,7 @@
   function getState(){return {ready,engine:renderer?.kind||'loading',seconds:frame?.position||0,sceneCount:scenes.length,playing,reduced,config:{...config},
     frame:frame?{...frame}:null,grid:renderer?.grid||null,width:renderer?.width||0,height:renderer?.height||0,
     glError:contextLost?null:renderer?.error()||0,contextLost,drawCount:renderer?.drawCount||0,bridgeLoop:!!loop,
-    preview:loop?T.previewPosition(loop.elapsed,loop.scene,scenes.length,config):null,composition:compositor?.getState()||null,warnings:warnings.slice()};}
+    preview:loop?T.previewPosition(loop.elapsed,loop.scene,scenes.length,config):null,timing:T.timing(config),composition:compositor?.getState()||null,warnings:warnings.slice()};}
   function tick(now){raf=requestAnimationFrame(tick);if(!ready||contextLost||document.hidden){last=0;return;}
     const dt=last?Math.min(.06,(now-last)/1000):0;last=now;
     if(playing&&!reduced&&!settings.open){

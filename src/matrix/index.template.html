@@ -43,9 +43,10 @@
   <div class="dialog-head"><span>DIRECTOR'S DESK / 02</span><button id="settingsClose" aria-label="关闭导演台">×</button></div>
   <h2>同一帧。<em>不同世界。</em></h2><p class="intro">暂停后切换显影方式，或拖动时间轴逐帧观察。格子不搬家，只在固定位置翻转和显隐。</p>
   <div class="setting-caption">显影方式 <span>LIVE PREVIEW</span></div><div id="modeButtons" class="mode-buttons" aria-label="显影方式"></div>
+  <p id="timingSummary" class="intro" aria-live="polite"></p>
   <label class="setting-row" for="palette"><span>美术色盘<small>原画保留原色；双色与点阵使用此色盘。</small></span><select id="palette"><option value="ice">冰蓝纸白</option><option value="scene">随场景配色</option><option value="mono">黑白银盐</option></select></label>
-  <label class="setting-row" for="shotSeconds"><span>单幕节奏<small>镜头时长；不会按比例拉长数字桥。</small></span><select id="shotSeconds"><option value="4">4 秒 / 三镜头 12 秒</option><option value="5.2">5.2 秒</option><option value="6.8" selected>6.8 秒</option><option value="9">9 秒</option></select></label>
-  <label class="setting-row" for="bridgeSeconds"><span>数字桥时长<small>短促、连续，不等拆完再开始。</small></span><select id="bridgeSeconds"><option value="0.36">0.36 秒</option><option value="0.48" selected>0.48 秒</option><option value="0.72">0.72 秒</option></select></label>
+  <label class="setting-row" for="shotSeconds"><span>单幕节奏<small>镜头时长；不会按比例拉长数字桥。</small></span><select id="shotSeconds"><option value="4">4 秒 / 三镜头 12 秒</option><option value="5.2" selected>5.2 秒 / 原画优先</option><option value="6.8">6.8 秒</option><option value="9">9 秒</option></select></label>
+  <label class="setting-row" for="bridgeSeconds"><span>点阵段时长<small>包含入格、翻转、换图与出格。</small></span><select id="bridgeSeconds"><option value="0.36">0.36 秒 / 快</option><option value="0.48">0.48 秒</option><option value="0.72">0.72 秒</option><option value="1.2" selected>1.20 秒 / 适中</option><option value="1.6">1.60 秒 / 慢看</option></select></label>
   <label class="setting-row" for="density"><span>点阵密度<small>固定于画面，亮度控制颗粒大小。</small></span><select id="density"><option value="96">96 列 / 粗</option><option value="144" selected>144 列 / 标准</option><option value="192">192 列 / 细</option></select></label>
   <label class="setting-row" for="zoom"><span>近景倍率<small>焦点来自逐图配置，并非自动识别人脸。</small></span><select id="zoom"><option value="1.25">1.25× / 轻推</option><option value="1.65" selected>1.65× / 近景</option><option value="1.95">1.95× / 特写</option></select></label>
   <label class="setting-row" for="parallax"><span>{{PARALLAX_TITLE}}<small>{{PARALLAX_NOTE}}</small></span><input id="parallax" type="checkbox" checked></label>

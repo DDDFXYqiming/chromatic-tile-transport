@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-10",
+  "environment": "Windows-11-10.0.26200-SP0",
+  "baselineCommit": "72f1c49d71ea57697eb034bcf478d26c5dd50beb",
+  "commands": {
+    "python scripts/check_matrix.py --browser": "passed",
+    "python scripts/check.py --browser": "passed"
+  },
+  "pacing": {
+    "name": "Director pacing gives the original art the longest unfiltered dwell",
+    "passed": true,
+    "detail": {
+      "shotSeconds": 5.2,
+      "originalSeconds": 3.04,
+      "bridgeSeconds": 1.2,
+      "accentSeconds": 0.96
+    }
+  },
+  "cycleSeconds": 15.6,
+  "description": "Original art gets the longest dwell. The grid allocation includes formation, flip and recovery. Other styles are short accents.",
+  "status": "Archived pacing-stage validation; implementation is preserved in feature-separated Git commits."
+}

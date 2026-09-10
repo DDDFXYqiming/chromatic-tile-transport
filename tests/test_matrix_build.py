@@ -13,7 +13,7 @@ class MatrixBuildTests(unittest.TestCase):
     def tearDown(self):self.directory.cleanup()
     def config_file(self):
         p=self.root/'config.json';p.write_text(json.dumps(self.config),encoding='utf-8');return p
-    def test_default_config(self):self.assertEqual(M.load_matrix_config(M.DEFAULT_CONFIG,self.scenes)['options']['bridgeSeconds'],.48)
+    def test_default_config(self):self.assertEqual(M.load_matrix_config(M.DEFAULT_CONFIG,self.scenes)['options']['bridgeSeconds'],1.2)
     def test_unknown_options_fail(self):
         self.config['options']['matching']=True
         with self.assertRaises(ValueError):M.load_matrix_config(self.config_file(),self.scenes)

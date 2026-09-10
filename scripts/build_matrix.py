@@ -7,7 +7,7 @@ from build import ROOT, local, load_scenes, script_json, image_info
 
 DEFAULT_SCENES = ROOT / 'examples/matrix-motion/scenes.json'
 DEFAULT_CONFIG = ROOT / 'examples/matrix-motion/config.json'
-BOUNDS = {'shotSeconds':(4,14), 'bridgeSeconds':(.3,.85), 'density':(48,224), 'zoom':(1,2.1), 'parallax':(0,1),'cameraX':(-.3,.3),'cameraY':(-.3,.3)}
+BOUNDS = {'shotSeconds':(4,14), 'bridgeSeconds':(.3,1.6), 'density':(48,224), 'zoom':(1,2.1), 'parallax':(0,1),'cameraX':(-.3,.3),'cameraY':(-.3,.3)}
 
 def load_matrix_config(path: Path, scenes: list[dict]) -> dict:
     c=json.loads(local(path).read_text(encoding='utf-8'))

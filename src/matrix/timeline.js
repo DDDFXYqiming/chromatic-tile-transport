@@ -18,7 +18,7 @@
   function validate(patch = {}, base = DEFAULTS) {
     if (!patch || typeof patch !== 'object' || Array.isArray(patch)) throw new TypeError('Configuration must be an object');
     const c = {...base, ...patch};
-    const bounds = {shotSeconds: [4, 14], bridgeSeconds: [.3, .85], density: [48, 224], zoom: [1, 2.1], parallax: [0, 1],cameraX:[-.3,.3],cameraY:[-.3,.3]};
+    const bounds = {shotSeconds: [4, 14], bridgeSeconds: [.3, 1.6], density: [48, 224], zoom: [1, 2.1], parallax: [0, 1],cameraX:[-.3,.3],cameraY:[-.3,.3]};
     for (const [k, v] of Object.entries(patch)) {
       if (!(k in DEFAULTS)) throw new TypeError('Unknown matrix option: ' + k);
       if (k in bounds && (typeof v !== 'number' || !Number.isFinite(v) || v < bounds[k][0] || v > bounds[k][1])) throw new RangeError('Invalid matrix option: ' + k);
@@ -29,18 +29,21 @@
     }
     return Object.freeze(c);
   }
-  // Small directed edits within one hero shot. The bridge is deliberately much shorter.
+  // Give the original art most of the shot; use the other styles as short accents.
   const EDITS = Object.freeze([
-    [0, .14, 3, 0, '显影 / DEVELOP'],
-    [.14, .28, 0, 0, '原画 / ORIGINAL'],
-    [.28, .42, 0, 2, '色阶 / POSTERIZE'],
-    [.42, .49, 2, 2, '色阶 / POSTERIZE'],
-    [.49, .62, 2, 1, '双色 / DUOTONE'],
-    [.62, .72, 1, 1, '双色 / DUOTONE'],
-    [.72, .82, 1, 3, '线描 / CONTOUR'],
-    [.82, .92, 3, 1, '近景 / CLOSE-UP'],
-    [.92, 1.001, 1, 1, '近景 / CLOSE-UP']
+    [0, .04, 3, 0, '显影 / DEVELOP'],
+    [.04, .80, 0, 0, '原画 / ORIGINAL'],
+    [.80, .86, 0, 2, '色阶 / POSTERIZE'],
+    [.86, .92, 2, 1, '双色 / DUOTONE'],
+    [.92, .98, 1, 3, '线描 / CONTOUR'],
+    [.98, 1.001, 3, 3, '线描 / CONTOUR']
   ]);
+  function timing(config=DEFAULTS){
+    const imageSeconds=config.shotSeconds-config.bridgeSeconds;
+    const originalFraction=EDITS.filter(e=>e[2]===0&&e[3]===0).reduce((sum,e)=>sum+Math.min(1,e[1])-e[0],0);
+    const originalSeconds=imageSeconds*originalFraction;
+    return {shotSeconds:config.shotSeconds,originalSeconds,bridgeSeconds:config.bridgeSeconds,accentSeconds:imageSeconds-originalSeconds};
+  }
   function frame(seconds, count, config = DEFAULTS, reduced = false) {
     if (!Number.isFinite(seconds) || !Number.isInteger(count) || count < 2) throw new TypeError('Invalid timeline position');
     const total = count * config.shotSeconds;
@@ -97,7 +100,7 @@
       : distance - (bridgeSeconds - config.bridgeSeconds);
     return {position: wrap(start + offset, count * config.shotSeconds), phase, cycleSeconds, bridgeSeconds};
   }
-  const api = Object.freeze({DEFAULTS, MODES, STYLE, EDITS, GRID_HANDOFF, gridEnvelope, validate, frame, previewPosition, grid, cellCenter, clip, smooth, span, wrap});
+  const api = Object.freeze({DEFAULTS, MODES, STYLE, EDITS, GRID_HANDOFF, gridEnvelope, validate, frame, timing, previewPosition, grid, cellCenter, clip, smooth, span, wrap});
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.MatrixTimeline = api;
 })(typeof globalThis === 'object' ? globalThis : this);

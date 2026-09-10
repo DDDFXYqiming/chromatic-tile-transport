@@ -3,6 +3,14 @@
   "passed": true,
   "tests": [
     {
+      "name": "Shipped director timing prioritizes original art, then the complete grid transition",
+      "passed": true
+    },
+    {
+      "name": "Card preview holds both fully developed originals and slows both bridge crossings",
+      "passed": true
+    },
+    {
       "name": "Configuration rejects unknown keys, NaN, infinities and numeric booleans",
       "passed": true
     },
@@ -36,6 +44,14 @@
     },
     {
       "name": "Reduced motion suppresses camera, bridge and matrix in every mode",
+      "passed": true
+    },
+    {
+      "name": "Cell formation and recovery overlap the flip without a global waiting stage",
+      "passed": true
+    },
+    {
+      "name": "The page shade blends through grid entry and exit instead of switching at thresholds",
       "passed": true
     },
     {

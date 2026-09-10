@@ -5,7 +5,11 @@ description: 使用同一仓库内静态图片构建第二套 Matrix Motion 网�
 
 # Matrix Motion · 第二套效果操作规程
 
-当前默认是“浮光花园”分层素材。先读 `docs/LAYERED_MOTION.md` 与 `examples/matrix-motion/` 下的配置和清单。默认 4 张素材、5 个独立实例、3 镜头、12 秒；`original` 模式先验收基础镜头，`auto` 再启用显影与点阵。素材生成仅在用户明确授权时进行。
+视觉方向与阶段性限制以 `docs/MATRIX_VISUAL_GUIDE.md` 和 `docs/MATRIX_PROMPT_LOG.md` 为交接记录。当前是单组素材的三个取景，多画组切换尚未实现；网格测试通过不能替代用户对动画自然度的观看判断。
+
+当前默认是“浮光花园”分层素材。先读 `docs/LAYERED_MOTION.md` 与 `examples/matrix-motion/` 下的配置和清单。默认 4 张素材、5 个独立实例、3 镜头、15.6 秒；`auto` 编排每幕原画 3.04 秒、点阵含进出 1.20 秒、其他显影 0.96 秒。`original` 可独立验收基础镜头。素材生成仅在用户明确授权时进行。
+
+局部动画复用官方 PixiJS Skills 的 MeshPlane/MeshRope，当前统一由已安装的 `pixijs` 全量版按需读取内部专题，来源与整合记录见 `docs/PIXI_SKILLS.md`。不要重新单独安装各专题。优先使用库提供的几何与纹理接口，不另写网格渲染器。`deformation.js` 只负责当前素材的区域权重与周期动作。修改后用“定机位看动作”排除镜头和刚性位移的干扰，验证逐层像素变化、关闭形变不动、面部保护、无网格翻折和上下文恢复。Canvas 兼容路径须明确显示局部形变不可用。
 
 ## 先选对引擎
 
@@ -38,9 +42,9 @@ python scripts/serve.py --directory . --port 8000
 ## 参数调整顺序
 
 1. 先验收 `mode: auto` 的完整一幕，确认场景焦点，桌面和手机主体都仍可见。
-2. 再调 `zoom`（默认 1.65）和 `parallax`（默认 0.65）。后者仅为焦点局部变形，不等价于真实主体分层。
+2. 先用定机位检查局部动作，再调 `zoom`（默认 1.65）和 `parallax`（默认 0.65）。默认分层模式中后者控制图层漂移与摆动；旧五图模式中它才是焦点局部变形近似。
 3. 统一美术语言用 `palette: ice`；逐图配色用 `scene`；黑白用 `mono`。
-4. 数字桥用 `bridgeSeconds`，建议 0.36–0.72 秒。调整 `shotSeconds` 不得连带拉长数字桥。
+4. 点阵整段（包括进入、翻转、退出）使用 `bridgeSeconds`，当前原画优先编排默认 1.20 秒，可在 0.30–1.60 秒内调整。调整 `shotSeconds` 不得连带拉长数字桥。
 5. 最后调 `density`（默认 144 列），不是增加飞散路径。禁止重新接入 matcher 后将长距离迁移描述成原地扫描。
 
 所有阶段定义只在 `src/matrix/timeline.js`。JS 计算秒制时钟和阶段，将参数交给渲染器；不要在 GLSL/Canvas 中另写一份镜头时间表。色彩、形状的局部扫描包络在 renderer 中，必须两端回到完整图像，不能加全屏白闪来掩盖错误接缝。
@@ -59,14 +63,14 @@ python scripts/check.py --browser
 ```js
 MatrixMotion.pause();
 MatrixMotion.seek(1.4);    // 全彩
-MatrixMotion.seek(2.7);    // 色阶
-MatrixMotion.seek(4.1);    // 双色
-MatrixMotion.seek(4.95);   // 线描过程中
-MatrixMotion.seek(6.56);   // 固定点阵桥
-MatrixMotion.seek(6.8);    // 下一幕线描
+MatrixMotion.seek(3.32);   // 原画转向色阶
+MatrixMotion.seek(3.56);   // 色阶转向双色
+MatrixMotion.seek(3.80);   // 双色转向线描
+MatrixMotion.seek(4.60);   // 固定点阵桥中点
+MatrixMotion.seek(5.20);   // 下一幕开始显影
 ```
 
-`seek` 单位是全片秒数。对五个桥接均采样，确认没有黑屏、白屏、停帧或明显跳切。尤其比较 `(i+1)*shotSeconds-0.00001` 与下一幕起点，以及最后一幕回到第一幕。
+`seek` 单位是全片秒数，上面的时间适用于当前默认 5.2 秒镜头。对所有桥接均采样，默认分层示例有三个，旧五图示例有五个，确认没有黑屏、白屏、停帧或明显跳切。尤其比较 `(i+1)*shotSeconds-0.00001` 与下一幕起点，以及最后一幕回到第一幕。
 
 逐项检查：五种显影结果不同；倒拖回同一时间像素一致；暂停不增加 drawCount；更改整幕时长后 bridge 中点仍位于结束前半个 bridgeSeconds；设置按钮、时间轴、触摸、沉浸和 Escape 可用；390/320px 手机及横屏无横向溢出；系统减少动态停止自动播放；恢复 WebGL 上下文后正常；独立离线成品不请求 CDN、模型或网络图片。
 

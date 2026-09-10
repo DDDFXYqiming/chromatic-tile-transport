@@ -36,11 +36,11 @@
       "test": "All five endpoints display different, nonblank complete images",
       "passed": true,
       "detail": [
-        "4cd8b8594e4a",
-        "62bce26fe36b",
-        "6c3b4d9d85d1",
-        "b4292afe9caa",
-        "108af6fdc0ad"
+        "b59bf70cd3f4",
+        "1a7ba4fcae0f",
+        "c0077725dc57",
+        "1202097ad7de",
+        "5a08ddd8434c"
       ]
     },
     {
@@ -57,9 +57,9 @@
       "test": "A/B modes use visibly different mapping at same progress",
       "passed": true,
       "detail": {
-        "color": "ea3ad19a677fb428",
-        "geometry": "cd4c40ed850c3ead",
-        "position": "8e3b046081a828a6"
+        "color": "84bb5777d2159176",
+        "geometry": "bb7aad39a18d88da",
+        "position": "956e20596c415fd5"
       }
     },
     {
@@ -83,12 +83,12 @@
     {
       "test": "Wheel scrub advances current transition",
       "passed": true,
-      "detail": 0.3111824773121765
+      "detail": 0.3123007005434091
     },
     {
       "test": "Autoplay advances, then can be paused",
       "passed": true,
-      "detail": 0.5815555555555572
+      "detail": 1
     },
     {
       "test": "Loop boundary and negative seek render without errors",
@@ -118,7 +118,7 @@
         "w": 390,
         "sh": 844,
         "h": 844,
-        "cells": 11520
+        "cells": 10880
       }
     },
     {
@@ -168,7 +168,7 @@
       "swaps": 9044,
       "spatial": 0.022,
       "hash": "63b9642d",
-      "computeMs": 348
+      "computeMs": 713.5999999642372
     },
     {
       "pair": "1:2",
@@ -188,7 +188,7 @@
       "swaps": 11756,
       "spatial": 0.022,
       "hash": "4a737b5",
-      "computeMs": 521.0999999999767
+      "computeMs": 945.9000000357628
     },
     {
       "pair": "2:3",
@@ -208,7 +208,7 @@
       "swaps": 11220,
       "spatial": 0.022,
       "hash": "d4f0825d",
-      "computeMs": 325.30000000004657
+      "computeMs": 892
     },
     {
       "pair": "3:4",
@@ -228,7 +228,7 @@
       "swaps": 7514,
       "spatial": 0.022,
       "hash": "354d401b",
-      "computeMs": 338.5
+      "computeMs": 852.7000000476837
     },
     {
       "pair": "4:0",
@@ -248,7 +248,7 @@
       "swaps": 7612,
       "spatial": 0.022,
       "hash": "416a5ebb",
-      "computeMs": 297.29999999993015
+      "computeMs": 757.6000000238419
     }
   ]
 }

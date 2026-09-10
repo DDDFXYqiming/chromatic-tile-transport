@@ -17,7 +17,7 @@
     "swaps": 9044,
     "spatial": 0.022,
     "hash": "63b9642d",
-    "computeMs": 348
+    "computeMs": 713.5999999642372
   },
   {
     "pair": "1:2",
@@ -37,7 +37,7 @@
     "swaps": 11756,
     "spatial": 0.022,
     "hash": "4a737b5",
-    "computeMs": 521.0999999999767
+    "computeMs": 945.9000000357628
   },
   {
     "pair": "2:3",
@@ -57,7 +57,7 @@
     "swaps": 11220,
     "spatial": 0.022,
     "hash": "d4f0825d",
-    "computeMs": 325.30000000004657
+    "computeMs": 892
   },
   {
     "pair": "3:4",
@@ -77,7 +77,7 @@
     "swaps": 7514,
     "spatial": 0.022,
     "hash": "354d401b",
-    "computeMs": 338.5
+    "computeMs": 852.7000000476837
   },
   {
     "pair": "4:0",
@@ -97,6 +97,6 @@
     "swaps": 7612,
     "spatial": 0.022,
     "hash": "416a5ebb",
-    "computeMs": 297.29999999993015
+    "computeMs": 757.6000000238419
   }
 ]

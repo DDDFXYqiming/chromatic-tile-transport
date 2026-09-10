@@ -64,7 +64,7 @@
             0.14,
             0.2
           ],
-          "meanRGBPixelDifference": 63.93070939990711
+          "meanRGBPixelDifference": 63.93488300938157
         },
         {
           "pair": 0,
@@ -72,7 +72,7 @@
             0.81,
             0.87
           ],
-          "meanRGBPixelDifference": 73.16696574146431
+          "meanRGBPixelDifference": 73.19865905610891
         },
         {
           "pair": 1,
@@ -80,7 +80,7 @@
             0.14,
             0.2
           ],
-          "meanRGBPixelDifference": 70.54991758215255
+          "meanRGBPixelDifference": 70.55294554220056
         },
         {
           "pair": 1,
@@ -88,7 +88,7 @@
             0.81,
             0.87
           ],
-          "meanRGBPixelDifference": 49.908397661979315
+          "meanRGBPixelDifference": 49.95112780141434
         },
         {
           "pair": 2,
@@ -96,7 +96,7 @@
             0.14,
             0.2
           ],
-          "meanRGBPixelDifference": 47.99181678981106
+          "meanRGBPixelDifference": 47.993719773805736
         },
         {
           "pair": 2,
@@ -104,7 +104,7 @@
             0.81,
             0.87
           ],
-          "meanRGBPixelDifference": 64.31398408977206
+          "meanRGBPixelDifference": 64.34094802576178
         },
         {
           "pair": 3,
@@ -112,7 +112,7 @@
             0.14,
             0.2
           ],
-          "meanRGBPixelDifference": 65.9280694101611
+          "meanRGBPixelDifference": 65.94111499770526
         },
         {
           "pair": 3,
@@ -120,7 +120,7 @@
             0.81,
             0.87
           ],
-          "meanRGBPixelDifference": 58.658888310034435
+          "meanRGBPixelDifference": 58.68947835566747
         },
         {
           "pair": 4,
@@ -128,7 +128,7 @@
             0.14,
             0.2
           ],
-          "meanRGBPixelDifference": 55.60658226417539
+          "meanRGBPixelDifference": 55.61361948038166
         },
         {
           "pair": 4,
@@ -136,7 +136,7 @@
             0.81,
             0.87
           ],
-          "meanRGBPixelDifference": 60.890003183699456
+          "meanRGBPixelDifference": 60.90671037017742
         }
       ]
     },

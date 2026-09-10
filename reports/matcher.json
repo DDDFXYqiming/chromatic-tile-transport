@@ -1,5 +1,5 @@
 {
-  "environment": "v22.16.0",
+  "environment": "v24.16.0",
   "tests": [
     {
       "test": "Identical image has identity map and zero motion",
@@ -21,7 +21,7 @@
         "swaps": 0,
         "spatial": 0.022,
         "hash": "d0a86585",
-        "computeMs": 13.348865
+        "computeMs": 6.988699999999994
       }
     },
     {
@@ -44,7 +44,7 @@
         "swaps": 6,
         "spatial": 0.022,
         "hash": "cf4054dd",
-        "computeMs": 30.328615000000006
+        "computeMs": 25.4268
       }
     },
     {
@@ -90,7 +90,7 @@
         "swaps": 0,
         "spatial": 0.022,
         "hash": "d0a86585",
-        "computeMs": 5.04336099999999
+        "computeMs": 5.0146000000000015
       }
     },
     {
@@ -113,7 +113,7 @@
         "swaps": 1,
         "spatial": 0.002,
         "hash": "aa0cfe5d",
-        "computeMs": 7.318125000000009
+        "computeMs": 5.9579000000000235
       }
     },
     {

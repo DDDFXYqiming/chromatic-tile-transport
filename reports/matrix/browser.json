@@ -16,11 +16,11 @@
       "name": "Original, duotone, poster, line and matrix are visually different",
       "passed": true,
       "detail": {
-        "original": "8071b328ec9d",
-        "duotone": "62f3b8b7b854",
-        "poster": "27181bb16cd3",
-        "line": "552ec171a398",
-        "matrix": "3c1f3c061b08"
+        "original": "8b5259d6c6b7",
+        "duotone": "6ec70dd825df",
+        "poster": "b7d4207b3390",
+        "line": "f1ed26b60b41",
+        "matrix": "bea99d28d710"
       }
     },
     {
@@ -40,87 +40,133 @@
         {
           "scene": 0,
           "successiveFrameMAD": [
-            28.7959,
-            34.9434,
-            1.0043,
-            4.4833,
-            34.2588,
-            56.2608,
-            37.4796,
-            8.1351,
-            0.2187,
-            11.1887,
-            55.3331,
-            35.426
+            1.7553,
+            15.0208,
+            34.5018,
+            42.8301,
+            54.3343,
+            59.212,
+            38.2164,
+            24.2931,
+            40.095,
+            34.3609,
+            13.793,
+            1.3385
           ]
         },
         {
           "scene": 1,
           "successiveFrameMAD": [
-            32.0702,
-            38.9072,
-            1.1907,
-            8.3183,
-            44.2683,
-            55.9921,
-            24.6768,
-            3.7479,
-            0.1205,
-            17.0232,
-            84.3069,
-            54.0227
+            0.5983,
+            8.4957,
+            27.5538,
+            46.1646,
+            65.65,
+            59.1725,
+            25.5386,
+            22.1195,
+            51.8912,
+            57.1581,
+            26.5307,
+            2.4204
           ]
         },
         {
           "scene": 2,
           "successiveFrameMAD": [
-            24.4659,
-            29.6967,
-            0.8304,
-            2.7874,
-            22.9858,
-            55.8212,
-            29.1509,
-            6.3261,
-            0.227,
-            13.2813,
-            65.7171,
-            42.0914
+            2.2287,
+            20.9188,
+            46.3549,
+            48.9134,
+            45.4739,
+            59.112,
+            29.9234,
+            22.5251,
+            42.5635,
+            43.84,
+            19.8917,
+            1.6287
           ]
         },
         {
           "scene": 3,
           "successiveFrameMAD": [
-            29.5381,
-            35.8446,
-            1.0238,
-            3.8215,
-            32.4338,
-            51.6021,
-            32.9537,
-            5.5879,
-            0.0928,
-            14.7541,
-            73.0715,
-            46.811
+            2.0044,
+            15.8913,
+            34.9093,
+            41.7617,
+            52.3946,
+            54.471,
+            33.735,
+            23.3292,
+            48.9042,
+            48.3954,
+            20.2316,
+            2.1037
           ]
         },
         {
           "scene": 4,
           "successiveFrameMAD": [
-            27.6807,
-            33.5918,
-            0.9875,
-            5.8157,
-            32.3194,
-            43.2657,
-            32.9333,
-            8.4247,
-            0.2378,
-            13.5751,
-            67.2119,
-            43.0616
+            1.1868,
+            13.9892,
+            37.5064,
+            48.6069,
+            54.0331,
+            46.1601,
+            33.6716,
+            26.6084,
+            49.6365,
+            43.9156,
+            15.101,
+            1.2156
           ]
+        }
+      ]
+    },
+    {
+      "name": "Grid entry and exit stay in motion and avoid a whole-screen brightness surge",
+      "passed": true,
+      "detail": [
+        {
+          "scene": 0,
+          "previouslyStillIntervalsMAD": [
+            6.445339506172839,
+            7.9652469135802475
+          ],
+          "maximumEdgeStepMAD": 7.2790123456790115
+        },
+        {
+          "scene": 1,
+          "previouslyStillIntervalsMAD": [
+            4.586172839506173,
+            14.216018518518519
+          ],
+          "maximumEdgeStepMAD": 13.663858024691358
+        },
+        {
+          "scene": 2,
+          "previouslyStillIntervalsMAD": [
+            9.82685185185185,
+            10.2525
+          ],
+          "maximumEdgeStepMAD": 10.876481481481482
+        },
+        {
+          "scene": 3,
+          "previouslyStillIntervalsMAD": [
+            6.835123456790124,
+            11.899783950617284
+          ],
+          "maximumEdgeStepMAD": 10.99925925925926
+        },
+        {
+          "scene": 4,
+          "previouslyStillIntervalsMAD": [
+            6.972222222222222,
+            10.889413580246915
+          ],
+          "maximumEdgeStepMAD": 9.576882716049383
         }
       ]
     },
@@ -129,10 +175,10 @@
       "passed": true,
       "detail": [
         1e-05,
-        1e-05,
-        2e-05,
-        1e-05,
-        1e-05
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ]
     },
     {
@@ -159,14 +205,19 @@
       "name": "Actual requestAnimationFrame playback advances and pauses",
       "passed": true,
       "detail": {
-        "advancedTo": 1.3833000000000015,
+        "advancedTo": 1.4222000000000046,
         "fpsClaim": false
       }
     },
     {
-      "name": "Bridge-focused loop starts and manual scrub exits the loop",
+      "name": "Card preview displays both full originals, holds, reverses and exits without jumping",
       "passed": true,
-      "detail": true
+      "detail": {
+        "completeOriginalDwellSeconds": 1.5,
+        "targetPixelsHeld": true,
+        "smoothReverse": true,
+        "normalBridgeSeconds": 0.48
+      }
     },
     {
       "name": "Wheel scrub moves through the same timeline",
@@ -234,7 +285,7 @@
   ],
   "errors": [],
   "limitations": [
-    "Browser navigation to localhost and file URLs is blocked by administrator policy; page rendering tested with inline content, linked targets verified on disk."
+    "Legacy five-image suite uses inline content and verifies linked targets on disk. The separate browser_layers.py suite tests localhost navigation."
   ],
-  "environment": "Linux headless Chromium, software GL; viewport simulation, not physical phone/GPU throughput"
+  "environment": "Windows-11-10.0.26200-SP0; headless Chromium; viewport simulation, not physical phone/GPU throughput"
 }

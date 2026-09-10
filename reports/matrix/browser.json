@@ -1,0 +1,240 @@
+{
+  "suite": "matrix-browser",
+  "passed": true,
+  "checks": [
+    {
+      "name": "WebGL 2 runs the actual shader without fallback or warnings",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "All five images have distinct, nonblank actual renders",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Original, duotone, poster, line and matrix are visually different",
+      "passed": true,
+      "detail": {
+        "original": "8071b328ec9d",
+        "duotone": "62f3b8b7b854",
+        "poster": "27181bb16cd3",
+        "line": "552ec171a398",
+        "matrix": "3c1f3c061b08"
+      }
+    },
+    {
+      "name": "Reverse seeking is pixel deterministic",
+      "passed": true,
+      "detail": "Exact pixel-identical reverse seek"
+    },
+    {
+      "name": "Paused frames remain still without continuously burning GPU work",
+      "passed": true,
+      "detail": "No drift and no extra draw calls"
+    },
+    {
+      "name": "All five short bridges continuously change with no blank frame",
+      "passed": true,
+      "detail": [
+        {
+          "scene": 0,
+          "successiveFrameMAD": [
+            28.7959,
+            34.9434,
+            1.0043,
+            4.4833,
+            34.2588,
+            56.2608,
+            37.4796,
+            8.1351,
+            0.2187,
+            11.1887,
+            55.3331,
+            35.426
+          ]
+        },
+        {
+          "scene": 1,
+          "successiveFrameMAD": [
+            32.0702,
+            38.9072,
+            1.1907,
+            8.3183,
+            44.2683,
+            55.9921,
+            24.6768,
+            3.7479,
+            0.1205,
+            17.0232,
+            84.3069,
+            54.0227
+          ]
+        },
+        {
+          "scene": 2,
+          "successiveFrameMAD": [
+            24.4659,
+            29.6967,
+            0.8304,
+            2.7874,
+            22.9858,
+            55.8212,
+            29.1509,
+            6.3261,
+            0.227,
+            13.2813,
+            65.7171,
+            42.0914
+          ]
+        },
+        {
+          "scene": 3,
+          "successiveFrameMAD": [
+            29.5381,
+            35.8446,
+            1.0238,
+            3.8215,
+            32.4338,
+            51.6021,
+            32.9537,
+            5.5879,
+            0.0928,
+            14.7541,
+            73.0715,
+            46.811
+          ]
+        },
+        {
+          "scene": 4,
+          "successiveFrameMAD": [
+            27.6807,
+            33.5918,
+            0.9875,
+            5.8157,
+            32.3194,
+            43.2657,
+            32.9333,
+            8.4247,
+            0.2378,
+            13.5751,
+            67.2119,
+            43.0616
+          ]
+        }
+      ]
+    },
+    {
+      "name": "All bridge endpoints, including last-to-first, join continuously",
+      "passed": true,
+      "detail": [
+        1e-05,
+        1e-05,
+        2e-05,
+        1e-05,
+        1e-05
+      ]
+    },
+    {
+      "name": "Timeline, next/previous and all scene controls work",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Director desk pins styles and pauses exactly at the bridge midpoint",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Grid density and shot duration update without stretching the bridge",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Invalid runtime configuration is rejected atomically",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Actual requestAnimationFrame playback advances and pauses",
+      "passed": true,
+      "detail": {
+        "advancedTo": 1.3833000000000015,
+        "fpsClaim": false
+      }
+    },
+    {
+      "name": "Bridge-focused loop starts and manual scrub exits the loop",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Wheel scrub moves through the same timeline",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Immersive entry, resize and Escape exit work",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Phone portrait, narrow phone and landscape have no horizontal overflow",
+      "passed": true,
+      "detail": [
+        {
+          "w": 390,
+          "sw": 390
+        },
+        {
+          "w": 320,
+          "sw": 320
+        },
+        {
+          "w": 844,
+          "sw": 844
+        }
+      ]
+    },
+    {
+      "name": "WebGL context loss restores a working paused renderer",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Explicit Canvas fallback renders and reverses correctly",
+      "passed": true,
+      "detail": "Simplified, deterministic fixed-grid fallback"
+    },
+    {
+      "name": "System reduced-motion preference disables autoplay and transitions",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Standalone effect requests no remote resource",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Gallery renders, linked targets exist, and preserved original still renders",
+      "passed": true,
+      "detail": {
+        "galleryRendered": true,
+        "linkedPathsExist": true,
+        "originalRendererStillWorks": true,
+        "localhostNavigation": "Not verified: blocked by administrator browser policy"
+      }
+    },
+    {
+      "name": "No unhandled JavaScript errors",
+      "passed": true,
+      "detail": true
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "Browser navigation to localhost and file URLs is blocked by administrator policy; page rendering tested with inline content, linked targets verified on disk."
+  ],
+  "environment": "Linux headless Chromium, software GL; viewport simulation, not physical phone/GPU throughput"
+}

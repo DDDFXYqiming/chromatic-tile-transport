@@ -1,0 +1,36 @@
+{
+  "effect": "02 Matrix Motion",
+  "date": "2026-09-10",
+  "newChecks": {
+    "timeline": 12,
+    "build": 13,
+    "browser": 22,
+    "total": 47,
+    "passed": true
+  },
+  "legacyRegression": {
+    "command": "python scripts/check.py --browser",
+    "passed": true,
+    "logSha256": "ba4ffa7f72d325407903575940a265809e42353f30949e28a36b3f38dd18dc1c"
+  },
+  "preservedGitBlobs": {
+    "src/main.js": "27b5f5f4daea374d6b40484a5605ffbc2b2c6c27",
+    "src/matcher.js": "e545b4d8f1347a09a9b0f5b3651a471867d49946",
+    "src/transport.js": "8dc60a80fc813576f419bf43b2afba04d02fea39",
+    "src/timing.js": "7d5cbc247a774769f208cea904abbd4902e24fe6",
+    "src/style.css": "d685d788bd22dde0033f56e6306a53cd3e7a95c7",
+    "scripts/build.py": "b1fe276807f228aa9555e7d840f71cd7b09a1e2e",
+    "dist/index.html": "47aa8adce0dd6d5ce30e060f15064306d54aa72d"
+  },
+  "limitations": [
+    "Browser navigation to localhost and file URLs is blocked by administrator policy; page rendering tested with inline content, linked targets verified on disk.",
+    "Linux headless Chromium, software GL; viewport simulation, not physical phone/GPU throughput",
+    "The preview video is deterministic frame-by-frame webpage output, not a real-time FPS measurement.",
+    "Focal parallax approximates depth; images have not been segmented into separate layers."
+  ],
+  "reports": [
+    "timeline.json",
+    "build-tests.txt",
+    "browser.json"
+  ]
+}

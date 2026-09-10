@@ -1,0 +1,18 @@
+test_bool_is_not_duration (test_matrix_build.MatrixBuildTests.test_bool_is_not_duration) ... ok
+test_default_config (test_matrix_build.MatrixBuildTests.test_default_config) ... ok
+test_inline_contains_assets_and_scripts (test_matrix_build.MatrixBuildTests.test_inline_contains_assets_and_scripts) ... ok
+test_legacy_core_and_distribution_are_unchanged (test_matrix_build.MatrixBuildTests.test_legacy_core_and_distribution_are_unchanged) ... ok
+test_linked_paths_are_relative_and_exist (test_matrix_build.MatrixBuildTests.test_linked_paths_are_relative_and_exist) ... ok
+test_linked_stays_in_repository (test_matrix_build.MatrixBuildTests.test_linked_stays_in_repository) ... ok
+test_nonfinite_values_fail (test_matrix_build.MatrixBuildTests.test_nonfinite_values_fail) ... ok
+test_outside_focus_fails (test_matrix_build.MatrixBuildTests.test_outside_focus_fails) ... ok
+test_router_sync_does_not_overwrite_legacy_skill (test_matrix_build.MatrixBuildTests.test_router_sync_does_not_overwrite_legacy_skill) ... ok
+test_unknown_focus_fails (test_matrix_build.MatrixBuildTests.test_unknown_focus_fails) ... ok
+test_unknown_options_fail (test_matrix_build.MatrixBuildTests.test_unknown_options_fail) ... ok
+test_unknown_top_level_fails (test_matrix_build.MatrixBuildTests.test_unknown_top_level_fails) ... ok
+test_user_text_cannot_break_out_of_script_or_title (test_matrix_build.MatrixBuildTests.test_user_text_cannot_break_out_of_script_or_title) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.752s
+
+OK

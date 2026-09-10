@@ -1,0 +1,73 @@
+/* Deterministic Matrix Motion choreography. All times are seconds, not frame counts. */
+(function (root) {
+  'use strict';
+  const DEFAULTS = Object.freeze({shotSeconds: 6.8, bridgeSeconds: .48, density: 144,
+    zoom: 1.65, parallax: .65, palette: 'ice', mode: 'auto', autoplay: true});
+  const MODES = Object.freeze(['auto', 'original', 'duotone', 'poster', 'line', 'matrix']);
+  const STYLE = Object.freeze({original: 0, duotone: 1, poster: 2, line: 3});
+  const clip = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+  const smooth = v => {v = clip(v); return v * v * (3 - 2 * v);};
+  const span = (a, b, v) => smooth((v - a) / (b - a));
+  const wrap = (v, n) => { const r = v % n; return r < 0 ? r + n : r; };
+  function validate(patch = {}, base = DEFAULTS) {
+    if (!patch || typeof patch !== 'object' || Array.isArray(patch)) throw new TypeError('Configuration must be an object');
+    const c = {...base, ...patch};
+    const bounds = {shotSeconds: [4, 14], bridgeSeconds: [.3, .85], density: [48, 224], zoom: [1, 2.1], parallax: [0, 1]};
+    for (const [k, v] of Object.entries(patch)) {
+      if (!(k in DEFAULTS)) throw new TypeError('Unknown matrix option: ' + k);
+      if (k in bounds && (typeof v !== 'number' || !Number.isFinite(v) || v < bounds[k][0] || v > bounds[k][1])) throw new RangeError('Invalid matrix option: ' + k);
+      if (k === 'density' && !Number.isInteger(v)) throw new TypeError('density must be an integer');
+      if (k === 'mode' && !MODES.includes(v)) throw new TypeError('Unknown visual mode');
+      if (k === 'palette' && !['ice', 'scene', 'mono'].includes(v)) throw new TypeError('Unknown palette');
+      if (k === 'autoplay' && typeof v !== 'boolean') throw new TypeError('autoplay must be boolean');
+    }
+    return Object.freeze(c);
+  }
+  // Small directed edits within one hero shot. The bridge is deliberately much shorter.
+  const EDITS = Object.freeze([
+    [0, .14, 3, 0, '显影 / DEVELOP'],
+    [.14, .28, 0, 0, '原画 / ORIGINAL'],
+    [.28, .42, 0, 2, '色阶 / POSTERIZE'],
+    [.42, .49, 2, 2, '色阶 / POSTERIZE'],
+    [.49, .62, 2, 1, '双色 / DUOTONE'],
+    [.62, .72, 1, 1, '双色 / DUOTONE'],
+    [.72, .82, 1, 3, '线描 / CONTOUR'],
+    [.82, .92, 3, 1, '近景 / CLOSE-UP'],
+    [.92, 1.001, 1, 1, '近景 / CLOSE-UP']
+  ]);
+  function frame(seconds, count, config = DEFAULTS, reduced = false) {
+    if (!Number.isFinite(seconds) || !Number.isInteger(count) || count < 2) throw new TypeError('Invalid timeline position');
+    const total = count * config.shotSeconds;
+    const position = wrap(seconds, total);
+    const scene = Math.min(count - 1, Math.floor(position / config.shotSeconds));
+    const local = position - scene * config.shotSeconds;
+    const bridgeStart = config.shotSeconds - config.bridgeSeconds;
+    const bridge = clip((local - bridgeStart) / config.bridgeSeconds);
+    const phase = clip(local / bridgeStart);
+    const edit = EDITS.find(e => phase < e[1]) || EDITS[EDITS.length - 1];
+    let from = edit[2], to = edit[3], reveal = span(edit[0], edit[1], phase);
+    let label = bridge > 0 ? '点阵桥 / MATRIX BRIDGE' : edit[4];
+    if (config.mode !== 'auto') {
+      from = to = STYLE[config.mode] ?? 1; reveal = 0;
+      label = config.mode === 'matrix' ? '定格点阵 / DOT MATRIX' : config.mode.toUpperCase();
+    }
+    if (reduced) { from = to = 0; reveal = 0; label = '静态浏览 / REDUCED MOTION'; }
+    const focus = reduced ? 0 : span(.24, .9, phase);
+    const zoom = reduced ? 1 : 1.015 + .075 * span(0, .34, phase) + (config.zoom - 1.09) * span(.35, .95, phase);
+    return {position, total, scene, next: (scene + 1) % count, local, phase,
+      bridge: reduced || config.mode !== 'auto' ? 0 : bridge,
+      from, to, reveal, zoom, focus, label,
+      forceMatrix: !reduced && config.mode === 'matrix',
+      // Driven by the scrub position, not wall time: pause/reverse/export match exactly.
+      drift: reduced ? 0 : Math.sin(phase * Math.PI) * config.parallax,
+      direction: scene % 2 === 0 ? 1 : -1};
+  }
+  function grid(width, height, density) {
+    const cols = Math.round(density);
+    return {cols, rows: Math.max(2, Math.round(cols * height / width))};
+  }
+  function cellCenter(column, row, cols, rows) { return [(column + .5) / cols, (row + .5) / rows]; }
+  const api = Object.freeze({DEFAULTS, MODES, STYLE, EDITS, validate, frame, grid, cellCenter, clip, smooth, span, wrap});
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  else root.MatrixTimeline = api;
+})(typeof globalThis === 'object' ? globalThis : this);

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#061c26">
+<meta name="description" content="以静态星穹铁道插画，实时演绎镜头、双色、线描与固定数字点阵。">
+<title>{{TITLE}}</title>
+<!-- MATRIX:STYLE -->
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a class="wordmark" href="{{GALLERY}}" aria-label="返回效果展厅">
+      <svg viewBox="0 0 44 44" fill="none" aria-hidden="true"><circle cx="22" cy="22" r="15"/><ellipse cx="22" cy="22" rx="22" ry="7" transform="rotate(-35 22 22)"/><path d="m22 9 3 10 10 3-10 3-3 10-3-10-10-3 10-3z"/></svg>
+      <span><b>星海成像<span class="brand-dot">.</span></b><small>TRAILBLAZE VISUAL LAB</small></span>
+    </a>
+    <nav class="topnav" aria-label="效果导航"><a href="{{TRANSPORT}}">01 寻色迁移</a><a class="current" href="#" aria-current="page">02 MATRIX MOTION</a></nav>
+    <div class="top-actions"><button id="settingsOpen" class="text-button" aria-label="打开导演台">导演台 <span>↗</span></button><button id="immersive" class="icon-button" aria-label="进入沉浸模式" title="沉浸模式 · F"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 3H3v4m10-4h4v4M3 13v4h4m10-4v4h-4"/></svg></button></div>
+  </header>
+  <main id="stage" class="stage" aria-label="Matrix Motion 动态画面">
+    <canvas id="matrixCanvas" aria-label="由五张星穹铁道静态插画生成的动态图像"></canvas>
+    <div class="image-shade"></div><div class="frame-corner tl"></div><div class="frame-corner br"></div>
+    <div class="stage-head"><button id="playButton" class="play-chip" aria-label="暂停播放"><span id="playGlyph">Ⅱ</span><span id="playLabel">暂停播放</span></button><span class="chapter-id">EXPERIMENT <b>002</b> / IMAGE → MOTION</span></div>
+    <aside class="specimen-card">
+      <div class="specimen-head"><span>VISUAL SPECIMEN</span><b>影像样本</b></div>
+      <div class="hairline"></div><span class="specimen-kicker"><i></i><span id="sceneEnglish">NEON CIRCUIT</span></span>
+      <h2 id="sceneTitle">霓虹疾行</h2><p>静态原画，无限显影。</p>
+      <div class="specimen-foot"><span id="stageNumber">01 — 05</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M2 12h20M5 5l14 14M5 19 19 5"/></svg></div>
+    </aside>
+    <div class="hero-copy"><div class="eyebrow"><span></span> HUMAN IMAGINATION × REALTIME SHADER</div><h1><em>Beyond</em><span>the frame.</span></h1><p>让星海，不止于一帧。</p></div>
+    <button id="bridgeButton" class="bridge-card"><span class="bridge-title">不搬动像素。<br>让画面，重新显影。</span><span class="bridge-foot">聚焦 <b id="bridgeLength">0.48s</b> 数字桥接 <i>↗</i></span></button>
+    <div class="stage-bottom"><span id="stagePhase">DEVELOP</span><span class="motion-note"><i></i> STATIC ART. LIVING COMPOSITION.</span></div>
+    <div id="loading" class="loading" role="status"><span class="loading-mark">✦</span><span id="loadingText">正在准备五幕影像…</span></div>
+    <div id="error" class="error" role="alert" hidden></div>
+  </main>
+  <footer class="bottom-bar">
+    <div class="timeline-row"><span id="elapsed">00.00</span><input id="timeline" type="range" min="0" max="34" step="0.005" value="0" aria-label="全片时间轴，单位秒"><span id="totalTime">34.00</span></div>
+    <div class="footer-row"><div class="sequence-meta"><span class="tiny-label">CHAPTER</span><strong id="chapter">01<span>/ 05</span></strong></div><nav id="filmstrip" class="filmstrip" aria-label="选择影像"></nav><div class="transport-controls"><button id="previous" aria-label="上一幕">←</button><button id="next" aria-label="下一幕">→</button><span id="engineLabel">REALTIME / WEBGL</span></div></div>
+  </footer>
+</div>
+<button id="exitImmersive" class="exit-immersive">退出沉浸 ↙</button>
+<dialog id="settings" class="settings">
+  <div class="dialog-head"><span>DIRECTOR'S DESK / 02</span><button id="settingsClose" aria-label="关闭导演台">×</button></div>
+  <h2>同一帧。<em>不同世界。</em></h2><p class="intro">暂停后切换显影方式，或拖动时间轴逐帧观察。格子不搬家，只在固定位置翻转和显隐。</p>
+  <div class="setting-caption">显影方式 <span>LIVE PREVIEW</span></div><div id="modeButtons" class="mode-buttons" aria-label="显影方式"></div>
+  <label class="setting-row" for="palette"><span>美术色盘<small>原画保留原色；双色与点阵使用此色盘。</small></span><select id="palette"><option value="ice">冰蓝纸白</option><option value="scene">随场景配色</option><option value="mono">黑白银盐</option></select></label>
+  <label class="setting-row" for="shotSeconds"><span>单幕节奏<small>镜头时长；不会按比例拉长数字桥。</small></span><select id="shotSeconds"><option value="5.2">5.2 秒</option><option value="6.8" selected>6.8 秒</option><option value="9">9 秒</option></select></label>
+  <label class="setting-row" for="bridgeSeconds"><span>数字桥时长<small>短促、连续，不等拆完再开始。</small></span><select id="bridgeSeconds"><option value="0.36">0.36 秒</option><option value="0.48" selected>0.48 秒</option><option value="0.72">0.72 秒</option></select></label>
+  <label class="setting-row" for="density"><span>点阵密度<small>固定于画面，亮度控制颗粒大小。</small></span><select id="density"><option value="96">96 列 / 粗</option><option value="144" selected>144 列 / 标准</option><option value="192">192 列 / 细</option></select></label>
+  <label class="setting-row" for="zoom"><span>近景倍率<small>焦点来自逐图配置，并非自动识别人脸。</small></span><select id="zoom"><option value="1.25">1.25× / 轻推</option><option value="1.65" selected>1.65× / 近景</option><option value="1.95">1.95× / 特写</option></select></label>
+  <label class="setting-row" for="parallax"><span>焦点局部视差<small>连续形变近似前后景，不是人物分层。</small></span><input id="parallax" type="checkbox" checked></label>
+  <label class="setting-row" for="clean"><span>纯画面<small>去掉画面文字，保留播放与时间轴。</small></span><input id="clean" type="checkbox"></label>
+  <label class="setting-row" for="reduced"><span>减少动态<small>停用自动播放、镜头和点阵桥。</small></span><input id="reduced" type="checkbox"></label>
+  <div class="inspection"><button id="inspectBridge">暂停在点阵中间 ↗</button><button id="reset">恢复导演编排 ↺</button></div>
+  <p id="diagnostics" class="diagnostics"></p><p class="keyboard-help">空格 播放 / 暂停 · F 沉浸 · ← → 切换影像 · Esc 退出<br>画面上滚轮或触摸滑动可前后拖动。</p>
+  <p class="notice">{{NOTICE}}</p>
+</dialog>
+<!-- MATRIX:ASSETS -->
+<!-- MATRIX:SCRIPT -->
+</body>
+</html>

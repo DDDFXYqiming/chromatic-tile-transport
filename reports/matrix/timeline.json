@@ -1,0 +1,54 @@
+{
+  "suite": "matrix-timeline",
+  "passed": true,
+  "tests": [
+    {
+      "name": "Configuration rejects unknown keys, NaN, infinities and numeric booleans",
+      "passed": true
+    },
+    {
+      "name": "Every supported setting validates at both ends of its documented range",
+      "passed": true
+    },
+    {
+      "name": "All five exact chapter boundaries identify the intended image",
+      "passed": true
+    },
+    {
+      "name": "Last-to-first wrap and negative seek are deterministic",
+      "passed": true
+    },
+    {
+      "name": "Bridge duration stays 0.48 seconds when the shot duration changes",
+      "passed": true
+    },
+    {
+      "name": "Every choreography edit joins with the same full image style",
+      "passed": true
+    },
+    {
+      "name": "Camera stays finite and covers the image across every scene and frame",
+      "passed": true
+    },
+    {
+      "name": "Pinned styles are independent of transition progress",
+      "passed": true
+    },
+    {
+      "name": "Reduced motion suppresses camera, bridge and matrix in every mode",
+      "passed": true
+    },
+    {
+      "name": "Fixed cell centres do not depend on colour, image or time",
+      "passed": true
+    },
+    {
+      "name": "Reverse timeline sampling returns bit-identical numeric uniforms",
+      "passed": true
+    },
+    {
+      "name": "New timeline does not import a matcher or use randomness",
+      "passed": true
+    }
+  ]
+}

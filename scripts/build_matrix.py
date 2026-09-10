@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Build effect 02 without modifying effect 01. Default: offline HTML; --linked: small repository preview."""
 from __future__ import annotations
-import argparse, base64, html, json, math, os, re
+import argparse, base64, hashlib, html, json, math, os, re
 from pathlib import Path
 from build import ROOT, local, load_scenes, script_json, image_info
 
 DEFAULT_SCENES = ROOT / 'examples/matrix-motion/scenes.json'
 DEFAULT_CONFIG = ROOT / 'examples/matrix-motion/config.json'
-BOUNDS = {'shotSeconds':(4,14), 'bridgeSeconds':(.3,1.6), 'density':(48,224), 'zoom':(1,2.1), 'parallax':(0,1),'cameraX':(-.3,.3),'cameraY':(-.3,.3)}
+BOUNDS = {'shotSeconds':(4,14), 'bridgeSeconds':(.3,1.6), 'density':(48,224), 'zoom':(1,2.1), 'parallax':(0,1),'cameraX':(-.3,.3),'cameraY':(-.3,.3),'deformationStrength':(0,1.5)}
 
 def load_matrix_config(path: Path, scenes: list[dict]) -> dict:
     c=json.loads(local(path).read_text(encoding='utf-8'))
@@ -25,7 +25,7 @@ def load_matrix_config(path: Path, scenes: list[dict]) -> dict:
             if v not in ('auto','original','duotone','poster','line','matrix'): raise ValueError('Unknown mode')
         elif k=='palette':
             if v not in ('ice','scene','mono'): raise ValueError('Unknown palette')
-        elif k in ('autoplay','layerMotion'):
+        elif k in ('autoplay','layerMotion','deformation','motionStudy'):
             if type(v) is not bool: raise ValueError(k+' must be boolean')
         else: raise ValueError('Unknown matrix option: '+k)
     focus=c.get('focus',{})
@@ -41,7 +41,9 @@ def load_matrix_config(path: Path, scenes: list[dict]) -> dict:
         if not isinstance(layers,list) or not 2<=len(layers)<=12:raise ValueError('A composition requires 2-12 layers')
         ids=set()
         for layer in layers:
-            if not isinstance(layer,dict) or set(layer)-{'id','label','src','kind','x','y','height','depth','drift','phase','rotation','sway','opacity'}:raise ValueError('Invalid layer')
+            if not isinstance(layer,dict) or set(layer)-{'id','label','src','kind','x','y','height','depth','drift','phase','rotation','sway','opacity','rig','rigStrength'}:raise ValueError('Invalid layer')
+            if layer.get('rig','none') not in ('none','character','fish','plant'):raise ValueError('Invalid layer rig')
+            if not number(layer.get('rigStrength',1),0,1):raise ValueError('Invalid layer rig strength')
             if not isinstance(layer.get('id'),str) or not re.fullmatch(r'[a-z][a-z0-9-]*',layer['id']) or layer['id'] in ids:raise ValueError('Layer ids must be unique')
             ids.add(layer['id'])
             if not isinstance(layer.get('label'),str) or not isinstance(layer.get('src'),str):raise ValueError('Missing layer label/src')
@@ -61,7 +63,10 @@ def load_matrix_config(path: Path, scenes: list[dict]) -> dict:
 def build(output: Path, scenes_path: Path=DEFAULT_SCENES, config_path: Path=DEFAULT_CONFIG, linked: bool=False) -> Path:
     scenes=load_scenes(scenes_path); config=load_matrix_config(config_path,scenes);output=output.resolve()
     src=ROOT/'src/matrix';result=(src/'index.template.html').read_text(encoding='utf-8')
+    modules=([ROOT/'src/vendor/pixi-8.20.1.min.js',src/'deformation.js',src/'mesh.js'] if config.get('composition') else [])
+    modules += [src/f for f in ('timeline.js','layers.js','renderer.js','main.js')]
     rel=lambda p: os.path.relpath(p,output.parent).replace(os.sep,'/')
+    versioned=lambda p:rel(p)+'?v='+hashlib.sha256(p.read_bytes()).hexdigest()[:12]
     for layer in config.get('composition',{}).get('layers',[]):
         asset=local(config_path.parent/layer['src']);raw=asset.read_bytes();mime,width,height=image_info(raw)
         if len(raw)>32*1024*1024 or max(width,height)>8192:raise ValueError('Layer image is too large')
@@ -71,12 +76,12 @@ def build(output: Path, scenes_path: Path=DEFAULT_SCENES, config_path: Path=DEFA
         local(output)
         original=json.loads(local(scenes_path).read_text(encoding='utf-8'))
         for scene,raw in zip(scenes,original): scene['src']=rel(local(scenes_path.parent/raw['src']))
-        css='<link rel="stylesheet" href="'+html.escape(rel(src/'style.css'),quote=True)+'">'
-        scripts='\n'.join('<script src="'+html.escape(rel(src/f),quote=True)+'"></script>' for f in ('timeline.js','layers.js','renderer.js','main.js'))
+        css='<link rel="stylesheet" href="'+html.escape(versioned(src/'style.css'),quote=True)+'">'
+        scripts='\n'.join('<script src="'+html.escape(versioned(f),quote=True)+'"></script>' for f in modules)
         gallery=rel(ROOT/'index.html');transport=rel(ROOT/'dist/index.html')
     else:
         css='<style>\n'+(src/'style.css').read_text(encoding='utf-8')+'\n</style>'
-        scripts='<script>\n'+'\n'.join((src/f).read_text(encoding='utf-8') for f in ('timeline.js','layers.js','renderer.js','main.js'))+'\n</script>'
+        scripts='<script>\n'+'\n'.join(f.read_text(encoding='utf-8').replace('</script','<\\/script') for f in modules)+'\n</script>'
         gallery=rel(ROOT/'index.html') if output.is_relative_to(ROOT) else './index.html'
         transport=rel(ROOT/'dist/index.html') if output.is_relative_to(ROOT) else './starrail_color_transport_v3_1.html'
     replacements={'<!-- MATRIX:STYLE -->':css,'<!-- MATRIX:SCRIPT -->':scripts,
@@ -88,8 +93,10 @@ def build(output: Path, scenes_path: Path=DEFAULT_SCENES, config_path: Path=DEFA
       '{{CANVAS_LABEL}}':'人物、鱼、花枝与背景独立合成的动态图像' if config.get('composition') else '由静态插画生成的动态图像',
       '{{PARALLAX_TITLE}}':'图层视差' if config.get('composition') else '焦点局部视差',
       '{{PARALLAX_NOTE}}':'人物、远景和前景以不同幅度移动。' if config.get('composition') else '连续形变近似前后景，不是人物分层。'}
-    for old,new in replacements.items():result=result.replace(old,new)
-    if '<!-- MATRIX:' in result or re.search(r'{{[A-Z_]+}}',result):raise ValueError('Unresolved matrix template token')
+    # Replace only our template tokens; Pixi's shader source has its own {{TOKENS}}.
+    tokens=re.compile(r'<!-- MATRIX:[A-Z]+ -->|{{[A-Z_]+}}')
+    if set(tokens.findall(result))-set(replacements):raise ValueError('Unresolved matrix template token')
+    result=tokens.sub(lambda match:replacements[match.group(0)],result)
     output.parent.mkdir(parents=True,exist_ok=True);output.write_text(result,encoding='utf-8');return output
 
 def main():

@@ -1,0 +1,25 @@
+{
+  "suite": "matrix-deformation",
+  "passed": true,
+  "tests": [
+    {
+      "name": "Face landmarks preserve distances while hair and chest move differently",
+      "passed": true,
+      "detail": {
+        "maximumFaceDistanceChange": 0.00029889722568476884,
+        "nonRigidDisplacement": 0.017923338695025975
+      }
+    },
+    {
+      "name": "Plane deformations do not invert triangles at maximum supported strength",
+      "passed": true,
+      "detail": {
+        "minAreaRatio": 0.4756530865273755
+      }
+    },
+    {
+      "name": "Vertex buffers return exactly to base at zero strength, reverse deterministically and loop",
+      "passed": true
+    }
+  ]
+}

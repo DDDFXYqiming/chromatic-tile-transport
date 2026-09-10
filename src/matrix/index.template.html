@@ -53,11 +53,14 @@
   <div id="layerControls" hidden>
     <div class="setting-caption">图层与构图 <span>MULTIPLANE</span></div><div id="layerList" class="layer-list"></div>
     <label class="setting-row" for="layerMotion"><span>独立图层运动<small>关闭后仍可观看镜头，图层自身停止漂移。</small></span><input id="layerMotion" type="checkbox" checked></label>
+    <label class="setting-row" for="deformation"><span>局部形变<small id="deformationNote">鱼尾游动、花枝弯曲、人物呼吸与发梢摆动。</small></span><input id="deformation" type="checkbox" checked></label>
+    <label class="setting-row" for="deformationStrength"><span>动作幅度 <output id="deformationStrengthValue">1.00×</output></span><input id="deformationStrength" type="range" min="0" max="1.5" step="0.05" value="1"></label>
+    <label class="setting-row" for="motionStudy"><span>定机位看动作<small>固定当前构图，只看局部动作。关闭后恢复镜头与转场。</small></span><input id="motionStudy" type="checkbox"></label>
     <label class="setting-row" for="cameraX"><span>横向构图 <output id="cameraXValue">0%</output></span><input id="cameraX" type="range" min="-0.3" max="0.3" step="0.01" value="0"></label>
     <label class="setting-row" for="cameraY"><span>纵向构图 <output id="cameraYValue">0%</output></span><input id="cameraY" type="range" min="-0.3" max="0.3" step="0.01" value="0"></label>
   </div>
   <label class="setting-row" for="clean"><span>纯画面<small>去掉画面文字，保留播放与时间轴。</small></span><input id="clean" type="checkbox"></label>
-  <label class="setting-row" for="reduced"><span>减少动态<small>停用自动播放、镜头和点阵桥。</small></span><input id="reduced" type="checkbox"></label>
+  <label class="setting-row" for="reduced"><span>减少动态<small>停用自动播放、镜头、图层动作和点阵桥。</small></span><input id="reduced" type="checkbox"></label>
   <div class="inspection"><button id="inspectBridge">暂停在点阵中间 ↗</button><button id="reset">恢复导演编排 ↺</button></div>
   <p id="diagnostics" class="diagnostics"></p><p class="keyboard-help">空格 播放 / 暂停 · F 沉浸 · ← → 切换影像 · Esc 退出<br>画面上滚轮或触摸滑动可前后拖动。</p>
   <p class="notice">{{NOTICE}}</p>

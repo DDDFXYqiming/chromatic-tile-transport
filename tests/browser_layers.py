@@ -82,6 +82,39 @@ try:
             page.evaluate('(mode)=>MatrixMotion.configure({mode})',mode);a=snap(3.78);snap(6.7);b=snap(3.78);require(a.tobytes()==b.tobytes())
         page.evaluate('MatrixMotion.configure({mode:"original"})');return True
     check('Layered textures and point-grid frames reproduce after reverse scrubbing',reverse)
+    def meshes():
+        s=state()['composition'];require(s['meshAvailable'] and s['meshErrors']==[0,0]);require(s['mesh']['library']=='PixiJS 8.20.1')
+        require([n['type'] for n in s['mesh']['nodes']]==['Sprite','MeshPlane','MeshPlane','MeshRope','MeshPlane']);return s['mesh']
+    check('Official PixiJS MeshPlane and MeshRope render on both WebGL surfaces',meshes)
+    def study():
+        snap(1.2);page.locator('#settingsOpen').click();page.locator('#motionStudy').check();page.locator('#settingsClose').click()
+        a=snap(1.2);frozen=state()['composition']['layers'];b=snap(2.3)
+        require(state()['composition']['layers']==frozen and state()['frame']['bridge']==0);require(mad(a,b)>.2)
+        a.save(OUT/'mesh-study-a.png');b.save(OUT/'mesh-study-b.png')
+        page.locator('#settingsOpen').click();page.locator('#deformation').uncheck();page.locator('#settingsClose').click()
+        off=snap(1.2);require(off.tobytes()==snap(2.3).tobytes(),'Fixed pose without mesh must remain pixel-identical');off.save(OUT/'mesh-study-off.png')
+        page.evaluate('MatrixMotion.configure({deformation:true,deformationStrength:0})');require(snap(1.2).tobytes()==off.tobytes())
+        page.evaluate('MatrixMotion.configure({deformationStrength:1})')
+        result={}
+        for layer in ['character','fish','flowers']:
+            page.evaluate('(id)=>["character","fish","flowers","botanical-back"].forEach(x=>MatrixMotion.setLayerVisible(x,x===id))',layer)
+            a=snap(1.2);poses=state()['composition']['layers'];b=snap(2.3);result[layer]=mad(a,b);require(result[layer]>.05,layer+' has no visible local movement')
+            require(state()['composition']['layers']==poses);a.save(OUT/('isolated-'+layer+'-a.png'));b.save(OUT/('isolated-'+layer+'-b.png'))
+        page.evaluate('["character","fish","flowers","botanical-back"].forEach(x=>MatrixMotion.setLayerVisible(x,true));MatrixMotion.configure({motionStudy:false})')
+        require(state()['config']['mode']=='original');return {'fixedPose':True,'offPixelsHeld':True,'zeroEqualsOff':True,'meanPixelChanges':result}
+    check('Fixed-camera A/B proves local movement in each cutout with rigid transforms held',study)
+    def restore_mesh():
+        snap(1.2);page.evaluate('MatrixMotion.configure({motionStudy:true});MatrixMotion.setLayerVisible("fish",false)');a=snap(1.2)
+        page.evaluate('()=>{const gl=document.getElementById("matrixCanvas").getContext("webgl2"),e=gl.getExtension("WEBGL_lose_context");e.loseContext();setTimeout(()=>e.restoreContext(),250)}')
+        page.wait_for_function('MatrixMotion.getState().contextLost');page.wait_for_function('!MatrixMotion.getState().contextLost',timeout=30000)
+        s=state();require(s['composition']['meshAvailable'] and s['composition']['meshErrors']==[0,0] and s['glError']==0 and not s['playing']);require(a.tobytes()==snap(1.2).tobytes())
+        page.evaluate('MatrixMotion.setLayerVisible("fish",true);MatrixMotion.configure({motionStudy:false})');return True
+    check('Context restoration recreates Pixi surfaces and retains pose, visibility and pixels',restore_mesh)
+    def leave_study():
+        page.evaluate('MatrixMotion.configure({motionStudy:true});MatrixMotion.inspectBridge()');require(not state()['config']['motionStudy'] and abs(state()['frame']['bridge']-.5)<.001)
+        page.evaluate('MatrixMotion.configure({motionStudy:true})');page.locator('#bridgeButton').click();require(not state()['config']['motionStudy'] and state()['bridgeLoop'])
+        page.evaluate('MatrixMotion.seek(1.2);MatrixMotion.configure({mode:"original"})');return True
+    check('Bridge inspection and slow preview exit fixed-camera study correctly',leave_study)
     def modes():
         hashes=[]
         import hashlib
@@ -104,12 +137,12 @@ try:
         page.evaluate('MatrixMotion.setReduced(true)');a=snap(1);b=snap(2);require(a.tobytes()==b.tobytes() and not state()['playing']);page.evaluate('MatrixMotion.setReduced(false)');return True
     check('Reduced motion stops both camera and independent layer drift',reduced)
     def fallback():
-        fallback=browser.new_page(viewport={'width':960,'height':640});fallback.goto(f'http://127.0.0.1:{server.server_port}/dist/matrix-motion.html?renderer=canvas');fallback.wait_for_function('MatrixMotion.getState().ready',timeout=45000);fallback.evaluate('MatrixMotion.pause()');s=fallback.evaluate('MatrixMotion.getState()');require(s['engine']=='CANVAS 2D' and s['composition'])
+        fallback=browser.new_page(viewport={'width':960,'height':640});fallback.goto(f'http://127.0.0.1:{server.server_port}/dist/matrix-motion.html?renderer=canvas');fallback.wait_for_function('MatrixMotion.getState().ready',timeout=45000);fallback.evaluate('MatrixMotion.pause()');s=fallback.evaluate('MatrixMotion.getState()');require(s['engine']=='CANVAS 2D' and s['composition'] and not s['composition']['meshAvailable']);require(fallback.locator('#deformation').is_disabled())
         a=fallback.evaluate('()=>{MatrixMotion.seek(1.2);return MatrixMotion.snapshot()}');fallback.evaluate('MatrixMotion.seek(6.7)');b=fallback.evaluate('()=>{MatrixMotion.seek(1.2);return MatrixMotion.snapshot()}');require(a==b);fallback.close();return True
     check('Canvas fallback retains reversible layer composition',fallback)
     def offline():
         with tempfile.TemporaryDirectory() as tmp:
-            html=build_matrix.build(Path(tmp)/'offline.html').read_text(encoding='utf-8');offline=browser.new_page();seen=[];offline.on('request',lambda r:seen.append(r.url));offline.set_content(html);offline.wait_for_function('MatrixMotion.getState().ready',timeout=45000);require(all(x.startswith(('data:','blob:','about:')) for x in seen));offline.close();return True
+            html=build_matrix.build(Path(tmp)/'offline.html').read_text(encoding='utf-8');offline=browser.new_page();seen=[];offline.on('request',lambda r:seen.append(r.url));offline.set_content(html);offline.wait_for_function('MatrixMotion.getState().ready',timeout=45000);require(all(x.startswith(('data:','blob:','about:')) for x in seen));require(offline.evaluate('MatrixMotion.getState().composition.meshAvailable'));offline.close();return True
     check('Standalone build embeds every layer without remote requests',offline)
     check('No game artwork or external services are requested by default 02',lambda:require(not any('starrail/' in x or not x.startswith(('http://127.0.0.1:','data:','blob:','about:')) for x in requests)))
     check('No uncaught browser errors',lambda:require(not errors,errors))

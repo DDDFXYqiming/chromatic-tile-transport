@@ -1,5 +1,5 @@
 """Real Chromium tests of effect 02; no screenshot or frame-rate claims without execution."""
-import base64, hashlib, io, json, os, shutil, sys, tempfile, threading, time
+import base64, hashlib, io, json, os, platform, shutil, sys, tempfile, threading, time
 from functools import partial
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
@@ -168,7 +168,7 @@ with tempfile.TemporaryDirectory() as tmp:
                             if k in ('href','src') and v and not v.startswith(('#','data:','http:','https:')):self.targets.append(v)
                 for relative in ['index.html','dist/matrix-motion.html']:
                     path=ROOT/relative;parser=Links();parser.feed(path.read_text())
-                    for target in parser.targets:require((path.parent/target).resolve().is_file(),relative+' -> '+target)
+                    for target in parser.targets:require((path.parent/target.split('?',1)[0]).resolve().is_file(),relative+' -> '+target)
                 source=(ROOT/'index.html').read_text()
                 import re
                 for asset in re.findall(r'<img src="([^"]+)"',source):
@@ -181,6 +181,6 @@ with tempfile.TemporaryDirectory() as tmp:
             check('No unhandled JavaScript errors',lambda:require(not errors,errors))
             browser.close()
     finally:server.shutdown();server.server_close()
-report={'suite':'matrix-browser','passed':all(c['passed'] for c in checks),'checks':checks,'errors':errors,'limitations':['Browser navigation to localhost and file URLs is blocked by administrator policy; page rendering tested with inline content, linked targets verified on disk.'],'environment':'Linux headless Chromium, software GL; viewport simulation, not physical phone/GPU throughput'}
+report={'suite':'matrix-browser','passed':all(c['passed'] for c in checks),'checks':checks,'errors':errors,'limitations':['Legacy five-image suite uses inline content and verifies linked targets on disk. The separate browser_layers.py suite tests localhost navigation.'],'environment':platform.platform()+'; headless Chromium; viewport simulation, not physical phone/GPU throughput'}
 (OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
 if not report['passed']:sys.exit(1)

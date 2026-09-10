@@ -2,9 +2,14 @@
   "name": "chromatic-tile-transport",
   "version": "3.1.0",
   "private": true,
-  "description": "Offline image-driven tile transitions; no runtime npm dependencies",
+  "description": "Offline image-driven transitions and PixiJS mesh animation",
   "scripts": {
     "test": "node tests/test_matcher.cjs && node tests/test_timing.cjs"
   },
-  "engines": { "node": ">=18" }
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "pixi.js": "8.20.1"
+  }
 }

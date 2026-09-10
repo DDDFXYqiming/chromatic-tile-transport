@@ -2,7 +2,8 @@
 (function (root) {
   'use strict';
   const DEFAULTS = Object.freeze({shotSeconds: 6.8, bridgeSeconds: .48, density: 144,
-    zoom: 1.65, parallax: .65, palette: 'ice', mode: 'auto', autoplay: true, layerMotion:true, cameraX:0, cameraY:0});
+    zoom: 1.65, parallax: .65, palette: 'ice', mode: 'auto', autoplay: true, layerMotion:true, cameraX:0, cameraY:0,
+    deformation:true, deformationStrength:1, motionStudy:false});
   const MODES = Object.freeze(['auto', 'original', 'duotone', 'poster', 'line', 'matrix']);
   const STYLE = Object.freeze({original: 0, duotone: 1, poster: 2, line: 3});
   const clip = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
@@ -18,14 +19,14 @@
   function validate(patch = {}, base = DEFAULTS) {
     if (!patch || typeof patch !== 'object' || Array.isArray(patch)) throw new TypeError('Configuration must be an object');
     const c = {...base, ...patch};
-    const bounds = {shotSeconds: [4, 14], bridgeSeconds: [.3, 1.6], density: [48, 224], zoom: [1, 2.1], parallax: [0, 1],cameraX:[-.3,.3],cameraY:[-.3,.3]};
+    const bounds = {shotSeconds: [4, 14], bridgeSeconds: [.3, 1.6], density: [48, 224], zoom: [1, 2.1], parallax: [0, 1],cameraX:[-.3,.3],cameraY:[-.3,.3],deformationStrength:[0,1.5]};
     for (const [k, v] of Object.entries(patch)) {
       if (!(k in DEFAULTS)) throw new TypeError('Unknown matrix option: ' + k);
       if (k in bounds && (typeof v !== 'number' || !Number.isFinite(v) || v < bounds[k][0] || v > bounds[k][1])) throw new RangeError('Invalid matrix option: ' + k);
       if (k === 'density' && !Number.isInteger(v)) throw new TypeError('density must be an integer');
       if (k === 'mode' && !MODES.includes(v)) throw new TypeError('Unknown visual mode');
       if (k === 'palette' && !['ice', 'scene', 'mono'].includes(v)) throw new TypeError('Unknown palette');
-      if (['autoplay','layerMotion'].includes(k) && typeof v !== 'boolean') throw new TypeError(k+' must be boolean');
+      if (['autoplay','layerMotion','deformation','motionStudy'].includes(k) && typeof v !== 'boolean') throw new TypeError(k+' must be boolean');
     }
     return Object.freeze(c);
   }

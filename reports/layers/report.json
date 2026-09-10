@@ -27,6 +27,16 @@
       ]
     },
     {
+      "name": "Director pacing gives the original art the longest unfiltered dwell",
+      "passed": true,
+      "detail": {
+        "shotSeconds": 5.2,
+        "originalSeconds": 3.04,
+        "bridgeSeconds": 1.2,
+        "accentSeconds": 0.96
+      }
+    },
+    {
       "name": "Three camera compositions render visibly distinct frames",
       "passed": true,
       "detail": "Wide / close-up / negative-space images differ visibly"
@@ -40,27 +50,86 @@
       "name": "Fish and portrait actually move independently",
       "passed": true,
       "detail": {
-        "background": 8.993578951161112,
-        "botanical-back": 5.747408718503266,
-        "character": 11.104350438747247,
-        "fish": -81.74235726787435,
-        "flowers": -8.634746899105949
+        "background": 8.755725632563667,
+        "botanical-back": 7.735325299054239,
+        "character": 12.422678065542755,
+        "fish": -70.07880792079345,
+        "flowers": -3.833766736023904
       }
     },
     {
       "name": "All three camera joins and Matrix bridges are continuous",
       "passed": true,
       "detail": [
-        0.00039883657443021175,
-        0.0008497688506943951,
-        0.004182540632956012,
-        0.0,
-        3.382837781426732e-07,
-        3.382837781426732e-07
+        0.002440040891743102,
+        0.0027468642785185063,
+        0.0013741087068155384,
+        0.009192861671027145,
+        0.010319346652242246,
+        0.005506245056828292
       ]
     },
     {
       "name": "Layered textures and point-grid frames reproduce after reverse scrubbing",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Official PixiJS MeshPlane and MeshRope render on both WebGL surfaces",
+      "passed": true,
+      "detail": {
+        "library": "PixiJS 8.20.1",
+        "backend": "WebGL",
+        "nodes": [
+          {
+            "type": "Sprite",
+            "rig": "none",
+            "vertices": 4
+          },
+          {
+            "type": "MeshPlane",
+            "rig": "plant",
+            "vertices": 841
+          },
+          {
+            "type": "MeshPlane",
+            "rig": "character",
+            "vertices": 1813
+          },
+          {
+            "type": "MeshRope",
+            "rig": "fish",
+            "vertices": 50
+          },
+          {
+            "type": "MeshPlane",
+            "rig": "plant",
+            "vertices": 841
+          }
+        ]
+      }
+    },
+    {
+      "name": "Fixed-camera A/B proves local movement in each cutout with rigid transforms held",
+      "passed": true,
+      "detail": {
+        "fixedPose": true,
+        "offPixelsHeld": true,
+        "zeroEqualsOff": true,
+        "meanPixelChanges": {
+          "character": 5.5974514376722295,
+          "fish": 2.1834482483327684,
+          "flowers": 4.070959081870764
+        }
+      }
+    },
+    {
+      "name": "Context restoration recreates Pixi surfaces and retains pose, visibility and pixels",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Bridge inspection and slow preview exit fixed-camera study correctly",
       "passed": true,
       "detail": true
     },
@@ -73,8 +142,8 @@
       "name": "Actual requestAnimationFrame playback updates the composite textures",
       "passed": true,
       "detail": {
-        "advancedSeconds": 0.7501999999999982,
-        "compositedFrames": 83
+        "advancedSeconds": 0.7717000000000036,
+        "compositedFrames": 60
       }
     },
     {

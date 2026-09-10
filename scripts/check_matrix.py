@@ -10,6 +10,9 @@ def main():
     result=subprocess.run(['node','tests/test_matrix_timeline.cjs'],cwd=ROOT,text=True,capture_output=True)
     (out/'timeline.json').write_text(result.stdout,encoding='utf-8');print(result.stdout,result.stderr)
     if result.returncode:return result.returncode
+    result=subprocess.run(['node','tests/test_matrix_deformation.cjs'],cwd=ROOT,text=True,capture_output=True)
+    (out/'deformation.json').write_text(result.stdout,encoding='utf-8');print(result.stdout,result.stderr)
+    if result.returncode:return result.returncode
     result=subprocess.run(['node','tests/test_matrix_layers.cjs'],cwd=ROOT,text=True,capture_output=True)
     (out/'layers.json').write_text(result.stdout,encoding='utf-8');print(result.stdout,result.stderr)
     if result.returncode:return result.returncode

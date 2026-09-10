@@ -15,22 +15,29 @@
     const img=new Image();img.decoding='async';const timer=setTimeout(()=>reject(new Error(scene.name+' 加载超时')),20000);
     img.onload=()=>{clearTimeout(timer);resolve(img);};img.onerror=()=>{clearTimeout(timer);reject(new Error(scene.name+' 素材加载失败'));};img.src=scene.src;
   });}
-  function makeRenderer(){
+  async function makeRenderer(){
     let canvas=$('matrixCanvas');
     try{if(params.get('renderer')==='canvas')throw new Error('Canvas requested');renderer=new MatrixRenderers.WebGLRenderer(canvas,images);}
     catch(e){warnings.push(e.message);const fresh=canvas.cloneNode(false);canvas.replaceWith(fresh);canvas=fresh;renderer=new MatrixRenderers.CanvasRenderer(canvas,images);}
     if(data.config.composition){
-      const visibility=compositor?.visibility||{};
-      compositor=new MatrixLayers.Compositor(data.config.composition,layerImages,scenes);compositor.visibility=visibility;
+      const visibility=compositor?.visibility||{},study=compositor?.study||null;
+      compositor=new MatrixLayers.Compositor(data.config.composition,layerImages,scenes);compositor.visibility=visibility;compositor.study=study;
+      await compositor.init(renderer.kind!=='CANVAS 2D');
+      if(compositor.meshWarning)warnings.push(compositor.meshWarning);
       renderer.setComposition(compositor);
     }
     canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();contextLost=true;restorePlay=playing;playing=false;$('loadingText').textContent='图形上下文暂时丢失，正在等待恢复…';$('loading').classList.remove('ready');});
-    canvas.addEventListener('webglcontextrestored',()=>{try{renderer.dispose();const fresh=canvas.cloneNode(false);canvas.replaceWith(fresh);makeRenderer();contextLost=false;resize();playing=restorePlay&&!reduced;last=0;$('loading').classList.add('ready');render();}catch(e){showError(e);}});
+    canvas.addEventListener('webglcontextrestored',async()=>{try{renderer.dispose();const fresh=canvas.cloneNode(false);canvas.replaceWith(fresh);await makeRenderer();contextLost=false;resize();playing=restorePlay&&!reduced;last=0;$('loading').classList.add('ready');render();}catch(e){showError(e);}});
   }
   function resize(){if(!renderer)return;const c=$('stage');renderer.resize(Math.max(1,c.clientWidth),Math.max(1,c.clientHeight),devicePixelRatio);dirty=true;if(ready&&!contextLost)render();}
   function render(){
     if(!ready||contextLost)return;
-    frame=T.frame(seconds,scenes.length,config,reduced);renderer.draw(frame,config,scenes,focus);dirty=false;
+    frame=T.frame(seconds,scenes.length,config,reduced);
+    if(config.motionStudy&&compositor){
+      const pose=compositor.study||frame;
+      frame={...frame,scene:pose.scene,next:pose.scene,phase:pose.phase,bridge:0,from:0,to:0,reveal:0,forceMatrix:false,label:reduced?'静态浏览 / REDUCED MOTION':'定机位 / MOTION STUDY'};
+    }
+    renderer.draw(frame,config,scenes,focus);dirty=false;
     const current=frame.bridge>.58?frame.next:frame.scene;
     if(current!==dominant){dominant=current;const s=scenes[current];$('sceneTitle').textContent=s.name;$('sceneEnglish').textContent=s.en;
       $('stageNumber').textContent=String(current+1).padStart(2,'0')+' — '+String(scenes.length).padStart(2,'0');
@@ -54,7 +61,7 @@
   function seek(value){if(!Number.isFinite(value))throw new TypeError('seek expects finite seconds');seconds=T.wrap(value,scenes.length*config.shotSeconds);loop=null;playing=false;dirty=true;render();return getState();}
   function pause(){playing=false;render();}
   function play(){if(reduced)return;playing=true;last=0;render();}
-  function go(index){if(!ready)return;const was=playing;seek(T.wrap(index,scenes.length)*config.shotSeconds);if(was)play();}
+  function go(index){if(!ready)return;const was=playing;if(compositor)compositor.study=null;seek(T.wrap(index,scenes.length)*config.shotSeconds);if(was)play();}
   function syncControls(){
     for(const key of ['palette','shotSeconds','bridgeSeconds','density','zoom']){
       const select=$(key),value=String(config[key]);
@@ -63,6 +70,11 @@
     $('parallax').checked=config.parallax>0;$('reduced').checked=reduced;$('clean').checked=document.body.classList.contains('clean');
     if($('layerControls')){
       $('layerControls').hidden=!compositor;$('layerMotion').checked=config.layerMotion;
+      $('deformation').checked=config.deformation;$('motionStudy').checked=config.motionStudy;
+      $('deformation').disabled=!compositor?.surfaces.length;
+      $('deformationStrength').disabled=!compositor?.surfaces.length;
+      $('deformationStrength').value=config.deformationStrength;$('deformationStrengthValue').textContent=config.deformationStrength.toFixed(2)+'×';
+      $('deformationNote').textContent=compositor?.surfaces.length?'鱼尾游动、花枝弯曲、人物呼吸与发梢摆动。':'当前为简化兼容模式，局部形变不可用。';
       for(const key of ['cameraX','cameraY']){$(key).value=config[key];$(key+'Value').textContent=Math.round(config[key]*100)+'%';}
     }
     document.querySelectorAll('#modeButtons button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===config.mode)));
@@ -86,7 +98,7 @@
     }
     if(dirty)render();
   }
-  function inspectBridge(){if(!ready)return;configure({mode:'auto'});setReduced(false);const index=frame.scene;seek((index+1)*config.shotSeconds-config.bridgeSeconds*.5);}
+  function inspectBridge(){if(!ready)return;configure({mode:'auto',motionStudy:false});setReduced(false);const index=frame.scene;seek((index+1)*config.shotSeconds-config.bridgeSeconds*.5);}
   function toggleImmersive(value){document.body.classList.toggle('immersive',value??!document.body.classList.contains('immersive'));resize();}
   function closeSettings(){settings.close();last=0;}
   function openSettings(){settings.showModal();syncControls();render();}
@@ -95,10 +107,12 @@
     const img=new Image();img.src=scene.src;img.alt='';img.style.objectPosition=scene.position.map(x=>(x*100)+'%').join(' ');
     const label=document.createElement('span'),strong=document.createElement('strong'),small=document.createElement('small');strong.textContent=scene.name;small.textContent=String(i+1).padStart(2,'0')+' / '+scene.en;label.append(strong,small);button.append(img,label);button.addEventListener('click',()=>go(i));$('filmstrip').append(button);
   });
-  T.MODES.forEach(mode=>{const b=document.createElement('button');b.textContent=modeLabels[mode];b.type='button';b.dataset.mode=mode;b.setAttribute('aria-pressed',String(mode===config.mode));b.addEventListener('click',()=>configure({mode}));$('modeButtons').append(b);});
+  T.MODES.forEach(mode=>{const b=document.createElement('button');b.textContent=modeLabels[mode];b.type='button';b.dataset.mode=mode;b.setAttribute('aria-pressed',String(mode===config.mode));b.addEventListener('click',()=>configure({mode,motionStudy:false}));$('modeButtons').append(b);});
   for(const key of ['palette','shotSeconds','bridgeSeconds','density','zoom'])$(key).addEventListener('change',()=>configure({[key]:key==='palette'?$(key).value:Number($(key).value)}));
   for(const key of ['cameraX','cameraY'])$(key).addEventListener('input',()=>configure({[key]:Number($(key).value)}));
   $('layerMotion').addEventListener('change',()=>configure({layerMotion:$('layerMotion').checked}));
+  for(const key of ['deformation','motionStudy'])$(key).addEventListener('change',()=>configure({[key]:$(key).checked}));
+  $('deformationStrength').addEventListener('input',()=>configure({deformationStrength:Number($('deformationStrength').value)}));
   $('parallax').addEventListener('change',()=>configure({parallax:$('parallax').checked?.65:0}));
   $('clean').addEventListener('change',()=>document.body.classList.toggle('clean',$('clean').checked));
   $('reduced').addEventListener('change',()=>setReduced($('reduced').checked));
@@ -113,7 +127,7 @@
   $('reset').addEventListener('click',()=>{config=T.validate(data.config.options||{});seconds=0;loop=null;reduced=reducedQuery.matches;document.body.classList.remove('clean');playing=!reduced;syncControls();closeSettings();render();});
   $('bridgeButton').addEventListener('click',()=>{
     if(!ready)return;if(loop){loop=null;play();return;}const i=dominant;
-    configure({mode:'auto'});setReduced(false);loop={scene:i,elapsed:0};
+    configure({mode:'auto',motionStudy:false});setReduced(false);loop={scene:i,elapsed:0};
     seconds=T.previewPosition(0,i,scenes.length,config).position;play();
   });
   $('stage').addEventListener('wheel',e=>{if(!ready||settings.open)return;e.preventDefault();const units=e.deltaMode===1?16:e.deltaMode===2?innerHeight:1;seek(seconds+e.deltaY*units*.003);},{passive:false});
@@ -136,7 +150,7 @@
     setImmersive:toggleImmersive,render(){dirty=true;render();},
     snapshot(){render();return $('matrixCanvas').toDataURL('image/png');}});
   try{
-    [images,layerImages]=await Promise.all([Promise.all(scenes.map(loadImage)),Promise.all((data.config.composition?.layers||[]).map(l=>loadImage({src:l.src,name:l.label})))]);makeRenderer();
+    [images,layerImages]=await Promise.all([Promise.all(scenes.map(loadImage)),Promise.all((data.config.composition?.layers||[]).map(l=>loadImage({src:l.src,name:l.label})))]);await makeRenderer();
     if(compositor){
       data.config.composition.layers.forEach(layer=>{
         const label=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.checked=true;input.dataset.layer=layer.id;

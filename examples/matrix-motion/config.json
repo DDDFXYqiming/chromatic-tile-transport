@@ -13,7 +13,10 @@
     "autoplay": true,
     "layerMotion": true,
     "cameraX": 0,
-    "cameraY": 0
+    "cameraY": 0,
+    "deformation": true,
+    "deformationStrength": 1,
+    "motionStudy": false
   },
   "focus": {
     "garden": [
@@ -46,7 +49,8 @@
           0.014,
           0.003
         ],
-        "phase": 0
+        "phase": 0,
+        "rig": "none"
       },
       {
         "id": "botanical-back",
@@ -63,7 +67,9 @@
         "phase": 0.8,
         "rotation": -20,
         "sway": 2,
-        "opacity": 0.38
+        "opacity": 0.38,
+        "rig": "plant",
+        "rigStrength": 0.65
       },
       {
         "id": "character",
@@ -78,7 +84,8 @@
           0.005
         ],
         "phase": 1.2,
-        "sway": 0.3
+        "sway": 0.3,
+        "rig": "character"
       },
       {
         "id": "fish",
@@ -94,7 +101,8 @@
         ],
         "phase": 2.8,
         "rotation": -9,
-        "sway": 6
+        "sway": 6,
+        "rig": "fish"
       },
       {
         "id": "flowers",
@@ -110,7 +118,8 @@
         ],
         "phase": 2,
         "rotation": -8,
-        "sway": 3
+        "sway": 3,
+        "rig": "plant"
       }
     ]
   }

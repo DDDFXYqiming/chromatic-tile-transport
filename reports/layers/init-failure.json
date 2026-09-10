@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "case": "Pixi init rejection falls back cleanly and disables deformation",
+  "warnings": [
+    "局部形变不可用：TEST init failure"
+  ],
+  "browserErrors": []
+}

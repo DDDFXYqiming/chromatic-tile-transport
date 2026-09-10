@@ -1,0 +1,113 @@
+[
+  {
+    "slug": "garden",
+    "name": "花园初见",
+    "en": "GARDEN OVERTURE",
+    "line1": "静帧之间，",
+    "line2": "万象生长。",
+    "caption": "同一组图层，三种镜头构图。",
+    "tag": "ORIGINAL MULTIPLANE STUDY",
+    "accent": "#85cfe2",
+    "position": [
+      0.5,
+      0.5
+    ],
+    "src": "../../assets/matrix-botanical/preview-wide.webp",
+    "cameraKeys": [
+      {
+        "p": 0,
+        "x": 0.5,
+        "y": 0.5,
+        "scale": 1
+      },
+      {
+        "p": 0.65,
+        "x": 0.49,
+        "y": 0.49,
+        "scale": 1.035
+      },
+      {
+        "p": 1,
+        "x": 0.48,
+        "y": 0.49,
+        "scale": 1.06
+      }
+    ]
+  },
+  {
+    "slug": "portrait",
+    "name": "目光之间",
+    "en": "CLOSER TO STILLNESS",
+    "line1": "静帧之间，",
+    "line2": "万象生长。",
+    "caption": "同一组图层，三种镜头构图。",
+    "tag": "ORIGINAL MULTIPLANE STUDY",
+    "accent": "#85cfe2",
+    "position": [
+      0.5,
+      0.5
+    ],
+    "src": "../../assets/matrix-botanical/preview-closeup.webp",
+    "cameraKeys": [
+      {
+        "p": 0,
+        "x": 0.48,
+        "y": 0.49,
+        "scale": 1.06
+      },
+      {
+        "p": 0.72,
+        "x": 0.65,
+        "y": 0.31,
+        "scale": 1.65
+      },
+      {
+        "p": 1,
+        "x": 0.65,
+        "y": 0.31,
+        "scale": 1.65
+      }
+    ]
+  },
+  {
+    "slug": "air",
+    "name": "留一片空白",
+    "en": "ROOM TO BREATHE",
+    "line1": "静帧之间，",
+    "line2": "万象生长。",
+    "caption": "同一组图层，三种镜头构图。",
+    "tag": "ORIGINAL MULTIPLANE STUDY",
+    "accent": "#85cfe2",
+    "position": [
+      0.5,
+      0.5
+    ],
+    "src": "../../assets/matrix-botanical/preview-air.webp",
+    "cameraKeys": [
+      {
+        "p": 0,
+        "x": 0.65,
+        "y": 0.31,
+        "scale": 1.65
+      },
+      {
+        "p": 0.44,
+        "x": 0.3,
+        "y": 0.49,
+        "scale": 1
+      },
+      {
+        "p": 0.75,
+        "x": 0.3,
+        "y": 0.49,
+        "scale": 1
+      },
+      {
+        "p": 1,
+        "x": 0.5,
+        "y": 0.5,
+        "scale": 1
+      }
+    ]
+  }
+]

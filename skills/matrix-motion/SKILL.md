@@ -5,6 +5,8 @@ description: 使用同一仓库内静态图片构建第二套 Matrix Motion 网�
 
 # Matrix Motion · 第二套效果操作规程
 
+当前默认是“浮光花园”分层素材。先读 `docs/LAYERED_MOTION.md` 与 `examples/matrix-motion/` 下的配置和清单。默认 4 张素材、5 个独立实例、3 镜头、12 秒；`original` 模式先验收基础镜头，`auto` 再启用显影与点阵。素材生成仅在用户明确授权时进行。
+
 ## 先选对引擎
 
 本技能仅作用于效果 02。用户说「固定点阵、数字化、线稿、双色、参考视频、镜头编排」时使用本技能；用户说「格片搬家、颜色匹配、OKLab、Bézier」时使用根目录 `skill.md` 的效果 01 流程。
@@ -15,7 +17,7 @@ description: 使用同一仓库内静态图片构建第二套 Matrix Motion 网�
 
 ## 输入和构建
 
-复用 `examples/starrail/scenes.json` 的图片。新素材另建清单；`src` 相对于清单，必须留在仓库内。配置复制 `examples/matrix-motion/config.json`，将 `focus` 中的键改成新清单的 slug；不要给新图片留下旧场景焦点。焦点坐标是人为构图参数，不是 AI 识别结果。
+默认素材位于 `assets/matrix-botanical/`，相机关键帧在 `examples/matrix-motion/scenes.json`，图层参数在同目录 `config.json`。要测试旧星铁模式，显式传入 `examples/starrail/scenes.json` 和 `examples/matrix-motion/starrail.config.json`。新素材另建清单；`src` 相对于清单，必须留在仓库内。配置复制 `examples/matrix-motion/config.json`，将 `focus` 中的键改成新清单的 slug；不要给新图片留下旧场景焦点。焦点坐标是人为构图参数，不是 AI 识别结果。
 
 ```sh
 python scripts/build_matrix.py --scenes examples/my-scenes/scenes.json --config examples/my-scenes/matrix.json --output dist/my-matrix.html
@@ -50,7 +52,7 @@ python scripts/check_matrix.py --browser
 python scripts/check.py --browser
 ```
 
-后者确保原效果没有被破坏。新测试还会核对七个原版核心文件的 Git blob SHA。不要为了通过测试而修改这些基线。
+后者确保原效果没有被破坏。新测试确认构建 02 不会修改 01 的文件；01 的颜色配对基线仍由原回归检查。分层模式另检查真实 alpha、独立运动、三个镜头接缝、倒拖、图层开关与离线资源。
 
 浏览器中等待 `MatrixMotion.getState().ready`，确认 `engine === 'WEBGL 2'`、`glError === 0`、warnings 为空。不能让 WebGL 编译失败后静默退到 Canvas，却宣称主效果已验证。
 

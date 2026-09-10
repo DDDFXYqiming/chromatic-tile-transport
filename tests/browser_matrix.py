@@ -28,7 +28,7 @@ def launch_options():
 class Quiet(SimpleHTTPRequestHandler):
     def log_message(self,*args):pass
 with tempfile.TemporaryDirectory() as tmp:
-    html=build_matrix.build(Path(tmp)/'demo.html').read_text(encoding='utf-8')
+    html=build_matrix.build(Path(tmp)/'demo.html',ROOT/'examples/starrail/scenes.json',ROOT/'examples/matrix-motion/starrail.config.json').read_text(encoding='utf-8')
     server=ThreadingHTTPServer(('127.0.0.1',0),partial(Quiet,directory=str(ROOT)))
     thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start();base=f'http://127.0.0.1:{server.server_port}'
     try:
@@ -62,6 +62,21 @@ with tempfile.TemporaryDirectory() as tmp:
                     result.append({'scene':i,'successiveFrameMAD':diffs})
                 return result
             check('All five short bridges continuously change with no blank frame',bridges)
+            def grid_handoffs():
+                result=[]
+                for i in range(5):
+                    start=(i+1)*6.8-.48;changes=[]
+                    for a,b in [(.18,.20),(.76,.78)]:
+                        first=image(snap(start+a*.48)).resize((144,75));second=image(snap(start+b*.48)).resize((144,75))
+                        delta=mad(first,second);require(delta>.25,f'Grid handoff waiting interval {i}: {a}-{b}');changes.append(delta)
+                    peaks=[]
+                    for lo,hi in [(0,.22),(.78,1)]:
+                        ims=[image(snap(start+(lo+j*.02)*.48)).resize((144,75)) for j in range(round((hi-lo)/.02)+1)]
+                        peaks.extend(mad(a,b) for a,b in zip(ims,ims[1:]))
+                    require(max(peaks)<16,f'Grid handoff brightness surge {i}: {max(peaks)}')
+                    result.append({'scene':i,'previouslyStillIntervalsMAD':changes,'maximumEdgeStepMAD':max(peaks)})
+                return result
+            check('Grid entry and exit stay in motion and avoid a whole-screen brightness surge',grid_handoffs)
             def seam():
                 out=[]
                 for i in range(1,6):
@@ -92,8 +107,22 @@ with tempfile.TemporaryDirectory() as tmp:
                 page.evaluate('MatrixMotion.seek(1);MatrixMotion.play()');page.wait_for_timeout(400);v=state()['seconds'];require(v>1.04);page.evaluate('MatrixMotion.pause()');return {'advancedTo':v,'fpsClaim':False}
             check('Actual requestAnimationFrame playback advances and pauses',playback)
             def looptest():
-                snap(1);page.locator('#bridgeButton').click();require(state()['bridgeLoop'] and state()['playing']);page.wait_for_timeout(250);page.evaluate('MatrixMotion.pause()');snap(4.1);require(not state()['bridgeLoop']);return True
-            check('Bridge-focused loop starts and manual scrub exits the loop',looptest)
+                snap(1);normal_bridge=state()['config']['bridgeSeconds'];page.locator('#bridgeButton').click()
+                require(state()['bridgeLoop'] and state()['playing']);require(page.locator('#bridgeButton').get_attribute('aria-pressed')=='true')
+                first=state();require(first['frame']['from']==first['frame']['to']==0 and first['preview']['phase']=='hold-source')
+                page.wait_for_timeout(600);require(state()['seconds']==first['seconds'])
+                page.wait_for_function('MatrixMotion.getState().preview?.phase==="hold-target"',timeout=45000)
+                target=state();require(target['frame']['scene']==1 and target['frame']['from']==target['frame']['to']==0 and target['frame']['bridge']==0)
+                pixels=page.evaluate('MatrixMotion.snapshot()');page.wait_for_timeout(600)
+                require(state()['seconds']==target['seconds']);require(page.evaluate('MatrixMotion.snapshot()')==pixels)
+                page.wait_for_function('MatrixMotion.getState().preview?.phase==="reverse"',timeout=10000)
+                before=state()['seconds'];page.wait_for_timeout(250);require(state()['seconds']<before)
+                before=state()['seconds'];page.locator('#bridgeButton').click();after=state()
+                require(not after['bridgeLoop'] and after['playing'] and abs(after['seconds']-before)<.3)
+                require(after['config']['bridgeSeconds']==normal_bridge and page.locator('#bridgeButton').get_attribute('aria-pressed')=='false')
+                page.locator('#bridgeButton').click();snap(4.1);require(not state()['bridgeLoop'])
+                return {'completeOriginalDwellSeconds':1.5,'targetPixelsHeld':True,'smoothReverse':True,'normalBridgeSeconds':normal_bridge}
+            check('Card preview displays both full originals, holds, reverses and exits without jumping',looptest)
             def wheel():
                 snap(2);page.locator('#stage').hover(position={'x':400,'y':350});page.mouse.wheel(0,100);page.wait_for_timeout(100);require(state()['seconds']>2.1);return True
             check('Wheel scrub moves through the same timeline',wheel)
@@ -141,8 +170,9 @@ with tempfile.TemporaryDirectory() as tmp:
                     path=ROOT/relative;parser=Links();parser.feed(path.read_text())
                     for target in parser.targets:require((path.parent/target).resolve().is_file(),relative+' -> '+target)
                 source=(ROOT/'index.html').read_text()
-                for name in ['01-neon','02-spring']:
-                    source=source.replace('assets/starrail/'+name+'.webp','data:image/webp;base64,'+base64.b64encode((ROOT/'assets/starrail'/(name+'.webp')).read_bytes()).decode())
+                import re
+                for asset in re.findall(r'<img src="([^"]+)"',source):
+                    source=source.replace(asset,'data:image/webp;base64,'+base64.b64encode((ROOT/asset).read_bytes()).decode())
                 linked=browser.new_page(viewport={'width':1100,'height':900});linked.on('pageerror',lambda e:errors.append(str(e)))
                 linked.set_content(source,wait_until='load');require(linked.locator('main.gallery .card').count()==2);linked.screenshot(path=str(OUT/'gallery.png'))
                 linked.set_content((ROOT/'dist/index.html').read_text(),wait_until='load');linked.wait_for_function('window.WarpArchive?.getState().plansReady===5',timeout=60000);require(linked.evaluate('WarpArchive.getState().engine==="WEBGL 2"'))

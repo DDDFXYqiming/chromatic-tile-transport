@@ -513,7 +513,6 @@ void main(){
   function bindInteractions(){
     $('autoButton').addEventListener('click',()=>setAuto(!state.autoplay));
     $('prevButton').addEventListener('click',()=>step(-1));$('nextButton').addEventListener('click',()=>step(1));$('nextHero').addEventListener('click',()=>step(1));
-    $('home').addEventListener('click',event=>{event.preventDefault();goToScene(0);});
     const immersive=value=>{document.body.classList.toggle('immersive',value);$('immerseButton').setAttribute('aria-label',value?'退出沉浸模式':'进入沉浸模式，快捷键 F');requestAnimationFrame(resize);};
     $('immerseButton').addEventListener('click',()=>immersive(!document.body.classList.contains('immersive')));
     $('exitImmersive').addEventListener('click',()=>immersive(false));

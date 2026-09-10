@@ -10,9 +10,16 @@ def main():
     result=subprocess.run(['node','tests/test_matrix_timeline.cjs'],cwd=ROOT,text=True,capture_output=True)
     (out/'timeline.json').write_text(result.stdout,encoding='utf-8');print(result.stdout,result.stderr)
     if result.returncode:return result.returncode
+    result=subprocess.run(['node','tests/test_matrix_layers.cjs'],cwd=ROOT,text=True,capture_output=True)
+    (out/'layers.json').write_text(result.stdout,encoding='utf-8');print(result.stdout,result.stderr)
+    if result.returncode:return result.returncode
     result=subprocess.run([sys.executable,'-m','unittest','discover','-s','tests','-p','test_matrix_build.py','-v'],cwd=ROOT,text=True,capture_output=True)
     (out/'build-tests.txt').write_text(result.stdout+result.stderr,encoding='utf-8');print(result.stdout+result.stderr)
     if result.returncode:return result.returncode
-    if a.browser:return subprocess.run([sys.executable,'-u','tests/browser_matrix.py'],cwd=ROOT).returncode
+    if a.browser:
+        for script in ('browser_matrix.py','browser_layers.py'):
+            result=subprocess.run([sys.executable,'-u','tests/'+script],cwd=ROOT)
+            if result.returncode:return result.returncode
+        return 0
     print('All requested Matrix Motion checks passed.');return 0
 if __name__=='__main__':sys.exit(main())

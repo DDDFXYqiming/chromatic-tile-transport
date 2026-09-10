@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Build a validated, completely offline HTML. Python >=3.10, standard library only."""
 from __future__ import annotations
-import argparse, base64, copy, html, json, math, re, struct
+import argparse, base64, copy, html, json, math, os, re, struct
 from pathlib import Path
+from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SCENES = ROOT / 'examples/starrail/scenes.json'
@@ -111,10 +112,15 @@ def script_json(value: object) -> str:
 
 def build(output: Path, scenes_path: Path=DEFAULT_SCENES, config_path: Path=DEFAULT_CONFIG) -> Path:
     scenes, config = load_scenes(scenes_path), load_config(config_path)
+    output = output.resolve()
+    def link(target: Path) -> str:
+        return quote(Path(os.path.relpath(target, output.parent)).as_posix(), safe='/')
     src = ROOT/'src'
     result = (src/'index.template.html').read_text(encoding='utf-8')
     tokens={**{k.upper():str(config[k]) for k in ('title','brand','description','notice')},
-            'COUNT':str(len(scenes)).zfill(2),'TIMELINE_MAX':str(len(scenes)*1000)}
+            'COUNT':str(len(scenes)).zfill(2),'TIMELINE_MAX':str(len(scenes)*1000),
+            'GALLERY':link(ROOT/'index.html') if output.is_relative_to(ROOT) else './index.html',
+            'MATRIX':link(ROOT/'dist/matrix-motion.html') if output.is_relative_to(ROOT) else './matrix-motion.html'}
     for key,value in tokens.items(): result=result.replace('{{'+key+'}}',html.escape(value,quote=True))
     worker=(src/'matcher.js').read_text(encoding='utf-8')
     js='window.MATCH_WORKER_SOURCE='+script_json(worker)+';\n'

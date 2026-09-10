@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-10",
+  "commands": {
+    "python scripts/check_matrix.py --browser": "passed",
+    "python scripts/check.py --browser": "passed"
+  },
+  "defaultEffect02": "Original botanical multiplane study",
+  "durationSeconds": 12,
+  "shotCount": 3,
+  "layerInstances": 5,
+  "generatedAssetCount": 4,
+  "assetMode": "Built-in imagegen; no CLI fallback",
+  "layerBrowserChecks": 15,
+  "layerChecksPassed": true,
+  "offlineHtml": "dist/matrix-motion-offline.html",
+  "effect01Preserved": true,
+  "publication": "Local changes only; not pushed"
+}

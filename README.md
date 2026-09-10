@@ -1,46 +1,51 @@
 # 星海视觉实验室 · 两套效果，一个仓库
 
-在原有 **V3.1 寻色格片迁移**之外，新增独立的 **Matrix Motion / 星海成像**。五张星铁原画不变，第一套运行代码和 `dist/index.html` 原样保留。
-
-| 效果 | 入口 | 观看重点 |
+| 实验 | 入口 | 素材与动作 |
 |---|---|---|
-| 01 · 寻色迁移 | [原版 Demo](dist/index.html) | 格片根据颜色寻找目的地，沿曲线搬家 |
-| 02 · 星海成像 | [Matrix Motion](dist/matrix-motion.html) | 镜头、双色、色阶与线稿；0.48 秒固定点阵桥 |
+| 01 · 寻色迁移 | [Demo](dist/index.html) | 用户提供的五张星铁原画；OKLab 一对一配对、曲线格片迁移 |
+| 02 · 浮光花园 / Matrix Motion | [Demo](dist/matrix-motion.html) | 四张原创 AI 插画、五个独立图层实例；12 秒全景、特写与留白镜头 |
 
-**双效果展厅：[index.html](index.html)**。从仓库根目录启动，再用浏览器打开 localhost：
+从仓库根目录启动 [双效果展厅](index.html)：
 
 ```powershell
-python scripts/serve.py --directory . --port 8000
-# http://127.0.0.1:8000/
+python scripts/serve.py --directory . --port 8765
+# http://127.0.0.1:8765/
 ```
 
-第二套默认入口是轻量链接预览，需要服务整个仓库；生成可双击的离线成品：
+两套页面左上角返回展厅，顶部切换效果；手机也保留导航。01 的影像档案、设置、沉浸和时间轴继续可用。
+
+## 02 的新素材与分层运动
+
+![浮光花园实际合成画面](assets/matrix-botanical/cover.webp)
+
+人物、鱼、花枝和背景分别加载。花枝复用为远景与前景两个实例，各层有自己的位置、大小、转角、透明度、深度和漂移。画面先用 Canvas 2D 合成，再作为动态纹理交给原来的 WebGL 2 显影与点阵渲染器；每帧没有截图编码或模型调用。
+
+默认播放原画镜头，用同一套图层完成“完整构图 → 人物特写 → 留白构图”，一轮 12 秒。导演台的“导演编排”启用自动双色、线稿和点阵，也可单独比较五种显影模式。
+
+导演台增加图层开关、独立运动开关、横向与纵向构图控制。点击“慢看双镜头切换”可观察点阵衔接，再次点击退出。空格暂停，F 沉浸，Esc 返回；时间轴和滚轮可以倒拖。
+
+新素材在 `assets/matrix-botanical/`，使用内置 imagegen 制作，透明 PNG 的 alpha 已检查。[素材与完整提示词](assets/matrix-botanical/PROMPTS.md) · [分层实现与参数](docs/LAYERED_MOTION.md) · [Matrix 显影原理](docs/MATRIX_MOTION.md)。
+
+## 构建与验证
 
 ```powershell
+python scripts/build_matrix.py --linked
+python scripts/build_showcase.py
+# 包含全部图层的离线版本
 python scripts/build_matrix.py --output dist/matrix-motion-offline.html
+# 旧星铁 Matrix 配置仍可单独构建
+python scripts/build_matrix.py --scenes examples/starrail/scenes.json --config examples/matrix-motion/starrail.config.json --output dist/matrix-motion-starrail.html
 ```
 
-导演台可暂停并对比原画、双色、色块、线描、固定点阵；底部可倒拖，F 进入纯画面沉浸。它不需要 GIF、不调用模型、不上传素材。局部视差是焦点附近的连续变形，不是真实人物分层；效果受参考视频启发，不宣称源码或逐帧复刻。
-
-第二套详见 **[原理、参数与验收](docs/MATRIX_MOTION.md)**，智能体入口为 **[Matrix Motion SKILL](skills/matrix-motion/SKILL.md)**；原版规程仍在 **[skill.md](skill.md)**。
-
 ```powershell
+$env:PYTHONUTF8 = '1'
+# 使用已安装 Chrome 时可设置 CHROME_BIN
 python scripts/check_matrix.py --browser
 python scripts/check.py --browser
 ```
 
+第一条同时验证旧五图渲染器与新分层素材，第二条保持原效果回归。覆盖 alpha、独立运动、三镜头接缝、倒拖、实际播放、手机布局、兼容路径和离线资源。新分层报告位于 `reports/layers/`；截图和采样视频不代表所有设备的实时帧率。
 
-## 项目结构与开发
+01 的完整说明在 [README-transport.md](README-transport.md)。两套技能分别在 `skills/chromatic-tile-transport/` 与 `skills/matrix-motion/`，入口是 [skill.md](skill.md)。
 
-- `src/` 根目录文件属于效果 01；`src/matrix/` 属于效果 02，两套运行时独立。
-- `src/showcase.html` 生成根展厅，`scripts/build_showcase.py` 不覆盖任何效果。
-- `examples/matrix-motion/config.json` 调整第二套参数，仍使用 `examples/starrail/scenes.json` 的五张原图。
-- `scripts/render_matrix_preview.py` 导出第二套的真实网页逐帧视频；这不是设备 FPS 跑分。
-
-完整原版说明原文保存在 **[README-transport.md](README-transport.md)**。原图、压缩素材、旧构建器、旧匹配算法及旧成品未改变。
-
-## 可复现的边界
-
-Matrix Motion 是参考视频启发的独立实现，不是原站源码或逐帧复刻。静态图可以实现数字显影和镜头变化，但不能凭空得到人物骨骼动画或独立透明图层。
-
-GPU 主效果为 WebGL 2；不支持时有简化 Canvas 2D 路径。自动浏览遵循系统减少动态偏好。源码没有外部模型、CDN、上传或分析埋点。美术版权归原权利人，勿将示例图片作为商业授权素材。
+01 的游戏美术权利归原权利人。02 使用新生成的原创插画；当前为平面图层的 2.5D 动画，没有人物骨骼、独立发丝模拟或真实玻璃折射。运行时无需模型、CDN、后端或上传服务。

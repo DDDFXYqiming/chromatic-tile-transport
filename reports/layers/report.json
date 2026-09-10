@@ -1,0 +1,125 @@
+{
+  "date": "2026-09-10",
+  "environment": "Windows-11-10.0.26200-SP0",
+  "passed": true,
+  "checks": [
+    {
+      "name": "Default 02 uses five independent layer instances and three original-art shots",
+      "passed": true,
+      "detail": "WEBGL 2"
+    },
+    {
+      "name": "The three cutouts contain genuine transparent alpha",
+      "passed": true,
+      "detail": [
+        {
+          "asset": "character",
+          "fullyTransparentFraction": 0.36323992411295575
+        },
+        {
+          "asset": "fish",
+          "fullyTransparentFraction": 0.5867589314778646
+        },
+        {
+          "asset": "flowers",
+          "fullyTransparentFraction": 0.6669534047444662
+        }
+      ]
+    },
+    {
+      "name": "Three camera compositions render visibly distinct frames",
+      "passed": true,
+      "detail": "Wide / close-up / negative-space images differ visibly"
+    },
+    {
+      "name": "Layer switches remove actual image content and restore it exactly",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Fish and portrait actually move independently",
+      "passed": true,
+      "detail": {
+        "background": 8.993578951161112,
+        "botanical-back": 5.747408718503266,
+        "character": 11.104350438747247,
+        "fish": -81.74235726787435,
+        "flowers": -8.634746899105949
+      }
+    },
+    {
+      "name": "All three camera joins and Matrix bridges are continuous",
+      "passed": true,
+      "detail": [
+        0.00039883657443021175,
+        0.0008497688506943951,
+        0.004182540632956012,
+        0.0,
+        3.382837781426732e-07,
+        3.382837781426732e-07
+      ]
+    },
+    {
+      "name": "Layered textures and point-grid frames reproduce after reverse scrubbing",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "All five existing visual treatments process the moving layer composition",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Actual requestAnimationFrame playback updates the composite textures",
+      "passed": true,
+      "detail": {
+        "advancedSeconds": 0.7501999999999982,
+        "compositedFrames": 83
+      }
+    },
+    {
+      "name": "Portrait and landscape layouts keep navigation and artwork inside the viewport",
+      "passed": true,
+      "detail": [
+        {
+          "width": 390,
+          "scrollWidth": 390
+        },
+        {
+          "width": 320,
+          "scrollWidth": 320
+        },
+        {
+          "width": 844,
+          "scrollWidth": 844
+        }
+      ]
+    },
+    {
+      "name": "Reduced motion stops both camera and independent layer drift",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Canvas fallback retains reversible layer composition",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Standalone build embeds every layer without remote requests",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "No game artwork or external services are requested by default 02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No uncaught browser errors",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "errors": []
+}

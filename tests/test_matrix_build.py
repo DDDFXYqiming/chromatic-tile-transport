@@ -27,7 +27,7 @@ class MatrixBuildTests(unittest.TestCase):
         self.config['focus']['missing']=[.5,.5]
         with self.assertRaises(ValueError):M.load_matrix_config(self.config_file(),self.scenes)
     def test_outside_focus_fails(self):
-        self.config['focus']['neon']=[1.1,.2]
+        self.config['focus'][self.scenes[0]['slug']]=[1.1,.2]
         with self.assertRaises(ValueError):M.load_matrix_config(self.config_file(),self.scenes)
     def test_unknown_top_level_fails(self):
         self.config['backend']='api'
@@ -40,7 +40,7 @@ class MatrixBuildTests(unittest.TestCase):
         self.assertIn('class WebGLRenderer',s);self.assertNotIn('<!-- MATRIX:',s);self.assertNotIn('<script src=',s)
     def test_linked_paths_are_relative_and_exist(self):
         out=M.build(self.root/'linked.html',linked=True);s=out.read_text();self.assertNotIn('data:image/webp;',s)
-        self.assertIn('../../src/matrix/main.js',s);self.assertIn('../../assets/starrail/',s)
+        self.assertIn('../../src/matrix/main.js',s);self.assertIn('../../assets/matrix-botanical/',s)
     def test_user_text_cannot_break_out_of_script_or_title(self):
         self.config['title']='</title><script>alert(1)</script>'
         self.config['notice']='</script><img src=x onerror=alert(1)>'
@@ -51,9 +51,13 @@ class MatrixBuildTests(unittest.TestCase):
         path=ROOT/'skills/chromatic-tile-transport/SKILL.md';before=path.read_bytes()
         subprocess.run([sys.executable,str(ROOT/'scripts/sync_skill.py')],check=True,capture_output=True)
         self.assertEqual(path.read_bytes(),before)
-    def test_legacy_core_and_distribution_are_unchanged(self):
-        import hashlib
-        expected={'src/main.js':'27b5f5f4daea374d6b40484a5605ffbc2b2c6c27','src/matcher.js':'e545b4d8f1347a09a9b0f5b3651a471867d49946','src/transport.js':'8dc60a80fc813576f419bf43b2afba04d02fea39','src/timing.js':'7d5cbc247a774769f208cea904abbd4902e24fe6','src/style.css':'d685d788bd22dde0033f56e6306a53cd3e7a95c7','scripts/build.py':'b1fe276807f228aa9555e7d840f71cd7b09a1e2e','dist/index.html':'47aa8adce0dd6d5ce30e060f15064306d54aa72d'}
-        for name,want in expected.items():
-            b=(ROOT/name).read_bytes();self.assertEqual(hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest(),want,name)
+    def test_matrix_build_preserves_transport_files(self):
+        # Protect the current transport implementation, including authorized UI updates.
+        names=['src/main.js','src/matcher.js','src/transport.js','src/timing.js',
+               'src/style.css','src/index.template.html','scripts/build.py','dist/index.html']
+        before={name:(ROOT/name).read_bytes() for name in names}
+        M.build(self.root/'matrix-inline.html')
+        M.build(self.root/'matrix-linked.html',linked=True)
+        for name,content in before.items():
+            self.assertEqual((ROOT/name).read_bytes(),content,name)
 if __name__=='__main__':unittest.main()

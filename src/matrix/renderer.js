@@ -69,22 +69,27 @@ void main(){
   vec3 original=imageA(uv);
   bool forced=uStyle.w>.5;
   if(bridge<=0. && !forced){outColor=vec4(original,1.);return;}
-  float envelope=forced?1.:smoothstep(0.,.18,bridge)*(1.-smoothstep(.79,1.,bridge));
   vec2 cell=floor(uv*uGrid), center=(cell+.5)/uGrid, local=fract(uv*uGrid)-.5;
   float x=uDirection>0.?center.x:1.-center.x;
   float wave=clamp(x*.68+center.y*.28+.04*sin(center.y*9.),0.,1.);
+  float enter=${T.GRID_HANDOFF.enterDelay.toFixed(3)}*wave;
+  float leave=${T.GRID_HANDOFF.exitStart.toFixed(3)}+${T.GRID_HANDOFF.exitDelay.toFixed(3)}*wave;
+  float amount=forced?1.:smoothstep(enter,enter+${T.GRID_HANDOFF.enterDuration.toFixed(3)},bridge)
+    *(1.-smoothstep(leave,leave+${T.GRID_HANDOFF.exitDuration.toFixed(3)},bridge));
   float turn=forced?0.:smoothstep(.18+wave*.22,.52+wave*.24,bridge);
   float swap=smoothstep(.44,.56,turn);
-  vec3 a=texture(uA,imageUV(center,uSizeA,uCamA)).rgb;
-  vec3 b=texture(uB,imageUV(center,uSizeB,uCamB)).rgb;
+  // Gradually quantize sampling within each fixed cell; no instantaneous texture snap.
+  vec2 samplePoint=mix(uv,center,amount);
+  vec3 a=texture(uA,imageUV(samplePoint,uSizeA,uCamA)).rgb;
+  vec3 b=texture(uB,imageUV(samplePoint,uSizeB,uCamB)).rgb;
   vec3 sampleColor=mix(a,b,swap);
   float l=lum(sampleColor);
   float bank=.14+.86*abs(cos(turn*3.14159265));
-  vec2 halfSize=vec2((.29+.14*sqrt(max(0.,l)))*bank,.31+.125*sqrt(max(0.,l)));
-  float radius=min(.075,halfSize.x*.65);
+  vec2 halfSize=mix(vec2(.5),vec2((.29+.14*sqrt(max(0.,l)))*bank,.31+.125*sqrt(max(0.,l))),amount);
+  float radius=min(.075,halfSize.x*.65)*amount;
   float sdf=roundedBox(local,halfSize,radius);
   float aa=max(fwidth(sdf),.012);
-  float coverage=1.-smoothstep(-aa,aa,sdf);
+  float coverage=mix(1.,1.-smoothstep(-aa,aa,sdf),amount);
   vec3 pigment=duo(sampleColor);
   // Light comes from the tile, rather than an opaque white flash over the page.
   float topShade=(1.-smoothstep(-.38,.30,local.y))*.13;
@@ -94,9 +99,10 @@ void main(){
     exp(-pow((bridge-(.31+wave*.26))/.046,2.));
   pigment+=uBlue*scan*.20;
   vec3 plate=uInk*.52+uBlue*.012;
-  vec3 matrix=mix(plate,pigment,coverage);
-  vec3 continuous=forced?original:mix(original,imageB(uv),smoothstep(.35,.70,bridge));
-  outColor=vec4(clamp(mix(continuous,matrix,envelope),0.,1.),1.);
+  vec3 continuous=forced?original:mix(original,imageB(uv),swap);
+  // Each cell returns its texture detail and closes its gaps as it finishes flipping.
+  vec3 fill=mix(continuous,pigment,amount);
+  outColor=vec4(clamp(mix(plate,fill,coverage),0.,1.),1.);
 }`;
   const mix = (a,b,t) => a.map((v,i)=>v+(b[i]-v)*t);
   const rgb = c => `rgb(${c.map(v=>Math.round(T.clip(v)*255)).join(',')})`;
@@ -141,17 +147,24 @@ void main(){
       });
       gl.disable(gl.DEPTH_TEST);gl.disable(gl.BLEND);
     }
-    resize(width,height,dpr){this.width=width;this.height=height;sizeCanvas(this.canvas,width,height,dpr);}
+    setComposition(compositor){this.compositor=compositor;this.dynamicSizes=new Map();}
+    resize(width,height,dpr){this.width=width;this.height=height;sizeCanvas(this.canvas,width,height,dpr);this.compositor?.resize(width,height);}
+    upload(index,source){
+      const gl=this.gl,key=source.width+':'+source.height;gl.bindTexture(gl.TEXTURE_2D,this.textures[index]);
+      if(this.dynamicSizes.get(index)!==key){gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,source);this.dynamicSizes.set(index,key);}
+      else gl.texSubImage2D(gl.TEXTURE_2D,0,0,0,gl.RGBA,gl.UNSIGNED_BYTE,source);
+    }
     draw(frame,config,scenes,focusMap) {
       const gl=this.gl;if(gl.isContextLost())return;
-      const L=this.locations,cam=cameras(frame,scenes,focusMap);
+      if(this.compositor){const source=this.compositor.render(frame,config);this.upload(frame.scene,source.a);if(frame.bridge>0)this.upload(frame.next,source.b);}
+      const L=this.locations,cam=this.compositor?{a:[.5,.5,1,0],b:[.5,.5,1,0]}:cameras(frame,scenes,focusMap);
       let colors=palette(config,scenes[frame.scene]);
       if(config.palette==='scene'&&frame.bridge>0){const next=palette(config,scenes[frame.next]);colors=colors.map((c,i)=>mix(c,next[i],T.span(.2,1,frame.bridge)));}
       const grid=T.grid(this.width,this.height,config.density);this.grid=grid;
       gl.viewport(0,0,this.canvas.width,this.canvas.height);gl.useProgram(this.program);gl.bindVertexArray(this.vao);
       for(const [unit,index,name,sizeName] of [[0,frame.scene,'uA','uSizeA'],[1,frame.next,'uB','uSizeB']]){
         gl.activeTexture(gl.TEXTURE0+unit);gl.bindTexture(gl.TEXTURE_2D,this.textures[index]);gl.uniform1i(L[name],unit);
-        gl.uniform2f(L[sizeName],this.images[index].naturalWidth,this.images[index].naturalHeight);
+        gl.uniform2f(L[sizeName],this.compositor?.width||this.images[index].naturalWidth,this.compositor?.height||this.images[index].naturalHeight);
       }
       gl.uniform2f(L.uRes,this.width,this.height);gl.uniform2f(L.uGrid,grid.cols,grid.rows);
       gl.uniform4fv(L.uCamA,cam.a);gl.uniform4fv(L.uCamB,cam.b);
@@ -161,7 +174,7 @@ void main(){
       gl.drawArrays(gl.TRIANGLES,0,6);this.drawCount++;
     }
     error(){return this.gl.getError();}
-    dispose(){const gl=this.gl;this.textures.forEach(t=>gl.deleteTexture(t));gl.deleteBuffer(this.buffer);gl.deleteVertexArray(this.vao);gl.deleteProgram(this.program);}
+    dispose(){const gl=this.gl;this.textures.forEach(t=>gl.deleteTexture(t));gl.deleteBuffer(this.buffer);gl.deleteVertexArray(this.vao);gl.deleteProgram(this.program);this.compositor?.dispose();}
   }
   function mapped(ctx,image,cam,w,h) {
     const iw=image.naturalWidth||image.width,ih=image.naturalHeight||image.height,ia=iw/ih,va=w/h;
@@ -173,11 +186,13 @@ void main(){
   function tone(c,pal){const l=c[0]*.2126+c[1]*.7152+c[2]*.0722;return mix(mix(pal[0],pal[1],T.span(.025,.34,l)),pal[2],T.span(.35,.88,l));}
   class CanvasRenderer {
     constructor(canvas,images){this.canvas=canvas;this.ctx=canvas.getContext('2d',{alpha:false});if(!this.ctx)throw new Error('Canvas unavailable');this.images=images;this.kind='CANVAS 2D';this.drawCount=0;this.cache=new Map();this.layer=makeCanvas(1,1);this.sampleA=makeCanvas(1,1);this.sampleB=makeCanvas(1,1);}
-    resize(w,h,dpr){this.width=w;this.height=h;sizeCanvas(this.canvas,w,h,Math.min(1,dpr));this.layer.width=this.canvas.width;this.layer.height=this.canvas.height;}
+    setComposition(compositor){this.compositor=compositor;}
+    resize(w,h,dpr){this.width=w;this.height=h;sizeCanvas(this.canvas,w,h,Math.min(1,dpr));this.layer.width=this.canvas.width;this.layer.height=this.canvas.height;this.compositor?.resize(Math.min(w,640),Math.min(w,640)*h/w);}
     surface(index,style,pal,key) {
-      if(style===0)return this.images[index];
+      const input=this.sources?.get(index)||this.images[index];
+      if(style===0)return input;
       const id=[index,style,key].join(':');if(this.cache.has(id))return this.cache.get(id);
-      const img=this.images[index],w=Math.min(1100,img.naturalWidth),h=Math.round(w*img.naturalHeight/img.naturalWidth),c=makeCanvas(w,h),ctx=c.getContext('2d',{willReadFrequently:true});
+      const img=input,iw=img.naturalWidth||img.width,ih=img.naturalHeight||img.height,w=Math.min(1100,iw),h=Math.round(w*ih/iw),c=makeCanvas(w,h),ctx=c.getContext('2d',{willReadFrequently:true});
       ctx.drawImage(img,0,0,w,h);const data=ctx.getImageData(0,0,w,h),raw=new Uint8ClampedArray(data.data);
       const luma=p=>(raw[p]*.2126+raw[p+1]*.7152+raw[p+2]*.0722)/255;
       for(let y=0;y<h;y++)for(let x=0;x<w;x++){
@@ -190,36 +205,41 @@ void main(){
       ctx.putImageData(data,0,0);if(this.cache.size>=35)this.cache.delete(this.cache.keys().next().value);this.cache.set(id,c);return c;
     }
     draw(frame,config,scenes,focusMap){
-      const ctx=this.ctx,w=this.canvas.width,h=this.canvas.height,cam=cameras(frame,scenes,focusMap),pal=palette(config,scenes[frame.scene]),key=config.palette+':'+scenes[frame.scene].accent;
+      if(this.compositor){const source=this.compositor.render(frame,config);this.sources=new Map([[frame.scene,source.a],[frame.next,source.b]]);this.cache.clear();}
+      const ctx=this.ctx,w=this.canvas.width,h=this.canvas.height,cam=this.compositor?{a:[.5,.5,1,0],b:[.5,.5,1,0]}:cameras(frame,scenes,focusMap),pal=palette(config,scenes[frame.scene]),key=config.palette+':'+scenes[frame.scene].accent;
       ctx.globalAlpha=1;mapped(ctx,this.surface(frame.scene,frame.from,pal,key),cam.a,w,h);
       if(frame.from!==frame.to && frame.reveal>0){ctx.globalAlpha=frame.reveal;mapped(ctx,this.surface(frame.scene,frame.to,pal,key),cam.a,w,h);ctx.globalAlpha=1;}
       const b=frame.bridge;
       if(b>0){ctx.globalAlpha=T.span(.35,.70,b);const nextPal=palette(config,scenes[frame.next]);mapped(ctx,this.surface(frame.next,3,nextPal,config.palette+':'+scenes[frame.next].accent),cam.b,w,h);ctx.globalAlpha=1;}
       const grid=T.grid(w,h,Math.min(config.density,96));this.grid=grid;
       if(b>0||frame.forceMatrix){
-        const e=frame.forceMatrix?1:T.span(0,.18,b)*(1-T.span(.79,1,b));
-        if(e>0){
+        {
           const {cols,rows}=grid;
-          for(const [c,image,camera] of [[this.sampleA,this.images[frame.scene],cam.a],[this.sampleB,this.images[frame.next],cam.b]]){
+          for(const [c,image,camera] of [[this.sampleA,this.sources?.get(frame.scene)||this.images[frame.scene],cam.a],[this.sampleB,this.sources?.get(frame.next)||this.images[frame.next],cam.b]]){
             if(c.width!==cols||c.height!==rows){c.width=cols;c.height=rows;}mapped(c.getContext('2d',{willReadFrequently:true}),image,camera,cols,rows);
           }
           const a=this.sampleA.getContext('2d').getImageData(0,0,cols,rows).data,bb=this.sampleB.getContext('2d').getImageData(0,0,cols,rows).data;
-          const layer=this.layer.getContext('2d');layer.fillStyle=rgb(pal[0].map(v=>v*.52));layer.fillRect(0,0,w,h);
+          const layer=this.layer.getContext('2d');layer.clearRect(0,0,w,h);
+          const plate=rgb(pal[0].map(v=>v*.52));
           const cw=w/cols,ch=h/rows;
           for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){
             const sx=(x+.5)/cols,sy=(y+.5)/rows,wave=T.clip((frame.direction>0?sx:1-sx)*.68+sy*.28+.04*Math.sin(sy*9));
+            const amount=frame.forceMatrix?1:T.gridEnvelope(b,wave);if(amount<=0)continue;
             const turn=frame.forceMatrix?0:T.span(.18+wave*.22,.52+wave*.24,b),swap=T.span(.44,.56,turn),p=(y*cols+x)*4;
             const c=[0,1,2].map(i=>(a[p+i]+(bb[p+i]-a[p+i])*swap)/255),l=c[0]*.2126+c[1]*.7152+c[2]*.0722;
-            const bank=.14+.86*Math.abs(Math.cos(turn*Math.PI)),tw=cw*(.58+.28*Math.sqrt(l))*bank,th=ch*(.62+.25*Math.sqrt(l));
-            layer.fillStyle=rgb(tone(c,pal));layer.fillRect((x+.5)*cw-tw/2,(y+.5)*ch-th/2,tw,th);
+            const bank=.14+.86*Math.abs(Math.cos(turn*Math.PI));
+            const tw=cw*(1+((.58+.28*Math.sqrt(l))*bank-1)*amount),th=ch*(1+(.62+.25*Math.sqrt(l)-1)*amount);
+            const tx=(x+.5)*cw-tw/2,ty=(y+.5)*ch-th/2;
+            layer.globalAlpha=amount;layer.fillStyle=plate;layer.fillRect(x*cw,y*ch,cw,ch);
+            layer.clearRect(tx,ty,tw,th);layer.fillStyle=rgb(tone(c,pal));layer.fillRect(tx,ty,tw,th);
           }
-          ctx.globalAlpha=e;ctx.drawImage(this.layer,0,0);ctx.globalAlpha=1;
+          layer.globalAlpha=1;ctx.drawImage(this.layer,0,0);
         }
       }
       this.drawCount++;
     }
     error(){return 0;}
-    dispose(){this.cache.clear();}
+    dispose(){this.cache.clear();this.compositor?.dispose();}
   }
   root.MatrixRenderers=Object.freeze({WebGLRenderer,CanvasRenderer,cameras,palette,shader:FRAGMENT});
 })(globalThis);

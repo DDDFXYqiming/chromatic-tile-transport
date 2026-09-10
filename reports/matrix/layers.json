@@ -1,0 +1,18 @@
+{
+  "suite": "matrix-layers",
+  "passed": true,
+  "tests": [
+    {
+      "name": "Every authored shot joins the next camera pose, including the loop",
+      "passed": true
+    },
+    {
+      "name": "Independent layer motion changes relative positions rather than translating one poster",
+      "passed": true
+    },
+    {
+      "name": "Layer animation is reversible and periodic at the composition loop",
+      "passed": true
+    }
+  ]
+}

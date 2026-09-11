@@ -1,3 +1,5 @@
+C:\Users\39795\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\__init__.py:92: RequestsDependencyWarning: Unable to find acceptable character detection dependency (chardet or charset_normalizer).
+  warnings.warn(
 test_bad_timing_rejected (test_build.BuildTests.test_bad_timing_rejected) ... ok
 test_default_reproducible (test_build.BuildTests.test_default_reproducible) ... ok
 test_duplicate_slug (test_build.BuildTests.test_duplicate_slug) ... ok
@@ -19,6 +21,7 @@ test_matrix_build_preserves_transport_files (test_matrix_build.MatrixBuildTests.
 test_nonfinite_values_fail (test_matrix_build.MatrixBuildTests.test_nonfinite_values_fail) ... ok
 test_outside_focus_fails (test_matrix_build.MatrixBuildTests.test_outside_focus_fails) ... ok
 test_router_sync_does_not_overwrite_legacy_skill (test_matrix_build.MatrixBuildTests.test_router_sync_does_not_overwrite_legacy_skill) ... ok
+test_standalone_outside_repository_has_portable_variant_links (test_matrix_build.MatrixBuildTests.test_standalone_outside_repository_has_portable_variant_links) ... ok
 test_unknown_focus_fails (test_matrix_build.MatrixBuildTests.test_unknown_focus_fails) ... ok
 test_unknown_options_fail (test_matrix_build.MatrixBuildTests.test_unknown_options_fail) ... ok
 test_unknown_top_level_fails (test_matrix_build.MatrixBuildTests.test_unknown_top_level_fails) ... ok
@@ -31,8 +34,14 @@ test_resume_still_checks_private (test_publish.PublishTests.test_resume_still_ch
 test_success_verifies_private_before_push (test_publish.PublishTests.test_success_verifies_private_before_push) ... ok
 test_wrong_account_stops_before_git_changes (test_publish.PublishTests.test_wrong_account_stops_before_git_changes) ... ok
 test_wrong_existing_origin_stops (test_publish.PublishTests.test_wrong_existing_origin_stops) ... ok
+test_async_header_only_on_submission (test_token_plan_video.TokenPlanTests.test_async_header_only_on_submission) ... ok
+test_error_does_not_echo_credentials (test_token_plan_video.TokenPlanTests.test_error_does_not_echo_credentials) ... ok
+test_head_sends_no_body (test_video_serving.VideoServingTests.test_head_sends_no_body) ... ok
+test_invalid_and_empty_ranges (test_video_serving.VideoServingTests.test_invalid_and_empty_ranges) ... ok
+test_ranges_return_exact_bytes_and_lengths (test_video_serving.VideoServingTests.test_ranges_return_exact_bytes_and_lengths) ... ok
+test_whole_file (test_video_serving.VideoServingTests.test_whole_file) ... ok
 
 ----------------------------------------------------------------------
-Ran 33 tests in 3.974s
+Ran 40 tests in 5.425s
 
 OK

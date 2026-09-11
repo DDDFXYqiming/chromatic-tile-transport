@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "garden",
+    "name": "花园初见",
+    "en": "A GLANCE IN THE GARDEN",
+    "line1": "让画面",
+    "line2": "自己生长。",
+    "caption": "两段不同构图与动作的生成视频，持续参与实时点阵转场。",
+    "tag": "VIDEO MOTION STUDY",
+    "accent": "#85cfe2",
+    "position": [
+      0.5,
+      0.5
+    ],
+    "src": "../../assets/matrix-video/garden-poster.jpg"
+  },
+  {
+    "slug": "encounter",
+    "name": "掌心相遇",
+    "en": "A QUIET ENCOUNTER",
+    "line1": "让画面",
+    "line2": "自己生长。",
+    "caption": "两段不同构图与动作的生成视频，持续参与实时点阵转场。",
+    "tag": "VIDEO MOTION STUDY",
+    "accent": "#85cfe2",
+    "position": [
+      0.5,
+      0.5
+    ],
+    "src": "../../assets/matrix-video/encounter-poster.jpg"
+  }
+]

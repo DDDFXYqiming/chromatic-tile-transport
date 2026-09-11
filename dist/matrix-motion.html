@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#061c26">
 <meta name="description" content="以分层插画实时演绎镜头、双色、线描与固定数字点阵。">
 <title>浮光花园 · Matrix Motion</title>
-<link rel="stylesheet" href="../src/matrix/style.css?v=72017ea06408">
+<link rel="stylesheet" href="../src/matrix/style.css?v=87c6db9d35c0">
 </head>
 <body>
 <div class="app">
@@ -32,6 +32,7 @@
     <div class="stage-bottom"><span id="stagePhase">DEVELOP</span><span class="motion-note"><i></i> STATIC ART. LIVING COMPOSITION.</span></div>
     <div id="loading" class="loading" role="status"><span class="loading-mark">✦</span><span id="loadingText">正在准备影像图层…</span></div>
     <div id="error" class="error" role="alert" hidden></div>
+    <div id="mediaWarning" class="media-warning" role="status" hidden></div>
   </main>
   <footer class="bottom-bar">
     <div class="timeline-row"><span id="elapsed">00.00</span><input id="timeline" type="range" min="0" max="34" step="0.005" value="0" aria-label="全片时间轴，单位秒"><span id="totalTime">34.00</span></div>
@@ -44,6 +45,8 @@
   <h2>同一帧。<em>不同世界。</em></h2><p class="intro">暂停后切换显影方式，或拖动时间轴逐帧观察。格子不搬家，只在固定位置翻转和显隐。</p>
   <div class="setting-caption">显影方式 <span>LIVE PREVIEW</span></div><div id="modeButtons" class="mode-buttons" aria-label="显影方式"></div>
   <p id="timingSummary" class="intro" aria-live="polite"></p>
+  <div id="variantLinks" class="variant-links" aria-label="Matrix Motion 版本"><a id="videoVariant" href="matrix-video.html">视频动画 ↗</a><a id="meshVariant" href="matrix-motion.html">网格形变对照 ↗</a></div>
+  <div id="videoControls" hidden><label class="setting-row" for="videoMotion"><span>画面自身运动<small>关闭后使用视频首帧，显影与转场照常。</small></span><input id="videoMotion" type="checkbox" checked></label><p id="videoNote" class="intro" aria-live="polite"></p></div>
   <label class="setting-row" for="palette"><span>美术色盘<small>原画保留原色；双色与点阵使用此色盘。</small></span><select id="palette"><option value="ice">冰蓝纸白</option><option value="scene">随场景配色</option><option value="mono">黑白银盐</option></select></label>
   <label class="setting-row" for="shotSeconds"><span>单幕节奏<small>镜头时长；不会按比例拉长数字桥。</small></span><select id="shotSeconds"><option value="4">4 秒 / 三镜头 12 秒</option><option value="5.2" selected>5.2 秒 / 原画优先</option><option value="6.8">6.8 秒</option><option value="9">9 秒</option></select></label>
   <label class="setting-row" for="bridgeSeconds"><span>点阵段时长<small>包含入格、翻转、换图与出格。</small></span><select id="bridgeSeconds"><option value="0.36">0.36 秒 / 快</option><option value="0.48">0.48 秒</option><option value="0.72">0.72 秒</option><option value="1.2" selected>1.20 秒 / 适中</option><option value="1.6">1.60 秒 / 慢看</option></select></label>
@@ -69,9 +72,9 @@
 <script src="../src/vendor/pixi-8.20.1.min.js?v=994859108379"></script>
 <script src="../src/matrix/deformation.js?v=281a8c76cee6"></script>
 <script src="../src/matrix/mesh.js?v=79b7ee283695"></script>
-<script src="../src/matrix/timeline.js?v=ede76469fa81"></script>
+<script src="../src/matrix/timeline.js?v=d8ad5c949d9e"></script>
 <script src="../src/matrix/layers.js?v=404168512e24"></script>
 <script src="../src/matrix/renderer.js?v=cfa8d85529c5"></script>
-<script src="../src/matrix/main.js?v=2290e440fb42"></script>
+<script src="../src/matrix/main.js?v=5e7bef9be043"></script>
 </body>
 </html>

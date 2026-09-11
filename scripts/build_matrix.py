@@ -11,7 +11,7 @@ BOUNDS = {'shotSeconds':(4,14), 'bridgeSeconds':(.3,1.6), 'density':(48,224), 'z
 
 def load_matrix_config(path: Path, scenes: list[dict]) -> dict:
     c=json.loads(local(path).read_text(encoding='utf-8'))
-    if not isinstance(c,dict) or set(c)-{'title','brand','notice','options','focus','composition'}: raise ValueError('Unknown matrix config key')
+    if not isinstance(c,dict) or set(c)-{'title','brand','notice','options','focus','composition','videos'}: raise ValueError('Unknown matrix config key')
     for k in ('title','brand','notice'):
         if not isinstance(c.get(k),str): raise ValueError('Missing config text: '+k)
     options=c.get('options',{})
@@ -25,7 +25,7 @@ def load_matrix_config(path: Path, scenes: list[dict]) -> dict:
             if v not in ('auto','original','duotone','poster','line','matrix'): raise ValueError('Unknown mode')
         elif k=='palette':
             if v not in ('ice','scene','mono'): raise ValueError('Unknown palette')
-        elif k in ('autoplay','layerMotion','deformation','motionStudy'):
+        elif k in ('autoplay','layerMotion','deformation','motionStudy','videoMotion'):
             if type(v) is not bool: raise ValueError(k+' must be boolean')
         else: raise ValueError('Unknown matrix option: '+k)
     focus=c.get('focus',{})
@@ -33,6 +33,19 @@ def load_matrix_config(path: Path, scenes: list[dict]) -> dict:
     for point in focus.values():
         if not isinstance(point,list) or len(point)!=2 or any(type(v) not in (int,float) or not math.isfinite(v) or not 0<=v<=1 for v in point): raise ValueError('focus must contain [x,y] in [0,1]')
     composition=c.get('composition')
+    videos=c.get('videos')
+    if videos is not None:
+        if composition is not None:raise ValueError('Choose either video shots or a layer composition')
+        if not isinstance(videos,dict) or set(videos)!={s['slug'] for s in scenes}:raise ValueError('Every scene requires one video specification')
+        for spec in videos.values():
+            if not isinstance(spec,dict) or set(spec)-{'src','fps','focus'} or not isinstance(spec.get('src'),str):raise ValueError('Invalid video specification')
+            if spec.get('fps',24)!=24:raise ValueError('Current video timing expects 24 fps')
+            point=spec.get('focus',[.5,.5])
+            if not isinstance(point,list) or len(point)!=2 or any(type(x) not in (int,float) or not math.isfinite(x) or not 0<=x<=1 for x in point):raise ValueError('Invalid video focus')
+            asset=local(path.parent/spec['src'])
+            if asset.suffix.lower()!='.mp4' or asset.stat().st_size>64*1024*1024:raise ValueError('Video must be an MP4 of at most 64 MiB')
+            with asset.open('rb') as f:
+                if f.read(12)[4:8]!=b'ftyp':raise ValueError('Invalid MP4 header')
     if composition is not None:
         def number(v,lo,hi):return type(v) in (int,float) and math.isfinite(v) and lo<=v<=hi
         if not isinstance(composition,dict) or set(composition)!={'width','height','layers'}:raise ValueError('Invalid composition')
@@ -63,10 +76,15 @@ def load_matrix_config(path: Path, scenes: list[dict]) -> dict:
 def build(output: Path, scenes_path: Path=DEFAULT_SCENES, config_path: Path=DEFAULT_CONFIG, linked: bool=False) -> Path:
     scenes=load_scenes(scenes_path); config=load_matrix_config(config_path,scenes);output=output.resolve()
     src=ROOT/'src/matrix';result=(src/'index.template.html').read_text(encoding='utf-8')
-    modules=([ROOT/'src/vendor/pixi-8.20.1.min.js',src/'deformation.js',src/'mesh.js'] if config.get('composition') else [])
+    modules=([ROOT/'src/vendor/pixi-8.20.1.min.js'] if config.get('composition') or config.get('videos') else [])
+    if config.get('composition'):modules += [src/'deformation.js',src/'mesh.js']
+    if config.get('videos'):modules.append(src/'video.js')
     modules += [src/f for f in ('timeline.js','layers.js','renderer.js','main.js')]
     rel=lambda p: os.path.relpath(p,output.parent).replace(os.sep,'/')
     versioned=lambda p:rel(p)+'?v='+hashlib.sha256(p.read_bytes()).hexdigest()[:12]
+    for spec in config.get('videos',{}).values():
+        asset=local(config_path.parent/spec['src'])
+        spec['src']=rel(asset) if linked else 'data:video/mp4;base64,'+base64.b64encode(asset.read_bytes()).decode('ascii')
     for layer in config.get('composition',{}).get('layers',[]):
         asset=local(config_path.parent/layer['src']);raw=asset.read_bytes();mime,width,height=image_info(raw)
         if len(raw)>32*1024*1024 or max(width,height)>8192:raise ValueError('Layer image is too large')
@@ -88,9 +106,11 @@ def build(output: Path, scenes_path: Path=DEFAULT_SCENES, config_path: Path=DEFA
       '<!-- MATRIX:ASSETS -->':'<script>window.MATRIX_DATA='+script_json({'config':config,'scenes':scenes})+';</script>',
       '{{TITLE}}':html.escape(config['title']),'{{NOTICE}}':html.escape(config['notice']),
       '{{GALLERY}}':html.escape(gallery,quote=True),'{{TRANSPORT}}':html.escape(transport,quote=True),
+      '{{VIDEO_VARIANT}}':html.escape(rel(ROOT/'dist/matrix-video.html') if output.is_relative_to(ROOT) else './matrix-video.html',quote=True),
+      '{{MESH_VARIANT}}':html.escape(rel(ROOT/'dist/matrix-motion.html') if output.is_relative_to(ROOT) else './matrix-motion.html',quote=True),
       '{{BRAND}}':html.escape(config['brand']),'{{FIRST_NAME}}':html.escape(scenes[0]['name']),'{{FIRST_EN}}':html.escape(scenes[0]['en']),
       '{{COUNT}}':str(len(scenes)).zfill(2),
-      '{{CANVAS_LABEL}}':'人物、鱼、花枝与背景独立合成的动态图像' if config.get('composition') else '由静态插画生成的动态图像',
+      '{{CANVAS_LABEL}}':'两段人物与游鱼视频经实时显影和固定点阵衔接的动态图像' if config.get('videos') else '人物、鱼、花枝与背景独立合成的动态图像' if config.get('composition') else '由静态插画生成的动态图像',
       '{{PARALLAX_TITLE}}':'图层视差' if config.get('composition') else '焦点局部视差',
       '{{PARALLAX_NOTE}}':'人物、远景和前景以不同幅度移动。' if config.get('composition') else '连续形变近似前后景，不是人物分层。'}
     # Replace only our template tokens; Pixi's shader source has its own {{TOKENS}}.

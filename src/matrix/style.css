@@ -15,6 +15,8 @@
 }
 
 .layer-list{display:flex;gap:10px 14px;flex-wrap:wrap;margin:12px 0 5px}.layer-list label{display:flex;align-items:center;gap:6px;font-size:10px;color:#a9cbd5}.layer-list input{accent-color:var(--accent)}#layerControls[hidden]{display:none}.setting-row output{font-family:monospace;font-size:10px;color:#8cbcc8;margin-left:8px}.setting-row input[type="range"]{width:140px;accent-color:var(--accent)}
+.variant-links{display:flex;gap:20px;margin:15px 0;font-size:11px}.variant-links a{color:#a9cbd5;text-underline-offset:4px}.variant-links a[aria-current="page"]{color:white;font-weight:bold}.variant-links[hidden],#videoControls[hidden]{display:none}.video-study label[for="zoom"],.video-study label[for="parallax"]{display:none}
+.media-warning{position:absolute;z-index:8;left:50%;bottom:18px;transform:translateX(-50%);max-width:90%;padding:10px 15px;border-radius:4px;background:#092330eb;color:#edf4ef;font-size:11px;text-align:center}.media-warning[hidden]{display:none}
 
 /* The layer study uses a compact shot label so it cannot cover the portrait's eyes. */
 .layered-study .specimen-card{top:24px;right:25px;width:auto;max-width:220px;padding:12px 17px;background:#051e2abd;backdrop-filter:blur(10px);border-radius:3px}

@@ -1,0 +1,209 @@
+{
+  "date": "2026-09-11",
+  "environment": "Windows-11-10.0.26200-SP0",
+  "passed": true,
+  "checks": [
+    {
+      "name": "Both generated MP4s decode through real PixiJS VideoSource textures",
+      "passed": true,
+      "detail": {
+        "kind": "video",
+        "frames": 15,
+        "seeking": false,
+        "backend": "PixiJS WebGL",
+        "warning": null,
+        "clips": [
+          {
+            "slug": "garden",
+            "ready": true,
+            "failed": false,
+            "error": null,
+            "seeking": false,
+            "paused": true,
+            "currentTime": 1.84375,
+            "targetTime": 1.84375,
+            "seekableEnd": 5,
+            "duration": 5,
+            "decodedFrames": 4,
+            "source": "PixiJS VideoSource"
+          },
+          {
+            "slug": "encounter",
+            "ready": true,
+            "failed": false,
+            "error": null,
+            "seeking": false,
+            "paused": true,
+            "currentTime": 0.010416,
+            "targetTime": 0.010416666666666666,
+            "seekableEnd": 5,
+            "duration": 5,
+            "decodedFrames": 1,
+            "source": "PixiJS VideoSource"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Each shot has visible internal movement with no shader camera drift",
+      "passed": true,
+      "detail": {
+        "garden": 25.229706863574886,
+        "encounter": 35.88273528144196
+      }
+    },
+    {
+      "name": "Reverse scrubs reproduce the exact decoded pixels in original and grid modes",
+      "passed": true,
+      "detail": {
+        "original1.2": 0.0,
+        "matrix3.1": 0.0,
+        "auto4.6": 0.0,
+        "auto9.8": 0.0
+      }
+    },
+    {
+      "name": "Incoming video time stays continuous at both shot boundaries including the loop",
+      "passed": true,
+      "detail": [
+        1.3531351125706928e-06,
+        3.382837781426732e-07
+      ]
+    },
+    {
+      "name": "Both videos continue native playback during the Matrix bridge",
+      "passed": true,
+      "detail": {
+        "before": [
+          {
+            "slug": "garden",
+            "ready": true,
+            "failed": false,
+            "error": null,
+            "seeking": false,
+            "paused": true,
+            "currentTime": 4.177082,
+            "targetTime": 4.177083333333334,
+            "seekableEnd": 5,
+            "duration": 5,
+            "decodedFrames": 23,
+            "source": "PixiJS VideoSource"
+          },
+          {
+            "slug": "encounter",
+            "ready": true,
+            "failed": false,
+            "error": null,
+            "seeking": false,
+            "paused": true,
+            "currentTime": 0.135416,
+            "targetTime": 0.13541666666666666,
+            "seekableEnd": 5,
+            "duration": 5,
+            "decodedFrames": 14,
+            "source": "PixiJS VideoSource"
+          }
+        ],
+        "after": [
+          {
+            "slug": "garden",
+            "ready": true,
+            "failed": false,
+            "error": null,
+            "seeking": false,
+            "paused": false,
+            "currentTime": 4.564509,
+            "targetTime": 4.552083333333334,
+            "seekableEnd": 5,
+            "duration": 5,
+            "decodedFrames": 31,
+            "source": "PixiJS VideoSource"
+          },
+          {
+            "slug": "encounter",
+            "ready": true,
+            "failed": false,
+            "error": null,
+            "seeking": false,
+            "paused": false,
+            "currentTime": 0.522638,
+            "targetTime": 0.5104166666666666,
+            "seekableEnd": 5,
+            "duration": 5,
+            "decodedFrames": 22,
+            "source": "PixiJS VideoSource"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Paused playback freezes pixels and stops continuous drawing",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "The actual motion checkbox switches between video movement and its still first frame",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Slow card preview holds both video frames, reverses, and returns to native playback",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Restoring the WebGL context recreates video resources at the same paused frame",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Mobile portrait and landscape keep the character and controls usable",
+      "passed": true,
+      "detail": [
+        [
+          390,
+          844
+        ],
+        [
+          320,
+          568
+        ],
+        [
+          844,
+          390
+        ]
+      ]
+    },
+    {
+      "name": "Reduced motion freezes the videos as well as the transition",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Canvas fallback can also draw real local video frames",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "An unavailable video uses its poster and reports the downgrade explicitly",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "The standalone artifact embeds both playable videos and makes no external requests",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "The website never contacts generation APIs or any remote media host",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No uncaught browser errors",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "errors": []
+}

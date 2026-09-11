@@ -1,13 +1,15 @@
 ---
 name: matrix-motion
-description: 使用同一仓库内静态图片构建第二套 Matrix Motion 网页，进行镜头推进、双色/色块/线稿显影与固定点阵快速桥接；保留第一套寻色迁移并做实际浏览器验收。
+description: 使用同一仓库内插画或视频构建第二套 Matrix Motion 网页，进行镜头推进、双色/色块/线稿显影与固定点阵快速桥接；保留第一套寻色迁移并做实际浏览器验收。
 ---
 
 # Matrix Motion · 第二套效果操作规程
 
-视觉方向与阶段性限制以 `docs/MATRIX_VISUAL_GUIDE.md` 和 `docs/MATRIX_PROMPT_LOG.md` 为交接记录。当前是单组素材的三个取景，多画组切换尚未实现；网格测试通过不能替代用户对动画自然度的观看判断。
+2026-09-11 新增 `examples/matrix-video/` 与 `dist/matrix-video.html`，展厅 02 默认进入视频版，原网格页面保留在 `dist/matrix-motion.html`。先读 `docs/VIDEO_MOTION.md`，按用户指定的版本继续工作。视频截图与导出需等待 `seekAsync()` / `snapshotAsync()`；普通构建、测试、预览不得调用生成脚本。只有当前用户明确要求制作素材时才运行 `scripts/token_plan_video.py submit`，已有任务应查询或下载，不重复创建。
 
-当前默认是“浮光花园”分层素材。先读 `docs/LAYERED_MOTION.md` 与 `examples/matrix-motion/` 下的配置和清单。默认 4 张素材、5 个独立实例、3 镜头、15.6 秒；`auto` 编排每幕原画 3.04 秒、点阵含进出 1.20 秒、其他显影 0.96 秒。`original` 可独立验收基础镜头。素材生成仅在用户明确授权时进行。
+视觉方向与阶段性限制以 `docs/MATRIX_VISUAL_GUIDE.md` 和 `docs/MATRIX_PROMPT_LOG.md` 为交接记录。网格对照版仍是单组素材的三个取景，视频版已接入两个不同镜头；网格测试通过不能替代用户对动画自然度的观看判断。
+
+网格对照版使用“浮光花园”分层素材。先读 `docs/LAYERED_MOTION.md` 与 `examples/matrix-motion/` 下的配置和清单。默认 4 张素材、5 个独立实例、3 镜头、15.6 秒；`auto` 编排每幕原画 3.04 秒、点阵含进出 1.20 秒、其他显影 0.96 秒。`original` 可独立验收基础镜头。素材生成仅在用户明确授权时进行。
 
 局部动画复用官方 PixiJS Skills 的 MeshPlane/MeshRope，当前统一由已安装的 `pixijs` 全量版按需读取内部专题，来源与整合记录见 `docs/PIXI_SKILLS.md`。不要重新单独安装各专题。优先使用库提供的几何与纹理接口，不另写网格渲染器。`deformation.js` 只负责当前素材的区域权重与周期动作。修改后用“定机位看动作”排除镜头和刚性位移的干扰，验证逐层像素变化、关闭形变不动、面部保护、无网格翻折和上下文恢复。Canvas 兼容路径须明确显示局部形变不可用。
 

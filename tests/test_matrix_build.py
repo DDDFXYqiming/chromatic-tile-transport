@@ -35,6 +35,10 @@ class MatrixBuildTests(unittest.TestCase):
     def test_linked_stays_in_repository(self):
         with tempfile.TemporaryDirectory() as d:
             with self.assertRaises(ValueError):M.build(Path(d)/'demo.html',linked=True)
+    def test_standalone_outside_repository_has_portable_variant_links(self):
+        with tempfile.TemporaryDirectory() as d:
+            text=M.build(Path(d)/'demo.html').read_text(encoding='utf-8')
+            self.assertIn('href="./matrix-video.html"',text);self.assertIn('href="./matrix-motion.html"',text)
     def test_inline_contains_assets_and_scripts(self):
         out=M.build(self.root/'demo.html');s=out.read_text();self.assertIn('data:image/webp;base64,',s)
         self.assertIn('class WebGLRenderer',s);self.assertNotIn('<!-- MATRIX:',s);self.assertNotIn('<script src=',s)

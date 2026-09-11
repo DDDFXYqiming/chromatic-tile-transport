@@ -7,8 +7,12 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--browser',action='store_true');a=p.parse_args()
     out=ROOT/'reports/matrix';out.mkdir(parents=True,exist_ok=True)
     for cmd in ([sys.executable,'scripts/build_matrix.py','--linked'],[sys.executable,'scripts/build_showcase.py']):subprocess.run(cmd,cwd=ROOT,check=True)
+    subprocess.run([sys.executable,'scripts/build_matrix.py','--linked','--scenes','examples/matrix-video/scenes.json','--config','examples/matrix-video/config.json','--output','dist/matrix-video.html'],cwd=ROOT,check=True)
     result=subprocess.run(['node','tests/test_matrix_timeline.cjs'],cwd=ROOT,text=True,capture_output=True)
     (out/'timeline.json').write_text(result.stdout,encoding='utf-8');print(result.stdout,result.stderr)
+    if result.returncode:return result.returncode
+    result=subprocess.run(['node','tests/test_matrix_video.cjs'],cwd=ROOT,text=True,capture_output=True)
+    (out/'video-clock.json').write_text(result.stdout,encoding='utf-8');print(result.stdout,result.stderr)
     if result.returncode:return result.returncode
     result=subprocess.run(['node','tests/test_matrix_deformation.cjs'],cwd=ROOT,text=True,capture_output=True)
     (out/'deformation.json').write_text(result.stdout,encoding='utf-8');print(result.stdout,result.stderr)
@@ -20,7 +24,7 @@ def main():
     (out/'build-tests.txt').write_text(result.stdout+result.stderr,encoding='utf-8');print(result.stdout+result.stderr)
     if result.returncode:return result.returncode
     if a.browser:
-        for script in ('browser_matrix.py','browser_layers.py'):
+        for script in ('browser_matrix.py','browser_layers.py','browser_video.py'):
             result=subprocess.run([sys.executable,'-u','tests/'+script],cwd=ROOT)
             if result.returncode:return result.returncode
         return 0

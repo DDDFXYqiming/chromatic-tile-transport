@@ -1,5 +1,7 @@
 # Matrix Motion · 星海成像
 
+2026-09-11 新增视频输入，展厅进入两段动画镜头，详见 [视频版说明](VIDEO_MOTION.md)。本篇保留通用显影原理及原网格示例的参数说明。
+
 第二套独立效果。当前默认是“浮光花园”原创分层素材，详见 [分层实现](LAYERED_MOTION.md)。旧星铁五图模式保留在 `examples/matrix-motion/starrail.config.json`，01 寻色迁移继续使用原有游戏美术。运行时不依赖模型或外部素材服务。
 
 当前默认的三幕共用一组素材，属于三个取景。角色动画表现和多画组切换仍未完成。后续先读 [视觉使用指南](MATRIX_VISUAL_GUIDE.md) 和 [提示词记录](MATRIX_PROMPT_LOG.md)，再依据当前源码与素材确定改进范围。

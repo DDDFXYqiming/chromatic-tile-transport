@@ -205,7 +205,7 @@
       "name": "Actual requestAnimationFrame playback advances and pauses",
       "passed": true,
       "detail": {
-        "advancedTo": 1.4222000000000046,
+        "advancedTo": 1.4053000000000024,
         "fpsClaim": false
       }
     },

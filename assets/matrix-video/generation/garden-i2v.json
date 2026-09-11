@@ -1,0 +1,37 @@
+{
+  "model": "happyhorse-1.1-i2v",
+  "endpoint": "https://token-plan.cn-beijing.maas.aliyuncs.com",
+  "credentialSource": "Pi aliyun-tokenplan provider (not copied)",
+  "prompt": "Animate the supplied illustration as a refined 2D anime editorial shot. Preserve the exact adult woman's identity, face, short midnight-blue bob, pale cyan eyes, white high-collar coat, dark navy panels, cyan ribbon, the single koi, and the iris flowers. Keep the original paper ivory, ice blue and navy palette and precise ink outlines throughout. Locked camera, fixed composition, no zoom, no pan, no cuts.\n\nOver five seconds, the woman visibly blinks once, slowly turns her head a few degrees toward the fish, and gently shifts her gaze to follow it. A small calm smile develops while her mouth stays closed. Her shoulders rise and settle with one subtle breath. Loose hair ends and the ribbon follow with soft delayed motion. The koi swims a short smooth arc toward her, visibly flexing its body and flowing fins; it remains entirely inside the frame. Iris petals and leaves sway softly with differing timing. Keep the scale and silhouette of every subject stable. Movement should be clearly readable yet restrained, with smooth continuous acceleration and natural settling.\n\nNo lip-sync, talking, exaggerated expression, walking, large body turn, changing clothes, extra people, extra fish, newly appearing objects, text, lettering, logo, interface, strobe, scene morphing, melting outlines, or camera motion. Preserve fine facial features and illustration texture. This is a quiet living illustration, one continuous shot.",
+  "references": [
+    {
+      "file": "assets/matrix-video/first-frames/garden.png",
+      "sha256": "026364597fd991fde122adf277a43ea972b0eb5fb17e2e1424fa1d9858da1df7"
+    }
+  ],
+  "parameters": {
+    "resolution": "720P",
+    "duration": 5,
+    "watermark": false,
+    "seed": 20260911
+  },
+  "submittedAt": "2026-09-11T04:46:52.323258+00:00",
+  "status": "SUCCEEDED",
+  "task_id": "e8f0ad84-6188-46c2-85ee-a03592126d3a",
+  "request_id": "b3f6d725-512c-41f4-be97-a7f361ec5e52",
+  "usage": {
+    "video_count": 1,
+    "duration": 5,
+    "SR": 720,
+    "output_video_duration": 5,
+    "input_video_duration": 0
+  },
+  "submit_time": "2026-09-11 12:46:51.910",
+  "scheduled_time": "2026-09-11 12:46:51.991",
+  "end_time": "2026-09-11 12:48:05.673",
+  "output": {
+    "file": "assets/matrix-video/originals/garden.mp4",
+    "bytes": 3280077,
+    "sha256": "00748e1198a5d92e418969dc0ebf0a38846878dba6a885b90faae636ed717672"
+  }
+}

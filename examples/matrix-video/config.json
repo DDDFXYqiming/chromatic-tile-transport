@@ -1,0 +1,50 @@
+{
+  "title": "浮光花园 · 动画与点阵",
+  "brand": "浮光花园",
+  "notice": "AI 生成的两段本地视频，经实时显影与固定点阵衔接。播放页面不调用模型，不读取密钥。",
+  "options": {
+    "shotSeconds": 5.2,
+    "bridgeSeconds": 1.2,
+    "density": 144,
+    "zoom": 1,
+    "parallax": 0,
+    "palette": "ice",
+    "mode": "auto",
+    "autoplay": true,
+    "layerMotion": true,
+    "cameraX": 0,
+    "cameraY": 0,
+    "deformation": true,
+    "deformationStrength": 1,
+    "motionStudy": false,
+    "videoMotion": true
+  },
+  "focus": {
+    "garden": [
+      0.5,
+      0.5
+    ],
+    "encounter": [
+      0.5,
+      0.5
+    ]
+  },
+  "videos": {
+    "garden": {
+      "src": "../../assets/matrix-video/garden.mp4",
+      "fps": 24,
+      "focus": [
+        0.65,
+        0.48
+      ]
+    },
+    "encounter": {
+      "src": "../../assets/matrix-video/encounter.mp4",
+      "fps": 24,
+      "focus": [
+        0.32,
+        0.48
+      ]
+    }
+  }
+}

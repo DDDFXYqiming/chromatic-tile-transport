@@ -1,0 +1,18 @@
+{
+  "suite": "matrix-video-clock",
+  "passed": true,
+  "tests": [
+    {
+      "name": "Incoming video continues at exactly the outgoing bridge time on every scene boundary",
+      "passed": true
+    },
+    {
+      "name": "Video time stays decodable at long and short shot settings",
+      "passed": true
+    },
+    {
+      "name": "Still comparison and reduced motion both pin the video to its first frame",
+      "passed": true
+    }
+  ]
+}

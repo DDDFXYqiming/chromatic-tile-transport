@@ -142,8 +142,8 @@
       "name": "Actual requestAnimationFrame playback updates the composite textures",
       "passed": true,
       "detail": {
-        "advancedSeconds": 0.7717000000000036,
-        "compositedFrames": 60
+        "advancedSeconds": 0.7501999999999965,
+        "compositedFrames": 85
       }
     },
     {

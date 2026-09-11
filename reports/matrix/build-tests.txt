@@ -7,12 +7,13 @@ test_matrix_build_preserves_transport_files (test_matrix_build.MatrixBuildTests.
 test_nonfinite_values_fail (test_matrix_build.MatrixBuildTests.test_nonfinite_values_fail) ... ok
 test_outside_focus_fails (test_matrix_build.MatrixBuildTests.test_outside_focus_fails) ... ok
 test_router_sync_does_not_overwrite_legacy_skill (test_matrix_build.MatrixBuildTests.test_router_sync_does_not_overwrite_legacy_skill) ... ok
+test_standalone_outside_repository_has_portable_variant_links (test_matrix_build.MatrixBuildTests.test_standalone_outside_repository_has_portable_variant_links) ... ok
 test_unknown_focus_fails (test_matrix_build.MatrixBuildTests.test_unknown_focus_fails) ... ok
 test_unknown_options_fail (test_matrix_build.MatrixBuildTests.test_unknown_options_fail) ... ok
 test_unknown_top_level_fails (test_matrix_build.MatrixBuildTests.test_unknown_top_level_fails) ... ok
 test_user_text_cannot_break_out_of_script_or_title (test_matrix_build.MatrixBuildTests.test_user_text_cannot_break_out_of_script_or_title) ... ok
 
 ----------------------------------------------------------------------
-Ran 13 tests in 1.517s
+Ran 14 tests in 2.892s
 
 OK

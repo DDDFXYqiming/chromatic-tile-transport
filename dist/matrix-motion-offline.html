@@ -23,6 +23,8 @@
 }
 
 .layer-list{display:flex;gap:10px 14px;flex-wrap:wrap;margin:12px 0 5px}.layer-list label{display:flex;align-items:center;gap:6px;font-size:10px;color:#a9cbd5}.layer-list input{accent-color:var(--accent)}#layerControls[hidden]{display:none}.setting-row output{font-family:monospace;font-size:10px;color:#8cbcc8;margin-left:8px}.setting-row input[type="range"]{width:140px;accent-color:var(--accent)}
+.variant-links{display:flex;gap:20px;margin:15px 0;font-size:11px}.variant-links a{color:#a9cbd5;text-underline-offset:4px}.variant-links a[aria-current="page"]{color:white;font-weight:bold}.variant-links[hidden],#videoControls[hidden]{display:none}.video-study label[for="zoom"],.video-study label[for="parallax"]{display:none}
+.media-warning{position:absolute;z-index:8;left:50%;bottom:18px;transform:translateX(-50%);max-width:90%;padding:10px 15px;border-radius:4px;background:#092330eb;color:#edf4ef;font-size:11px;text-align:center}.media-warning[hidden]{display:none}
 
 /* The layer study uses a compact shot label so it cannot cover the portrait's eyes. */
 .layered-study .specimen-card{top:24px;right:25px;width:auto;max-width:220px;padding:12px 17px;background:#051e2abd;backdrop-filter:blur(10px);border-radius:3px}
@@ -57,6 +59,7 @@
     <div class="stage-bottom"><span id="stagePhase">DEVELOP</span><span class="motion-note"><i></i> STATIC ART. LIVING COMPOSITION.</span></div>
     <div id="loading" class="loading" role="status"><span class="loading-mark">✦</span><span id="loadingText">正在准备影像图层…</span></div>
     <div id="error" class="error" role="alert" hidden></div>
+    <div id="mediaWarning" class="media-warning" role="status" hidden></div>
   </main>
   <footer class="bottom-bar">
     <div class="timeline-row"><span id="elapsed">00.00</span><input id="timeline" type="range" min="0" max="34" step="0.005" value="0" aria-label="全片时间轴，单位秒"><span id="totalTime">34.00</span></div>
@@ -69,6 +72,8 @@
   <h2>同一帧。<em>不同世界。</em></h2><p class="intro">暂停后切换显影方式，或拖动时间轴逐帧观察。格子不搬家，只在固定位置翻转和显隐。</p>
   <div class="setting-caption">显影方式 <span>LIVE PREVIEW</span></div><div id="modeButtons" class="mode-buttons" aria-label="显影方式"></div>
   <p id="timingSummary" class="intro" aria-live="polite"></p>
+  <div id="variantLinks" class="variant-links" aria-label="Matrix Motion 版本"><a id="videoVariant" href="matrix-video.html">视频动画 ↗</a><a id="meshVariant" href="matrix-motion.html">网格形变对照 ↗</a></div>
+  <div id="videoControls" hidden><label class="setting-row" for="videoMotion"><span>画面自身运动<small>关闭后使用视频首帧，显影与转场照常。</small></span><input id="videoMotion" type="checkbox" checked></label><p id="videoNote" class="intro" aria-live="polite"></p></div>
   <label class="setting-row" for="palette"><span>美术色盘<small>原画保留原色；双色与点阵使用此色盘。</small></span><select id="palette"><option value="ice">冰蓝纸白</option><option value="scene">随场景配色</option><option value="mono">黑白银盐</option></select></label>
   <label class="setting-row" for="shotSeconds"><span>单幕节奏<small>镜头时长；不会按比例拉长数字桥。</small></span><select id="shotSeconds"><option value="4">4 秒 / 三镜头 12 秒</option><option value="5.2" selected>5.2 秒 / 原画优先</option><option value="6.8">6.8 秒</option><option value="9">9 秒</option></select></label>
   <label class="setting-row" for="bridgeSeconds"><span>点阵段时长<small>包含入格、翻转、换图与出格。</small></span><select id="bridgeSeconds"><option value="0.36">0.36 秒 / 快</option><option value="0.48">0.48 秒</option><option value="0.72">0.72 秒</option><option value="1.2" selected>1.20 秒 / 适中</option><option value="1.6">1.60 秒 / 慢看</option></select></label>
@@ -2576,7 +2581,7 @@ fn mainFragment(
   'use strict';
   const DEFAULTS = Object.freeze({shotSeconds: 6.8, bridgeSeconds: .48, density: 144,
     zoom: 1.65, parallax: .65, palette: 'ice', mode: 'auto', autoplay: true, layerMotion:true, cameraX:0, cameraY:0,
-    deformation:true, deformationStrength:1, motionStudy:false});
+    deformation:true, deformationStrength:1, motionStudy:false, videoMotion:true});
   const MODES = Object.freeze(['auto', 'original', 'duotone', 'poster', 'line', 'matrix']);
   const STYLE = Object.freeze({original: 0, duotone: 1, poster: 2, line: 3});
   const clip = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
@@ -2599,7 +2604,7 @@ fn mainFragment(
       if (k === 'density' && !Number.isInteger(v)) throw new TypeError('density must be an integer');
       if (k === 'mode' && !MODES.includes(v)) throw new TypeError('Unknown visual mode');
       if (k === 'palette' && !['ice', 'scene', 'mono'].includes(v)) throw new TypeError('Unknown palette');
-      if (['autoplay','layerMotion','deformation','motionStudy'].includes(k) && typeof v !== 'boolean') throw new TypeError(k+' must be boolean');
+      if (['autoplay','layerMotion','deformation','motionStudy','videoMotion'].includes(k) && typeof v !== 'boolean') throw new TypeError(k+' must be boolean');
     }
     return Object.freeze(c);
   }
@@ -3035,7 +3040,12 @@ void main(){
   const data=window.MATRIX_DATA, params=new URLSearchParams(location.search);
   if(!data||!Array.isArray(data.scenes)||data.scenes.length<2){$('error').hidden=false;$('error').textContent='影像清单缺失，请使用 scripts/build_matrix.py 构建。';return;}
   const scenes=data.scenes,settings=$('settings'),focus=data.config.focus||{},reducedQuery=matchMedia('(prefers-reduced-motion: reduce)');
-  document.body.classList.toggle('layered-study',!!data.config.composition);
+  const hasVideo=!!data.config.videos;
+  document.body.classList.toggle('layered-study',!!data.config.composition||hasVideo);
+  document.body.classList.toggle('video-study',hasVideo);
+  if(hasVideo)document.body.classList.add('clean');
+  $('variantLinks').hidden=!data.config.composition&&!hasVideo;
+  $(hasVideo?'videoVariant':'meshVariant').setAttribute('aria-current','page');
   let config=T.validate(data.config.options||{}),seconds=0,ready=false,playing=false,reduced=reducedQuery.matches;
   let renderer,images,layerImages=[],compositor=null,frame,last=0,raf=0,dirty=true,loop=null,restorePlay=false,contextLost=false;
   const modeLabels={auto:'导演编排',original:'原画',duotone:'双色',poster:'色块',line:'线描',matrix:'固定点阵'};
@@ -3056,6 +3066,12 @@ void main(){
       if(compositor.meshWarning)warnings.push(compositor.meshWarning);
       renderer.setComposition(compositor);
     }
+    else if(hasVideo){
+      compositor=new MatrixVideos.Compositor(data.config.videos,images,scenes,()=>{dirty=true;});
+      await compositor.init(renderer.kind!=='CANVAS 2D');renderer.setComposition(compositor);
+      if(compositor.warning)warnings.push(compositor.warning);
+      compositor.clips.forEach((clip,i)=>{if(clip.error)warnings.push(scenes[i].name+'：'+clip.error);});
+    }
     canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();contextLost=true;restorePlay=playing;playing=false;$('loadingText').textContent='图形上下文暂时丢失，正在等待恢复…';$('loading').classList.remove('ready');});
     canvas.addEventListener('webglcontextrestored',async()=>{try{renderer.dispose();const fresh=canvas.cloneNode(false);canvas.replaceWith(fresh);await makeRenderer();contextLost=false;resize();playing=restorePlay&&!reduced;last=0;$('loading').classList.add('ready');render();}catch(e){showError(e);}});
   }
@@ -3063,11 +3079,18 @@ void main(){
   function render(){
     if(!ready||contextLost)return;
     frame=T.frame(seconds,scenes.length,config,reduced);
-    if(config.motionStudy&&compositor){
+    if(config.motionStudy&&data.config.composition&&compositor){
       const pose=compositor.study||frame;
       frame={...frame,scene:pose.scene,next:pose.scene,phase:pose.phase,bridge:0,from:0,to:0,reveal:0,forceMatrix:false,label:reduced?'静态浏览 / REDUCED MOTION':'定机位 / MOTION STUDY'};
     }
+    compositor?.setPlayback?.(playing&&!reduced&&!settings.open&&!document.hidden&&!loop);
     renderer.draw(frame,config,scenes,focus);dirty=false;
+    if(hasVideo){
+      const video=compositor.getState(),failed=video.clips.filter(c=>c.failed);
+      $('videoNote').textContent=failed.length?`${failed.length} 段视频不可用，当前使用对应静态封面。`:video.seeking?'正在定位到当前视频帧…':'本地视频持续播放，点阵切换时两端画面都在运动。';
+      const issue=failed.length?`${failed.length} 段视频未能加载，正在显示对应静态封面。`:video.clips.find(c=>c.error)?.error;
+      $('mediaWarning').hidden=!issue;$('mediaWarning').textContent=issue||'';
+    }
     const current=frame.bridge>.58?frame.next:frame.scene;
     if(current!==dominant){dominant=current;const s=scenes[current];$('sceneTitle').textContent=s.name;$('sceneEnglish').textContent=s.en;
       $('stageNumber').textContent=String(current+1).padStart(2,'0')+' — '+String(scenes.length).padStart(2,'0');
@@ -3079,7 +3102,7 @@ void main(){
     $('stagePhase').textContent=frame.label;
     $('timeline').max=frame.total;$('timeline').value=frame.position;
     $('elapsed').textContent=frame.position.toFixed(2).padStart(5,'0');$('totalTime').textContent=frame.total.toFixed(2);
-    $('engineLabel').textContent=renderer.kind+(loop?' / PREVIEW':' / LIVE');
+    $('engineLabel').textContent=renderer.kind+(loop?' / PREVIEW':hasVideo?' / VIDEO':' / LIVE');
     $('bridgeButton').setAttribute('aria-pressed',String(!!loop));
     const subject=compositor?'双镜头':'双图';
     $('bridgeButton').setAttribute('aria-label',loop?'退出'+subject+'演示，继续正常播放':'播放'+subject+'慢速演示');
@@ -3090,6 +3113,7 @@ void main(){
   }
   function seek(value){if(!Number.isFinite(value))throw new TypeError('seek expects finite seconds');seconds=T.wrap(value,scenes.length*config.shotSeconds);loop=null;playing=false;dirty=true;render();return getState();}
   function pause(){playing=false;render();}
+  async function seekAsync(value){seek(value);await compositor?.settled?.();render();return getState();}
   function play(){if(reduced)return;playing=true;last=0;render();}
   function go(index){if(!ready)return;const was=playing;if(compositor)compositor.study=null;seek(T.wrap(index,scenes.length)*config.shotSeconds);if(was)play();}
   function syncControls(){
@@ -3099,7 +3123,7 @@ void main(){
     }
     $('parallax').checked=config.parallax>0;$('reduced').checked=reduced;$('clean').checked=document.body.classList.contains('clean');
     if($('layerControls')){
-      $('layerControls').hidden=!compositor;$('layerMotion').checked=config.layerMotion;
+      $('layerControls').hidden=!data.config.composition;$('layerMotion').checked=config.layerMotion;
       $('deformation').checked=config.deformation;$('motionStudy').checked=config.motionStudy;
       $('deformation').disabled=!compositor?.surfaces.length;
       $('deformationStrength').disabled=!compositor?.surfaces.length;
@@ -3107,6 +3131,7 @@ void main(){
       $('deformationNote').textContent=compositor?.surfaces.length?'鱼尾游动、花枝弯曲、人物呼吸与发梢摆动。':'当前为简化兼容模式，局部形变不可用。';
       for(const key of ['cameraX','cameraY']){$(key).value=config[key];$(key+'Value').textContent=Math.round(config[key]*100)+'%';}
     }
+    $('videoControls').hidden=!hasVideo;$('videoMotion').checked=config.videoMotion;
     document.querySelectorAll('#modeButtons button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===config.mode)));
     const budget=T.timing(config);
     $('timingSummary').textContent=`导演编排 · 每幕 ${budget.shotSeconds.toFixed(2)} 秒：原画 ${budget.originalSeconds.toFixed(2)} 秒 / 点阵含进出 ${budget.bridgeSeconds.toFixed(2)} 秒 / 其他显影 ${budget.accentSeconds.toFixed(2)} 秒。`;
@@ -3141,6 +3166,7 @@ void main(){
   for(const key of ['palette','shotSeconds','bridgeSeconds','density','zoom'])$(key).addEventListener('change',()=>configure({[key]:key==='palette'?$(key).value:Number($(key).value)}));
   for(const key of ['cameraX','cameraY'])$(key).addEventListener('input',()=>configure({[key]:Number($(key).value)}));
   $('layerMotion').addEventListener('change',()=>configure({layerMotion:$('layerMotion').checked}));
+  $('videoMotion').addEventListener('change',()=>configure({videoMotion:$('videoMotion').checked}));
   for(const key of ['deformation','motionStudy'])$(key).addEventListener('change',()=>configure({[key]:$(key).checked}));
   $('deformationStrength').addEventListener('input',()=>configure({deformationStrength:Number($('deformationStrength').value)}));
   $('parallax').addEventListener('change',()=>configure({parallax:$('parallax').checked?.65:0}));
@@ -3172,16 +3198,17 @@ void main(){
     if(e.key==='ArrowRight'){e.preventDefault();go(frame.scene+1);}if(e.key==='ArrowLeft'){e.preventDefault();go(frame.scene-1);}
   });
   reducedQuery.addEventListener('change',e=>setReduced(e.matches));
-  document.addEventListener('visibilitychange',()=>{last=0;});
+  document.addEventListener('visibilitychange',()=>{last=0;compositor?.setPlayback?.(false);dirty=true;});
   new ResizeObserver(resize).observe($('stage'));
-  window.MatrixMotion=Object.freeze({getState,seek,seekScene:go,pause,play,configure,setReduced,inspectBridge,
-    setLayerVisible(id,value){if(!compositor||!data.config.composition.layers.some(l=>l.id===id)||typeof value!=='boolean')throw new TypeError('Unknown layer or non-boolean visibility');compositor.visibility[id]=value;document.querySelectorAll('[data-layer]').forEach(e=>{if(e.dataset.layer===id)e.checked=value;});dirty=true;render();},
+  window.MatrixMotion=Object.freeze({getState,seek,seekAsync,seekScene:go,pause,play,configure,setReduced,inspectBridge,
+    setLayerVisible(id,value){if(!compositor||!data.config.composition||!data.config.composition.layers.some(l=>l.id===id)||typeof value!=='boolean')throw new TypeError('Unknown layer or non-boolean visibility');compositor.visibility[id]=value;document.querySelectorAll('[data-layer]').forEach(e=>{if(e.dataset.layer===id)e.checked=value;});dirty=true;render();},
     setClean(value){if(typeof value!=='boolean')throw new TypeError('clean must be boolean');document.body.classList.toggle('clean',value);syncControls();},
     setImmersive:toggleImmersive,render(){dirty=true;render();},
-    snapshot(){render();return $('matrixCanvas').toDataURL('image/png');}});
+    snapshot(){render();return $('matrixCanvas').toDataURL('image/png');},
+    async snapshotAsync(){await compositor?.settled?.();render();return $('matrixCanvas').toDataURL('image/png');}});
   try{
     [images,layerImages]=await Promise.all([Promise.all(scenes.map(loadImage)),Promise.all((data.config.composition?.layers||[]).map(l=>loadImage({src:l.src,name:l.label})))]);await makeRenderer();
-    if(compositor){
+    if(data.config.composition&&compositor){
       data.config.composition.layers.forEach(layer=>{
         const label=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.checked=true;input.dataset.layer=layer.id;
         input.addEventListener('change',()=>{compositor.visibility[layer.id]=input.checked;dirty=true;render();});
@@ -3193,7 +3220,7 @@ void main(){
     const initial=Number(params.get('scene')||0);if(Number.isFinite(initial))seconds=T.wrap(Math.floor(initial),scenes.length)*config.shotSeconds;
     resize();ready=true;playing=config.autoplay&&!reduced;syncControls();render();$('loading').classList.add('ready');raf=requestAnimationFrame(tick);
   }catch(e){showError(e);}
-  addEventListener('pagehide',()=>{cancelAnimationFrame(raf);last=0;});
+  addEventListener('pagehide',()=>{cancelAnimationFrame(raf);last=0;compositor?.setPlayback?.(false);});
   addEventListener('pageshow',e=>{if(e.persisted){last=0;raf=requestAnimationFrame(tick);}});
 })();
 

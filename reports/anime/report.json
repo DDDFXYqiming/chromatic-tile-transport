@@ -1,0 +1,165 @@
+{
+  "profile": "anime",
+  "date": "2026-09-11",
+  "environment": "Windows-11-10.0.26200-SP0",
+  "passed": true,
+  "checks": [
+    {
+      "name": "Five real anime videos load with a 21.5-second cycle",
+      "passed": true,
+      "detail": {
+        "kind": "video",
+        "frames": 12,
+        "seeking": false,
+        "backend": "PixiJS WebGL",
+        "warning": null,
+        "clips": [
+          {
+            "slug": "rooftop",
+            "ready": true,
+            "failed": false,
+            "error": null,
+            "seeking": false,
+            "paused": true,
+            "currentTime": 1.760416,
+            "targetTime": 1.7604166666666667,
+            "seekableEnd": 5,
+            "duration": 5,
+            "decodedFrames": 4,
+            "source": "PixiJS VideoSource"
+          },
+          {
+            "slug": "turn",
+            "ready": true,
+            "failed": false,
+            "error": null,
+            "seeking": false,
+            "paused": true,
+            "currentTime": 0.010416,
+            "targetTime": 0.010416666666666666,
+            "seekableEnd": 5,
+            "duration": 5,
+            "decodedFrames": 1,
+            "source": "PixiJS VideoSource"
+          },
+          {
+            "slug": "fall",
+            "ready": true,
+            "failed": false,
+            "error": null,
+            "seeking": false,
+            "paused": true,
+            "currentTime": 0.010416,
+            "targetTime": 0.010416666666666666,
+            "seekableEnd": 5,
+            "duration": 5,
+            "decodedFrames": 1,
+            "source": "PixiJS VideoSource"
+          },
+          {
+            "slug": "tunnel",
+            "ready": true,
+            "failed": false,
+            "error": null,
+            "seeking": false,
+            "paused": true,
+            "currentTime": 0.010416,
+            "targetTime": 0.010416666666666666,
+            "seekableEnd": 5,
+            "duration": 5,
+            "decodedFrames": 1,
+            "source": "PixiJS VideoSource"
+          },
+          {
+            "slug": "sky",
+            "ready": true,
+            "failed": false,
+            "error": null,
+            "seeking": false,
+            "paused": true,
+            "currentTime": 0.010416,
+            "targetTime": 0.010416666666666666,
+            "seekableEnd": 5,
+            "duration": 5,
+            "decodedFrames": 1,
+            "source": "PixiJS VideoSource"
+          }
+        ]
+      }
+    },
+    {
+      "name": "All five shots are different and contain substantial image changes",
+      "passed": true,
+      "detail": {
+        "meanPixelChanges": {
+          "1": 60.274583048350614,
+          "2": 69.89820161285608,
+          "3": 55.125719764063525,
+          "4": 65.6759344510502,
+          "5": 83.52678947229968
+        },
+        "note": "Pixel differences demonstrate change, not an anatomy or aesthetic score."
+      }
+    },
+    {
+      "name": "All five video and grid boundaries join continuously including last-to-first",
+      "passed": true,
+      "detail": [
+        7.307249375960903e-07,
+        0.0,
+        0.0,
+        3.6536246879804516e-07,
+        7.307249375960903e-07
+      ]
+    },
+    {
+      "name": "Scrubbing across five sources returns exact decoded pixels",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Only the two bridging videos play while the other three remain paused",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "All five filmstrip buttons and the four version links are available",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Five-shot navigation fits mobile portrait and landscape layouts",
+      "passed": true,
+      "detail": [
+        [
+          390,
+          844
+        ],
+        [
+          320,
+          568
+        ],
+        [
+          844,
+          390
+        ]
+      ]
+    },
+    {
+      "name": "Offline output embeds and decodes all five videos without remote requests",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Normal playback makes no calls to model or external media services",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No uncaught browser errors",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "errors": []
+}

@@ -8,7 +8,7 @@
       "passed": true,
       "detail": {
         "kind": "video",
-        "frames": 15,
+        "frames": 12,
         "seeking": false,
         "backend": "PixiJS WebGL",
         "warning": null,
@@ -48,8 +48,8 @@
       "name": "Each shot has visible internal movement with no shader camera drift",
       "passed": true,
       "detail": {
-        "garden": 25.229706863574886,
-        "encounter": 35.88273528144196
+        "garden": 25.633829349420974,
+        "encounter": 36.580256615983586
       }
     },
     {
@@ -66,8 +66,8 @@
       "name": "Incoming video time stays continuous at both shot boundaries including the loop",
       "passed": true,
       "detail": [
-        1.3531351125706928e-06,
-        3.382837781426732e-07
+        7.307249375960903e-07,
+        3.6536246879804516e-07
       ]
     },
     {
@@ -112,7 +112,7 @@
             "error": null,
             "seeking": false,
             "paused": false,
-            "currentTime": 4.564509,
+            "currentTime": 4.588536,
             "targetTime": 4.552083333333334,
             "seekableEnd": 5,
             "duration": 5,
@@ -126,7 +126,7 @@
             "error": null,
             "seeking": false,
             "paused": false,
-            "currentTime": 0.522638,
+            "currentTime": 0.546734,
             "targetTime": 0.5104166666666666,
             "seekableEnd": 5,
             "duration": 5,

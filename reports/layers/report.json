@@ -50,23 +50,23 @@
       "name": "Fish and portrait actually move independently",
       "passed": true,
       "detail": {
-        "background": 8.755725632563667,
-        "botanical-back": 7.735325299054239,
-        "character": 12.422678065542755,
-        "fish": -70.07880792079345,
-        "flowers": -3.833766736023904
+        "background": 8.15399974757679,
+        "botanical-back": 7.203725103186571,
+        "character": 11.568945631865859,
+        "fish": -65.26273276214147,
+        "flowers": -3.570296090771194
       }
     },
     {
       "name": "All three camera joins and Matrix bridges are continuous",
       "passed": true,
       "detail": [
-        0.002440040891743102,
-        0.0027468642785185063,
-        0.0013741087068155384,
-        0.009192861671027145,
-        0.010319346652242246,
-        0.005506245056828292
+        0.0015874999269275061,
+        0.0023733945973121013,
+        0.002085123609430444,
+        0.0066543466442187975,
+        0.009329896003226881,
+        0.008594421353536415
       ]
     },
     {
@@ -117,9 +117,9 @@
         "offPixelsHeld": true,
         "zeroEqualsOff": true,
         "meanPixelChanges": {
-          "character": 5.5974514376722295,
-          "fish": 2.1834482483327684,
-          "flowers": 4.070959081870764
+          "character": 5.249305080584346,
+          "fish": 2.0413053231850253,
+          "flowers": 3.828414823778374
         }
       }
     },
@@ -142,8 +142,8 @@
       "name": "Actual requestAnimationFrame playback updates the composite textures",
       "passed": true,
       "detail": {
-        "advancedSeconds": 0.7501999999999965,
-        "compositedFrames": 85
+        "advancedSeconds": 0.7444999999999992,
+        "compositedFrames": 87
       }
     },
     {

@@ -83,7 +83,7 @@
     {
       "test": "Wheel scrub advances current transition",
       "passed": true,
-      "detail": 0.3122343689009282
+      "detail": 0.3123512289569018
     },
     {
       "test": "Autoplay advances, then can be paused",
@@ -168,7 +168,7 @@
       "swaps": 9044,
       "spatial": 0.022,
       "hash": "63b9642d",
-      "computeMs": 593.4000000357628
+      "computeMs": 848.9000000003725
     },
     {
       "pair": "1:2",
@@ -188,7 +188,7 @@
       "swaps": 11756,
       "spatial": 0.022,
       "hash": "4a737b5",
-      "computeMs": 731.6000000238419
+      "computeMs": 864.4000000003725
     },
     {
       "pair": "2:3",
@@ -208,7 +208,7 @@
       "swaps": 11220,
       "spatial": 0.022,
       "hash": "d4f0825d",
-      "computeMs": 683.3000000119209
+      "computeMs": 733.8999999985099
     },
     {
       "pair": "3:4",
@@ -228,7 +228,7 @@
       "swaps": 7514,
       "spatial": 0.022,
       "hash": "354d401b",
-      "computeMs": 628.1999999880791
+      "computeMs": 692.2999999988824
     },
     {
       "pair": "4:0",
@@ -248,7 +248,7 @@
       "swaps": 7612,
       "spatial": 0.022,
       "hash": "416a5ebb",
-      "computeMs": 565.3000000119209
+      "computeMs": 631.2999999988824
     }
   ]
 }

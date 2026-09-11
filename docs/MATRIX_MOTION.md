@@ -1,6 +1,6 @@
 # Matrix Motion · 星海成像
 
-2026-09-11 新增视频输入，展厅进入两段动画镜头，详见 [视频版说明](VIDEO_MOTION.md)。本篇保留通用显影原理及原网格示例的参数说明。
+2026-09-11 新增视频输入后继续扩展五镜头日漫与战斗番，当前展厅进入 [绯刃交锋](BATTLE_MOTION.md)，另保留 [青空偏航](ANIME_MOTION.md) 和 [初版双视频](VIDEO_MOTION.md)。本篇以下保留通用显影原理及原网格示例的参数说明。
 
 第二套独立效果。当前默认是“浮光花园”原创分层素材，详见 [分层实现](LAYERED_MOTION.md)。旧星铁五图模式保留在 `examples/matrix-motion/starrail.config.json`，01 寻色迁移继续使用原有游戏美术。运行时不依赖模型或外部素材服务。
 

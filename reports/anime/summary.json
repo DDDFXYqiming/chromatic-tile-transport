@@ -1,0 +1,68 @@
+{
+  "imageGenerationCalls": 7,
+  "selectedImages": 5,
+  "rejectedImages": 2,
+  "videoGenerationCalls": 5,
+  "generatedVideoSeconds": 25,
+  "resolutionTier": 720,
+  "cycleSeconds": 21.5,
+  "browserChecksPassed": 10,
+  "credentialsAbsentFromProject": true,
+  "tasks": [
+    {
+      "shot": "01-rooftop",
+      "task_id": "92177b8f-c271-46ee-9fba-8e45e7767511",
+      "usage": {
+        "video_count": 1,
+        "duration": 5,
+        "SR": 720,
+        "output_video_duration": 5,
+        "input_video_duration": 0
+      }
+    },
+    {
+      "shot": "02-turn",
+      "task_id": "1fcc244c-2d4d-4d41-bb93-8e9cca16ba08",
+      "usage": {
+        "video_count": 1,
+        "duration": 5,
+        "SR": 720,
+        "output_video_duration": 5,
+        "input_video_duration": 0
+      }
+    },
+    {
+      "shot": "03-fall",
+      "task_id": "d2c4db7b-c111-4c6d-b640-ff192fd95f06",
+      "usage": {
+        "video_count": 1,
+        "duration": 5,
+        "SR": 720,
+        "output_video_duration": 5,
+        "input_video_duration": 0
+      }
+    },
+    {
+      "shot": "04-tunnel",
+      "task_id": "aef68be8-9110-43de-8d8d-186cc1d7b41d",
+      "usage": {
+        "video_count": 1,
+        "duration": 5,
+        "SR": 720,
+        "output_video_duration": 5,
+        "input_video_duration": 0
+      }
+    },
+    {
+      "shot": "05-sky",
+      "task_id": "aeb5620b-8e22-484b-88d0-583d152a7fa6",
+      "usage": {
+        "video_count": 1,
+        "duration": 5,
+        "SR": 720,
+        "output_video_duration": 5,
+        "input_video_duration": 0
+      }
+    }
+  ]
+}

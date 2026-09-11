@@ -1,0 +1,87 @@
+{
+  "title": "青空偏航 · 五镜头日漫实验",
+  "brand": "青空偏航",
+  "notice": "五张简洁日漫关键画面，逐张生成五段本地视频，再由实时显影与固定点阵衔接。页面播放不调用模型。",
+  "options": {
+    "shotSeconds": 4.3,
+    "bridgeSeconds": 0.85,
+    "density": 144,
+    "zoom": 1,
+    "parallax": 0,
+    "palette": "scene",
+    "mode": "auto",
+    "autoplay": true,
+    "layerMotion": true,
+    "cameraX": 0,
+    "cameraY": 0,
+    "deformation": true,
+    "deformationStrength": 1,
+    "motionStudy": false,
+    "videoMotion": true
+  },
+  "focus": {
+    "rooftop": [
+      0.5,
+      0.5
+    ],
+    "turn": [
+      0.5,
+      0.5
+    ],
+    "fall": [
+      0.5,
+      0.5
+    ],
+    "tunnel": [
+      0.5,
+      0.5
+    ],
+    "sky": [
+      0.5,
+      0.5
+    ]
+  },
+  "videos": {
+    "rooftop": {
+      "src": "../../assets/matrix-anime/01-rooftop.mp4",
+      "fps": 24,
+      "focus": [
+        0.5,
+        0.5
+      ]
+    },
+    "turn": {
+      "src": "../../assets/matrix-anime/02-turn.mp4",
+      "fps": 24,
+      "focus": [
+        0.5,
+        0.5
+      ]
+    },
+    "fall": {
+      "src": "../../assets/matrix-anime/03-fall.mp4",
+      "fps": 24,
+      "focus": [
+        0.5,
+        0.5
+      ]
+    },
+    "tunnel": {
+      "src": "../../assets/matrix-anime/04-tunnel.mp4",
+      "fps": 24,
+      "focus": [
+        0.5,
+        0.5
+      ]
+    },
+    "sky": {
+      "src": "../../assets/matrix-anime/05-sky.mp4",
+      "fps": 24,
+      "focus": [
+        0.5,
+        0.5
+      ]
+    }
+  },
+  "variant": "anime"
+}

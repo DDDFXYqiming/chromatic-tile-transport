@@ -11,7 +11,8 @@ BOUNDS = {'shotSeconds':(4,14), 'bridgeSeconds':(.3,1.6), 'density':(48,224), 'z
 
 def load_matrix_config(path: Path, scenes: list[dict]) -> dict:
     c=json.loads(local(path).read_text(encoding='utf-8'))
-    if not isinstance(c,dict) or set(c)-{'title','brand','notice','options','focus','composition','videos'}: raise ValueError('Unknown matrix config key')
+    if not isinstance(c,dict) or set(c)-{'title','brand','notice','options','focus','composition','videos','variant'}: raise ValueError('Unknown matrix config key')
+    if c.get('variant','video' if c.get('videos') else 'mesh') not in ('battle','anime','video','mesh'):raise ValueError('Unknown Matrix variant')
     for k in ('title','brand','notice'):
         if not isinstance(c.get(k),str): raise ValueError('Missing config text: '+k)
     options=c.get('options',{})
@@ -107,10 +108,12 @@ def build(output: Path, scenes_path: Path=DEFAULT_SCENES, config_path: Path=DEFA
       '{{TITLE}}':html.escape(config['title']),'{{NOTICE}}':html.escape(config['notice']),
       '{{GALLERY}}':html.escape(gallery,quote=True),'{{TRANSPORT}}':html.escape(transport,quote=True),
       '{{VIDEO_VARIANT}}':html.escape(rel(ROOT/'dist/matrix-video.html') if output.is_relative_to(ROOT) else './matrix-video.html',quote=True),
+      '{{ANIME_VARIANT}}':html.escape(rel(ROOT/'dist/matrix-anime.html') if output.is_relative_to(ROOT) else './matrix-anime.html',quote=True),
+      '{{BATTLE_VARIANT}}':html.escape(rel(ROOT/'dist/matrix-battle.html') if output.is_relative_to(ROOT) else './matrix-battle.html',quote=True),
       '{{MESH_VARIANT}}':html.escape(rel(ROOT/'dist/matrix-motion.html') if output.is_relative_to(ROOT) else './matrix-motion.html',quote=True),
       '{{BRAND}}':html.escape(config['brand']),'{{FIRST_NAME}}':html.escape(scenes[0]['name']),'{{FIRST_EN}}':html.escape(scenes[0]['en']),
       '{{COUNT}}':str(len(scenes)).zfill(2),
-      '{{CANVAS_LABEL}}':'两段人物与游鱼视频经实时显影和固定点阵衔接的动态图像' if config.get('videos') else '人物、鱼、花枝与背景独立合成的动态图像' if config.get('composition') else '由静态插画生成的动态图像',
+      '{{CANVAS_LABEL}}':f'{len(scenes)} 段视频经实时显影和固定点阵衔接的动态图像' if config.get('videos') else '人物、鱼、花枝与背景独立合成的动态图像' if config.get('composition') else '由静态插画生成的动态图像',
       '{{PARALLAX_TITLE}}':'图层视差' if config.get('composition') else '焦点局部视差',
       '{{PARALLAX_NOTE}}':'人物、远景和前景以不同幅度移动。' if config.get('composition') else '连续形变近似前后景，不是人物分层。'}
     # Replace only our template tokens; Pixi's shader source has its own {{TOKENS}}.

@@ -1,0 +1,87 @@
+{
+  "title": "绯刃交锋 · 五镜头战斗番",
+  "brand": "绯刃交锋",
+  "notice": "红衣与青刃，五段战斗动画，经实时显影与固定点阵连接。",
+  "options": {
+    "shotSeconds": 4.3,
+    "bridgeSeconds": 0.85,
+    "density": 144,
+    "zoom": 1,
+    "parallax": 0,
+    "palette": "scene",
+    "mode": "auto",
+    "autoplay": true,
+    "layerMotion": true,
+    "cameraX": 0,
+    "cameraY": 0,
+    "deformation": true,
+    "deformationStrength": 1,
+    "motionStudy": false,
+    "videoMotion": true
+  },
+  "focus": {
+    "faceoff": [
+      0.5,
+      0.5
+    ],
+    "charge": [
+      0.5,
+      0.5
+    ],
+    "clash": [
+      0.5,
+      0.5
+    ],
+    "vault": [
+      0.5,
+      0.5
+    ],
+    "finish": [
+      0.5,
+      0.5
+    ]
+  },
+  "videos": {
+    "faceoff": {
+      "src": "../../assets/matrix-battle/01-faceoff.mp4",
+      "fps": 24,
+      "focus": [
+        0.5,
+        0.5
+      ]
+    },
+    "charge": {
+      "src": "../../assets/matrix-battle/02-charge.mp4",
+      "fps": 24,
+      "focus": [
+        0.5,
+        0.5
+      ]
+    },
+    "clash": {
+      "src": "../../assets/matrix-battle/03-clash.mp4",
+      "fps": 24,
+      "focus": [
+        0.5,
+        0.5
+      ]
+    },
+    "vault": {
+      "src": "../../assets/matrix-battle/04-vault.mp4",
+      "fps": 24,
+      "focus": [
+        0.5,
+        0.5
+      ]
+    },
+    "finish": {
+      "src": "../../assets/matrix-battle/05-finish.mp4",
+      "fps": 24,
+      "focus": [
+        0.5,
+        0.5
+      ]
+    }
+  },
+  "variant": "battle"
+}

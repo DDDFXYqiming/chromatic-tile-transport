@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090c13">
+<meta name="description" content="以分层插画实时演绎镜头、双色、线描与固定数字点阵。">
+<title>绯刃交锋 · 五镜头战斗番</title>
+<link rel="stylesheet" href="../src/matrix/style.css?v=e415395217ad">
+</head>
+<body>
+<div class="ambient" aria-hidden="true"></div>
+<div class="app">
+  <header class="topbar">
+    <a class="wordmark" href="../index.html" aria-label="返回效果展厅">
+      <svg viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 3 26.4 17.6 41 22 26.4 26.4 22 41 17.6 26.4 3 22 17.6 17.6Z" fill="currentColor"/><ellipse cx="22" cy="22" rx="21" ry="7.2" transform="rotate(-34 22 22)" stroke="currentColor" stroke-width=".8"/><path d="M4 35h13M29 9h11" stroke="currentColor" stroke-width=".65"/></svg>
+      <span><b>绯刃交锋</b><small>MATRIX MOTION <span>/</span> 动态显影 · 02</small></span>
+    </a>
+    <nav class="topnav" aria-label="效果导航"><a href="index.html">01 寻色迁移</a><a class="current" href="#" aria-current="page">02 MATRIX MOTION</a></nav>
+    <div class="top-actions">
+      <button id="galleryOpen" class="icon-button" aria-label="打开影像档案" title="影像档案"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="5" height="5" rx="1"/><rect x="12" y="3" width="5" height="5" rx="1"/><rect x="3" y="12" width="5" height="5" rx="1"/><rect x="12" y="12" width="5" height="5" rx="1"/></svg></button>
+      <button id="playButton" class="auto-button" aria-label="暂停播放" aria-pressed="true"><span id="playGlyph" aria-hidden="true">Ⅱ</span><span id="playLabel">暂停巡航</span></button>
+      <button id="settingsOpen" class="icon-button" aria-label="打开导演台" title="导演台设置"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4h12M4 10h12M4 16h12"/><circle cx="7" cy="4" r="2"/><circle cx="13" cy="10" r="2"/><circle cx="8" cy="16" r="2"/></svg></button>
+      <button id="immersive" class="icon-button" aria-label="进入沉浸模式" title="沉浸模式 · F"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 3H3v4m10-4h4v4M3 13v4h4m10-4v4h-4"/></svg></button>
+    </div>
+  </header>
+  <main id="stage" class="stage" aria-label="Matrix Motion 动态画面" tabindex="0">
+    <canvas id="matrixCanvas" aria-label="5 段视频经实时显影和固定点阵衔接的动态图像"></canvas>
+    <div class="image-shade" aria-hidden="true"></div><div class="frame-corner tl" aria-hidden="true"></div><div class="frame-corner tr" aria-hidden="true"></div><div class="frame-corner bl" aria-hidden="true"></div><div class="frame-corner br" aria-hidden="true"></div>
+    <div class="stage-head"><span class="tag-line"></span><span>MATRIX · LIVING IMAGE</span><b>动态视觉实验</b></div>
+    <aside class="specimen-card" aria-label="当前影像状态">
+      <div class="specimen-head"><i class="signal-dot" aria-hidden="true"></i><span id="playbackStatus">影像准备中</span><span class="telemetry-star" aria-hidden="true">✧</span></div>
+      <div class="hairline"></div><div class="specimen-foot"><span id="engineLabel">INITIALIZING</span><span id="cellCount">— CELLS</span></div>
+    </aside>
+    <div class="hero-copy">
+      <div class="eyebrow"><span id="sceneEnglish">BEFORE THE CLASH</span><span class="eyebrow-line" aria-hidden="true"></span><span id="stageNumber">01 / 05</span></div>
+      <h1 id="heroTitle"><span id="heroLine1">静帧之间，</span><span id="heroLine2">万象生长。</span></h1><p id="heroCaption">花影随风，游鱼穿过一片浮光。</p>
+      <div class="hero-actions"><button id="nextHero" class="next-hero"><span>前往下一幕</span><span class="circle-arrow" aria-hidden="true">↗</span></button><button id="bridgeButton" class="bridge-card" aria-label="播放双图慢速演示" aria-pressed="false"><span id="bridgeLabel">慢看双图切换</span><span id="bridgeArrow" aria-hidden="true">↗</span></button></div>
+    </div>
+    <nav id="sceneRail" class="scene-rail" aria-label="快速切换影像"></nav>
+    <div class="stage-bottom"><span class="bottom-credit">STILLNESS INTO MOTION <span aria-hidden="true">—</span> <b id="stagePhase">DEVELOP</b></span><span class="motion-note"><svg viewBox="0 0 16 22" aria-hidden="true"><rect x="3.5" y="1" width="9" height="16" rx="4.5"/><path d="M8 4v4m-3 11 3 2 3-2"/></svg><span>滚动探索 <i>/</i> SCROLL TO EXPLORE</span></span></div>
+    <div id="manualIndicator" class="manual-indicator" hidden>画面已暂停 <span>·</span> 空格键继续巡航</div>
+    <div id="loading" class="loading" role="status"><span class="loading-mark">✦</span><span id="loadingText">正在准备影像图层…</span></div>
+    <div id="error" class="error" role="alert" hidden></div>
+    <div id="mediaWarning" class="media-warning" role="status" hidden></div>
+  </main>
+  <footer class="bottom-bar">
+    <div class="sequence-meta"><span class="tiny-label">THE MOTION ATLAS</span><strong id="chapter">01<span>/ 05</span></strong><span id="sceneTitle" class="folio-note">刃前对峙</span></div>
+    <div class="filmstrip-wrap"><div class="timeline-row"><span id="elapsed">00.00</span><div class="timeline-track"><div id="timelineFill" class="timeline-fill" aria-hidden="true"></div><input id="timeline" type="range" min="0" max="34" step="0.005" value="0" aria-label="全片时间轴，单位秒"></div><span id="totalTime">34.00</span></div><nav id="filmstrip" class="filmstrip" aria-label="选择影像"></nav></div>
+    <div class="transport-controls"><div class="transport-buttons"><button id="previous" aria-label="上一幕">←</button><button id="next" aria-label="下一幕">→</button></div><span><kbd>SPACE</kbd> 播放 / 暂停</span></div>
+  </footer>
+</div>
+<button id="exitImmersive" class="exit-immersive">退出沉浸 ↙</button>
+<dialog id="gallery" class="gallery-dialog" aria-labelledby="galleryTitle">
+  <div class="dialog-head"><span>THE MOTION ATLAS / 01—05</span><button id="galleryClose" aria-label="关闭影像档案">×</button></div>
+  <h2 id="galleryTitle">每一帧，都有回响。</h2><p class="intro">选择一幕影像，从这里继续。</p>
+  <nav class="collection-links" aria-label="切换影像系列"><a data-variant="mesh" href="matrix-motion.html"><span>01 / ORIGINAL</span>花园初见 · 原版</a><a data-variant="video" href="matrix-video.html"><span>02 / VIDEO</span>浮光花园 · 视频</a><a data-variant="anime" href="matrix-anime.html"><span>03 / VIDEO</span>青空偏航</a><a data-variant="battle" href="matrix-battle.html"><span>04 / VIDEO</span>绯刃交锋</a></nav>
+  <div class="setting-caption">本组影像 <span>05 SCENES</span></div><div id="galleryGrid" class="gallery-grid"></div><p class="notice">红衣与青刃，五段战斗动画，经实时显影与固定点阵连接。</p>
+</dialog>
+<dialog id="settings" class="settings" aria-labelledby="settingsTitle">
+  <div class="dialog-head"><span>DIRECTOR'S DESK / 02</span><button id="settingsClose" aria-label="关闭导演台">×</button></div>
+  <h2 id="settingsTitle">同一帧。<em>不同世界。</em></h2><p class="intro">选择显影方式，调整镜头节奏。也可以暂停、倒拖，慢看两幕之间的变化。</p>
+  <div class="setting-caption">显影方式 <span>LIVE PREVIEW</span></div><div id="modeButtons" class="mode-buttons" aria-label="显影方式"></div>
+  <p id="timingSummary" class="intro" aria-live="polite"></p>
+  <div id="variantLinks" class="variant-links" aria-label="Matrix Motion 版本"><a id="meshVariant" href="matrix-motion.html">花园初见 · 原版 ↗</a><a id="videoVariant" href="matrix-video.html">浮光花园 · 视频 ↗</a><a id="animeVariant" href="matrix-anime.html">青空偏航 ↗</a><a id="battleVariant" href="matrix-battle.html">绯刃交锋 ↗</a></div>
+  <div id="videoControls" hidden><label class="setting-row" for="videoMotion"><span>画面自身运动<small>关闭后使用视频首帧，显影与转场照常。</small></span><input id="videoMotion" type="checkbox" checked></label><p id="videoNote" class="intro" aria-live="polite"></p></div>
+  <label class="setting-row" for="palette"><span>美术色盘<small>原画保留原色；双色与点阵使用此色盘。</small></span><select id="palette"><option value="ice">冰蓝纸白</option><option value="scene">随场景配色</option><option value="mono">黑白银盐</option></select></label>
+  <label class="setting-row" for="shotSeconds"><span>单幕节奏<small>镜头时长；不会按比例拉长数字桥。</small></span><select id="shotSeconds"><option value="4">4 秒 / 紧凑</option><option value="5.2" selected>5.2 秒 / 原画优先</option><option value="6.8">6.8 秒</option><option value="9">9 秒</option></select></label>
+  <label class="setting-row" for="bridgeSeconds"><span>点阵段时长<small>包含入格、翻转、换图与出格。</small></span><select id="bridgeSeconds"><option value="0.36">0.36 秒 / 快</option><option value="0.48">0.48 秒</option><option value="0.72">0.72 秒</option><option value="1.2" selected>1.20 秒 / 适中</option><option value="1.6">1.60 秒 / 慢看</option></select></label>
+  <label class="setting-row" for="density"><span>点阵密度<small>固定于画面，亮度控制颗粒大小。</small></span><select id="density"><option value="96">96 列 / 粗</option><option value="144" selected>144 列 / 标准</option><option value="192">192 列 / 细</option></select></label>
+  <label class="setting-row" for="zoom"><span>近景倍率<small>焦点来自逐图配置，并非自动识别人脸。</small></span><select id="zoom"><option value="1.25">1.25× / 轻推</option><option value="1.65" selected>1.65× / 近景</option><option value="1.95">1.95× / 特写</option></select></label>
+  <label class="setting-row" for="parallax"><span>焦点局部视差<small>连续形变近似前后景，不是人物分层。</small></span><input id="parallax" type="checkbox" checked></label>
+  <div id="layerControls" hidden>
+    <div class="setting-caption">图层与构图 <span>MULTIPLANE</span></div><div id="layerList" class="layer-list"></div>
+    <label class="setting-row" for="layerMotion"><span>独立图层运动<small>关闭后仍可观看镜头，图层自身停止漂移。</small></span><input id="layerMotion" type="checkbox" checked></label>
+    <label class="setting-row" for="deformation"><span>局部形变<small id="deformationNote">鱼尾游动、花枝弯曲、人物呼吸与发梢摆动。</small></span><input id="deformation" type="checkbox" checked></label>
+    <label class="setting-row" for="deformationStrength"><span>动作幅度 <output id="deformationStrengthValue">1.00×</output></span><input id="deformationStrength" type="range" min="0" max="1.5" step="0.05" value="1"></label>
+    <label class="setting-row" for="motionStudy"><span>定机位看动作<small>固定当前构图，只看局部动作。关闭后恢复镜头与转场。</small></span><input id="motionStudy" type="checkbox"></label>
+    <label class="setting-row" for="cameraX"><span>横向构图 <output id="cameraXValue">0%</output></span><input id="cameraX" type="range" min="-0.3" max="0.3" step="0.01" value="0"></label>
+    <label class="setting-row" for="cameraY"><span>纵向构图 <output id="cameraYValue">0%</output></span><input id="cameraY" type="range" min="-0.3" max="0.3" step="0.01" value="0"></label>
+  </div>
+  <label class="setting-row" for="clean"><span>纯画面<small>去掉画面文字，保留播放与时间轴。</small></span><input id="clean" type="checkbox"></label>
+  <label class="setting-row" for="reduced"><span>减少动态<small>停用自动播放、镜头、图层动作和点阵桥。</small></span><input id="reduced" type="checkbox"></label>
+  <div class="inspection"><button id="inspectBridge">暂停在点阵中间 ↗</button><button id="reset">恢复导演编排 ↺</button></div>
+  <p id="diagnostics" class="diagnostics"></p><p class="keyboard-help">空格 播放 / 暂停 · F 沉浸 · ← → 切换影像 · Esc 退出<br>画面上滚轮或触摸滑动可前后拖动。</p>
+  <p class="notice">红衣与青刃，五段战斗动画，经实时显影与固定点阵连接。</p>
+</dialog>
+<script>window.MATRIX_DATA={"config":{"title":"绯刃交锋 · 五镜头战斗番","brand":"绯刃交锋","notice":"红衣与青刃，五段战斗动画，经实时显影与固定点阵连接。","options":{"shotSeconds":4.3,"bridgeSeconds":0.85,"density":144,"zoom":1,"parallax":0,"palette":"scene","mode":"auto","autoplay":true,"layerMotion":true,"cameraX":0,"cameraY":0,"deformation":true,"deformationStrength":1,"motionStudy":false,"videoMotion":true},"focus":{"faceoff":[0.5,0.5],"charge":[0.5,0.5],"clash":[0.5,0.5],"vault":[0.5,0.5],"finish":[0.5,0.5]},"videos":{"faceoff":{"src":"../assets/matrix-battle/01-faceoff.mp4","fps":24,"focus":[0.5,0.5]},"charge":{"src":"../assets/matrix-battle/02-charge.mp4","fps":24,"focus":[0.5,0.5]},"clash":{"src":"../assets/matrix-battle/03-clash.mp4","fps":24,"focus":[0.5,0.5]},"vault":{"src":"../assets/matrix-battle/04-vault.mp4","fps":24,"focus":[0.5,0.5]},"finish":{"src":"../assets/matrix-battle/05-finish.mp4","fps":24,"focus":[0.5,0.5]}},"variant":"battle"},"scenes":[{"slug":"faceoff","name":"刃前对峙","en":"BEFORE THE CLASH","line1":"绯衣掠影，","line2":"青刃交锋。","caption":"冲刺、格挡与腾空，五段连续战斗镜头。","tag":"BATTLE ANIME STUDY","accent":"#eb465b","position":[0.5,0.5],"src":"../assets/matrix-battle/01-faceoff-poster.jpg","width":1280,"height":720},{"slug":"charge","name":"疾行突进","en":"CRIMSON CHARGE","line1":"绯衣掠影，","line2":"青刃交锋。","caption":"冲刺、格挡与腾空，五段连续战斗镜头。","tag":"BATTLE ANIME STUDY","accent":"#16d9ea","position":[0.5,0.5],"src":"../assets/matrix-battle/02-charge-poster.jpg","width":1280,"height":720},{"slug":"clash","name":"双刃交锋","en":"CROSSING BLADES","line1":"绯衣掠影，","line2":"青刃交锋。","caption":"冲刺、格挡与腾空，五段连续战斗镜头。","tag":"BATTLE ANIME STUDY","accent":"#c34bea","position":[0.5,0.5],"src":"../assets/matrix-battle/03-clash-poster.jpg","width":1280,"height":720},{"slug":"vault","name":"腾空避斩","en":"AERIAL EVADE","line1":"绯衣掠影，","line2":"青刃交锋。","caption":"冲刺、格挡与腾空，五段连续战斗镜头。","tag":"BATTLE ANIME STUDY","accent":"#21cadd","position":[0.5,0.5],"src":"../assets/matrix-battle/04-vault-poster.jpg","width":1280,"height":720},{"slug":"finish","name":"青刃决意","en":"FINAL ARC","line1":"绯衣掠影，","line2":"青刃交锋。","caption":"冲刺、格挡与腾空，五段连续战斗镜头。","tag":"BATTLE ANIME STUDY","accent":"#f24d64","position":[0.5,0.5],"src":"../assets/matrix-battle/05-finish-poster.jpg","width":1280,"height":720}]};</script>
+<script src="../src/vendor/pixi-8.20.1.min.js?v=994859108379"></script>
+<script src="../src/matrix/video.js?v=3b2d896299be"></script>
+<script src="../src/matrix/timeline.js?v=d8ad5c949d9e"></script>
+<script src="../src/matrix/layers.js?v=404168512e24"></script>
+<script src="../src/matrix/renderer.js?v=cfa8d85529c5"></script>
+<script src="../src/matrix/main.js?v=139bf0cd528d"></script>
+</body>
+</html>

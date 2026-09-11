@@ -1,5 +1,3 @@
-C:\Users\39795\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\__init__.py:92: RequestsDependencyWarning: Unable to find acceptable character detection dependency (chardet or charset_normalizer).
-  warnings.warn(
 test_bad_timing_rejected (test_build.BuildTests.test_bad_timing_rejected) ... ok
 test_default_reproducible (test_build.BuildTests.test_default_reproducible) ... ok
 test_duplicate_slug (test_build.BuildTests.test_duplicate_slug) ... ok
@@ -42,6 +40,6 @@ test_ranges_return_exact_bytes_and_lengths (test_video_serving.VideoServingTests
 test_whole_file (test_video_serving.VideoServingTests.test_whole_file) ... ok
 
 ----------------------------------------------------------------------
-Ran 40 tests in 5.425s
+Ran 40 tests in 6.572s
 
 OK

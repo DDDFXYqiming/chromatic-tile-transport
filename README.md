@@ -3,7 +3,7 @@
 | 实验 | 入口 | 素材与动作 |
 |---|---|---|
 | 01 · 寻色迁移 | [Demo](dist/index.html) | 用户提供的五张星铁原画；OKLab 一对一配对、曲线格片迁移 |
-| 02 · 浮光花园 / Matrix Motion | [视频 Demo](dist/matrix-video.html) | 两段不同构图与动作的视频，经实时显影与点阵桥衔接；一轮 10.4 秒 |
+| 02 · 绯刃交锋 / Matrix Motion | [五镜头战斗番 Demo](dist/matrix-battle.html) | 五张简洁赛璐璐首帧生成五段战斗视频，大幅动作与点阵衔接；一轮 21.5 秒 |
 
 从仓库根目录启动 [双效果展厅](index.html)：
 
@@ -14,7 +14,13 @@ python scripts/serve.py --directory . --port 8765
 
 两套页面左上角返回展厅，顶部切换效果；手机也保留导航。01 的影像档案、设置、沉浸和时间轴继续可用。
 
-## 02 的视频动画与网格对照
+Matrix 页面现已对齐寻色迁移的完整展厅风格，恢复暖白中文标题、章节文案与画面状态卡，补齐页头影像档案、巡航控制、下一幕入口、侧边选幕和底部影像导航。四个系列共用这套页面组件，影像档案和导演台都可切换 [花园初见原版](dist/matrix-motion.html)、[浮光花园视频](dist/matrix-video.html)、[青空偏航](dist/matrix-anime.html) 和 [绯刃交锋](dist/matrix-battle.html)。纯画面与沉浸继续可选。[界面说明](docs/MATRIX_INTERFACE.md)。
+
+## 02 的战斗番、青空日漫与历史对照
+
+最新“绯刃交锋”在同样的五首帧、五视频流程中加入战斗番主题。红衣剑士与深蓝对手在同一竞技场中对峙、突进、交锋、腾空与施展决胜斩，青紫刀光和明确身体位移配合实时 Matrix 点阵。[战斗番说明](docs/BATTLE_MOTION.md) · [实际提示词](assets/matrix-battle/PROMPTS.md)。
+
+前一组 [“青空偏航”](dist/matrix-anime.html) 保留，包含奔跑、近景绕行、螺旋下坠、几何空间穿越和纸飞机滑行。人体有问题的首帧已在视频生成前替换，提示词和审片局限完整保留。[五镜头说明](docs/ANIME_MOTION.md) · [实际提示词](assets/matrix-anime/PROMPTS.md)。
 
 2026-09-11 新增视频版，使用用户授权的阿里云 Token Plan 生成两个 5 秒、720P 片段。人物转头、抬手与鱼的游动来自视频，点阵与显影仍由网页实时处理。导演台可以关闭“画面自身运动”比较首帧，也可以进入 [原网格版本](dist/matrix-motion.html)。[视频接入、实际用量和验证说明](docs/VIDEO_MOTION.md) · [实际生成提示词](assets/matrix-video/PROMPTS.md)。
 
@@ -39,10 +45,14 @@ python scripts/serve.py --directory . --port 8765
 ```powershell
 python scripts/build_matrix.py --linked
 python scripts/build_matrix.py --linked --scenes examples/matrix-video/scenes.json --config examples/matrix-video/config.json --output dist/matrix-video.html
+python scripts/build_matrix.py --linked --scenes examples/matrix-anime/scenes.json --config examples/matrix-anime/config.json --output dist/matrix-anime.html
+python scripts/build_matrix.py --linked --scenes examples/matrix-battle/scenes.json --config examples/matrix-battle/config.json --output dist/matrix-battle.html
 python scripts/build_showcase.py
 # 包含全部图层的离线版本
 python scripts/build_matrix.py --output dist/matrix-motion-offline.html
 python scripts/build_matrix.py --scenes examples/matrix-video/scenes.json --config examples/matrix-video/config.json --output dist/matrix-video-offline.html
+python scripts/build_matrix.py --scenes examples/matrix-anime/scenes.json --config examples/matrix-anime/config.json --output dist/matrix-anime-offline.html
+python scripts/build_matrix.py --scenes examples/matrix-battle/scenes.json --config examples/matrix-battle/config.json --output dist/matrix-battle-offline.html
 # 旧星铁 Matrix 配置仍可单独构建
 python scripts/build_matrix.py --scenes examples/starrail/scenes.json --config examples/matrix-motion/starrail.config.json --output dist/matrix-motion-starrail.html
 ```

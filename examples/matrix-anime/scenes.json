@@ -1,0 +1,77 @@
+[
+  {
+    "slug": "rooftop",
+    "name": "追风起跑",
+    "en": "ROOFTOP DASH",
+    "line1": "青空之间，",
+    "line2": "镜头偏航。",
+    "caption": "简洁日漫原画与大幅运动的五段视频。",
+    "tag": "KINETIC ANIME STUDY",
+    "accent": "#ff7777",
+    "position": [
+      0.5,
+      0.5
+    ],
+    "src": "../../assets/matrix-anime/01-rooftop-poster.jpg"
+  },
+  {
+    "slug": "turn",
+    "name": "回眸擦镜",
+    "en": "TURN AND WIPE",
+    "line1": "青空之间，",
+    "line2": "镜头偏航。",
+    "caption": "简洁日漫原画与大幅运动的五段视频。",
+    "tag": "KINETIC ANIME STUDY",
+    "accent": "#19c9f2",
+    "position": [
+      0.5,
+      0.5
+    ],
+    "src": "../../assets/matrix-anime/02-turn-poster.jpg"
+  },
+  {
+    "slug": "fall",
+    "name": "螺旋下坠",
+    "en": "SPIRAL FALL",
+    "line1": "青空之间，",
+    "line2": "镜头偏航。",
+    "caption": "简洁日漫原画与大幅运动的五段视频。",
+    "tag": "KINETIC ANIME STUDY",
+    "accent": "#409dea",
+    "position": [
+      0.5,
+      0.5
+    ],
+    "src": "../../assets/matrix-anime/03-fall-poster.jpg"
+  },
+  {
+    "slug": "tunnel",
+    "name": "穿越方界",
+    "en": "GEOMETRIC RUSH",
+    "line1": "青空之间，",
+    "line2": "镜头偏航。",
+    "caption": "简洁日漫原画与大幅运动的五段视频。",
+    "tag": "KINETIC ANIME STUDY",
+    "accent": "#254fcb",
+    "position": [
+      0.5,
+      0.5
+    ],
+    "src": "../../assets/matrix-anime/04-tunnel-poster.jpg"
+  },
+  {
+    "slug": "sky",
+    "name": "纸翼回航",
+    "en": "PAPER SKY",
+    "line1": "青空之间，",
+    "line2": "镜头偏航。",
+    "caption": "简洁日漫原画与大幅运动的五段视频。",
+    "tag": "KINETIC ANIME STUDY",
+    "accent": "#f77d83",
+    "position": [
+      0.5,
+      0.5
+    ],
+    "src": "../../assets/matrix-anime/05-sky-poster.jpg"
+  }
+]

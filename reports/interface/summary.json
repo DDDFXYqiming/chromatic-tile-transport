@@ -1,0 +1,14 @@
+{
+  "date": "2026-09-12",
+  "interfaceChecks": 7,
+  "matrixBrowserChecks": 79,
+  "transportBrowserChecks": 33,
+  "pythonTests": 40,
+  "transportNumericChecks": 19,
+  "sourceMediaFilesVerifiedUnchanged": 53,
+  "allFourCollectionsRetained": true,
+  "timingUnchanged": true,
+  "originalTransportSourcesUnchanged": true,
+  "screenshots": "reports/interface/",
+  "note": "The in-app browser was also used to open the archive, switch into battle video and observe continued playback."
+}

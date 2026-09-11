@@ -1,0 +1,37 @@
+{
+  "model": "happyhorse-1.1-i2v",
+  "endpoint": "https://token-plan.cn-beijing.maas.aliyuncs.com",
+  "credentialSource": "Pi aliyun-tokenplan provider (not copied)",
+  "prompt": "以首帧为起点制作5秒纸飞机冲浪的日漫片头收束镜头。保持同一成年女性、简单白蓝服装、短蓝发和青色发夹，保持巨型白纸飞机、大珊瑚红环、钴蓝带状图形与青蓝天空的简洁赛璐璐美术。\n\n0–2秒，纸飞机迅速向红环飞去，先向左倾斜约30度再回正；人物双脚始终稳稳踩在飞机中央结构上，双膝随倾斜屈伸，身体明显向相反方向压重心，双臂展开调整平衡。头发和外套大幅向后飘动。云层与蓝色带状图形快速从下方经过。\n2–4秒，纸飞机从红环中高速穿过并向右倾斜约40度，相机绕人物和飞机从前侧到后侧移动约120度，地平线跟随产生明显滚转，飞机在画面中的朝向和大小都有清楚变化。近处白色机翼擦过镜头，带来强烈前景视差。\n4–5秒，相机贴着飞机俯冲，白色屋顶从画面下方迅速升起，人物屈膝准备迎接下一个动作，保持身体支撑和双脚位置合理，为回到屋顶奔跑的镜头接势。\n\n动作与运镜幅度大、正常偏快速度、清楚连贯，不能做成缓慢悬浮静图。人物的头颈、肩肘、单一骨盆、双膝与双脚结构保持稳定，无多余肢体、反折膝盖或悬空脚。保持二维线条和平涂阴影，避免整段模糊、写实或3D风格、细碎复杂纹理。不要字幕、文字、标志或UI。",
+  "references": [
+    {
+      "file": "assets/matrix-anime/first-frames/05-sky.png",
+      "sha256": "da9285b103660128aec5e6385ccd5eff54855f17030ea453d1ae042fac33b4a4"
+    }
+  ],
+  "parameters": {
+    "resolution": "720P",
+    "duration": 5,
+    "watermark": false,
+    "seed": 20260925
+  },
+  "submittedAt": "2026-09-11T14:08:17.548333+00:00",
+  "status": "SUCCEEDED",
+  "task_id": "aeb5620b-8e22-484b-88d0-583d152a7fa6",
+  "request_id": "83ccca24-2929-4ed9-8120-0a2cac6c07c1",
+  "usage": {
+    "video_count": 1,
+    "duration": 5,
+    "SR": 720,
+    "output_video_duration": 5,
+    "input_video_duration": 0
+  },
+  "submit_time": "2026-09-11 22:08:16.378",
+  "scheduled_time": "2026-09-11 22:08:16.449",
+  "end_time": "2026-09-11 22:09:38.050",
+  "output": {
+    "file": "assets/matrix-anime/originals/05-sky.mp4",
+    "bytes": 3747277,
+    "sha256": "89e121096fdcc769ca551872749063a4fd0846487cc3239f1a65c5d786192e75"
+  }
+}

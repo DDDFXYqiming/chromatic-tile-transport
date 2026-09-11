@@ -1,0 +1,102 @@
+{
+  "date": "2026-09-12",
+  "environment": "Windows-11-10.0.26200-SP0",
+  "passed": true,
+  "checks": [
+    {
+      "name": "The original garden and all three video collections retain full page components",
+      "passed": true,
+      "detail": {
+        "motion": 3,
+        "video": 2,
+        "anime": 5,
+        "battle": 5
+      }
+    },
+    {
+      "name": "Archive selection, side navigation, hero action and chapter copy stay synchronized",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Opening the archive freezes image and video motion; Escape restores focus and playback",
+      "passed": true,
+      "detail": [
+        "motion",
+        "battle"
+      ]
+    },
+    {
+      "name": "Closing the archive preserves a deliberately paused timeline",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Pure image and immersive modes remain available without losing the full page view",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Desktop, small phone and landscape layouts avoid component overlap and horizontal scroll",
+      "passed": true,
+      "detail": [
+        [
+          "motion",
+          1731,
+          1184
+        ],
+        [
+          "motion",
+          1161,
+          790
+        ],
+        [
+          "motion",
+          390,
+          844
+        ],
+        [
+          "motion",
+          320,
+          568
+        ],
+        [
+          "motion",
+          844,
+          390
+        ],
+        [
+          "battle",
+          1731,
+          1184
+        ],
+        [
+          "battle",
+          1161,
+          790
+        ],
+        [
+          "battle",
+          390,
+          844
+        ],
+        [
+          "battle",
+          320,
+          568
+        ],
+        [
+          "battle",
+          844,
+          390
+        ]
+      ]
+    },
+    {
+      "name": "Shared page components have no uncaught browser errors",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "errors": []
+}

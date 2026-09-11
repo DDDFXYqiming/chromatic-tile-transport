@@ -1,0 +1,22 @@
+{
+  "suite": "matrix-five-shot-clock",
+  "passed": true,
+  "profiles": [
+    {
+      "profile": "anime",
+      "passed": true,
+      "shotCount": 5,
+      "cycleSeconds": 21.5,
+      "playbackRate": 0.9627831715210357,
+      "allFiveJoinsContinuous": true
+    },
+    {
+      "profile": "battle",
+      "passed": true,
+      "shotCount": 5,
+      "cycleSeconds": 21.5,
+      "playbackRate": 0.9627831715210357,
+      "allFiveJoinsContinuous": true
+    }
+  ]
+}

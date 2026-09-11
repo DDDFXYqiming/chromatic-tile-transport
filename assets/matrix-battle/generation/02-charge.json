@@ -1,0 +1,37 @@
+{
+  "model": "happyhorse-1.1-i2v",
+  "endpoint": "https://token-plan.cn-beijing.maas.aliyuncs.com",
+  "credentialSource": "Pi aliyun-tokenplan provider (not copied)",
+  "prompt": "5秒连续二维战斗番作画镜头，2010年后的日本电视动画风格。严格延续首帧角色、红短夹克黑上衣深灰长裤、短蓝黑发青色发夹，以及深蓝封闭头盔对手；每人只有一把剑，主角青色、对手紫色。线条简洁，少量平涂阴影，大块速度线与冲击图形。动作快速有重量，正常播放速度，身体在场地上发生明显位移，镜头有明确视差。保持两臂两腿、正常关节方向、双脚接地或起跳落地的因果；剑柄始终握在手里。无流血、伤口、肢体破坏，无文字、水印、UI。不要3D写实，不要只让头发晃动，不要把静图平移缩放当整段动画，不要长时间慢镜定格。沿地面高速冲刺并近身擦过的追拍。0–2秒，女主保持朝画面右方冲刺，双腿进行至少两次交替完整跑步，右手的刀低垂拖在身后，左臂摆动；镜头与她并排平移，背景柱子明显从右向左扫过。2–3.7秒，对手向她挥出紫色水平斩，女主屈膝降低上身，从斩击下方滑步穿过，同时右臂挥出一记向外的青色斩弧，剑始终在右手。3.7–5秒，女主从对手身旁跑过两步后双脚踩地急停转身，镜头绕到她右前方约60度，由全身过渡到膝上中景，红衣旋转展开；对手在后景转向她。画面始终至少清晰看见女主躯干和腿部的自然连接。",
+  "references": [
+    {
+      "file": "assets/matrix-battle/first-frames/02-charge.png",
+      "sha256": "7ee0713229afd9fc2d8bd2eeaaa3ca938f4e58ec29d895c8a1c6f5b4108c55a7"
+    }
+  ],
+  "parameters": {
+    "resolution": "720P",
+    "duration": 5,
+    "watermark": false,
+    "seed": 20260932
+  },
+  "submittedAt": "2026-09-11T15:21:13.475929+00:00",
+  "status": "SUCCEEDED",
+  "task_id": "822b1e30-7294-47e8-91f7-22a487aeab23",
+  "request_id": "537b1193-14e5-47e0-a703-a8643ae99bff",
+  "usage": {
+    "video_count": 1,
+    "duration": 5,
+    "SR": 720,
+    "output_video_duration": 5,
+    "input_video_duration": 0
+  },
+  "submit_time": "2026-09-11 23:21:11.883",
+  "scheduled_time": "2026-09-11 23:21:11.959",
+  "end_time": "2026-09-11 23:22:29.086",
+  "output": {
+    "file": "assets/matrix-battle/originals/02-charge.mp4",
+    "bytes": 5885158,
+    "sha256": "279dcf869106590d7b8c3b6fb2525b0a406ba59f9f768e5eca03a1f5e6ec9d9a"
+  }
+}

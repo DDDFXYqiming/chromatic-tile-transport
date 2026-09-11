@@ -1,0 +1,77 @@
+[
+  {
+    "slug": "faceoff",
+    "name": "刃前对峙",
+    "en": "BEFORE THE CLASH",
+    "line1": "绯衣掠影，",
+    "line2": "青刃交锋。",
+    "caption": "冲刺、格挡与腾空，五段连续战斗镜头。",
+    "tag": "BATTLE ANIME STUDY",
+    "accent": "#eb465b",
+    "position": [
+      0.5,
+      0.5
+    ],
+    "src": "../../assets/matrix-battle/01-faceoff-poster.jpg"
+  },
+  {
+    "slug": "charge",
+    "name": "疾行突进",
+    "en": "CRIMSON CHARGE",
+    "line1": "绯衣掠影，",
+    "line2": "青刃交锋。",
+    "caption": "冲刺、格挡与腾空，五段连续战斗镜头。",
+    "tag": "BATTLE ANIME STUDY",
+    "accent": "#16d9ea",
+    "position": [
+      0.5,
+      0.5
+    ],
+    "src": "../../assets/matrix-battle/02-charge-poster.jpg"
+  },
+  {
+    "slug": "clash",
+    "name": "双刃交锋",
+    "en": "CROSSING BLADES",
+    "line1": "绯衣掠影，",
+    "line2": "青刃交锋。",
+    "caption": "冲刺、格挡与腾空，五段连续战斗镜头。",
+    "tag": "BATTLE ANIME STUDY",
+    "accent": "#c34bea",
+    "position": [
+      0.5,
+      0.5
+    ],
+    "src": "../../assets/matrix-battle/03-clash-poster.jpg"
+  },
+  {
+    "slug": "vault",
+    "name": "腾空避斩",
+    "en": "AERIAL EVADE",
+    "line1": "绯衣掠影，",
+    "line2": "青刃交锋。",
+    "caption": "冲刺、格挡与腾空，五段连续战斗镜头。",
+    "tag": "BATTLE ANIME STUDY",
+    "accent": "#21cadd",
+    "position": [
+      0.5,
+      0.5
+    ],
+    "src": "../../assets/matrix-battle/04-vault-poster.jpg"
+  },
+  {
+    "slug": "finish",
+    "name": "青刃决意",
+    "en": "FINAL ARC",
+    "line1": "绯衣掠影，",
+    "line2": "青刃交锋。",
+    "caption": "冲刺、格挡与腾空，五段连续战斗镜头。",
+    "tag": "BATTLE ANIME STUDY",
+    "accent": "#f24d64",
+    "position": [
+      0.5,
+      0.5
+    ],
+    "src": "../../assets/matrix-battle/05-finish-poster.jpg"
+  }
+]

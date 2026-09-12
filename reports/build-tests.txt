@@ -40,6 +40,6 @@ test_ranges_return_exact_bytes_and_lengths (test_video_serving.VideoServingTests
 test_whole_file (test_video_serving.VideoServingTests.test_whole_file) ... ok
 
 ----------------------------------------------------------------------
-Ran 40 tests in 13.267s
+Ran 40 tests in 9.954s
 
 OK

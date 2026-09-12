@@ -10,22 +10,22 @@
 
 | 效果 | 入口 | 看到什么 |
 | --- | --- | --- |
-| 寻色迁移 | [效果 01](dist/index.html) | 格片根据颜色、位置和局部亮度寻找目标位置，再沿各自的曲线完成转场 |
+| 寻色迁移 | [效果 01](dist/readme-transport.html) | 格片根据颜色、位置和局部亮度寻找目标位置，再沿各自的曲线完成转场 |
 | Matrix Motion | [效果 02](dist/matrix-battle.html) | 原画、视频、线描和固定点阵在同一条时间轴上重新显影 |
 
-## 先看项目本身
+## 看两段实际演示
 
-这里放的是实际页面截图，不是单独的素材封面。第一张能看到分层版的页头、状态卡、章节标题、时间轴和三个取景。第二张是视频版，底部的五个缩略图和右上角的 `WEBGL 2 / VIDEO` 都来自真正运行中的页面。
+### 寻色迁移
 
-![Matrix Motion 分层版实际页面](reports/interface/motion-1731.png)
+用现有 AI 插画跑一遍寻色转场。格片从花园里拆开，沿各自的路径移动，再拼成下一张画面。视频保留了页面和时间轴，能看清完整的变化过程。
 
-![绯刃交锋视频版实际页面](reports/interface/battle-1731.png)
+https://github.com/user-attachments/assets/f76678ea-3752-4a0b-a0c3-4634ce85f2b4
 
-下面是网页逐帧导出的完整战斗演示。GitHub 会过滤 README 里的原生视频标签，所以这里用实际页面截图做稳定的预览，点开即可播放同一个 MP4。
+### Matrix Motion
 
-[![打开绯刃交锋完整演示](reports/interface/battle-1731.png)](reports/battle/matrix-battle-preview.mp4)
+选的是「绯刃交锋」这一组。人物在运动，画面也会经过线描和点阵切换，21.5 秒看完一轮。页头、章节导航和转场都来自实际网页。
 
-[直接打开 MP4](reports/battle/matrix-battle-preview.mp4)
+https://github.com/user-attachments/assets/ad2d0456-bcb2-4b8d-ac2b-1b06ea7c28c8
 
 Matrix Motion 现在保留四个版本。最初的花园分层版、浮光花园双视频、青空偏航五镜头和绯刃交锋五镜头都在影像档案里，可以从页面右上角切换。
 

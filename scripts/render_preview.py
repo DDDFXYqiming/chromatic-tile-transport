@@ -9,7 +9,8 @@ p.add_argument('--html',type=Path,default=ROOT/'dist/index.html');p.add_argument
 p.add_argument('--fps',type=int,default=24);p.add_argument('--pairs',type=int,default=2);p.add_argument('--width',type=int,default=960);p.add_argument('--height',type=int,default=640)
 a=p.parse_args()
 if not 1<=a.fps<=60 or a.pairs<1:p.error('fps: 1–60; pairs: >=1')
-if not shutil.which('ffmpeg'):p.error('ffmpeg is required for video export')
+ffmpeg=os.environ.get('FFMPEG_BIN') or shutil.which('ffmpeg')
+if not ffmpeg:p.error('ffmpeg is required for video export; set FFMPEG_BIN or add it to PATH')
 a.output.parent.mkdir(parents=True,exist_ok=True)
 with sync_playwright() as pw:
     kw={'headless':True};exe=os.environ.get('CHROME_BIN') or shutil.which('chromium') or shutil.which('google-chrome')
@@ -19,7 +20,7 @@ with sync_playwright() as pw:
     page.set_content(a.html.read_text(encoding='utf-8'));page.wait_for_function('window.WarpArchive');page.evaluate('WarpArchive.pause()')
     page.wait_for_function('WarpArchive.getState().plansReady===WarpArchive.getState().sceneCount',timeout=120000)
     state=page.evaluate('WarpArchive.getState()');pairs=min(a.pairs,state['sceneCount']);duration=state['options']['duration'];hold=.45
-    cmd=['ffmpeg','-y','-loglevel','error','-f','image2pipe','-vcodec','mjpeg','-r',str(a.fps),'-i','-','-an','-c:v','libx264','-preset','fast','-crf','21','-pix_fmt','yuv420p','-movflags','+faststart',str(a.output)]
+    cmd=[ffmpeg,'-y','-loglevel','error','-f','image2pipe','-vcodec','mjpeg','-r',str(a.fps),'-i','-','-an','-c:v','libx264','-preset','fast','-crf','21','-pix_fmt','yuv420p','-movflags','+faststart',str(a.output)]
     process=subprocess.Popen(cmd,stdin=subprocess.PIPE)
     try:
         for pair in range(pairs):

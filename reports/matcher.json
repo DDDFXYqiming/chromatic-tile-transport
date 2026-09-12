@@ -21,7 +21,7 @@
         "swaps": 0,
         "spatial": 0.022,
         "hash": "d0a86585",
-        "computeMs": 26.37960000000001
+        "computeMs": 43.913700000000006
       }
     },
     {
@@ -44,7 +44,7 @@
         "swaps": 6,
         "spatial": 0.022,
         "hash": "cf4054dd",
-        "computeMs": 82.51729999999998
+        "computeMs": 110.72810000000001
       }
     },
     {
@@ -90,7 +90,7 @@
         "swaps": 0,
         "spatial": 0.022,
         "hash": "d0a86585",
-        "computeMs": 14.263899999999978
+        "computeMs": 13.473500000000058
       }
     },
     {
@@ -113,7 +113,7 @@
         "swaps": 1,
         "spatial": 0.002,
         "hash": "aa0cfe5d",
-        "computeMs": 16.85759999999999
+        "computeMs": 25.04200000000003
       }
     },
     {

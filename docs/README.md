@@ -14,6 +14,8 @@ The root README is meant to help someone understand the project and open the dem
 
 ## Asset and prompt records
 
+- [README video previews](README_MEDIA.md) records the two native GitHub players and how their clips were exported.
+
 - [Aozora Drift](ANIME_MOTION.md) records the five-shot anime study and its review limits.
 - [Crimson Edge](BATTLE_MOTION.md) records the five-shot battle study and its review limits.
 - [PixiJS skill notes](PIXI_SKILLS.md) records the upstream skill selection and the APIs used in the mesh compositor.

@@ -1,0 +1,14 @@
+{
+  "transport": {
+    "file": "reports/readme/transport-demo.mp4",
+    "url": "https://github.com/user-attachments/assets/f76678ea-3752-4a0b-a0c3-4634ce85f2b4",
+    "bytes": 5831936,
+    "note": "Actual Effect 01 rendered with existing AI assets; no game artwork."
+  },
+  "matrix": {
+    "file": "reports/readme/matrix-demo.mp4",
+    "url": "https://github.com/user-attachments/assets/ad2d0456-bcb2-4b8d-ac2b-1b06ea7c28c8",
+    "bytes": 7623742,
+    "note": "Actual Matrix Motion battle page, complete 21.5-second cycle with interface."
+  }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "garden",
+    "name": "浮光花园",
+    "en": "GARDEN IN BLUE",
+    "line1": "让色彩相遇，",
+    "line2": "让画面相连。",
+    "caption": "沿着每一块颜色，走向下一幅画面。",
+    "tag": "AI ART STUDY",
+    "accent": "#85cfe2",
+    "position": [
+      0.5,
+      0.5
+    ],
+    "src": "../../assets/matrix-botanical/preview-wide.webp"
+  },
+  {
+    "slug": "sky",
+    "name": "青空回眸",
+    "en": "A TURN TOWARD SKY",
+    "line1": "跃入青空，",
+    "line2": "写下另一帧。",
+    "caption": "一幅画的颜色，继续出现在下一幅里。",
+    "tag": "AI ART STUDY",
+    "accent": "#8ccdea",
+    "position": [
+      0.5,
+      0.5
+    ],
+    "src": "../../assets/matrix-anime/first-frames/02-turn.png"
+  }
+]

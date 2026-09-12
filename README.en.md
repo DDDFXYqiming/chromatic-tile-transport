@@ -10,22 +10,22 @@ There are two studies in the repository.
 
 | Study | Entry | What it does |
 | --- | --- | --- |
-| Chromatic tile transport | [Effect 01](dist/index.html) | Matches tiles using colour, position and local brightness, then moves them along individual curves |
+| Chromatic tile transport | [Effect 01](dist/readme-transport.html) | Matches tiles using colour, position and local brightness, then moves them along individual curves |
 | Matrix Motion | [Effect 02](dist/matrix-battle.html) | Re-develops artwork, video, line work and a fixed grid on one shared timeline |
 
-## See the project itself
+## Watch the two effects
 
-These are screenshots of the actual pages, rather than standalone asset covers. The first one shows the layered version with its header, status card, scene copy, timeline and three shots. The second one is the video page, including the five-shot filmstrip and the real `WEBGL 2 / VIDEO` status.
+### Chromatic tile transport
 
-![Actual Matrix Motion layered page](reports/interface/motion-1731.png)
+This clip uses the project's existing AI artwork. Tiles leave the garden image, follow their individual paths and settle into the next picture. The page and timeline stay visible throughout the transition.
 
-![Actual Crimson Edge video page](reports/interface/battle-1731.png)
+https://github.com/user-attachments/assets/f76678ea-3752-4a0b-a0c3-4634ce85f2b4
 
-The block below points to the full battle-anime export. GitHub filters native video tags in repository README files, so the reliable README version is an actual page screenshot linked to the same MP4.
+### Matrix Motion
 
-[![Open the full Crimson Edge preview](reports/interface/battle-1731.png)](reports/battle/matrix-battle-preview.mp4)
+Crimson Edge shows moving characters alongside line-work reveals and grid transitions. The clip covers one complete 21.5-second cycle, with the actual page header and scene navigation visible.
 
-[Open the MP4 directly](reports/battle/matrix-battle-preview.mp4)
+https://github.com/user-attachments/assets/ad2d0456-bcb2-4b8d-ac2b-1b06ea7c28c8
 
 Matrix Motion keeps four versions together. The original layered garden, the two-shot garden video, the five-shot Aozora Drift study and the five-shot Crimson Edge study are all available from the image archive in the page header.
 

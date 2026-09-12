@@ -21,12 +21,9 @@
 
 ![绯刃交锋视频版实际页面](reports/interface/battle-1731.png)
 
-下面是网页逐帧导出的完整战斗演示。GitHub 页面支持视频时会直接显示播放器；如果当前客户端不播放，可以点链接打开同一个 MP4。
+下面是网页逐帧导出的完整战斗演示。GitHub 会过滤 README 里的原生视频标签，所以这里用实际页面截图做稳定的预览，点开即可播放同一个 MP4。
 
-<video controls muted loop playsinline preload="metadata" poster="https://raw.githubusercontent.com/DDDFXYqiming/chromatic-tile-transport/main/reports/interface/battle-1731.png" width="100%">
-  <source src="https://raw.githubusercontent.com/DDDFXYqiming/chromatic-tile-transport/main/reports/battle/matrix-battle-preview.mp4" type="video/mp4">
-  <a href="https://github.com/DDDFXYqiming/chromatic-tile-transport/blob/main/reports/battle/matrix-battle-preview.mp4">打开绯刃交锋完整演示</a>
-</video>
+[![打开绯刃交锋完整演示](reports/interface/battle-1731.png)](reports/battle/matrix-battle-preview.mp4)
 
 [直接打开 MP4](reports/battle/matrix-battle-preview.mp4)
 

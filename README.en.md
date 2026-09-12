@@ -21,12 +21,9 @@ These are screenshots of the actual pages, rather than standalone asset covers. 
 
 ![Actual Crimson Edge video page](reports/interface/battle-1731.png)
 
-The block below points to the full battle-anime export. GitHub clients that allow video playback will show a player. If the current renderer does not play it inline, the same MP4 is still available through the link below.
+The block below points to the full battle-anime export. GitHub filters native video tags in repository README files, so the reliable README version is an actual page screenshot linked to the same MP4.
 
-<video controls muted loop playsinline preload="metadata" poster="https://raw.githubusercontent.com/DDDFXYqiming/chromatic-tile-transport/main/reports/interface/battle-1731.png" width="100%">
-  <source src="https://raw.githubusercontent.com/DDDFXYqiming/chromatic-tile-transport/main/reports/battle/matrix-battle-preview.mp4" type="video/mp4">
-  <a href="https://github.com/DDDFXYqiming/chromatic-tile-transport/blob/main/reports/battle/matrix-battle-preview.mp4">Open the full Crimson Edge preview</a>
-</video>
+[![Open the full Crimson Edge preview](reports/interface/battle-1731.png)](reports/battle/matrix-battle-preview.mp4)
 
 [Open the MP4 directly](reports/battle/matrix-battle-preview.mp4)
 

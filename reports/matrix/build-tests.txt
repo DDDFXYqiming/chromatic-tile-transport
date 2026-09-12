@@ -14,6 +14,6 @@ test_unknown_top_level_fails (test_matrix_build.MatrixBuildTests.test_unknown_to
 test_user_text_cannot_break_out_of_script_or_title (test_matrix_build.MatrixBuildTests.test_user_text_cannot_break_out_of_script_or_title) ... ok
 
 ----------------------------------------------------------------------
-Ran 14 tests in 4.163s
+Ran 14 tests in 7.848s
 
 OK

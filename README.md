@@ -1,71 +1,66 @@
-# 星海视觉实验室 · 两套效果，一个仓库
+简体中文 | [English](README.en.md)
 
-| 实验 | 入口 | 素材与动作 |
-|---|---|---|
-| 01 · 寻色迁移 | [Demo](dist/index.html) | 用户提供的五张星铁原画；OKLab 一对一配对、曲线格片迁移 |
-| 02 · 绯刃交锋 / Matrix Motion | [五镜头战斗番 Demo](dist/matrix-battle.html) | 五张简洁赛璐璐首帧生成五段战斗视频，大幅动作与点阵衔接；一轮 21.5 秒 |
+# Chromatic Tile Transport
 
-从仓库根目录启动 [双效果展厅](index.html)：
+一个在浏览器里运行的视觉实验室。
+
+这个仓库起初只是想回答一个很具体的问题。两张图之间的转场，能不能让每一块颜色自己找到下一站。后来问题越做越大，项目里又多了一套 Matrix Motion，用分层画面、真实视频和固定点阵去试另一种方向。
+
+现在这里有两套效果。
+
+| 效果 | 入口 | 看到什么 |
+| --- | --- | --- |
+| 寻色迁移 | [效果 01](dist/index.html) | 格片根据颜色、位置和局部亮度寻找目标位置，再沿各自的曲线完成转场 |
+| Matrix Motion | [效果 02](dist/matrix-battle.html) | 原画、视频、线描和固定点阵在同一条时间轴上重新显影 |
+
+## 先看画面
+
+下面这张是分层版的实际合成画面。人物、鱼、花枝和背景分别进入浏览器，再交给同一套 Matrix 显影处理。
+
+![分层版实际合成画面](assets/matrix-botanical/cover.webp)
+
+这张封面来自现有的 AI 素材组。另一组战斗番视频可以点开下面的首帧预览，再观看完整的 21.5 秒演示。
+
+[![绯刃交锋视频预览](assets/matrix-battle/01-faceoff-poster.jpg)](reports/battle/matrix-battle-preview.mp4)
+
+Matrix Motion 现在保留四个版本。最初的花园分层版、浮光花园双视频、青空偏航五镜头和绯刃交锋五镜头都在影像档案里，可以从页面右上角切换。
+
+## 在本地打开
+
+项目是静态网页，运行时不需要模型、后端或账号。视频也是已经保存进项目的本地文件，构建和播放不会读取生成服务的凭据。
+
+需要 Python 3.10 或以上。在仓库根目录运行下面的命令。
 
 ```powershell
 python scripts/serve.py --directory . --port 8765
-# http://127.0.0.1:8765/
 ```
 
-两套页面左上角返回展厅，顶部切换效果；手机也保留导航。01 的影像档案、设置、沉浸和时间轴继续可用。
+然后打开 `http://127.0.0.1:8765/index.html`。服务仓库根目录很重要，因为展厅页面会从根目录寻找 `dist`、`src` 和 `assets`。
 
-Matrix 页面现已对齐寻色迁移的完整展厅风格，恢复暖白中文标题、章节文案与画面状态卡，补齐页头影像档案、巡航控制、下一幕入口、侧边选幕和底部影像导航。四个系列共用这套页面组件，影像档案和导演台都可切换 [花园初见原版](dist/matrix-motion.html)、[浮光花园视频](dist/matrix-video.html)、[青空偏航](dist/matrix-anime.html) 和 [绯刃交锋](dist/matrix-battle.html)。纯画面与沉浸继续可选。[界面说明](docs/MATRIX_INTERFACE.md)。
+页面里可以用空格播放或暂停，用左右键换幕，用滚轮和时间轴倒拖。Matrix Motion 的导演台可以切换原画、双色、色块、线描和固定点阵。视频版还可以暂时关掉画面自身运动，用来比较首帧和视频。
 
-## 02 的战斗番、青空日漫与历史对照
+## 如果想改它
 
-最新“绯刃交锋”在同样的五首帧、五视频流程中加入战斗番主题。红衣剑士与深蓝对手在同一竞技场中对峙、突进、交锋、腾空与施展决胜斩，青紫刀光和明确身体位移配合实时 Matrix 点阵。[战斗番说明](docs/BATTLE_MOTION.md) · [实际提示词](assets/matrix-battle/PROMPTS.md)。
+先从 [docs/README.md](docs/README.md) 开始。那里按用途放了构建、时间轴、分层、视频、PixiJS、验收和素材说明。
 
-前一组 [“青空偏航”](dist/matrix-anime.html) 保留，包含奔跑、近景绕行、螺旋下坠、几何空间穿越和纸飞机滑行。人体有问题的首帧已在视频生成前替换，提示词和审片局限完整保留。[五镜头说明](docs/ANIME_MOTION.md) · [实际提示词](assets/matrix-anime/PROMPTS.md)。
-
-2026-09-11 新增视频版，使用用户授权的阿里云 Token Plan 生成两个 5 秒、720P 片段。人物转头、抬手与鱼的游动来自视频，点阵与显影仍由网页实时处理。导演台可以关闭“画面自身运动”比较首帧，也可以进入 [原网格版本](dist/matrix-motion.html)。[视频接入、实际用量和验证说明](docs/VIDEO_MOTION.md) · [实际生成提示词](assets/matrix-video/PROMPTS.md)。
-
-保留的网格版本是**同一组素材、三个镜头**的阶段性实验。视频版本已经有不同构图与主体动作，但仍需继续审看角色细节和画风一致性，本版不代表最终视觉优化完成。
-
-[视觉效果使用指南](docs/MATRIX_VISUAL_GUIDE.md) · [提示词与决策记录](docs/MATRIX_PROMPT_LOG.md)
-
-以下介绍保留的网格对照版。
-
-![浮光花园实际合成画面](assets/matrix-botanical/cover.webp)
-
-人物、鱼、花枝和背景分别加载。花枝复用为远景与前景两个实例，各层有自己的位置、大小、转角、透明度、深度和漂移。采用已安装的官方 PixiJS Skills 方法：MeshPlane 让人物呼吸、发梢与花枝弯曲，MeshRope 让鱼身与尾部摆动。合成画面交给原来的 WebGL 2 显影与点阵渲染器；每帧没有截图编码或模型调用。[Skill 选择、安装和实际应用](docs/PIXI_SKILLS.md)。
-
-默认使用原画优先的导演编排，每幕 5.2 秒：完整原画 3.04 秒，点阵整段（含进入与退出）1.20 秒，其他显影合计 0.96 秒。三镜头一轮 15.6 秒。导演台会显示实际时间分配，也可选择“原画”独立观看镜头，或固定为其他显影模式。
-
-导演台提供图层开关、独立漂移、局部形变及 0–1.5× 动作幅度。打开“定机位看动作”会固定当前构图，仍可播放局部动作；关闭“局部形变”即可比较。关闭定机位后恢复镜头和显影。点击“慢看双镜头切换”可观察点阵衔接，再次点击退出。空格暂停，F 沉浸，Esc 返回；时间轴和滚轮可以倒拖。
-
-新素材在 `assets/matrix-botanical/`，使用内置 imagegen 制作，透明 PNG 的 alpha 已检查。[素材与完整提示词](assets/matrix-botanical/PROMPTS.md) · [分层实现与参数](docs/LAYERED_MOTION.md) · [Matrix 显影原理](docs/MATRIX_MOTION.md)。
-
-## 构建与验证
-
-```powershell
-python scripts/build_matrix.py --linked
-python scripts/build_matrix.py --linked --scenes examples/matrix-video/scenes.json --config examples/matrix-video/config.json --output dist/matrix-video.html
-python scripts/build_matrix.py --linked --scenes examples/matrix-anime/scenes.json --config examples/matrix-anime/config.json --output dist/matrix-anime.html
-python scripts/build_matrix.py --linked --scenes examples/matrix-battle/scenes.json --config examples/matrix-battle/config.json --output dist/matrix-battle.html
-python scripts/build_showcase.py
-# 包含全部图层的离线版本
-python scripts/build_matrix.py --output dist/matrix-motion-offline.html
-python scripts/build_matrix.py --scenes examples/matrix-video/scenes.json --config examples/matrix-video/config.json --output dist/matrix-video-offline.html
-python scripts/build_matrix.py --scenes examples/matrix-anime/scenes.json --config examples/matrix-anime/config.json --output dist/matrix-anime-offline.html
-python scripts/build_matrix.py --scenes examples/matrix-battle/scenes.json --config examples/matrix-battle/config.json --output dist/matrix-battle-offline.html
-# 旧星铁 Matrix 配置仍可单独构建
-python scripts/build_matrix.py --scenes examples/starrail/scenes.json --config examples/matrix-motion/starrail.config.json --output dist/matrix-motion-starrail.html
-```
+最常用的检查命令如下。
 
 ```powershell
 $env:PYTHONUTF8 = '1'
-# 使用已安装 Chrome 时可设置 CHROME_BIN
 python scripts/check_matrix.py --browser
 python scripts/check.py --browser
 ```
 
-第一条同时验证旧五图渲染器、网格分层与新视频输入，第二条保持原效果回归。覆盖 alpha、独立运动、定机位形变对比、网格不翻折、三镜头接缝、倒拖、上下文恢复、实际播放、手机布局、兼容路径和离线资源。新分层报告位于 `reports/layers/`；截图和采样视频不代表所有设备的实时帧率。
+效果 01 和效果 02 有各自的源码和时间轴。改 Matrix Motion 时，入口在 `src/matrix/`，生成页面用 `scripts/build_matrix.py`。生成后的 `dist/*.html` 只是产物，源码改完再构建。
 
-01 的完整说明在 [README-transport.md](README-transport.md)。两套技能分别在 `skills/chromatic-tile-transport/` 与 `skills/matrix-motion/`，入口是 [skill.md](skill.md)。
+## 这个仓库现在处于什么状态
 
-01 的游戏美术权利归原权利人。02 使用原创插画与生成视频。网格对照版保留二维形变与 2.5D 镜头；视频版增加转头、眨眼和抬手，仍可能出现生成细节变化。运行时无需模型、CDN、后端或上传服务。Canvas 2D 兼容模式保留分层漂移，局部形变不可用。
+它已经能稳定地作为一个本地视觉实验来运行，时间轴、倒拖、点阵桥、视频解码、离线页面和移动布局都有浏览器检查。画面本身仍然带着生成素材的痕迹。快动作里偶尔会重绘脸、手和武器，视频模型也不会每次都严格照着提示词走。这些局限写在各自的文档里，没有用额外特效把它们藏起来。
+
+如果你想把它换成自己的图片或视频，最值得先读的是 [素材与许可](docs/MEDIA_LICENSE.md)、[复现说明](docs/REPRODUCTION.md) 和 [Matrix 文档索引](docs/README.md)。
+
+## 许可
+
+源代码和脚本按 [MIT License](LICENSE) 发布。示例图片、视频、封面和报告截图有各自的来源与使用边界，不能因为代码开源就自动获得新的素材授权。请先读 [docs/MEDIA_LICENSE.md](docs/MEDIA_LICENSE.md)，再替换成你有权使用的素材。
+
+项目里的视觉实验由用户和生成工具共同完成，项目本身不代表任何素材的原作者，也不提供模型服务。

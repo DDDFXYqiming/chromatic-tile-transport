@@ -1,7 +1,5 @@
-# 素材与使用说明
+# Notice
 
-`assets/originals/` 是本次用户上传的五张《崩坏：星穹铁道》PNG；`assets/starrail/` 是前一版 Demo 使用的对应 WebP。游戏、美术图像及图中的标志属于原权利人。本项目不代表官方，不提供游戏账号登录、充值或下载。
+The source code and scripts are released under the [MIT License](LICENSE).
 
-本项目没有通过打包、生成网页或写入私密仓库获得对原图新的授权。代码复用时应替换为有权使用的图片。仓库默认为私密；公开、商业使用等另行确认。未设置开源许可证。
-
-运行时不加载远程字体，交付包中不包含字体文件；浏览器使用系统字体。
+Media files have separate provenance and usage boundaries. Read [docs/MEDIA_LICENSE.md](docs/MEDIA_LICENSE.md) before redistributing images, videos, covers or screenshots.

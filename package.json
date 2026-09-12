@@ -2,7 +2,7 @@
   "name": "chromatic-tile-transport",
   "version": "3.1.0",
   "private": true,
-  "description": "Offline image-driven transitions and PixiJS mesh animation",
+  "description": "A browser visual lab for colour-driven tile transport and Matrix Motion",
   "scripts": {
     "test": "node tests/test_matcher.cjs && node tests/test_timing.cjs"
   },

@@ -17,9 +17,9 @@ There are two studies in the repository.
 
 ### Chromatic tile transport
 
-This clip uses the project's existing AI artwork. Tiles leave the garden image, follow their individual paths and settle into the next picture. The page and timeline stay visible throughout the transition.
+Five AI illustrations use the complete five-scene archive layout, including scene copy, all five thumbnails and the full transitions. Each image holds for 3.2 seconds before a 5.8-second colour-driven transition. The complete cycle takes about 45 seconds.
 
-https://github.com/user-attachments/assets/f76678ea-3752-4a0b-a0c3-4634ce85f2b4
+https://github.com/user-attachments/assets/8773b3f9-8837-4490-bd41-9b429a566d7d
 
 ### Matrix Motion
 

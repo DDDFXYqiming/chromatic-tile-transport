@@ -28,5 +28,41 @@
       0.5
     ],
     "src": "../../assets/matrix-anime/first-frames/02-turn.png"
+  },
+  {
+    "slug": "spiral",
+    "name": "螺旋之间",
+    "en": "SPIRAL DESCENT",
+    "line1": "穿过回旋，",
+    "line2": "落入下一帧。",
+    "caption": "沿着白色阶梯，望向更远的蓝。",
+    "tag": "AI ART STUDY",
+    "accent": "#a1b9ed",
+    "position": [0.5, 0.5],
+    "src": "../../assets/matrix-anime/first-frames/03-fall.png"
+  },
+  {
+    "slug": "crimson",
+    "name": "绯刃交锋",
+    "en": "CRIMSON EDGE",
+    "line1": "绯衣掠影，",
+    "line2": "青刃交锋。",
+    "caption": "风停在刀锋之前，下一步即将落下。",
+    "tag": "AI ART STUDY",
+    "accent": "#ed788b",
+    "position": [0.5, 0.5],
+    "src": "../../assets/matrix-battle/first-frames/01-faceoff.png"
+  },
+  {
+    "slug": "flight",
+    "name": "纸翼回航",
+    "en": "PAPER SKY",
+    "line1": "借一双纸翼，",
+    "line2": "向青空出发。",
+    "caption": "越过云层，再回到最初的花园。",
+    "tag": "AI ART STUDY",
+    "accent": "#79cfe5",
+    "position": [0.5, 0.5],
+    "src": "../../assets/matrix-anime/first-frames/05-sky.png"
   }
 ]

@@ -17,9 +17,9 @@
 
 ### 寻色迁移
 
-用现有 AI 插画跑一遍寻色转场。格片从花园里拆开，沿各自的路径移动，再拼成下一张画面。视频保留了页面和时间轴，能看清完整的变化过程。
+五张 AI 插画沿用五幕影像档案的展示方式，保留章节文案、底部五张缩略图和完整转场。每张图停留 3.2 秒，再用 5.8 秒完成寻色迁移，约 45 秒走完一轮。
 
-https://github.com/user-attachments/assets/f76678ea-3752-4a0b-a0c3-4634ce85f2b4
+https://github.com/user-attachments/assets/8773b3f9-8837-4490-bd41-9b429a566d7d
 
 ### Matrix Motion
 

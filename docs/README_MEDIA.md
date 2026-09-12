@@ -2,7 +2,7 @@
 
 The Chinese and English READMEs share two GitHub video attachments, one per effect.
 
-Effect 01 uses the original transport renderer with an isolated AI-art example in `examples/readme-transport/`. Its inputs are the existing garden composite and the anime close-up. The original game-art demo and renderer are preserved. Effect 02 uses the current Crimson Edge Matrix page, including the header, scene navigation and grid bridges.
+Effect 01 uses the original five-scene archive layout and transport renderer with an isolated AI-art example in `examples/readme-transport/`. Its five inputs are the garden composite, anime close-up, spiral descent, battle face-off and paper-plane flight. It preserves the final page's 3.2-second image hold and 5.8-second transition, for a complete 45-second cycle plus one endpoint frame. The original game-art demo and renderer are preserved. Effect 02 uses the current Crimson Edge Matrix page, including the header, scene navigation and grid bridges.
 
 The videos are deterministic webpage exports, not recordings used to measure real-time performance. Final H.264 files and the permanent attachment URLs are recorded under `reports/readme/`. The README embeds each permanent GitHub attachment URL as its own paragraph, with blank lines around it.
 
@@ -12,7 +12,7 @@ Set `CHROME_BIN` to an installed Chrome executable and `FFMPEG_BIN` to FFmpeg wh
 
 ```sh
 python scripts/build.py --scenes examples/readme-transport/scenes.json --config examples/readme-transport/config.json --output dist/readme-transport.html
-python scripts/render_preview.py --html dist/readme-transport.html --output reports/readme/transport-full.mp4 --pairs 2 --fps 24 --width 1280 --height 800
+python scripts/render_preview.py --html dist/readme-transport.html --output reports/readme/transport-full.mp4 --pairs 5 --fps 24 --width 1280 --height 800
 python scripts/render_matrix_preview.py --battle --duration 21.5 --fps 24 --width 1280 --height 800 --output reports/readme/matrix-full.mp4
 ```
 

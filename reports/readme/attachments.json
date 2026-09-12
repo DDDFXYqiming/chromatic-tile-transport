@@ -1,9 +1,15 @@
 {
   "transport": {
-    "file": "reports/readme/transport-demo.mp4",
-    "url": "https://github.com/user-attachments/assets/f76678ea-3752-4a0b-a0c3-4634ce85f2b4",
-    "bytes": 5831936,
-    "note": "Actual Effect 01 rendered with existing AI assets; no game artwork."
+    "file": "reports/readme/transport-five-demo.mp4",
+    "url": "https://github.com/user-attachments/assets/8773b3f9-8837-4490-bd41-9b429a566d7d",
+    "bytes": 6642313,
+    "sceneCount": 5,
+    "holdSeconds": 3.2,
+    "transitionSeconds": 5.8,
+    "frames": 1081,
+    "fps": 24,
+    "supersedes": "https://github.com/user-attachments/assets/f76678ea-3752-4a0b-a0c3-4634ce85f2b4",
+    "note": "Final five-scene archive layout and playback pacing, using existing AI assets; no game artwork."
   },
   "matrix": {
     "file": "reports/readme/matrix-demo.mp4",

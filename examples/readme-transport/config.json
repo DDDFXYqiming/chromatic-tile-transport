@@ -1,9 +1,9 @@
 {
-  "title": "寻色迁移 · AI 画面演示",
+  "title": "寻色迁移 · 五幕 AI 影像档案",
   "brand": "寻色迁移",
   "description": "AI 插画之间的颜色格片迁移",
   "notice": "使用项目现有 AI 生成素材演示。素材来源与使用范围见 docs/MEDIA_LICENSE.md。",
-  "autoplay": false,
+  "autoplay": true,
   "cleanView": false,
   "options": {
     "density": 152,

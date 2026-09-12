@@ -19,16 +19,18 @@ with sync_playwright() as pw:
     browser=pw.chromium.launch(**kw);page=browser.new_page(viewport={'width':a.width,'height':a.height},device_scale_factor=1)
     page.set_content(a.html.read_text(encoding='utf-8'));page.wait_for_function('window.WarpArchive');page.evaluate('WarpArchive.pause()')
     page.wait_for_function('WarpArchive.getState().plansReady===WarpArchive.getState().sceneCount',timeout=120000)
-    state=page.evaluate('WarpArchive.getState()');pairs=min(a.pairs,state['sceneCount']);duration=state['options']['duration'];hold=.45
+    state=page.evaluate('WarpArchive.getState()');pairs=min(a.pairs,state['sceneCount']);duration=state['options']['duration'];hold=state['options']['holdTime']
     cmd=[ffmpeg,'-y','-loglevel','error','-f','image2pipe','-vcodec','mjpeg','-r',str(a.fps),'-i','-','-an','-c:v','libx264','-preset','fast','-crf','21','-pix_fmt','yuv420p','-movflags','+faststart',str(a.output)]
     process=subprocess.Popen(cmd,stdin=subprocess.PIPE)
     try:
         for pair in range(pairs):
-            frames=round((duration+hold*2)*a.fps)
+            frames=round((duration+hold)*a.fps)
             for frame in range(frames):
                 t=frame/a.fps;progress=max(0,min(1,(t-hold)/duration));page.evaluate('(x)=>WarpArchive.seek(x)',pair+progress)
                 process.stdin.write(page.screenshot(type='jpeg',quality=83))
             print(f'Exported pair {pair+1}/{pairs}',flush=True)
+        page.evaluate('(x)=>WarpArchive.seek(x)',pairs)
+        process.stdin.write(page.screenshot(type='jpeg',quality=83))
         process.stdin.close();code=process.wait()
         if code:raise RuntimeError(f'ffmpeg exited {code}')
     finally:

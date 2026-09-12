@@ -13,15 +13,22 @@ There are two studies in the repository.
 | Chromatic tile transport | [Effect 01](dist/index.html) | Matches tiles using colour, position and local brightness, then moves them along individual curves |
 | Matrix Motion | [Effect 02](dist/matrix-battle.html) | Re-develops artwork, video, line work and a fixed grid on one shared timeline |
 
-## Start with the pictures
+## See the project itself
 
-This is an actual composite frame from the layered garden study. The character, fish, flowers and background are loaded separately and handed to the same Matrix display pipeline.
+These are screenshots of the actual pages, rather than standalone asset covers. The first one shows the layered version with its header, status card, scene copy, timeline and three shots. The second one is the video page, including the five-shot filmstrip and the real `WEBGL 2 / VIDEO` status.
 
-![An actual layered composite](assets/matrix-botanical/cover.webp)
+![Actual Matrix Motion layered page](reports/interface/motion-1731.png)
 
-The cover belongs to the current AI-generated asset set. The battle-anime study has its own local videos as well. Click the frame below to open the 21.5-second exported preview.
+![Actual Crimson Edge video page](reports/interface/battle-1731.png)
 
-[![Battle-anime video preview](assets/matrix-battle/01-faceoff-poster.jpg)](reports/battle/matrix-battle-preview.mp4)
+The block below points to the full battle-anime export. GitHub clients that allow video playback will show a player. If the current renderer does not play it inline, the same MP4 is still available through the link below.
+
+<video controls muted loop playsinline preload="metadata" poster="https://raw.githubusercontent.com/DDDFXYqiming/chromatic-tile-transport/main/reports/interface/battle-1731.png" width="100%">
+  <source src="https://raw.githubusercontent.com/DDDFXYqiming/chromatic-tile-transport/main/reports/battle/matrix-battle-preview.mp4" type="video/mp4">
+  <a href="https://github.com/DDDFXYqiming/chromatic-tile-transport/blob/main/reports/battle/matrix-battle-preview.mp4">Open the full Crimson Edge preview</a>
+</video>
+
+[Open the MP4 directly](reports/battle/matrix-battle-preview.mp4)
 
 Matrix Motion keeps four versions together. The original layered garden, the two-shot garden video, the five-shot Aozora Drift study and the five-shot Crimson Edge study are all available from the image archive in the page header.
 

@@ -13,15 +13,22 @@
 | 寻色迁移 | [效果 01](dist/index.html) | 格片根据颜色、位置和局部亮度寻找目标位置，再沿各自的曲线完成转场 |
 | Matrix Motion | [效果 02](dist/matrix-battle.html) | 原画、视频、线描和固定点阵在同一条时间轴上重新显影 |
 
-## 先看画面
+## 先看项目本身
 
-下面这张是分层版的实际合成画面。人物、鱼、花枝和背景分别进入浏览器，再交给同一套 Matrix 显影处理。
+这里放的是实际页面截图，不是单独的素材封面。第一张能看到分层版的页头、状态卡、章节标题、时间轴和三个取景。第二张是视频版，底部的五个缩略图和右上角的 `WEBGL 2 / VIDEO` 都来自真正运行中的页面。
 
-![分层版实际合成画面](assets/matrix-botanical/cover.webp)
+![Matrix Motion 分层版实际页面](reports/interface/motion-1731.png)
 
-这张封面来自现有的 AI 素材组。另一组战斗番视频可以点开下面的首帧预览，再观看完整的 21.5 秒演示。
+![绯刃交锋视频版实际页面](reports/interface/battle-1731.png)
 
-[![绯刃交锋视频预览](assets/matrix-battle/01-faceoff-poster.jpg)](reports/battle/matrix-battle-preview.mp4)
+下面是网页逐帧导出的完整战斗演示。GitHub 页面支持视频时会直接显示播放器；如果当前客户端不播放，可以点链接打开同一个 MP4。
+
+<video controls muted loop playsinline preload="metadata" poster="https://raw.githubusercontent.com/DDDFXYqiming/chromatic-tile-transport/main/reports/interface/battle-1731.png" width="100%">
+  <source src="https://raw.githubusercontent.com/DDDFXYqiming/chromatic-tile-transport/main/reports/battle/matrix-battle-preview.mp4" type="video/mp4">
+  <a href="https://github.com/DDDFXYqiming/chromatic-tile-transport/blob/main/reports/battle/matrix-battle-preview.mp4">打开绯刃交锋完整演示</a>
+</video>
+
+[直接打开 MP4](reports/battle/matrix-battle-preview.mp4)
 
 Matrix Motion 现在保留四个版本。最初的花园分层版、浮光花园双视频、青空偏航五镜头和绯刃交锋五镜头都在影像档案里，可以从页面右上角切换。
 

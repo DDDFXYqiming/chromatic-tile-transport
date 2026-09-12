@@ -13,3 +13,10 @@ Thumbs.db
 reports/*.pid
 reports/*-log.txt
 reports/frames/
+
+# Local generation inputs and provider job records.
+.local-generation/
+assets/matrix-*/prompts/
+assets/matrix-*/generation/
+assets/matrix-*/PROMPTS.md
+docs/MATRIX_PROMPT_LOG.md

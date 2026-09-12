@@ -67,4 +67,4 @@ python scripts/check.py --browser
 
 源代码和脚本按 [MIT License](LICENSE) 发布。示例图片、视频、封面和报告截图有各自的来源与使用边界，不能因为代码开源就自动获得新的素材授权。请先读 [docs/MEDIA_LICENSE.md](docs/MEDIA_LICENSE.md)，再替换成你有权使用的素材。
 
-项目里的视觉实验由用户和生成工具共同完成，项目本身不代表任何素材的原作者，也不提供模型服务。
+项目包含 AI 生成的示例素材，不代表素材的原作者，也不提供模型服务。

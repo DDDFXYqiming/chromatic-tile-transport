@@ -33,6 +33,7 @@ test_success_verifies_private_before_push (test_publish.PublishTests.test_succes
 test_wrong_account_stops_before_git_changes (test_publish.PublishTests.test_wrong_account_stops_before_git_changes) ... ok
 test_wrong_existing_origin_stops (test_publish.PublishTests.test_wrong_existing_origin_stops) ... ok
 test_async_header_only_on_submission (test_token_plan_video.TokenPlanTests.test_async_header_only_on_submission) ... ok
+test_credentials_use_only_explicit_environment (test_token_plan_video.TokenPlanTests.test_credentials_use_only_explicit_environment) ... ok
 test_error_does_not_echo_credentials (test_token_plan_video.TokenPlanTests.test_error_does_not_echo_credentials) ... ok
 test_head_sends_no_body (test_video_serving.VideoServingTests.test_head_sends_no_body) ... ok
 test_invalid_and_empty_ranges (test_video_serving.VideoServingTests.test_invalid_and_empty_ranges) ... ok
@@ -40,6 +41,6 @@ test_ranges_return_exact_bytes_and_lengths (test_video_serving.VideoServingTests
 test_whole_file (test_video_serving.VideoServingTests.test_whole_file) ... ok
 
 ----------------------------------------------------------------------
-Ran 40 tests in 9.954s
+Ran 41 tests in 4.398s
 
 OK

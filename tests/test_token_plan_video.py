@@ -5,6 +5,11 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 import token_plan_video as client
 
 class TokenPlanTests(unittest.TestCase):
+    def test_credentials_use_only_explicit_environment(self):
+        with patch.dict(client.os.environ,{'TOKEN_PLAN_API_KEY':'sk-sp-test-only'},clear=True),patch.object(Path,'read_text',side_effect=AssertionError('Must not read personal configuration')):
+            self.assertEqual(client.credential(),'sk-sp-test-only')
+        with patch.dict(client.os.environ,{},clear=True):
+            with self.assertRaisesRegex(ValueError,'TOKEN_PLAN_API_KEY'):client.credential()
     def test_async_header_only_on_submission(self):
         response=MagicMock(status=200);response.__enter__.return_value=response;response.read.return_value=b'{"output":{"task_id":"test"}}'
         with patch.object(client,'credential',return_value='sk-sp-test-only'),patch.object(client,'open_url',return_value=response) as request:

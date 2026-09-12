@@ -1,76 +1,9 @@
 {
-  "imageCalls": 5,
-  "selectedFirstFrames": 5,
-  "videoSubmissions": 5,
-  "successfulVideos": 5,
   "sourceSeconds": 25,
   "resolution": "720P",
   "cycleSeconds": 21.5,
   "playbackRate": 0.9627831715210357,
-  "inputHashesMatch": true,
-  "tasks": [
-    {
-      "shot": "01-faceoff",
-      "task_id": "70247a83-401a-435a-9ae6-0e6d24b8f041",
-      "usage": {
-        "video_count": 1,
-        "duration": 5,
-        "SR": 720,
-        "output_video_duration": 5,
-        "input_video_duration": 0
-      },
-      "webBytes": 4573488
-    },
-    {
-      "shot": "02-charge",
-      "task_id": "822b1e30-7294-47e8-91f7-22a487aeab23",
-      "usage": {
-        "video_count": 1,
-        "duration": 5,
-        "SR": 720,
-        "output_video_duration": 5,
-        "input_video_duration": 0
-      },
-      "webBytes": 5336732
-    },
-    {
-      "shot": "03-clash",
-      "task_id": "777a3403-7ce2-4f5b-a507-6c18303510cd",
-      "usage": {
-        "video_count": 1,
-        "duration": 5,
-        "SR": 720,
-        "output_video_duration": 5,
-        "input_video_duration": 0
-      },
-      "webBytes": 5101859
-    },
-    {
-      "shot": "04-vault",
-      "task_id": "02ccb1cf-554c-4e07-ada3-4de3c1aaea5c",
-      "usage": {
-        "video_count": 1,
-        "duration": 5,
-        "SR": 720,
-        "output_video_duration": 5,
-        "input_video_duration": 0
-      },
-      "webBytes": 4604774
-    },
-    {
-      "shot": "05-finish",
-      "task_id": "df148196-b594-4de5-8e27-657be0f5994d",
-      "usage": {
-        "video_count": 1,
-        "duration": 5,
-        "SR": 720,
-        "output_video_duration": 5,
-        "input_video_duration": 0
-      },
-      "webBytes": 4009448
-    }
-  ],
-  "limitations": "Frame-level redraw, hand and weapon detail drift, and occasional tight low-angle cropping remain. Pixel change is not an anatomy rating.",
+  "limitations": "Generated footage can contain inconsistent anatomy, clothing and weapon details.",
   "preview": {
     "file": "reports/battle/matrix-battle-preview.mp4",
     "bytes": 20023536,

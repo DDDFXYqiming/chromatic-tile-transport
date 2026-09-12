@@ -67,4 +67,4 @@ If you want to bring your own images or videos, read [Media and licensing](docs/
 
 The source code and scripts are released under the [MIT License](LICENSE). Images, videos, covers and report screenshots have their own provenance and usage boundaries. Open code does not grant new rights to every media file. Read [docs/MEDIA_LICENSE.md](docs/MEDIA_LICENSE.md) before replacing or redistributing the example media.
 
-The visual studies were assembled by the user with generative tools. This project does not represent the original authors of any included media and does not provide a model service.
+The examples include AI-generated artwork and video. This project does not represent the original authors of any included media and does not provide a model service.

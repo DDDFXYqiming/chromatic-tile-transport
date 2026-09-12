@@ -1,57 +1,39 @@
 {
-  "imageCalls": 5,
-  "rejected": [],
   "selected": [
     {
       "shot": "01-faceoff",
       "file": "assets/matrix-battle/first-frames/01-faceoff.png",
       "sha256": "95fa015792bed2b1d4d9476291ee5d229fa95306ae1de9a21f432470beb9a8af",
       "tool": "built-in image_gen",
-      "prompt": "prompts/01-faceoff-image.txt",
-      "videoPrompt": "prompts/01-faceoff-video.txt",
-      "referenceImage": "assets/matrix-anime/first-frames/02-turn.png",
-      "selection": "selected after silhouette, anatomy and weapon-grip review"
+      "referenceImage": "assets/matrix-anime/first-frames/02-turn.png"
     },
     {
       "shot": "02-charge",
       "file": "assets/matrix-battle/first-frames/02-charge.png",
       "sha256": "7ee0713229afd9fc2d8bd2eeaaa3ca938f4e58ec29d895c8a1c6f5b4108c55a7",
       "tool": "built-in image_gen",
-      "prompt": "prompts/02-charge-image.txt",
-      "videoPrompt": "prompts/02-charge-video.txt",
-      "referenceImage": "assets/matrix-battle/first-frames/01-faceoff.png",
-      "selection": "selected after silhouette, anatomy and weapon-grip review"
+      "referenceImage": "assets/matrix-battle/first-frames/01-faceoff.png"
     },
     {
       "shot": "03-clash",
       "file": "assets/matrix-battle/first-frames/03-clash.png",
       "sha256": "088a58fd6aac836bc1b345a5c9bcadb616ddac77ace05e635c48c677d66b6812",
       "tool": "built-in image_gen",
-      "prompt": "prompts/03-clash-image.txt",
-      "videoPrompt": "prompts/03-clash-video.txt",
-      "referenceImage": "assets/matrix-battle/first-frames/01-faceoff.png",
-      "selection": "selected after silhouette, anatomy and weapon-grip review"
+      "referenceImage": "assets/matrix-battle/first-frames/01-faceoff.png"
     },
     {
       "shot": "04-vault",
       "file": "assets/matrix-battle/first-frames/04-vault.png",
       "sha256": "37ecc616c5a8a072f7f8b48d45bd0dff85511a615661e68f98ef79cd182d1cc8",
       "tool": "built-in image_gen",
-      "prompt": "prompts/04-vault-image.txt",
-      "videoPrompt": "prompts/04-vault-video.txt",
-      "referenceImage": "assets/matrix-battle/first-frames/01-faceoff.png",
-      "selection": "selected after silhouette, anatomy and weapon-grip review"
+      "referenceImage": "assets/matrix-battle/first-frames/01-faceoff.png"
     },
     {
       "shot": "05-finish",
       "file": "assets/matrix-battle/first-frames/05-finish.png",
       "sha256": "ab7bec2f2927ece1333de4610ee1c7edc7ba039180b9b2fd366993e86a8c2da7",
       "tool": "built-in image_gen",
-      "prompt": "prompts/05-finish-image.txt",
-      "videoPrompt": "prompts/05-finish-video.txt",
-      "referenceImage": "assets/matrix-battle/first-frames/01-faceoff.png",
-      "selection": "selected after silhouette, anatomy and weapon-grip review"
+      "referenceImage": "assets/matrix-battle/first-frames/01-faceoff.png"
     }
-  ],
-  "reviewNote": "All five first frames were generated and inspected before any video submission. The running stride, crossed-blade grips, separated airborne knees and grounded two-hand stance were reviewed. Video anatomy still requires playback review."
+  ]
 }

@@ -1,10 +1,10 @@
 """Interactive Token Plan video generation helper. Never called by the website/build.
 
-Credentials are read at request time from the explicitly selected Pi provider.
+Credentials are read at request time from TOKEN_PLAN_API_KEY.
 submit performs ONE paid submission; status/download resume its saved task ID.
 """
 from pathlib import Path
-import argparse,base64,hashlib,json,mimetypes,re,sys
+import argparse,base64,hashlib,json,mimetypes,os,re,sys
 from datetime import datetime,timezone
 from urllib.parse import urlsplit
 from urllib.request import Request,build_opener,HTTPRedirectHandler
@@ -25,12 +25,8 @@ def local(path):
     return p
 
 def credential():
-    data=json.loads((Path.home()/'.pi/agent/models.json').read_text(encoding='utf-8'))
-    provider=data.get('providers',{}).get('aliyun-tokenplan',{})
-    if urlsplit(provider.get('baseUrl','')).hostname!=urlsplit(HOST).hostname:raise ValueError('Pi provider must use the verified Token Plan endpoint')
-    if not any(m.get('id')=='qwen3.8-flash' for m in provider.get('models',[])):raise ValueError('Expected Pi model is missing')
-    key=provider.get('apiKey','')
-    if not isinstance(key,str) or not key.startswith('sk-sp-'):raise ValueError('The selected Pi provider does not contain a Token Plan key')
+    key=os.environ.get('TOKEN_PLAN_API_KEY','').strip()
+    if not key.startswith('sk-sp-'):raise ValueError('Set TOKEN_PLAN_API_KEY to a Token Plan API key')
     return key
 
 def api(method,path,payload=None):
@@ -75,7 +71,7 @@ def submit(args):
         refs.append({'file':image.relative_to(ROOT).as_posix(),'sha256':hashlib.sha256(raw).hexdigest()})
     params={'resolution':args.resolution,'duration':args.duration,'watermark':False,'seed':args.seed}
     if args.model.endswith('-r2v'):params['ratio']='16:9'
-    record={'model':args.model,'endpoint':HOST,'credentialSource':'Pi aliyun-tokenplan provider (not copied)','prompt':prompt,'references':refs,'parameters':params,'submittedAt':datetime.now(timezone.utc).isoformat(),'status':'SUBMITTING'}
+    record={'model':args.model,'endpoint':HOST,'credentialSource':'environment (not copied)','prompt':prompt,'references':refs,'parameters':params,'submittedAt':datetime.now(timezone.utc).isoformat(),'status':'SUBMITTING'}
     # A saved SUBMITTING record prevents accidental duplicate paid requests after timeout.
     write(state,record)
     result=api('POST','/api/v1/services/aigc/video-generation/video-synthesis',{'model':args.model,'input':{'prompt':prompt,'media':media},'parameters':params})

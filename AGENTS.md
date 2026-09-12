@@ -6,7 +6,7 @@ Make source changes under `src/`, never patch the embedded `dist/*.html` directl
 
 Keep timing shared between JavaScript and GLSL. A timing-only change must preserve the source-to-target permutation. Retain the user's artwork and theme. The original PNG assets are not licensed as reusable commercial art.
 
-Do not publish, change repository visibility, deploy Pages, install external services, or upload images without an explicit user request. Private GitHub publication is supported by the local publisher script but was not executed in the original delivery environment.
+Do not publish, change repository visibility, deploy Pages, install external services, or upload images without an explicit user request. The publisher script supports private repositories.
 
 ## Effect 02 / Matrix Motion
 

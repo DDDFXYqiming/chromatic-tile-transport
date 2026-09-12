@@ -1,24 +1,19 @@
 # Documentation
 
-The root README is meant to help someone understand the project and open the demo. The details live here.
+Start with [Reproduction](REPRODUCTION.md) for requirements, local preview, builds and checks. [Media and licensing](MEDIA_LICENSE.md) covers the example assets.
 
-## Start here
+## Implementation
 
-- [Reproduction](REPRODUCTION.md) covers the local server, builds, checks and offline pages.
-- [Media and licensing](MEDIA_LICENSE.md) explains what the code license covers and what still needs separate permission.
-- [Transport notes](TRANSPORT.md) documents the colour-driven tile engine in Effect 01.
-- [Matrix Motion notes](MATRIX_MOTION.md) explains the fixed grid, shared timeline and display modes.
-- [Layered motion](LAYERED_MOTION.md) covers the original garden composition and PixiJS mesh path.
-- [Video motion](VIDEO_MOTION.md) covers local video decoding, bridge timing and deterministic scrubbing.
-- [Matrix interface](MATRIX_INTERFACE.md) records the shared gallery, archive and director-panel layout.
+- [Transport](TRANSPORT.md) explains colour-driven tile matching.
+- [Matrix Motion](MATRIX_MOTION.md) covers the fixed grid and shared timeline.
+- [Layered motion](LAYERED_MOTION.md) describes the garden composition.
+- [Video motion](VIDEO_MOTION.md) covers decoding and deterministic scrubbing.
+- [Interface](MATRIX_INTERFACE.md) describes navigation and playback controls.
+- [PixiJS](PIXI_SKILLS.md) records library APIs and upstream references.
 
-## Asset and prompt records
+## Examples
 
-- [README video previews](README_MEDIA.md) records the two native GitHub players and how their clips were exported.
-
-- [Aozora Drift](ANIME_MOTION.md) records the five-shot anime study and its review limits.
-- [Crimson Edge](BATTLE_MOTION.md) records the five-shot battle study and its review limits.
-- [PixiJS skill notes](PIXI_SKILLS.md) records the upstream skill selection and the APIs used in the mesh compositor.
-- [Visual guide](MATRIX_VISUAL_GUIDE.md) and [prompt log](MATRIX_PROMPT_LOG.md) keep the visual direction and handoff decisions in one place.
-
-The generation records are kept beside their assets under `assets/matrix-video/`, `assets/matrix-anime/` and `assets/matrix-battle/`. The browser never submits a generation request while playing a page.
+- [Aozora Drift](ANIME_MOTION.md) presents the five-shot anime study.
+- [Crimson Edge](BATTLE_MOTION.md) presents the battle study.
+- [Visual guide](MATRIX_VISUAL_GUIDE.md) explains motion and pacing.
+- [README previews](README_MEDIA.md) covers the exported demo videos.

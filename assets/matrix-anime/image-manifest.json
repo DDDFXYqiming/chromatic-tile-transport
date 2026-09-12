@@ -4,52 +4,31 @@
       "shot": "01-rooftop",
       "file": "assets/matrix-anime/first-frames/01-rooftop.png",
       "sha256": "8d0aa7ed5102182bbb6bc812c584752bcb48c87b8ac5ac63b3366bc03a103393",
-      "tool": "built-in image_gen",
-      "prompt": "prompts/01-rooftop-v2-image.txt",
-      "videoPrompt": "prompts/01-rooftop-video.txt",
-      "selection": "revised after anatomy review"
+      "tool": "built-in image_gen"
     },
     {
       "shot": "02-turn",
       "file": "assets/matrix-anime/first-frames/02-turn.png",
       "sha256": "abe2227757b22d2d7fc872a5d8a66e374546f4c04495349c72ea606fbe1f74ca",
-      "tool": "built-in image_gen",
-      "prompt": "prompts/02-turn-image.txt",
-      "videoPrompt": "prompts/02-turn-video.txt",
-      "selection": "selected after silhouette and anatomy review"
+      "tool": "built-in image_gen"
     },
     {
       "shot": "03-fall",
       "file": "assets/matrix-anime/first-frames/03-fall.png",
       "sha256": "1ab4c5a75b787d8448df48152f7a7203d5d11fb849917d195a2cacda0a1d94f6",
-      "tool": "built-in image_gen",
-      "prompt": "prompts/03-fall-image.txt",
-      "videoPrompt": "prompts/03-fall-video.txt",
-      "selection": "selected after silhouette and anatomy review"
+      "tool": "built-in image_gen"
     },
     {
       "shot": "04-tunnel",
       "file": "assets/matrix-anime/first-frames/04-tunnel.png",
       "sha256": "90bd441d07e86857a1adce1ce0e12b32718d4a7cf607e263696e3a29342565fd",
-      "tool": "built-in image_gen",
-      "prompt": "prompts/04-tunnel-image.txt",
-      "videoPrompt": "prompts/04-tunnel-video.txt",
-      "selection": "selected after silhouette and anatomy review"
+      "tool": "built-in image_gen"
     },
     {
       "shot": "05-sky",
       "file": "assets/matrix-anime/first-frames/05-sky.png",
       "sha256": "da9285b103660128aec5e6385ccd5eff54855f17030ea453d1ae042fac33b4a4",
-      "tool": "built-in image_gen",
-      "prompt": "prompts/05-sky-v2-image.txt",
-      "videoPrompt": "prompts/05-sky-video.txt",
-      "selection": "revised after anatomy review"
+      "tool": "built-in image_gen"
     }
-  ],
-  "imageCalls": 7,
-  "rejected": [
-    "rejected/01-rooftop-v1.png",
-    "rejected/05-sky-v1.png"
-  ],
-  "reviewNote": "User identified an anatomy error in the initial rooftop image; the rooftop and aerial poses were revised before submitting any video."
+  ]
 }

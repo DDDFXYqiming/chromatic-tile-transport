@@ -1,0 +1,16 @@
+{
+  "video": "fluid-tour.webm",
+  "duration_seconds": 21.6,
+  "sample_seconds": [
+    1.0,
+    3.45,
+    5.9,
+    8.35,
+    10.8,
+    13.25,
+    15.7,
+    18.15,
+    20.6
+  ],
+  "source": "Decoded frames from actual headless browser playback"
+}

@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-04",
+  "implementation_commit": "7ecb141ccd74343eec59b7a9e10cde40d3e1113e",
+  "base_commit": "6b9d99ae270bce5bebb0d3d742b1516e9bfa6df6",
+  "branch": "feat/visual-lab-six-studies",
+  "checks": {
+    "fluid-browser": {
+      "passed": 119,
+      "errors": [],
+      "evidence": "fluid-browser/results.json"
+    },
+    "studies-browser": {
+      "passed": 246,
+      "errors": [],
+      "evidence": "studies-browser/results.json"
+    },
+    "hall-browser": {
+      "passed": 1928,
+      "errors": [],
+      "evidence": "hall-browser/results.json"
+    }
+  },
+  "static_checks": {
+    "build_studies": "reproducible",
+    "check_studies": "PASS",
+    "studies_math": 7,
+    "fluid_math": [
+      "still field",
+      "persistent advection",
+      "finite bounds",
+      "16-bit texture encoding",
+      "reset"
+    ]
+  },
+  "legacy_checks": {
+    "python_unittest": 41,
+    "matcher": 8,
+    "timing": 11,
+    "browser": 25,
+    "handoff": 8,
+    "status": "PASS"
+  },
+  "compatibility": {
+    "git_content_matches_base": [
+      "src/hall",
+      "src/studies/portal.mjs",
+      "src/studies/portal.css",
+      "src/studies/temporal.mjs",
+      "src/studies/temporal.css",
+      "dist/portal-threshold.html",
+      "dist/temporal-field.html",
+      "dist/index.html",
+      "index.html"
+    ]
+  },
+  "assets": {
+    "tool": "Codex built-in Image Gen",
+    "count": 4,
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "total_bytes": 10289030,
+    "manifest": "../../assets/studies/fluid-assets.json"
+  },
+  "review": {
+    "desktop_chapters": 4,
+    "viewport_widths": [
+      320,
+      390,
+      768,
+      1024,
+      1440
+    ],
+    "playback_seconds": 21.6,
+    "decoded_frames_reviewed": 9,
+    "mobile_reading": {
+      "folio_visible": true,
+      "note_visible": true,
+      "header_reachable": true,
+      "strip_reachable": true
+    }
+  }
+}

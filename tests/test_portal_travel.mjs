@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {createTravel} from '../src/studies/portal-travel.mjs';
 import {STOPS,DOORS,APERTURE,EYE_HEIGHT,ROOM,routeX,roomAt,lensForAspect,buildPortalGeometry} from '../src/studies/portal-scene.mjs';
-import {cross,dot,sub,unit} from '../src/studies/math.mjs';
+import {cross,dot,sub,unit,clipNear} from '../src/studies/math.mjs';
 
 const results=[];
 function journey(from,to,hz){
@@ -51,7 +51,7 @@ results.push('return turn brakes before walking back');
 const walk=createTravel(STOPS[0],DOORS);walk.go(STOPS[1]);
 let insideSeconds=0,elapsed=0;
 while(walk.moving&&elapsed<20){walk.step(1/60);elapsed+=1/60;if(Math.abs(walk.z-DOORS[0])<APERTURE.depth/2)insideSeconds+=1/60;}
-assert.ok(insideSeconds>.8&&insideSeconds<1.4,'deep reveal stays around the moving eye for a readable interval');
+assert.ok(insideSeconds>1.4&&insideSeconds<2.3,'deep passage surrounds the eye for at least 1.4 seconds');
 assert.ok(elapsed>4&&elapsed<8,'adjacent chapter is a walk of several seconds');
 results.push(`adjacent walk ${elapsed.toFixed(2)} s, inside the doorway ${insideSeconds.toFixed(2)} s`);
 
@@ -92,19 +92,21 @@ for(const [index,door] of DOORS.entries()){
     for(const side of [-1,1]){
       for(const across of [APERTURE.halfWidth+.8,3.3,4.6]){
         const surface=hit(origin,sub([x+side*across,EYE_HEIGHT,wallZ],origin));
-        assert.equal(surface?.texture,currentArt,'each wall wing occludes later chapters in both directions');
-        assert.equal(surface.material,0);
+        assert.ok(surface,'wall wing is solid');
+        assert.ok([null,'copper',currentArt].includes(surface.texture),'each wall wing hides other chapters in both directions');
+        assert.ok(surface.distance<=Math.hypot(side*across,3.4-APERTURE.depth/2)+.01,'wall occlusion is at the entrance face');
       }
       const reveal=hit([x,EYE_HEIGHT,door+.21],[side,0,0]);
       assert.equal(reveal?.texture,'copper','inside the doorway sees the solid jamb');
       assert.ok(Math.abs(reveal.distance-APERTURE.halfWidth)<.01);
     }
     const above=hit(origin,sub([x,ROOM.height-.18,wallZ],origin));
-    assert.equal(above?.texture,currentArt,'wall above lintel hides later rooms');
+    assert.equal(above?.texture,null,'stone wall above lintel hides later rooms');
+    assert.equal(above?.material,2);
   }
   const lintel=hit([x,EYE_HEIGHT,door],[0,1,0]);
-  assert.equal(lintel?.texture,'copper');
-  assert.ok(Math.abs(lintel.distance-(APERTURE.height-EYE_HEIGHT))<.01);
+  assert.equal(lintel?.material,3,'overhead depth rib is part of the modeled lintel');
+  assert.ok(Math.abs(lintel.distance-(APERTURE.height-EYE_HEIGHT-.025))<.01);
   const sill=hit([x,EYE_HEIGHT,door],[0,-1,0]);
   assert.equal(sill?.texture,'copper','modeled threshold joins the floor under the eye');
   for(const side of [-1,1]){
@@ -139,4 +141,68 @@ for(const aspect of [.55,.78,1.3,2.4,3.2])for(const [index,door] of DOORS.entrie
   assert.ok(Math.abs(close-(.5+offset/2))>Math.abs(far-(.5+offset/2))*1.9,'jamb moves across the view as the eye approaches');
 }
 results.push('doorway framing and approach parallax cover portrait through wide landscape');
-console.log(JSON.stringify({passed:true,checks:results},null,2));
+
+// Sample whole projected frames with an opaque depth buffer. This catches photo-clad
+// shells that satisfy isolated collision rays while swallowing the visible architecture.
+function visibilityFrame(z,yaw,aspect){
+  const height=48,width=Math.round(height*aspect),eye=[routeX(z),EYE_HEIGHT,z];
+  const depth=new Float64Array(width*height).fill(Infinity),pixels=Array(width*height).fill(null);
+  const lens=lensForAspect(aspect),offset=aspect>1.2?.12:0;
+  for(const triangle of triangles){
+    const world=[triangle.a,triangle.a.map((v,i)=>v+triangle.edge1[i]),triangle.a.map((v,i)=>v+triangle.edge2[i])];
+    const polygon=clipNear(world.map(p=>{
+      const q=sub(p,eye);return [Math.cos(yaw)*q[0]+Math.sin(yaw)*q[2],q[1],Math.sin(yaw)*q[0]-Math.cos(yaw)*q[2]];
+    }),.05);
+    const projected=polygon.map(p=>[(1+offset+p[0]*lens/aspect/p[2])*width/2,(1-p[1]*lens/p[2])*height/2,1/p[2]]);
+    for(let j=1;j<projected.length-1;j++){
+      const [a,b,c]=[projected[0],projected[j],projected[j+1]];
+      const determinant=(b[1]-c[1])*(a[0]-c[0])+(c[0]-b[0])*(a[1]-c[1]);
+      if(Math.abs(determinant)<1e-9)continue;
+      const minX=Math.max(0,Math.floor(Math.min(a[0],b[0],c[0]))),maxX=Math.min(width-1,Math.ceil(Math.max(a[0],b[0],c[0])));
+      const minY=Math.max(0,Math.floor(Math.min(a[1],b[1],c[1]))),maxY=Math.min(height-1,Math.ceil(Math.max(a[1],b[1],c[1])));
+      for(let y=minY;y<=maxY;y++)for(let x=minX;x<=maxX;x++){
+        const u=((b[1]-c[1])*(x+.5-c[0])+(c[0]-b[0])*(y+.5-c[1]))/determinant;
+        const v=((c[1]-a[1])*(x+.5-c[0])+(a[0]-c[0])*(y+.5-c[1]))/determinant,w=1-u-v;
+        if(Math.min(u,v,w)<-1e-7)continue;
+        const d=1/(u*a[2]+v*b[2]+w*c[2]),index=y*width+x;
+        if(d<depth[index]){depth[index]=d;pixels[index]=triangle;}
+      }
+    }
+  }
+  assert.ok(pixels.every(Boolean),'the connected room shell covers the entire viewport');
+  return {pixels,width,height,lens,offset,eye};
+}
+const coverage=[];
+for(const aspect of [.55,1.3,2.4,3.2])for(const [index,door] of DOORS.entries())for(const direction of [-1,1]){
+  const currentArt=art[index+(direction===1?1:0)],yaw=direction===-1?0:Math.PI;
+  const measures=[];
+  for(const distance of [4.6,2.5,.6,-.6,-2.5]){
+    const z=door-direction*distance,frame=visibilityFrame(z,yaw,aspect);
+    const structural=frame.pixels.filter(p=>!art.includes(p.texture)).length/frame.pixels.length;
+    const outgoing=frame.pixels.filter(p=>p.texture===currentArt).length/frame.pixels.length;
+    const incoming=frame.pixels.filter(p=>art.includes(p.texture)&&p.texture!==currentArt).length/frame.pixels.length;
+    assert.ok(structural>.45,`architecture must remain a large visible part of the frame (${aspect}, ${index}, ${direction}, ${distance}: ${structural})`);
+    if(distance===4.6){
+      assert.ok(incoming<.10,'at rest the next scenery is a glimpse through the opening');
+      if(aspect>=1.3)assert.ok(outgoing>.15,`landscape frames retain large current-room murals (${aspect}, ${index}, ${direction}: ${outgoing})`);
+    }
+    if(Math.abs(distance)<APERTURE.depth/2){
+      assert.equal(outgoing,0,'inside the passage the previous mural is physically behind the eye');
+    }
+    if(distance>-.6){
+      // Every foreign-art pixel must fit through the far edge of the deep aperture.
+      const exitZ=door+direction*APERTURE.depth/2,d=Math.abs(exitZ-z);
+      for(const [pixel,surface] of frame.pixels.entries())if(art.includes(surface.texture)&&surface.texture!==currentArt){
+        const sx=(pixel%frame.width+.5)/frame.width*2-1-frame.offset;
+        const sy=1-(Math.floor(pixel/frame.width)+.5)/frame.height*2;
+        const exitX=frame.eye[0]-direction*sx*aspect/frame.lens*d,exitY=EYE_HEIGHT+sy/frame.lens*d;
+        assert.ok(Math.abs(exitX-routeX(door))<APERTURE.halfWidth+.001&&exitY>=.14&&exitY<=APERTURE.height,
+          'next-room art is occluded outside the actual doorway silhouette');
+      }
+    }
+    measures.push({distance,structure:+structural.toFixed(3),outgoing:+outgoing.toFixed(3),incoming:+incoming.toFixed(3)});
+  }
+  if(aspect===2.4&&index===0&&direction===-1)coverage.push(...measures);
+}
+results.push('120 depth-rasterized frames: architecture coverage, aperture-only reveal and outgoing mural occlusion across three doors in both directions');
+console.log(JSON.stringify({passed:true,checks:results,firstDoorCoverage:coverage},null,2));

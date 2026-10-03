@@ -7,6 +7,7 @@ import re
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
+from urllib.parse import urlsplit
 from build_studies import ROOT, build
 
 class Links(HTMLParser):
@@ -24,9 +25,17 @@ for path in (ROOT/'src/studies').glob('*.mjs'):
 for path in (ROOT/'assets/studies').glob('*.svg'):ET.parse(path)
 for item in json.loads((ROOT/'src/studies/catalog.json').read_text(encoding='utf-8')):
     path=ROOT/f'dist/{item["slug"]}.html';p=Links();p.feed(path.read_text(encoding='utf-8'))
-    for rel in p.paths:assert (path.parent/rel).resolve().is_file(),(path,rel)
+    for rel in p.paths:assert (path.parent/urlsplit(rel).path).resolve().is_file(),(path,rel)
     assert (ROOT/'assets/studies'/item['cover']).is_file()
     if item['id'] == 'portal':
+        from build_studies import portal_imports, fingerprint
+        imports = json.loads(re.search(r'<script type="importmap">(.*?)</script>', path.read_text(encoding='utf-8')).group(1))['imports']
+        assert imports == portal_imports()
+        assert imports['../src/studies/main.mjs'] in p.paths
+        for source, versioned in imports.items():
+            parsed = urlsplit(versioned)
+            assert parsed.path == source
+            assert parsed.query == 'v=' + fingerprint(source.removeprefix('../'))
         chapters = item['chapters']
         assert len(chapters) == 4
         assert len({chapter['image'] for chapter in chapters}) == 4

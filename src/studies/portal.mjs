@@ -1,6 +1,6 @@
 import {clamp} from './math.mjs';
 import {asset,image,range,button} from './core.mjs';
-import {createArchitecture,STOPS,DOORS,APERTURE,EYE_HEIGHT,routeX,roomAt} from './portal-scene.mjs';
+import {createArchitecture,STOPS,DOORS,APERTURE,EYE_HEIGHT,SCENE_REVISION,routeX,roomAt} from './portal-scene.mjs';
 import {createTravel} from './portal-travel.mjs';
 
 export async function create(stage,controls) {
@@ -112,7 +112,7 @@ export async function create(stage,controls) {
       slider.value=String((progress*100).toFixed(1));
       const {ctx,width:w,height:h,pointer:p}=stage;
       const eye=[routeX(travel.z)+(reduced.matches?0:(p.x-.5)*.18),EYE_HEIGHT+(reduced.matches?0:(p.y-.5)*-.08),travel.z];
-      architecture.render(stage.canvas.width,stage.canvas.height,eye,yaw,reduced.matches?0:stage.t);
+      architecture.render(stage.canvas.width,stage.canvas.height,eye,yaw);
       ctx.drawImage(architecture.canvas,0,0,w,h);
       theater.dataset.travelling=String(travel.moving||turning);
       route.style.setProperty('--travel',String(progress));
@@ -123,14 +123,15 @@ export async function create(stage,controls) {
       stage.canvas.dataset.room=String(chapterIndex+1);
       stage.canvas.dataset.travel=travel.moving?'moving':'settled';
       stage.canvas.dataset.renderer='webgl-depth';
+      stage.canvas.dataset.sceneRevision=SCENE_REVISION;
       stage.status(chapters[chapterIndex].location+' · Z '+travel.z.toFixed(2)+' m'+(!stage.playing&&(travel.moving||turning)?' · 待继续':turning?' · 转身中':travel.moving?' · 穿门中':auto?' · 漫游中':' · 已抵达'));
     },
     inspect:()=>({progress:(STOPS[0]-travel.z)/(STOPS[0]-STOPS[3]),z:travel.z,targetZ:travel.target,velocity:travel.velocity,
       chapter:chapters[chapterIndex].id,chapterIndex,destination,yaw,auto,chapterTime,
-      renderer:'webgl-depth',rooms:4,doorPlanes:DOORS,aperture:APERTURE,eyeHeight:EYE_HEIGHT,
+      renderer:'webgl-depth',sceneRevision:SCENE_REVISION,rooms:4,doorPlanes:DOORS,aperture:APERTURE,eyeHeight:EYE_HEIGHT,
       insideDoor:DOORS.findIndex(z=>Math.abs(travel.z-z)<APERTURE.depth/2),
       triangles:architecture.triangles,texturesLoaded:art.length+1,
-      imageSurfaces:['room-walls','ceiling','water','outcrops','copper-portals'],holdSeconds}),
+      imageSurfaces:['recessed-wall-murals','side-wall-murals','bronze-portals'],holdSeconds}),
     dispose:()=>architecture.dispose(),
   };
 }

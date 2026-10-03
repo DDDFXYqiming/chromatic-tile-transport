@@ -22,7 +22,8 @@ for(const chapter of ['mineral','ink','paper','light']){
   const flow=new Fluid(72,48,12),pigment=new PigmentField(120,80),initial=pigment.uv.slice();
   const weight=(x,y)=>regionWeight(chapter,x,y);
   flow.setMask(weight);pigment.setMask(weight);
-  flow.splat(.65,.68,.08,-.035,.18);
+  const points={mineral:[.60,.71],ink:[.65,.5],paper:[.70,.55],light:[.56,.71]};
+  assert.ok(flow.splat(...points[chapter],.08,-.035,.18),chapter+' accepts a pigment origin');
   for(let i=0;i<900;i++){flow.step(1/60);pigment.step(flow,1/60);}
   assert.ok(pigment.uv.some((v,i)=>Math.abs(v-initial[i])>.002),chapter+' keeps visible flow');
   for(let i=0;i<pigment.mask.length;i++)if(!pigment.mask[i]){

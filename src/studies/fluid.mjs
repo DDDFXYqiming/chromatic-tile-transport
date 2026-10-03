@@ -1,6 +1,6 @@
 import {clamp} from './math.mjs';
 import {asset,image,sampleImage,offscreen,range,button,fileInput,bilinear,coverFit} from './core.mjs';
-import {pigmentWeight} from './fluid-regions.mjs';
+import {pigmentRegion,hitRegion,pigmentStroke,POINTER_WEIGHT} from './fluid-regions.mjs';
 /** Semi-Lagrangian velocity transport + pressure projection, in grid-cell units. */
 export class Fluid {
   constructor(w=96,h=60,iterations=20) {
@@ -9,6 +9,7 @@ export class Fluid {
     for(const k of ['u','v','u0','v0','p','p0','div'])this[k]=new Float32Array(this.size);
   }
   setMask(weight){
+    this.weight=weight;
     this.mask=new Float32Array(this.size);
     for(let y=1;y<=this.h;y++)for(let x=1;x<=this.w;x++)this.mask[y*this.stride+x]=weight((x-.5)/this.w,(y-.5)/this.h);
   }
@@ -21,21 +22,33 @@ export class Fluid {
   }
   sample(a,x,y){const s=this.stride;x=clamp(x,.5,this.w+.5);y=clamp(y,.5,this.h+.5);const i=Math.floor(x),j=Math.floor(y),u=x-i,v=y-j,k=j*s+i;return (a[k]*(1-u)+a[k+1]*u)*(1-v)+(a[k+s]*(1-u)+a[k+s+1]*u)*v;}
   project(iterations=20) {
-    const {w,h,stride:s,u,v,div}=this;this.p.fill(0);this.p0.fill(0);
-    for(let y=1;y<=h;y++)for(let x=1;x<=w;x++){const i=y*s+x;div[i]=-.5*(u[i+1]-u[i-1]+v[i+s]-v[i-s]);}
+    const {w,h,stride:s,u,v,div,mask}=this;this.p.fill(0);this.p0.fill(0);
+    for(let y=1;y<=h;y++)for(let x=1;x<=w;x++){const i=y*s+x;div[i]=mask&&!mask[i]?0:-.5*(u[i+1]-u[i-1]+v[i+s]-v[i-s]);}
     this.boundary(div);
     for(let k=0;k<iterations;k++){
       const p=this.p,q=this.p0;
-      for(let y=1;y<=h;y++)for(let x=1;x<=w;x++){const i=y*s+x;q[i]=(div[i]+p[i-1]+p[i+1]+p[i-s]+p[i+s])*.25;}
+      for(let y=1;y<=h;y++)for(let x=1;x<=w;x++){
+        const i=y*s+x;
+        if(!mask){q[i]=(div[i]+p[i-1]+p[i+1]+p[i-s]+p[i+s])*.25;continue;}
+        if(!mask[i]){q[i]=0;continue;}
+        const l=mask[i-1]>0,r=mask[i+1]>0,t=mask[i-s]>0,b=mask[i+s]>0;
+        q[i]=(div[i]+p[i-1]*l+p[i+1]*r+p[i-s]*t+p[i+s]*b)/(l+r+t+b||1);
+      }
       this.boundary(q);this.p=q;this.p0=p;
     }
-    for(let y=1;y<=h;y++)for(let x=1;x<=w;x++){const i=y*s+x;u[i]-=.5*(this.p[i+1]-this.p[i-1]);v[i]-=.5*(this.p[i+s]-this.p[i-s]);}
+    for(let y=1;y<=h;y++)for(let x=1;x<=w;x++){
+      const i=y*s+x,p=this.p;
+      if(mask&&!mask[i]){u[i]=v[i]=0;continue;}
+      const l=mask&&!mask[i-1]?p[i]:p[i-1],r=mask&&!mask[i+1]?p[i]:p[i+1];
+      const t=mask&&!mask[i-s]?p[i]:p[i-s],b=mask&&!mask[i+s]?p[i]:p[i+s];
+      u[i]-=.5*(r-l);v[i]-=.5*(b-t);
+    }
     this.boundary(u,1);this.boundary(v,2);
   }
   step(dt,damping=.6) {
     this.u0.set(this.u);this.v0.set(this.v);const {w,h,stride:s}=this;
     const decay=Math.exp(-damping*dt);
-    for(let y=1;y<=h;y++)for(let x=1;x<=w;x++){const i=y*s+x,px=x-dt*this.u0[i],py=y-dt*this.v0[i];this.u[i]=this.sample(this.u0,px,py)*decay;this.v[i]=this.sample(this.v0,px,py)*decay;}
+    for(let y=1;y<=h;y++)for(let x=1;x<=w;x++){const i=y*s+x,px=x-dt*this.u0[i],py=y-dt*this.v0[i],m=this.mask&&!this.mask[i]?0:1;this.u[i]=this.sample(this.u0,px,py)*decay*m;this.v[i]=this.sample(this.v0,px,py)*decay*m;}
     this.boundary(this.u,1);this.boundary(this.v,2);this.project(this.iterations);
     this.speed=0;
     for(let y=1;y<=h;y++)for(let x=1;x<=w;x++){
@@ -45,12 +58,18 @@ export class Fluid {
     }
   }
   splat(x,y,dx,dy,radius=.14) {
+    // Reject the origin before the brush radius can reach a nearby pigment.
+    if(![x,y,dx,dy,radius].every(Number.isFinite)||x<0||x>1||y<0||y>1||radius<=0||
+      (!dx&&!dy)||(this.weight&&this.weight(x,y)<=POINTER_WEIGHT))return false;
+    let changed=false;
     const reach=radius*1.52;
     for(let j=Math.max(1,Math.floor((y-reach)*this.h));j<=Math.min(this.h,Math.ceil((y+reach)*this.h));j++)for(let i=Math.max(1,Math.floor((x-reach)*this.w));i<=Math.min(this.w,Math.ceil((x+reach)*this.w));i++) {
-      const r2=((i/this.w-x)**2+(j/this.h-y)**2)/(radius*radius),f=Math.exp(-r2*3);
+      const r2=(((i-.5)/this.w-x)**2+((j-.5)/this.h-y)**2)/(radius*radius),f=Math.exp(-r2*3);
       if(f<.001)continue;const k=j*this.stride+i,m=this.mask?this.mask[k]:1;
+      if(!m)continue;changed=true;
       this.u[k]=clamp(this.u[k]+dx*this.w*f*12*m,-170,170);this.v[k]=clamp(this.v[k]+dy*this.h*f*12*m,-170,170);
     }
+    return changed;
   }
   divergenceEnergy(){let v=0;const s=this.stride;for(let y=2;y<this.h;y++)for(let x=2;x<this.w;x++){const i=y*s+x;v+=(this.u[i+1]-this.u[i-1]+this.v[i+s]-this.v[i-s])**2;}return v;}
 }
@@ -68,7 +87,11 @@ export class PigmentField {
       const x=cell%w,y=Math.floor(cell/w);
       const gx=(x+.5)/w*fluid.w+.5,gy=(y+.5)/h*fluid.h+.5;
       const sx=x-fluid.sample(fluid.u,gx,gy)*dt*w/fluid.w,sy=y-fluid.sample(fluid.v,gx,gy)*dt*h/fluid.h,k=(y*w+x)*2;
-      next[k]=bilinear(uv,w,h,sx,sy,0,2);next[k+1]=bilinear(uv,w,h,sx,sy,1,2);
+      const u=Math.fround(bilinear(uv,w,h,sx,sy,0,2)),v=Math.fround(bilinear(uv,w,h,sx,sy,1,2));
+      // Do not pull tabletop, blank paper or glass into the pigment layer.
+      const sourceCell=Math.min(h-1,Math.floor(v*h))*w+Math.min(w-1,Math.floor(u*w));
+      const inside=this.mask[sourceCell]>0;
+      next[k]=inside?u:uv[k];next[k+1]=inside?v:uv[k+1];
     }
     this.uv=next;this.next=uv;
   }
@@ -204,10 +227,11 @@ export async function create(stage,controls) {
   });
   function clearFlow(){field.reset();for(const k of ['u','v','u0','v0','p','p0','div'])fluid[k].fill(0);steps=0;acc=0;last=null;disturbed=false;active=false;flowDirty=false;quietTime=0;pending=null;pointerInside=false;fluid.speed=0;simulationTime=stage.t;nextFrame=0;}
   function setRegion(){
-    const {w,h}=field,pixels=sampleImage(original,w,h).data,id=sourceKind==='local'?'local':chapters[chapterIndex].id;
-    const weights=new Float32Array(w*h);
-    for(let y=0;y<h;y++)for(let x=0;x<w;x++){const k=y*w+x,i=k*4;weights[k]=pigmentWeight(id,(x+.5)/w,(y+.5)/h,...pixels.subarray(i,i+4));}
-    weight=(x,y)=>x<0||x>1||y<0||y>1?0:bilinear(weights,w,h,x*w-.5,y*h-.5,0,1);
+    const {w,h}=field,id=sourceKind==='local'?'local':chapters[chapterIndex].id;
+    // Rasterize the full source, without cover-cropping imported aspect ratios.
+    const sample=offscreen(w,h),context=sample.getContext('2d',{willReadFrequently:true});
+    context.drawImage(original,0,0,w,h);
+    weight=pigmentRegion(id,context.getImageData(0,0,w,h).data,w,h);
     field.setMask(weight);fluid.setMask(weight);
   }
   function wake(){active=true;disturbed=true;quietTime=0;nextFrame=0;simulationTime=stage.t;}
@@ -217,7 +241,8 @@ export async function create(stage,controls) {
     if(quietTime>=.35){active=false;acc=0;fluid.u.fill(0);fluid.v.fill(0);}
   }
   function nudge(){
-    tour=false;wake();chapters[chapterIndex].flow.forEach(s=>fluid.splat(...s));
+    let changed=false;chapters[chapterIndex].flow.forEach(s=>{changed=fluid.splat(...s)||changed;});
+    if(!changed)return;tour=false;wake();
     if(!stage.playing)for(let i=0;i<8;i++)transport();stage.dirty=true;
   }
   function writeCopy(){
@@ -260,9 +285,9 @@ export async function create(stage,controls) {
   cleanObserver.observe(document.body,{attributes:true,attributeFilter:['class']});
   function hit(p,e){
     const r=stage.canvas.getBoundingClientRect(),cx=e?.clientX??r.left+p.x*r.width,cy=e?.clientY??r.top+p.y*r.height;
-    if(transition<1||cx<r.left||cx>r.right||cy<r.top||cy>r.bottom||overlayBoxes.some(b=>cx>=b.left-4&&cx<=b.right+4&&cy>=b.top-4&&cy<=b.bottom+4))return null;
-    const f=fit(),q={x:(p.x*stage.width-f.x)/f.width,y:(p.y*stage.height-f.y)/f.height};
-    return weight(q.x,q.y)>.15?q:null;
+    if(transition<1)return null;
+    const f=fit(),sx=r.width/stage.width,sy=r.height/stage.height;
+    return hitRegion({x:cx,y:cy},r,{x:f.x*sx,y:f.y*sy,width:f.width*sx,height:f.height*sy},weight,overlayBoxes);
   }
   function drawTransition(dt){
     transition=(!stage.playing||reduced.matches)?1:Math.min(1,transition+dt/transitionSeconds);
@@ -303,7 +328,7 @@ export async function create(stage,controls) {
       // outside the canvas and refresh overlay bounds after scroll/layout changes.
       measureOverlays();const q=hit(p,e);pointerInside=!!q;
       if(!q){last=null;return;}
-      if(last){
+      if(last&&pigmentStroke(weight,last,q,field.w,field.h)){
         const dx=q.x-last.x,dy=q.y-last.y;
         if(Math.abs(dx)+Math.abs(dy)>1e-5){tour=false;if(!active)wake();disturbed=true;quietTime=0;
           pending={...q,dx:clamp((pending?.dx||0)+dx,-.08,.08),dy:clamp((pending?.dy||0)+dy,-.08,.08)};}

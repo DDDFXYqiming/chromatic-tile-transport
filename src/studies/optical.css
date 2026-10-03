@@ -1,0 +1,151 @@
+/* PHASE: a product / research diptych, isolated to study 06. */
+body[data-study="optical"]{--phase-ink:#e8e6df;--phase-muted:#a8a7a2;--phase-panel:#151618;--phase-rule:#ffffff25;background:#111214;color:var(--phase-ink)}
+body[data-optical-world="white"]{--phase-ink:#252728;--phase-muted:#656662;--phase-panel:#e9e6de;--phase-rule:#22222225;background:#ece9e2;--gold:#975221;--hairline:#22222225;color:var(--phase-ink);color-scheme:light}
+body[data-study="optical"] .ambient{display:none}
+body[data-study="optical"] .study-app{padding:0 28px;grid-template-rows:80px minmax(0,1fr) 130px;min-height:800px;max-width:2400px}
+body[data-study="optical"] .header{gap:12px}
+body[data-study="optical"] .brand-text strong{font-size:14px;letter-spacing:.12em}
+body[data-study="optical"] .brand-emblem{width:32px;height:32px}
+body[data-study="optical"] .brand-text small{font-size:7px;color:var(--phase-muted)}
+body[data-study="optical"] .auto-button,body[data-study="optical"] .icon-button{color:var(--phase-ink)}
+body[data-study="optical"] .hall-modes{border-radius:3px}
+body[data-study="optical"] .hall-modes>a{padding:9px;border-radius:1px;font-size:9px;color:var(--phase-muted)}
+body[data-study="optical"] .hall-modes>a[aria-current]{background:var(--phase-ink);color:var(--phase-panel)}
+body[data-study="optical"] .stage{border:1px solid var(--phase-rule);border-radius:0;box-shadow:none;background:var(--phase-panel);grid-template-rows:minmax(420px,1fr) auto}
+body[data-study="optical"] .theater{background:#111214}
+body[data-study="optical"] .art-shade,body[data-study="optical"] .telemetry,body[data-study="optical"] .study-coordinate,body[data-study="optical"] .frame-corner{display:none}
+body[data-study="optical"] #canvas{position:absolute;inset:0}
+body[data-study="optical"] .stage-tag{top:24px;left:34px;font-size:8px;letter-spacing:.17em;color:var(--phase-muted);text-shadow:none}
+body[data-study="optical"] .stage-tag>span{background:var(--accent);width:17px}
+body[data-study="optical"] .stage-tag b{color:var(--phase-muted);border-color:var(--phase-rule)}
+.optical-main-overlay{position:absolute;inset:0;pointer-events:none;clip-path:inset(0 0 0 var(--optical-wipe,0px))}
+.optical-wordmark{position:absolute;left:34px;top:60px;display:flex;align-items:center;gap:17px;color:var(--phase-ink);pointer-events:none}
+.optical-wordmark>strong{font-size:38px;line-height:1;font-weight:800;letter-spacing:-.055em}
+.optical-wordmark strong span{font-size:10px;vertical-align:top;margin-left:5px;line-height:1.5}
+.optical-wordmark>span{font:8px ui-monospace,Consolas,monospace;letter-spacing:.1em;border-left:1px solid var(--phase-rule);padding:10px 0 10px 15px;max-width:108px;line-height:1.7}
+body[data-study="optical"] .hero-copy{left:4.7%;bottom:17%;max-width:420px;width:37%;opacity:var(--optical-copy-opacity,1)}
+body[data-study="optical"] .hero-copy .eyebrow{font-size:8px;letter-spacing:.1em;color:var(--accent);text-shadow:none;margin-bottom:17px}
+body[data-study="optical"] h1{font-family:"Microsoft YaHei","PingFang SC",sans-serif;font-size:clamp(34px,3.8vw,66px);font-weight:650;line-height:1.3;letter-spacing:-.035em;text-shadow:none;color:var(--phase-ink)}
+body[data-study="optical"] .hero-copy>p{max-width:300px;margin-top:22px;font-size:12px;line-height:1.95;letter-spacing:.05em;color:var(--phase-muted);text-shadow:none}
+body[data-study="optical"] .next-hero{font-size:10px;margin-top:24px;border-bottom:1px solid var(--phase-rule);padding-bottom:12px;gap:28px;color:var(--phase-ink)}
+body[data-study="optical"] .next-hero i{border:none;border-radius:0;width:auto;height:auto;font-size:20px;color:var(--accent)}
+.optical-worlds{position:absolute;top:25px;right:24px;display:flex;background:#191b1de8;border:1px solid #ffffff30;padding:4px;gap:3px;z-index:3}
+body[data-study="optical"] .optical-worlds button{padding:9px 12px;font:9px "Microsoft YaHei",sans-serif;color:#b8b9b7;letter-spacing:.02em}
+body[data-study="optical"] .optical-worlds button[aria-pressed="true"]{background:#ece9e0;color:#242526}
+.optical-other{position:absolute;right:25px;top:115px;width:calc(23% - 48px);max-width:220px;pointer-events:none;color:#292b2a;text-shadow:0 1px 8px #efebe380}
+body[data-optical-world="white"] .optical-other{color:#eee9df;text-shadow:0 1px 8px #080909}
+.optical-other-code{font:8px ui-monospace,Consolas,monospace;letter-spacing:.08em}
+.optical-other h2{font-size:clamp(22px,2.25vw,39px);font-weight:500;line-height:1.3;white-space:pre-line;margin:18px 0 10px;letter-spacing:.08em}
+.optical-other p{font:7px ui-monospace,Consolas,monospace;letter-spacing:.05em}
+.optical-other button{font-size:9px;padding:12px 0;pointer-events:auto;margin-top:14px;border-top:1px solid currentColor;display:flex;gap:18px;align-items:center}
+.optical-seam{position:absolute;left:var(--optical-split,77%);top:85px;bottom:45px;width:42px;transform:translateX(-50%);touch-action:none;cursor:ew-resize;z-index:2;color:#28221d;outline-offset:0}
+.optical-seam>span{position:absolute;top:59%;left:0;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;gap:6px;background:#e9e1d3ed;border:1px solid #fff8;font:20px Arial;box-shadow:0 2px 24px #0003}
+.optical-seam i{height:11px;width:1px;background:#514337;box-shadow:3px 0 #514337}
+.optical-seam small{position:absolute;top:calc(59% + 65px);left:16px;writing-mode:vertical-rl;font:7px ui-monospace,Consolas,monospace;letter-spacing:.12em;background:#e9e1d3db;padding:7px 4px}
+.optical-caption{position:absolute;bottom:20px;left:34px;right:28px;display:flex;justify-content:space-between;pointer-events:none;font:7px ui-monospace,Consolas,monospace;letter-spacing:.14em;color:var(--phase-muted)}
+.optical-caption>span:last-child{color:#d9b388;mix-blend-mode:difference}
+body[data-study="optical"] .instrument-bar{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 275px;gap:18px 40px;padding:25px 34px 19px;background:var(--phase-panel);border-top:1px solid var(--phase-rule);color:var(--phase-ink)}
+.optical-journal{display:grid;grid-template-columns:1fr 1.15fr;gap:28px;align-items:start;opacity:var(--optical-copy-opacity,1)}
+.optical-tag{font:8px ui-monospace,Consolas,monospace;letter-spacing:.15em;color:var(--accent)}
+.optical-journal h2{font-size:14px;font-weight:500;line-height:1.65;margin:9px 0 0;max-width:270px}
+.optical-journal>p{font-size:10px;line-height:1.95;color:var(--phase-muted);margin:0}
+.optical-specs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:0;padding:5px 0 0 25px;border-left:1px solid var(--phase-rule);opacity:var(--optical-copy-opacity,1)}
+.optical-specs dt{font:20px "Arial Narrow",Arial,sans-serif;letter-spacing:-.04em}
+.optical-specs dd{font-size:8px;line-height:1.5;margin:9px 0 0;color:var(--phase-muted)}
+.optical-note{margin:0;font-size:9px;letter-spacing:.04em;color:var(--phase-muted);opacity:var(--optical-copy-opacity,1)}
+.optical-note:before{content:"＋";color:var(--accent);margin-right:10px}
+.optical-tools{justify-self:end;font-size:9px;z-index:8}
+.optical-tools summary{cursor:pointer;list-style:none;display:flex;gap:30px;color:var(--phase-muted)}
+.optical-tools summary::-webkit-details-marker{display:none}
+.optical-tools-body{position:absolute;right:18px;bottom:50px;width:290px;background:var(--phase-panel);box-shadow:0 10px 50px #0005;border:1px solid var(--phase-rule);padding:20px;display:grid;gap:18px}
+body[data-study="optical"] .controls label,body[data-study="optical"] .utility-actions button{color:var(--phase-ink)}
+body[data-study="optical"] .controls button,body[data-study="optical"] .utility-actions button{border-color:var(--phase-rule)}
+body[data-study="optical"] .study-footer{grid-template-columns:155px minmax(0,1fr) 88px;gap:28px;padding:13px 4px 12px}
+body[data-study="optical"] .hall-label,body[data-study="optical"] .hall-open-atlas{color:var(--phase-muted)}
+body[data-study="optical"] .hall-folio b{font-family:Arial,sans-serif;font-size:28px}
+body[data-study="optical"] .hall-track{border-color:var(--phase-rule);height:11px}
+body[data-study="optical"] .study-strip{gap:24px}
+body[data-study="optical"] .study-strip .hall-card{flex-direction:row;align-items:center;gap:13px;padding:4px 0 5px;opacity:.65;transform:none;scroll-snap-align:none}
+body[data-study="optical"] .study-strip .hall-card[aria-current]{opacity:1}
+body[data-study="optical"] .study-strip .hall-thumb{width:74px;height:49px;object-position:right;border-color:var(--phase-rule)}
+body[data-study="optical"] .study-strip .hall-card[aria-current] .hall-thumb{border-color:var(--accent)}
+body[data-study="optical"] .study-strip .hall-card-copy strong{font-size:10px;color:var(--phase-ink)}
+body[data-study="optical"] .study-strip .hall-card-copy small{font-size:7px;color:var(--phase-muted)}
+body[data-study="optical"] .hall-transport button{border-color:var(--phase-rule)}
+body[data-study="optical"] .hall-atlas{color:var(--phase-ink)}
+.optical-announcement{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+body[data-study="optical"].study-clean .optical-wordmark,body[data-study="optical"].study-clean .optical-other,body[data-study="optical"].study-clean .optical-caption,body[data-study="optical"].study-clean .optical-worlds{display:none}
+body[data-study="optical"] .study-dialog{color:#f4f1e9;color-scheme:dark}
+@media(min-width:1700px){body[data-study="optical"] .hero-copy{bottom:20%}.optical-wordmark>strong{font-size:48px}body[data-study="optical"] .hero-copy>p{font-size:14px;max-width:350px}.optical-journal>p{font-size:12px}}
+@media(max-width:1150px){
+  body[data-study="optical"] .study-app{padding:0 18px;grid-template-rows:104px minmax(0,1fr) 126px;min-height:900px}
+  body[data-study="optical"] .header{display:grid;grid-template-columns:1fr auto;grid-template-rows:36px 32px;padding:12px 0;gap:10px}
+  body[data-study="optical"] .header>.hall-modes{grid-row:2;grid-column:1/-1;justify-self:center}
+  body[data-study="optical"] .instrument-bar{grid-template-columns:1fr 225px;padding:21px 27px;gap:16px 24px}
+  .optical-journal{grid-template-columns:1fr;gap:12px}.optical-specs{padding-left:18px;gap:10px}
+  body[data-study="optical"] .study-footer{grid-template-columns:120px minmax(0,1fr) 72px;gap:16px}
+  body[data-study="optical"] .study-strip{gap:16px}
+  body[data-study="optical"] .study-strip .hall-thumb{width:54px;height:42px}
+  body[data-study="optical"] .study-strip .hall-card{gap:8px}
+  .optical-other{right:20px;width:calc(23% - 35px)}.optical-other-code{font-size:7px}
+  body[data-study="optical"] .hero-copy{width:43%}
+}
+@media(max-width:800px){
+  body[data-study="optical"] .study-strip{grid-template-columns:repeat(4,150px);scroll-snap-type:none}
+  body[data-study="optical"] .optical-worlds button{font-size:8px;padding:8px}.optical-worlds{right:16px}
+  .optical-wordmark>strong{font-size:31px}.optical-wordmark>span{font-size:7px;max-width:95px}
+  .optical-other h2{font-size:24px}.optical-other p{font-size:6px}
+  body[data-study="optical"] .hero-copy{bottom:15%}
+  body[data-study="optical"] .hero-copy>p{font-size:11px;max-width:250px}
+}
+@media(max-width:619px){
+  body[data-study="optical"] .study-app{height:auto;min-height:100svh;padding:0 12px 142px;display:block}
+  body[data-study="optical"] .header{height:112px;display:grid;gap:13px;grid-template-columns:1fr auto;grid-template-rows:38px 34px;padding:15px 0 10px}
+  body[data-study="optical"] .brand{gap:8px}
+  body[data-study="optical"] .brand-text strong{font-size:11px}
+  body[data-study="optical"] .brand-text small{font-size:5px;letter-spacing:.03em}
+  body[data-study="optical"] .brand-emblem{width:25px;height:25px}
+  body[data-study="optical"] .header-actions{gap:7px}
+  body[data-study="optical"] .auto-button{min-width:30px;padding:7px}
+  body[data-study="optical"] #play-label{display:none}
+  body[data-study="optical"] .header>.hall-modes{max-width:100%;width:100%;justify-self:start;padding:3px}
+  body[data-study="optical"] .hall-modes>a{padding:9px 10px;font-size:8px}
+  body[data-study="optical"] .stage{display:block;overflow:visible}
+  body[data-study="optical"] .theater{height:660px}
+  body[data-study="optical"] .stage-tag{top:17px;left:17px;font-size:6px}
+  body[data-study="optical"] .stage-tag b{display:none}
+  .optical-wordmark{left:18px;top:46px;gap:8px}.optical-wordmark>strong{font-size:26px}.optical-wordmark>span{display:none}
+  .optical-worlds{top:15px;right:12px;padding:3px}
+  body[data-study="optical"] .optical-worlds button{font-size:7px;padding:6px}
+  .optical-other{top:110px;right:10px;width:calc(23% - 13px)}.optical-other-code{font-size:5px;line-height:1.8}
+  .optical-other h2{font-size:19px;margin-top:12px}.optical-other p{display:none}
+  .optical-other button{font-size:7px;gap:4px;padding:8px 0;margin-top:3px}
+  .optical-seam{top:82px;bottom:auto;height:230px}.optical-seam>span{width:34px;height:34px;left:4px;top:67%;font-size:16px}
+  .optical-seam small{top:calc(67% + 42px);font-size:5px;left:18px;padding:4px 2px}
+  body[data-study="optical"] .hero-copy{top:340px;bottom:auto;left:24px;width:calc(100% - 48px);max-width:none}
+  body[data-study="optical"] .hero-copy .eyebrow{font-size:7px;margin-bottom:17px}
+  body[data-study="optical"] h1{font-size:38px;line-height:1.28}
+  body[data-study="optical"] .hero-copy>p{font-size:12px;max-width:none;margin-top:18px}
+  body[data-study="optical"] .next-hero{margin-top:20px;font-size:10px}
+  .optical-caption{left:24px;right:24px;bottom:20px;font-size:5px;letter-spacing:.05em}
+  body[data-study="optical"] .instrument-bar{display:grid;grid-template-columns:1fr;padding:25px 24px;gap:24px}
+  .optical-journal{gap:15px}.optical-journal h2{font-size:15px;max-width:none}.optical-journal>p{font-size:11px;line-height:2}
+  .optical-specs{border-left:0;border-top:1px solid var(--phase-rule);padding:20px 0 0}.optical-specs dt{font-size:22px}.optical-specs dd{font-size:9px}
+  .optical-note{font-size:9px;line-height:1.8}.optical-tools{justify-self:start;width:100%}
+  .optical-tools summary{justify-content:space-between;padding-top:10px;border-top:1px solid var(--phase-rule)}
+  .optical-tools-body{right:10px;bottom:56px;max-width:calc(100% - 20px)}
+  body[data-study="optical"] .study-app>.study-footer{position:fixed;left:12px;right:12px;bottom:0;z-index:15;height:126px;display:grid;grid-template-columns:56px minmax(0,1fr) 62px;padding:12px 0;gap:9px;background:var(--phase-panel);border-top:1px solid var(--phase-rule)}
+  body[data-study="optical"] .study-strip{grid-template-columns:repeat(4,116px);gap:13px}
+  body[data-study="optical"] .study-strip .hall-card{flex-direction:column;gap:5px;align-items:flex-start}
+  body[data-study="optical"] .study-strip .hall-thumb{width:100%;height:38px}
+  body[data-study="optical"] .study-strip .hall-card-copy{gap:3px}
+  body[data-study="optical"] .study-strip .hall-card-copy strong{font-size:9px}
+  body[data-study="optical"] .study-strip .hall-card-copy small{font-size:6px}
+  body[data-study="optical"] .hall-label{font-size:6px}
+  .optical-tools-body .controls input{width:110px}
+  body[data-study="optical"].hall-experiences .study-footer{display:none}
+  body[data-study="optical"] .hall-atlas{position:fixed;bottom:0;left:12px;right:12px;background:var(--phase-panel);z-index:20;height:126px}
+  body[data-study="optical"].study-clean .theater{height:72svh}
+}
+@media(max-width:360px){body[data-study="optical"] h1{font-size:35px}body[data-study="optical"] .hero-copy>p{font-size:11px}.optical-caption>span:last-child{display:none}.optical-wordmark>strong{font-size:23px}body[data-study="optical"] .brand-text small{display:none}body[data-study="optical"] .study-strip{grid-template-columns:repeat(4,110px)}}
+@media(prefers-reduced-motion:reduce){body[data-study="optical"] *{scroll-behavior:auto!important;transition:none!important}}

@@ -26,6 +26,18 @@ for item in json.loads((ROOT/'src/studies/catalog.json').read_text(encoding='utf
     path=ROOT/f'dist/{item["slug"]}.html';p=Links();p.feed(path.read_text(encoding='utf-8'))
     for rel in p.paths:assert (path.parent/rel).resolve().is_file(),(path,rel)
     assert (ROOT/'assets/studies'/item['cover']).is_file()
+    if item['id'] == 'optical':
+        chapters = item['chapters']
+        assert len(chapters) == 4
+        assert {c['world'] for c in chapters} == {'black', 'white'}
+        by_id = {c['id']: c for c in chapters}
+        assert len(by_id) == 4
+        for chapter in chapters:
+            assert (ROOT/'assets'/chapter['image']).is_file()
+            paired = by_id[chapter['pair']]
+            assert paired['pair'] == chapter['id'] and paired['world'] != chapter['world']
+            assert all(chapter[k] for k in ('headline', 'body', 'detail', 'feature', 'note', 'action'))
+            assert len(chapter['specs']) == 3
     if item['id'] == 'temporal':
         chapters = item['chapters']
         assert 4 <= len(chapters) <= 5

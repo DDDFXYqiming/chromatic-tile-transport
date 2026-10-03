@@ -34,7 +34,7 @@ account, or secret is used at runtime.
 | 03 Portal | `dist/portal-threshold.html` | ELSEWHERE spatial field journal: four art-and-copy chapters, textured foreground portals, camera travel and synchronized cinematic dissolves |
 | 04 Temporal | `dist/temporal-field.html` | Existing local video, bounded 64-frame cache, timestamp-based 2D history sampling and temporal interpolation |
 | 05 Fluid | `dist/liquid-canvas.html` | Semi-Lagrangian velocity transport, pressure projection and persistent dye advection |
-| 06 Optical | `dist/optical-vault.html` | Front/back sphere refraction, Fresnel weighting, wavelength-dependent sampling, image input |
+| 06 Optical | `dist/optical-vault.html` | PHASE dual space: black-field product stories and white-room research notes, paired chapter navigation and a draggable glass boundary |
 | 07 Shadow | `dist/shadow-apparatus.html` | One fixed intersection solid; the same surface geometry produces both orthographic silhouettes |
 | 08 Folding | `dist/folding-theater.html` | Connected triptych, hinged floor, independently actuated popup hinge, front/back paper surfaces |
 
@@ -106,10 +106,13 @@ not a claim about rendering throughput, especially for static-on-demand studies.
 * Fluid runs a 96×60 velocity grid and a 432×270 dye field, with fixed 1/60-second
   steps and a bounded catch-up count. Numerical diffusion softens image detail
   over time. Reset restores the source image; release does not restore it.
-* Optical is a sphere under orthographic incidence, with stylized environment
-  highlights and approximate absorption. It is not full spectral path tracing
-  and does not simulate caustics. Pixel-study views preserve aspect ratio and
-  crop to cover rather than stretching spheres into ellipses.
+* Optical presents the fictional PHASE instrument through four paired product
+  and research chapters. Codex Image Gen produced `optical-black.png` and
+  `optical-white.png` in `assets/studies/`, with matching viewpoints. A canvas
+  boundary crops and locally displaces the images; its reveal also clips the
+  new typography during world transitions. This is an artistic optical effect.
+  Run `python tests/optical_browser.py` for chapter, playback, keyboard, export,
+  reduced-motion and responsive acceptance.
 * Shadow uses a 27³ construction grid. Row support is reconciled before forming
   the intersection so the selected two silhouettes are achievable by the same
   solid. It is not a solver for arbitrary incompatible target images.

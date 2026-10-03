@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#091d26"><title>画中门 · 星海视觉实验室</title>
+<link rel="stylesheet" href="../src/studies/style.css">
+</head>
+<body data-study="portal">
+<header><a class="brand" href="../index.html"><span>✦</span> 星海视觉实验室</a><a class="back" href="../index.html">全部实验 ↗</a></header>
+<main>
+<section class="intro"><div><p class="eyebrow">EXPERIMENT 03 / PORTAL THRESHOLD</p><h1>画中门<span>SPACE / 空间</span></h1></div><p class="lead">画框不是终点。走进去，另一间展厅仍在呼吸。</p></section>
+<section class="theater" aria-label="画中门互动实验"><canvas id="canvas" tabindex="0" aria-label="移动指针观察视差；点击穿过画框，或聚焦画面后用方向键行走、转身。"></canvas><div class="loading" id="loading">正在准备画面…</div></section>
+<div class="transport"><div class="buttons"><button id="play" type="button">暂停</button><button id="reset" type="button">重置</button><button id="snapshot" type="button">保存画面</button></div><p id="status" role="status" aria-live="polite">初始化</p><span class="number">03 / 08</span></div>
+<section class="controls" id="controls" aria-label="实验参数"></section>
+<p class="hint">移动指针观察视差；点击穿过画框，或聚焦画面后用方向键行走、转身。</p>
+<details><summary>它是怎么工作的？</summary><p>同一个三维场景中的双房间与实体门洞。镜头真的穿过门所在的平面，可以回头看；没有使用画面交叉淡化。使用轻量软件三维投影与近裁剪，不依赖 WebGL。</p><p class="muted">边界：基础几何场景，不包含复杂场景模型、递归门户或路径追踪。曲面采用多边形近似。</p><p class="muted">图片和视频在浏览器本地处理，不上传。新 SVG 由代码原创制作，不是 Image Gen 输出。已有战斗视频沿用仓库的素材许可。</p></details>
+<nav class="study-nav" aria-label="切换实验"><a href="portal-threshold.html" aria-current="page">03 / 画中门</a><a href="temporal-field.html">04 / 时差场</a><a href="liquid-canvas.html">05 / 液态画布</a><a href="optical-vault.html">06 / 光学展柜</a><a href="shadow-apparatus.html">07 / 影子机关</a><a href="folding-theater.html">08 / 折叠剧场</a></nav>
+</main><footer><span>LOCAL FIRST. NO API. NO CDN.</span><a href="../docs/SIX_STUDIES.md">实现、素材与验收说明 ↗</a></footer>
+<script type="module" src="../src/studies/main.mjs"></script>
+</body></html>

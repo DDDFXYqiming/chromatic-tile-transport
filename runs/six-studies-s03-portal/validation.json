@@ -1,0 +1,29 @@
+{
+  "portal-browser": {
+    "passed": 104,
+    "result": "portal-browser/results.json"
+  },
+  "studies-browser": {
+    "passed": 243,
+    "result": "studies-browser/results.json"
+  },
+  "studies-inline": {
+    "passed": 244,
+    "result": "studies-inline/results.json"
+  },
+  "hall-browser": {
+    "passed": 1928,
+    "result": "hall-browser/results.json"
+  },
+  "studies-math": {
+    "passed": 7
+  },
+  "legacy": {
+    "python": 41,
+    "matcher": 8,
+    "timing": 11,
+    "browser": 25,
+    "handoff": 8
+  },
+  "implementation_commit": "9ddc8eca8b0644134f983403c0a6b6b8d5e54ffe"
+}

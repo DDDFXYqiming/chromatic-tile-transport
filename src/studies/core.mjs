@@ -65,7 +65,7 @@ export class Stage {
       const elapsed=this.last?Math.min((now-this.last)/1000,.05):0;this.last=now;
       if(elapsed)this.rafHz=this.rafHz*.94+(1/elapsed)*.06;
       const dt=this.playing?elapsed:0;if(this.playing)this.t+=dt;
-      if((this.playing&&!effect.static)||this.dirty){try{effect.render(dt);this.frame++;for(const el of document.querySelectorAll('.controls input[type="range"]')){const out=el.parentElement.querySelector('output');if(out)out.value=el.value;}}catch(e){this.status('运行失败：'+e.message);console.error(e);this.setPlaying(false);}this.dirty=false;}
+      if((this.playing&&!effect.static)||this.dirty){try{effect.render(dt);this.frame++;this.onRendered?.();for(const el of document.querySelectorAll('.controls input[type="range"]')){const out=el.parentElement.querySelector('output');if(out)out.value=el.value;}}catch(e){this.status('运行失败：'+e.message);console.error(e);this.setPlaying(false);}this.dirty=false;}
     };this.raf=requestAnimationFrame(loop);
   }
   dispose(){cancelAnimationFrame(this.raf);this.abort.abort();this.observer.disconnect();this.effect?.dispose?.();}

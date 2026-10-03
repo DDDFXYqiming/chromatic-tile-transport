@@ -19,3 +19,13 @@
 h1 span{white-space:nowrap}[data-study=shadow] h1{font-size:clamp(26px,2vw,38px)}
 @media(max-width:600px){[data-study=shadow] .stage{grid-template-rows:460px auto}[data-study=shadow] h1{font-size:20px}[data-study=shadow] .stage-tag,[data-study=shadow] #status{display:none}.study-app>.hall-atlas{position:fixed;bottom:0;left:12px;right:12px;z-index:15;height:126px;background:linear-gradient(#090c13f2,#090c13 30%);backdrop-filter:blur(18px);border-top:1px solid #e6e0d21a}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto;transition:none!important}}
+/* Local content filmstrip shares the original hall's folio and thumbnail rhythm. */
+.study-footer{display:grid;grid-template-columns:164px minmax(0,1fr) 92px;gap:25px;align-items:center;min-width:0;padding:10px 5px 14px;--hall-position:0}
+.study-strip{display:grid;grid-template-columns:repeat(var(--scene-count),minmax(0,1fr));gap:20px;overflow-x:auto;padding:4px 2px 7px;scrollbar-width:thin;scrollbar-color:#4b4d5d transparent}
+.study-card{padding:0;text-align:left}.study-strip .hall-thumb{height:52px}.study-strip .hall-card-copy{gap:5px}.study-strip .hall-card-copy strong{font-size:11px}
+.study-footer .hall-transport button{width:39px;height:33px;display:grid;place-items:center;border:1px solid #e6e0d224;font:22px Arial}.study-footer .hall-transport button:hover{border-color:var(--accent);background:#ffffff0b}
+.study-custom .hall-track{opacity:.3}
+@media(min-width:1700px){.study-footer{grid-template-columns:190px minmax(0,1fr) 108px;gap:35px}.study-strip .hall-thumb{height:56px}}
+@media(max-width:1100px){.study-footer{grid-template-columns:115px minmax(0,1fr) 78px;gap:16px}.study-strip{gap:12px}.study-footer .hall-transport button{width:33px}}
+@media(max-width:800px){.study-footer{grid-template-columns:88px minmax(0,1fr) 72px;gap:12px}.study-strip{grid-template-columns:repeat(var(--scene-count),100px);scroll-snap-type:x mandatory}.study-footer .hall-transport button{width:31px;height:31px}.study-strip .hall-card-copy strong{font-size:10px}}
+@media(max-width:600px){.study-footer{grid-template-columns:60px minmax(0,1fr) 62px;gap:9px;padding-inline:0}.study-app>.study-footer{position:fixed;bottom:0;left:12px;right:12px;z-index:15;height:126px;background:linear-gradient(#090c13f2,#090c13 30%);backdrop-filter:blur(18px);border-top:1px solid #e6e0d21a}.study-strip{grid-template-columns:repeat(var(--scene-count),92px);gap:12px}.study-strip .hall-thumb{height:43px}.study-footer .hall-transport button{width:29px}.study-card:focus-visible{outline-offset:-2px}}

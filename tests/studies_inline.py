@@ -6,12 +6,12 @@ from pathlib import Path
 import re,json,base64
 from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[1]
-ORDER=['math','core','portal','fluid','temporal','optical','shadow','folding']
+ORDER=['math','core','filmstrip','portal','fluid','temporal','optical','shadow','folding']
 
 def bundle(video_fixture: Path | None = None):
     entries=[]
-    image_types={'.svg':'image/svg+xml','.png':'image/png'}
-    assets={p.relative_to(ROOT/'assets').as_posix():'data:'+image_types[p.suffix]+';base64,'+base64.b64encode(p.read_bytes()).decode() for p in (ROOT/'assets/studies').iterdir() if p.suffix in image_types}
+    image_types={'.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp'}
+    assets={p.relative_to(ROOT/'assets').as_posix():'data:'+image_types[p.suffix]+';base64,'+base64.b64encode(p.read_bytes()).decode() for p in (ROOT/'assets/studies').rglob('*') if p.suffix in image_types}
     if video_fixture:
         assets['matrix-battle/03-clash.mp4']='data:video/mp4;base64,'+base64.b64encode(video_fixture.read_bytes()).decode()
     for name in ORDER:

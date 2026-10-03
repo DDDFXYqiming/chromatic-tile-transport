@@ -1,4 +1,5 @@
 import {Stage} from './core.mjs';
+import {filmstrip} from './filmstrip.mjs';
 const canvas=document.querySelector('#canvas'),status=document.querySelector('#status'),loading=document.querySelector('#loading');
 const play=document.querySelector('#play'),reset=document.querySelector('#reset'),snapshot=document.querySelector('#snapshot');
 const id=document.body.dataset.study;
@@ -11,7 +12,7 @@ try {
   play.addEventListener('click',()=>{stage.setPlaying(!stage.playing);sync();});
   reset.addEventListener('click',()=>{effect?.reset?.();stage.t=0;stage.dirty=true;});
   snapshot.addEventListener('click',()=>{try{canvas.toBlob(blob=>{if(!blob){stage.status('保存失败：没有可导出的画面');return;}const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`${id}-${Date.now()}.png`;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);},'image/png');}catch(e){stage.status('保存失败：'+e.message);}});
-  effect=await (await modules[id]()).create(stage,document.querySelector('#controls'));stage.start(effect);loading.hidden=true;
+  effect=await (await modules[id]()).create(stage,document.querySelector('#controls'));stage.start(effect);filmstrip(stage,effect.scenes);loading.hidden=true;
   const clean=document.querySelector('#clean'),about=document.querySelector('#about');
   clean.addEventListener('click',()=>{const on=document.body.classList.toggle('study-clean');clean.setAttribute('aria-pressed',String(on));});
   document.querySelector('#interact').addEventListener('click',()=>{document.body.classList.add('study-clean');clean.setAttribute('aria-pressed','true');canvas.focus({preventScroll:true});});

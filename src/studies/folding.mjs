@@ -9,7 +9,9 @@ export async function create(stage,controls) {
   const orbitInput=range(controls,'观察角度',-65,65,21,1,v=>{orbit=v*Math.PI/180;stage.dirty=true;});
   button(controls,'自动开合',()=>{auto=!auto;stage.setPlaying(true);});
   function mapPanel(points,u,v){return points[0].map((_,i)=>mix(mix(points[0][i],points[1][i],u),mix(points[3][i],points[2][i],u),v));}
-  return {reset(){open=target=.76;orbit=.36;auto=false;input.value=76;orbitInput.value=21;},key(key){if(key==='ArrowUp')target=clamp(target+.05);if(key==='ArrowDown')target=clamp(target-.05);},
+  const poses=[['opening','开场姿态',.76,.36],['closed','折叠 · 0%',0,.36],['half','半展 · 50%',.5,.36],['open','全展 · 100%',1,.36],['side','侧面观察',1,65*Math.PI/180]];
+  const scenes={label:'THE PAPER ATLAS',kind:'POSE',items:poses.map(([id,title,t,o])=>({id,title,apply:()=>{target=t;orbit=o;auto=false;input.value=t*100;orbitInput.value=Math.round(o*180/Math.PI);},active:()=>!auto&&target===t&&Math.abs(orbit-o)<.01}))};
+  return {scenes,reset(){open=target=.76;orbit=.36;auto=false;input.value=76;orbitInput.value=21;},key(key){auto=false;if(key==='ArrowUp')target=clamp(target+.05);if(key==='ArrowDown')target=clamp(target-.05);},
     render(dt){if(auto&&dt)target=(1-Math.cos(stage.t*.65))*.5;open=dt?mix(open,target,1-Math.exp(-dt*4)):target;input.value=Math.round(open*100);
       const p=foldingPanels(open),faces=[];const {ctx,width:w,height:h}=stage;const cam=camera([Math.sin(orbit)*6.4,mix(.1,2.8,open),Math.cos(orbit)*6.4],[0,-.65,mix(0,.6,open)],w,h,1.07);
       for(const [key,index] of [['left',0],['center',1],['right',2]]){
@@ -36,5 +38,5 @@ export async function create(stage,controls) {
       renderFaces(ctx,faces,cam);
       caption(ctx,'PAPER KINEMATICS / 边缘相连的折叠结构',22,h-24);
       stage.status(`展开 ${Math.round(open*100)}% · 连续三联画 + 铰接地板 + 立体拱门 · 非 PNG 分层平移`);
-    },inspect:()=>({open,target,panels:foldingPanels(open),model:'connected-hinge-net'})};
+    },inspect:()=>({open,target,orbit,auto,panels:foldingPanels(open),model:'connected-hinge-net'})};
 }

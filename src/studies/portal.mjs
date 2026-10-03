@@ -27,7 +27,13 @@ export async function create(stage,controls) {
   faces.push(...box([0,.15,-6.1],[1.15,.3,1.15],'#546763'),...sphere([0,1.0,-6.1],.64,'#ddc8a0'));
   faces.push(...box([-2.55,.55,1.6],[.8,1.1,.8],'#28454f'),...sphere([-2.55,1.48,1.6],.43,'#adc9c6'));
   function reset(){progress=target=0;yaw=0;auto=false;slider.value=0;stage.dirty=true;}
-  return {reset,key(key){if(key==='ArrowUp')target=clamp(target+.08);if(key==='ArrowDown')target=clamp(target-.08);if(key==='ArrowLeft')yaw-=.12;if(key==='ArrowRight')yaw+=.12;},
+  const scenes={label:'THE VIEW ATLAS',kind:'VIEW',items:[
+    {id:'threshold',title:'正面门槛',apply:reset,active:()=>!auto&&target===0&&yaw===0},
+    {id:'through',title:'穿过画框',apply:()=>{target=1;yaw=0;auto=false;},active:()=>!auto&&target===1&&yaw===0},
+    {id:'return',title:'回头看',apply:()=>{target=1;yaw=Math.PI;auto=false;},active:()=>!auto&&target===1&&yaw===Math.PI},
+    {id:'roam',title:'自动漫游',apply:()=>{yaw=0;auto=true;stage.setPlaying(true);},active:()=>auto},
+  ]};
+  return {reset,scenes,key(key){auto=false;if(key==='ArrowUp')target=clamp(target+.08);if(key==='ArrowDown')target=clamp(target-.08);if(key==='ArrowLeft')yaw-=.12;if(key==='ArrowRight')yaw+=.12;},
     render(dt){
       if(auto&&dt)target=(1-Math.cos(stage.t*.32))*.5;
       progress=dt?progress+(target-progress)*(1-Math.exp(-dt*4)):target;
@@ -40,5 +46,5 @@ export async function create(stage,controls) {
       caption(ctx,eye[2]>0?'ROOM A  /  ARCHIVE':'ROOM B  /  OBSERVATORY',24,h-28);
       caption(ctx,'↑ ↓ 行走   ·   ← → 转身',24,h-10,'#76999e',10);
       stage.status(`三维透视 · 镜头 Z ${eye[2].toFixed(2)} · 门洞与前后室在同一个场景中`);
-    },inspect:()=>({progress,z:5.7-progress*10.1,faces:faces.length,yaw})};
+    },inspect:()=>({progress,target,auto,z:5.7-progress*10.1,faces:faces.length,yaw})};
 }

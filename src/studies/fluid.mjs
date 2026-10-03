@@ -44,11 +44,11 @@ export class Fluid {
 export async function create(stage,controls) {
   const W=432,H=270,fluid=new Fluid(),small=offscreen(W,H),cx=small.getContext('2d');
   let original=await image(asset('studies/tidal-garden.png')),dye=new Float32Array(W*H*4),next=new Float32Array(dye.length),output=new ImageData(W,H),damping=.6;
-  let steps=0,acc=0,last=null,sourceName='原创矢量画 · 潮汐花园',generation=0;
-  function reset(){dye.set(sampleImage(original,W,H).data);for(const k of ['u','v','u0','v0','p','p0','div'])fluid[k].fill(0);steps=0;acc=0;stage.dirty=true;}
+  let steps=0,acc=0,last=null,sourceName='原创矢量画 · 潮汐花园',generation=0,seed='still';
+  function reset(){dye.set(sampleImage(original,W,H).data);for(const k of ['u','v','u0','v0','p','p0','div'])fluid[k].fill(0);steps=0;acc=0;seed='still';stage.dirty=true;}
   reset();
   range(controls,'动量衰减',.1,2,.6,.1,v=>damping=v);
-  button(controls,'轻推颜料',()=>{fluid.splat(.35,.54,.08,-.045);fluid.splat(.66,.43,-.06,.05);stage.dirty=true;});
+  button(controls,'轻推颜料',()=>{seed='custom';fluid.splat(.35,.54,.08,-.045);fluid.splat(.66,.43,-.06,.05);stage.dirty=true;});
   fileInput(controls,'换一张图片','image/png,image/jpeg,image/webp',16,async file=>{const ticket=++generation,url=URL.createObjectURL(file);try{const img=await image(url);if(ticket!==generation)return;original=img;sourceName=file.name;reset();}finally{URL.revokeObjectURL(url);}});
   function transport(dt) {
     fluid.step(dt,damping);
@@ -61,11 +61,13 @@ export async function create(stage,controls) {
     }
     [dye,next]=[next,dye];steps++;
   }
-  return {reset,pointer(p){if(!p.down){last=null;return;}const q=sourcePointer(p,W,H,stage.width,stage.height);if(last)fluid.splat(q.x,q.y,q.x-last[0],q.y-last[1]);last=[q.x,q.y];},release(){last=null;},
+  const seeds=[['still','原画颜料',[]],['tide','双向潮汐',[[.35,.54,.08,-.045],[.66,.43,-.06,.05]]],['vortex','环形涡流',Array.from({length:8},(_,i)=>{const a=i*Math.PI/4;return [.5+Math.cos(a)*.19,.5+Math.sin(a)*.19,-Math.sin(a)*.08,Math.cos(a)*.08];})],['ribbon','横向流带',[[.2,.36,.14,0],[.5,.52,-.12,0],[.8,.68,.14,0]]]];
+  const scenes={label:'THE PIGMENT ATLAS',kind:'SEED',items:seeds.map(([id,title,splats])=>({id,title,active:()=>seed===id,apply:()=>{reset();seed=id;splats.forEach(s=>fluid.splat(...s));if(splats.length)for(let i=0;i<24;i++)transport(1/60);}}))};
+  return {reset,scenes,pointer(p){if(!p.down){last=null;return;}const q=sourcePointer(p,W,H,stage.width,stage.height);if(last){seed='custom';fluid.splat(q.x,q.y,q.x-last[0],q.y-last[1]);}last=[q.x,q.y];},release(){last=null;},
     render(dt){acc+=dt;let n=0;while(acc>=1/60&&n<3){transport(1/60);acc-=1/60;n++;}if(n===3)acc=0;
       output.data.set(dye);cx.putImageData(output,0,0);stage.ctx.imageSmoothingEnabled=true;const fit=coverFit(W,H,stage.width,stage.height);stage.ctx.drawImage(small,fit.x,fit.y,fit.width,fit.height);
       if(stage.pointer.down){stage.ctx.strokeStyle='#f5edd496';stage.ctx.lineWidth=1;stage.ctx.beginPath();stage.ctx.arc(stage.pointer.x*stage.width,stage.pointer.y*stage.height,24,0,Math.PI*2);stage.ctx.stroke();}
       caption(stage.ctx,'DRAG THE PIGMENT / 松手后继续流动',22,stage.height-22,'#fbf0d3');
       stage.status(`${sourceName} · 压力投影 + 颜料输运 · ${steps} 步 · 不会自动复原`);
-    },inspect:()=>({steps,grid:[fluid.w,fluid.h],dyeSize:[W,H],divergence:fluid.divergenceEnergy(),finite:fluid.u.every(Number.isFinite)&&dye.every(Number.isFinite)}),dispose(){generation++;}};
+    },inspect:()=>({seed,steps,grid:[fluid.w,fluid.h],dyeSize:[W,H],divergence:fluid.divergenceEnergy(),finite:fluid.u.every(Number.isFinite)&&dye.every(Number.isFinite)}),dispose(){generation++;}};
 }

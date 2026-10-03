@@ -35,7 +35,12 @@ export async function create(stage,controls) {
     if(synthetic)drawSynthetic(t);else{const sc=Math.max(W/video.videoWidth,H/video.videoHeight),w=video.videoWidth*sc,h=video.videoHeight*sc;sctx.drawImage(video,(W-w)/2,(H-h)/2,w,h);}
     buffers[head]=sctx.getImageData(0,0,W,H).data;timestamps[head]=clock;head=(head+1)%CAP;count=Math.min(count+1,CAP);lastTime=t;
   }
-  return {reset,visibility(on){if(on)play();else video.pause();},
+  const shapes=[['radial','圆形时间波'],['wave','弯曲时间带'],['ribbon','水平时间流']];
+  const scenes={label:'THE TIME ATLAS',kind:'MODE',items:[
+    ...shapes.map(([id,title])=>({id,title,apply:()=>{field.value=mode=id;if(synthetic){sourcePicker.value='video';sourcePicker.dispatchEvent(new Event('change'));}},active:()=>!synthetic&&mode===id})),
+    {id:'pendulum',title:'星轨摆钟',apply:()=>{sourcePicker.value='synthetic';sourcePicker.dispatchEvent(new Event('change'));},active:()=>synthetic},
+  ]};
+  return {reset,scenes,visibility(on){if(on)play();else video.pause();},
     render(){capture();const {ctx,width:w,height:h,pointer:pointer}=stage;const p=sourcePointer(pointer,W,H,w,h),fit=coverFit(W,H,w,h);
       if(!count){drawSynthetic(0);ctx.drawImage(source,fit.x,fit.y,fit.width,fit.height);stage.status(notice||'正在读取本地视频首帧…');return;}
       const at=age=>(head-1-age+CAP*2)%CAP;

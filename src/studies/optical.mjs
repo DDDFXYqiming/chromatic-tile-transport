@@ -5,12 +5,14 @@ export async function create(stage,controls) {
   let artwork=await image(asset('studies/quiet-orbit.png')),src=sampleImage(artwork,W,H),output=new ImageData(W,H);
   let ior=1.46,dispersion=.018,radius=98,pos=[.5,.51],lut=[],generation=0,sourceName='原创矢量画 · 静谧轨道';
   function build(){lut=[];for(let y=-radius;y<=radius;y++)for(let x=-radius;x<=radius;x++)if(x*x+y*y<radius*radius){const rays=[ior-dispersion,ior,ior+dispersion].map(n=>lensRay(x/radius,y/radius,n));if(rays[1])lut.push({x,y,rays});}stage.dirty=true;}
-  range(controls,'折射率',1.05,1.8,ior,.01,v=>{ior=v;build();});
-  range(controls,'色散',0,.055,dispersion,.001,v=>{dispersion=v;build();});
-  range(controls,'镜体尺寸',65,132,radius,1,v=>{radius=v;build();});
+  const iorInput=range(controls,'折射率',1.05,1.8,ior,.01,v=>{ior=v;build();});
+  const dispersionInput=range(controls,'色散',0,.055,dispersion,.001,v=>{dispersion=v;build();});
+  const radiusInput=range(controls,'镜体尺寸',65,132,radius,1,v=>{radius=v;build();});
   fileInput(controls,'更换背景图','image/png,image/jpeg,image/webp',16,async file=>{const ticket=++generation,url=URL.createObjectURL(file);try{const img=await image(url);if(ticket!==generation)return;artwork=img;src=sampleImage(artwork,W,H);sourceName=file.name;stage.dirty=true;}finally{URL.revokeObjectURL(url);}});
   build();
-  return {static:true,reset(){pos=[.5,.51];stage.dirty=true;},pointer(p){if(p.down){const q=sourcePointer(p,W,H,stage.width,stage.height);pos=[clamp(q.x,.14,.86),clamp(q.y,.22,.78)];}},
+  const presets=[['exhibit','默认展品',1.46,.018,98],['prism','虹彩色散',1.46,.05,98],['focus','近观镜体',1.7,.012,125],['clear','清透小镜',1.18,0,72]];
+  const scenes={label:'THE OPTICS ATLAS',kind:'LOOK',items:presets.map(([id,title,n,d,r])=>({id,title,active:()=>ior===n&&dispersion===d&&radius===r,apply:()=>{ior=n;dispersion=d;radius=r;iorInput.value=n;dispersionInput.value=d;radiusInput.value=r;build();}}))};
+  return {static:true,scenes,reset(){pos=[.5,.51];stage.dirty=true;},pointer(p){if(p.down){const q=sourcePointer(p,W,H,stage.width,stage.height);pos=[clamp(q.x,.14,.86),clamp(q.y,.22,.78)];}},
     render(){
       output.data.set(src.data);const centerX=Math.round(pos[0]*W),centerY=Math.round(pos[1]*H);
       for(const e of lut){const x=centerX+e.x,y=centerY+e.y;if(x<0||y<0||x>=W||y>=H)continue;const k=(y*W+x)*4,nx=e.x/radius,ny=e.y/radius,nz=Math.sqrt(1-nx*nx-ny*ny);

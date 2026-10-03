@@ -117,8 +117,14 @@ with tempfile.TemporaryDirectory() as tmp:
                 require(state()['seconds']==target['seconds']);require(page.evaluate('MatrixMotion.snapshot()')==pixels)
                 page.wait_for_function('MatrixMotion.getState().preview?.phase==="reverse"',timeout=10000)
                 before=state()['seconds'];page.wait_for_timeout(250);require(state()['seconds']<before)
-                before=state()['seconds'];page.locator('#bridgeButton').click();after=state()
-                require(not after['bridgeLoop'] and after['playing'] and abs(after['seconds']-before)<.3)
+                # Sample around the actual click, excluding Playwright's wait
+                # while the preview continues to run toward the source image.
+                page.locator('#bridgeButton').evaluate('''button=>{
+                    button.addEventListener('click',()=>{window.__previewExit={before:MatrixMotion.getState().seconds};},{capture:true,once:true});
+                    button.addEventListener('click',()=>{window.__previewExit.after=MatrixMotion.getState();},{once:true});
+                }''')
+                page.locator('#bridgeButton').click();exit_state=page.evaluate('window.__previewExit');after=exit_state['after']
+                require(not after['bridgeLoop'] and after['playing'] and after['seconds']==exit_state['before'])
                 require(after['config']['bridgeSeconds']==normal_bridge and page.locator('#bridgeButton').get_attribute('aria-pressed')=='false')
                 page.locator('#bridgeButton').click();snap(4.1);require(not state()['bridgeLoop'])
                 return {'completeOriginalDwellSeconds':1.5,'targetPixelsHeld':True,'smoothReverse':True,'normalBridgeSeconds':normal_bridge}
@@ -174,7 +180,7 @@ with tempfile.TemporaryDirectory() as tmp:
                 for asset in re.findall(r'<img src="([^"]+)"',source):
                     source=source.replace(asset,'data:image/webp;base64,'+base64.b64encode((ROOT/asset).read_bytes()).decode())
                 linked=browser.new_page(viewport={'width':1100,'height':900});linked.on('pageerror',lambda e:errors.append(str(e)))
-                linked.set_content(source,wait_until='load');require(linked.locator('main.gallery .card').count()==2);linked.screenshot(path=str(OUT/'gallery.png'))
+                linked.set_content(source,wait_until='load');require(linked.locator('main.gallery .card').count()==8);linked.screenshot(path=str(OUT/'gallery.png'))
                 linked.set_content((ROOT/'dist/index.html').read_text(),wait_until='load');linked.wait_for_function('window.WarpArchive?.getState().plansReady===5',timeout=60000);require(linked.evaluate('WarpArchive.getState().engine==="WEBGL 2"'))
                 return {'galleryRendered':True,'linkedPathsExist':True,'originalRendererStillWorks':True,'localhostNavigation':'Not verified: blocked by administrator browser policy'}
             check('Gallery renders, linked targets exist, and preserved original still renders',linked)

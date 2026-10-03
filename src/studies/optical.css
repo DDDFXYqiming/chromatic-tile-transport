@@ -15,11 +15,11 @@ body[data-study="optical"] .stage{border:1px solid var(--phase-rule);border-radi
 body[data-study="optical"] .theater{background:#111214}
 body[data-study="optical"] .art-shade,body[data-study="optical"] .telemetry,body[data-study="optical"] .study-coordinate,body[data-study="optical"] .frame-corner{display:none}
 body[data-study="optical"] #canvas{position:absolute;inset:0}
-body[data-study="optical"] .stage-tag{top:24px;left:34px;font-size:8px;letter-spacing:.17em;color:var(--phase-muted);text-shadow:none}
+body[data-study="optical"] .stage-tag{top:18px;left:34px;font-size:8px;letter-spacing:.17em;color:var(--phase-muted);text-shadow:none}
 body[data-study="optical"] .stage-tag>span{background:var(--accent);width:17px}
 body[data-study="optical"] .stage-tag b{color:var(--phase-muted);border-color:var(--phase-rule)}
 .optical-main-overlay{position:absolute;inset:0;pointer-events:none;clip-path:inset(0 0 0 var(--optical-wipe,0px))}
-.optical-wordmark{position:absolute;left:34px;top:60px;display:flex;align-items:center;gap:17px;color:var(--phase-ink);pointer-events:none}
+.optical-wordmark{position:absolute;left:34px;top:78px;display:flex;align-items:center;gap:17px;color:var(--phase-ink);pointer-events:none}
 .optical-wordmark>strong{font-size:38px;line-height:1;font-weight:800;letter-spacing:-.055em}
 .optical-wordmark strong span{font-size:10px;vertical-align:top;margin-left:5px;line-height:1.5}
 .optical-wordmark>span{font:8px ui-monospace,Consolas,monospace;letter-spacing:.1em;border-left:1px solid var(--phase-rule);padding:10px 0 10px 15px;max-width:108px;line-height:1.7}

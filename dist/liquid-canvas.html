@@ -50,7 +50,7 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
   </header>
   <main class="stage" aria-label="液态画布互动实验">
     <div class="theater">
-      <canvas id="canvas" tabindex="0" aria-label="底栏翻阅四章，画面与手记一起切换。按住画面轻推颜色，或在试色台试一笔；重置可恢复本章原画。"></canvas>
+      <canvas id="canvas" tabindex="0" aria-label="底栏翻阅四章，画面与手记一起切换。按住粉末、墨液或色带轻推颜色，或在试色台试一笔；重置可恢复本章原画。"></canvas>
       <div class="art-shade" aria-hidden="true"></div>
       <div class="stage-tag"><span></span>LIQUID CANVAS <b>INKFIELD / 洇</b></div>
       <aside class="telemetry" aria-label="当前实验状态"><div class="telemetry-top"><i></i><span id="play-state">影像准备中</span><b aria-hidden="true">✧</b></div><p id="status" role="status" aria-live="off">初始化</p><div class="telemetry-bottom"><span>A JOURNAL OF COLOUR &amp; MATTER</span><span>05 / LIVE</span></div></aside>
@@ -59,7 +59,7 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
       <div class="frame-corner tl" aria-hidden="true"></div><div class="frame-corner tr" aria-hidden="true"></div><div class="frame-corner bl" aria-hidden="true"></div><div class="frame-corner br" aria-hidden="true"></div>
       <div class="loading" id="loading" role="status"><span>✦</span>正在准备画面…</div>
     </div>
-    <section class="instrument-bar" aria-label="互动导演台"><div class="instrument-title"><span>INTERACTION / 05</span><strong>液态画布</strong></div><div class="controls" id="controls" aria-label="实验参数"></div><div class="utility-actions"><button id="reset" type="button">重置</button><button id="snapshot" type="button">保存画面</button></div><p class="hint">底栏翻阅四章，画面与手记一起切换。按住画面轻推颜色，或在试色台试一笔；重置可恢复本章原画。</p></section>
+    <section class="instrument-bar" aria-label="互动导演台"><div class="instrument-title"><span>INTERACTION / 05</span><strong>液态画布</strong></div><div class="controls" id="controls" aria-label="实验参数"></div><div class="utility-actions"><button id="reset" type="button">重置</button><button id="snapshot" type="button">保存画面</button></div><p class="hint">底栏翻阅四章，画面与手记一起切换。按住粉末、墨液或色带轻推颜色，或在试色台试一笔；重置可恢复本章原画。</p></section>
   </main>
   <footer class="study-footer hall-scene-footer" aria-label="当前作品内容">
     <div class="hall-folio"><span class="hall-label" id="study-atlas-label">THE STUDY ATLAS</span><div><b id="study-current">01</b><span id="study-total"></span><i></i></div></div>
@@ -68,7 +68,7 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
   </footer>
   <!-- HALL:ATLAS omitted on studies: bottom bar stays page-local -->
 </div>
-<dialog class="study-dialog" id="about" aria-labelledby="about-title"><div class="dialog-head"><span>EXHIBITION NOTES / 05</span><button id="about-close" type="button" aria-label="关闭作品说明">×</button></div><h2 id="about-title">液态画布</h2><p>洇 INKFIELD 是一本虚构的数字材料刊物。本期从矿物取色、墨液调和、纸上洇染走到光下显色，四章原画、文章与材料札记共同翻页。流体交互以半拉格朗日速度输运、20 轮压力投影和坐标场平流呈现颜色的流向。</p><p class="muted">四张章节图由 Codex Image Gen 生成，文字为创作手记，画面中的材料属于艺术设定。流动是二维交互示意，不用于预测真实材料。速度与坐标场在有限网格上计算，WebGL 采样原尺寸画面；无 WebGL 时使用 432×288 画布。长时间推流可能拉伸纹理。</p><p class="muted">图片和视频在浏览器本地处理。示例插画与概念封面由 Image Gen 生成。已有战斗视频沿用仓库的素材许可。</p><a href="../docs/SIX_STUDIES.md">实现、素材与验收说明 ↗</a></dialog>
+<dialog class="study-dialog" id="about" aria-labelledby="about-title"><div class="dialog-head"><span>EXHIBITION NOTES / 05</span><button id="about-close" type="button" aria-label="关闭作品说明">×</button></div><h2 id="about-title">液态画布</h2><p>洇 INKFIELD 是一本虚构的数字材料刊物。本期从矿物取色、墨液调和、纸上洇染走到光下显色，四章原画、文章与材料札记共同翻页。流体交互以半拉格朗日速度输运、12 轮压力投影和局部坐标场平流呈现颜色的流向。</p><p class="muted">四张章节图由 Codex Image Gen 生成，文字为创作手记，画面中的材料属于艺术设定。流动是二维交互示意，不用于预测真实材料。速度与坐标场在有限网格上计算，WebGL 采样原尺寸画面；无 WebGL 时使用 432×288 画布。长时间推流可能拉伸纹理。</p><p class="muted">图片和视频在浏览器本地处理。示例插画与概念封面由 Image Gen 生成。已有战斗视频沿用仓库的素材许可。</p><a href="../docs/SIX_STUDIES.md">实现、素材与验收说明 ↗</a></dialog>
 <script>
 (() => {
   const revealItem = (strip, current) => {

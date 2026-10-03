@@ -1,0 +1,307 @@
+{
+  "url": "http://127.0.0.1:8765/dist/temporal-field.html",
+  "browser": "Chrome extension",
+  "canvas": {
+    "width": 1619,
+    "height": 690
+  },
+  "sampleStride": 12,
+  "changedThreshold": "mean absolute RGB > 5 / 255 per sample",
+  "consoleErrors": [],
+  "evidence": [
+    {
+      "chapter": "wave",
+      "test": "stationary pointer playback",
+      "meanAbsoluteRGB": 25.295,
+      "changedPixelPercent": 67.18,
+      "elapsedMs": 1281,
+      "frames": 143
+    },
+    {
+      "chapter": "wave",
+      "test": "paused pointer follow",
+      "meanAbsoluteRGB": 17.518,
+      "changedPixelPercent": 54.93,
+      "elapsedMs": 366,
+      "frames": 3
+    },
+    {
+      "chapter": "wave",
+      "test": "pause stability",
+      "meanAbsoluteRGB": 0,
+      "changedPixelPercent": 0,
+      "elapsedMs": 311,
+      "frames": 0
+    },
+    {
+      "chapter": "ribbon",
+      "test": "paused pointer follow",
+      "from": [
+        0.32,
+        0.3
+      ],
+      "to": [
+        0.8,
+        0.6
+      ],
+      "meanAbsoluteRGB": 24.109,
+      "changedPixelPercent": 63.49,
+      "elapsedMs": 385,
+      "frames": 3
+    },
+    {
+      "chapter": "ribbon",
+      "test": "pause stability",
+      "meanAbsoluteRGB": 0,
+      "changedPixelPercent": 0,
+      "elapsedMs": 282,
+      "frames": 0
+    },
+    {
+      "chapter": "ribbon",
+      "test": "stationary pointer playback",
+      "meanAbsoluteRGB": 29.764,
+      "changedPixelPercent": 78.4,
+      "elapsedMs": 1529,
+      "frames": 123
+    },
+    {
+      "chapter": "clear",
+      "test": "paused pointer follow",
+      "from": [
+        0.32,
+        0.3
+      ],
+      "to": [
+        0.8,
+        0.6
+      ],
+      "meanAbsoluteRGB": 28.18,
+      "changedPixelPercent": 80.4,
+      "elapsedMs": 435,
+      "frames": 3
+    },
+    {
+      "chapter": "clear",
+      "test": "pause stability",
+      "meanAbsoluteRGB": 0,
+      "changedPixelPercent": 0,
+      "elapsedMs": 295,
+      "frames": 0
+    },
+    {
+      "chapter": "clear",
+      "test": "stationary pointer playback",
+      "depth": 0,
+      "meanAbsoluteRGB": 19.805,
+      "changedPixelPercent": 70.06,
+      "elapsedMs": 1398,
+      "frames": 134
+    },
+    {
+      "chapter": "echo",
+      "test": "stationary pointer playback",
+      "meanAbsoluteRGB": 18.353,
+      "changedPixelPercent": 65.55,
+      "elapsedMs": 1297,
+      "frames": 132
+    },
+    {
+      "chapter": "radial",
+      "test": "paused pointer follow",
+      "from": [
+        0.32,
+        0.3
+      ],
+      "to": [
+        0.8,
+        0.6
+      ],
+      "meanAbsoluteRGB": 4.504,
+      "changedPixelPercent": 16.74,
+      "elapsedMs": 360,
+      "frames": 3
+    },
+    {
+      "chapter": "radial",
+      "test": "pause stability",
+      "meanAbsoluteRGB": 0,
+      "changedPixelPercent": 0,
+      "elapsedMs": 286,
+      "frames": 0
+    },
+    {
+      "chapter": "radial",
+      "test": "stationary pointer playback",
+      "meanAbsoluteRGB": 12.595,
+      "changedPixelPercent": 54.14,
+      "elapsedMs": 1302,
+      "frames": 127
+    },
+    {
+      "chapter": "wave / synthetic",
+      "test": "paused pointer follow",
+      "from": [
+        0.32,
+        0.3
+      ],
+      "to": [
+        0.8,
+        0.6
+      ],
+      "meanAbsoluteRGB": 5.631,
+      "changedPixelPercent": 5.12,
+      "elapsedMs": 345,
+      "frames": 3
+    },
+    {
+      "chapter": "wave / synthetic",
+      "test": "pause stability",
+      "meanAbsoluteRGB": 0,
+      "changedPixelPercent": 0,
+      "elapsedMs": 283,
+      "frames": 0
+    },
+    {
+      "chapter": "ribbon",
+      "test": "video decode and bounded history",
+      "state": {
+        "id": "temporal",
+        "playing": false,
+        "frame": 2374,
+        "width": 1619,
+        "height": 690,
+        "rafHz": 162,
+        "chapter": "ribbon",
+        "chapterIndex": 2,
+        "chapterTime": 0,
+        "art": "studies/temporal-tidal-notes.png",
+        "text": "风经过的地方，让画面继续。",
+        "texturesLoaded": 5,
+        "transition": 1,
+        "transitionSeconds": 1.6,
+        "holdSeconds": 14,
+        "tour": false,
+        "count": 64,
+        "capacity": 64,
+        "bytes": 21233664,
+        "source": "video",
+        "historySeconds": 2.620105000000001,
+        "mode": "ribbon",
+        "depth": 2.2,
+        "readyState": 4
+      }
+    },
+    {
+      "chapter": "ribbon / video",
+      "test": "paused pointer follow",
+      "from": [
+        0.32,
+        0.3
+      ],
+      "to": [
+        0.8,
+        0.6
+      ],
+      "meanAbsoluteRGB": 12.884,
+      "changedPixelPercent": 31.66,
+      "elapsedMs": 310,
+      "frames": 3
+    },
+    {
+      "chapter": "ribbon / video",
+      "test": "pause stability",
+      "meanAbsoluteRGB": 0,
+      "changedPixelPercent": 0,
+      "elapsedMs": 298,
+      "frames": 0
+    },
+    {
+      "chapter": "clear",
+      "test": "video decode and bounded history",
+      "state": {
+        "id": "temporal",
+        "playing": false,
+        "frame": 2803,
+        "width": 1619,
+        "height": 690,
+        "rafHz": 174,
+        "chapter": "present",
+        "chapterIndex": 4,
+        "chapterTime": 0,
+        "art": "studies/temporal-present-tense.png",
+        "text": "收好昨天，把今天打开。",
+        "texturesLoaded": 5,
+        "transition": 1,
+        "transitionSeconds": 1.6,
+        "holdSeconds": 14,
+        "tour": false,
+        "count": 64,
+        "capacity": 64,
+        "bytes": 21233664,
+        "source": "video",
+        "historySeconds": 2.623016,
+        "mode": "clear",
+        "depth": 0,
+        "readyState": 4
+      }
+    },
+    {
+      "chapter": "clear / video",
+      "test": "paused pointer follow",
+      "from": [
+        0.32,
+        0.3
+      ],
+      "to": [
+        0.8,
+        0.6
+      ],
+      "meanAbsoluteRGB": 1.494,
+      "changedPixelPercent": 6.02,
+      "elapsedMs": 338,
+      "frames": 3
+    },
+    {
+      "chapter": "clear / video",
+      "test": "pause stability",
+      "meanAbsoluteRGB": 0,
+      "changedPixelPercent": 0,
+      "elapsedMs": 284,
+      "frames": 0
+    },
+    {
+      "chapter": "wave",
+      "test": "reduced motion starts paused and stable",
+      "meanAbsoluteRGB": 0,
+      "changedPixelPercent": 0,
+      "elapsedMs": 308,
+      "frames": 0
+    },
+    {
+      "chapter": "ribbon",
+      "test": "reduced motion starts paused and stable",
+      "meanAbsoluteRGB": 0,
+      "changedPixelPercent": 0,
+      "elapsedMs": 359,
+      "frames": 0
+    },
+    {
+      "chapter": "clear",
+      "test": "reduced motion starts paused and stable",
+      "meanAbsoluteRGB": 0,
+      "changedPixelPercent": 0,
+      "elapsedMs": 288,
+      "frames": 0
+    },
+    {
+      "chapter": "ribbon / video",
+      "test": "upper pointer position remains stable while paused",
+      "count": 64,
+      "meanAbsoluteRGB": 0,
+      "changedPixelPercent": 0,
+      "elapsedMs": 264,
+      "frames": 0
+    }
+  ]
+}

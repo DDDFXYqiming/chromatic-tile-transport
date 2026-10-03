@@ -103,9 +103,61 @@ export async function create(stage,controls) {
   function drawArt(ctx,w,h,t){
     const img=art[chapterIndex],motion=reduced.matches?0:1;
     const zoom=1.09+Math.sin(t*.17)*.012*motion,fit=coverFit(img.width,img.height,w*zoom,h*zoom);
-    const x=fit.x-(w*zoom-w)/2+Math.sin(t*.24)*w*.012*motion;
-    const y=fit.y-(h*zoom-h)/2+Math.cos(t*.19)*h*.012*motion;
+    const present=mode==='clear';
+    const x=fit.x-(w*zoom-w)/2+Math.sin(t*(present?.48:.24))*w*.012*motion+(present?(stage.pointer.x-.5)*w*.024:0);
+    const y=fit.y-(h*zoom-h)/2+Math.cos(t*(present?.39:.19))*h*.012*motion+(present?(stage.pointer.y-.5)*h*.024:0);
     ctx.drawImage(img,x,y,fit.width,fit.height);
+  }
+  // Art and cached motion use the same moving slice boundaries and play clock.
+  // Pointer input remains live when playback is paused or reduced motion is on.
+  function movingField(){
+    return {t:reduced.matches?0:stage.t,x:stage.pointer.x,y:stage.pointer.y,layers:8};
+  }
+  function sliceEdge(i,x,field){
+    const {t}=field;
+    if(mode==='wave')return .29+i*.11+(field.x-.5)*.24+Math.sin(t*.7)*.025+Math.sin(t*1.15+i*.8)*.014;
+    return i/6-.17+(field.y-.5)*.24+Math.sin(x*5.4-t*.95+i*.42)*.042+Math.sin((x-field.x)*4)*.035;
+  }
+  function sliceDelay(i,field){
+    return clamp((i+.5)/field.layers+Math.sin(field.t*1.1+i*.9)*.16+(field.y-.5)*.18);
+  }
+  function drawPresent(ctx,w,h,draw){
+    const field=movingField(),px=w*(.62+(field.x-.5)*.56),py=h*(.46+(field.y-.5)*.6);
+    const radius=Math.min(w,h)*(.205+Math.sin(field.t*1.2)*.008),zoom=1.075+Math.sin(field.t*.9)*.012;
+    // A lens re-samples the current exposure only; zero depth stays at this instant.
+    ctx.save();ctx.beginPath();ctx.arc(px,py,radius,0,Math.PI*2);ctx.clip();
+    ctx.translate(px,py);ctx.scale(zoom,zoom);ctx.translate(-px,-py);draw();ctx.restore();
+    ctx.save();ctx.strokeStyle=chapters[chapterIndex].accent;ctx.lineWidth=1;
+    ctx.globalAlpha=.27;ctx.beginPath();ctx.arc(px,py,radius,0,Math.PI*2);ctx.stroke();
+    for(let i=0;i<2;i++){
+      const a=field.t*.42+i*Math.PI;
+      ctx.globalAlpha=.38-i*.12;ctx.beginPath();ctx.arc(px,py,radius+9+i*10,a,a+Math.PI*.65);ctx.stroke();
+    }
+    const light=ctx.createRadialGradient(px-radius*.25,py-radius*.3,0,px,py,radius);
+    light.addColorStop(0,'#fff4d514');light.addColorStop(1,'#fff4d500');
+    ctx.globalAlpha=1;ctx.fillStyle=light;ctx.beginPath();ctx.arc(px,py,radius,0,Math.PI*2);ctx.fill();ctx.restore();
+  }
+  function drawSlices(ctx,w,h){
+    const field=movingField(),vertical=mode==='wave',steps=24;
+    for(let i=0;i<field.layers;i++){
+      ctx.save();ctx.beginPath();
+      if(vertical){const left=sliceEdge(i,0,field)*w,right=sliceEdge(i+1,0,field)*w;ctx.rect(left,0,right-left,h);}
+      else{
+        for(let n=0;n<=steps;n++){
+          const x=.24+.76*n/steps,y=sliceEdge(i,x,field)*h;
+          if(n===0)ctx.moveTo(x*w,y);else ctx.lineTo(x*w,y);
+        }
+        for(let n=steps;n>=0;n--){const x=.24+.76*n/steps;ctx.lineTo(x*w,sliceEdge(i+1,x,field)*h);}
+        ctx.closePath();
+      }
+      ctx.clip();
+      const delay=depth*sliceDelay(i,field),phase=field.t*1.15+i*.9;
+      const strength=depth/2.6;
+      const dx=w*(vertical?.014:.022)*Math.sin(phase+(field.x-.5)*3)*strength;
+      const dy=h*(vertical?.018:.013)*Math.cos(phase+(field.y-.5)*3)*strength;
+      ctx.translate(dx,dy);drawArt(ctx,w,h,stage.t-delay);ctx.restore();
+      ctx.save();ctx.strokeStyle=chapters[chapterIndex].accent;ctx.lineWidth=.8;ctx.globalAlpha=.24;ctx.stroke();ctx.restore();
+    }
   }
   function drawSynthetic(t){
     sky(sctx,W,H,'#172d3b','#091a25');
@@ -139,18 +191,31 @@ export async function create(stage,controls) {
       const newer=timestamps[at(j)],older=timestamps[at(Math.min(j+1,count-1))];
       ageTable[i]=Math.min(count-1,j+clamp((newer-wanted)/(newer-older||1)));
     }
+    const sliced=mode==='wave'||mode==='ribbon',field=movingField(),fit=coverFit(W,H,w,h);
+    const edges=Array.from({length:sliced?W:0},(_,x)=>Array.from({length:field.layers+1},(_,i)=>sliceEdge(i,x/W,field)));
+    const delays=Array.from({length:field.layers},(_,i)=>sliceDelay(i,field));
     for(let y=0;y<H;y++)for(let x=0;x<W;x++){
       const nx=x/W,ny=y/H,dx=nx-p.x,dy=ny-p.y;
-      const v=mode==='clear'?0:mode==='radial'?clamp(Math.hypot(dx*W/H,dy)*1.7):mode==='wave'?clamp(Math.floor(nx*8)/7):mode==='echo'?clamp((Math.sin(dx*12)+1)*.5):clamp((ny-p.y)*1.3+.5);
+      let v=mode==='clear'?0:mode==='radial'?clamp(Math.hypot(dx*W/H,dy)*1.7):clamp((Math.sin(dx*12)+1)*.5);
+      if(sliced){
+        // Convert visible slice edges into source coordinates after cover fitting.
+        const sx=(nx*fit.width+fit.x)/w,sy=(ny*fit.height+fit.y)/h;
+        const column=edges[Math.round(clamp(sx)*(W-1))],position=mode==='wave'?sx:sy;
+        let band=0;while(band<field.layers-1&&position>column[band+1])band++;
+        v=(position<column[0]||position>column[field.layers]||(mode==='ribbon'&&sx<.24))?0:delays[band];
+      }
       const ti=v*256,lo=Math.floor(ti),age=mix(ageTable[lo],ageTable[Math.min(256,lo+1)],ti-lo),a=Math.floor(age),f=age-a;
       const A=buffers[at(a)],B=buffers[at(Math.min(a+1,count-1))],k=(y*W+x)*4;
       for(let ch=0;ch<3;ch++)out.data[k+ch]=mix(A[k+ch],B[k+ch],f);out.data[k+3]=255;
     }
-    rctx.putImageData(out,0,0);const fit=coverFit(W,H,w,h);ctx.drawImage(result,fit.x,fit.y,fit.width,fit.height);
+    rctx.putImageData(out,0,0);const draw=()=>ctx.drawImage(result,fit.x,fit.y,fit.width,fit.height);draw();
+    if(mode==='clear')drawPresent(ctx,w,h,draw);
   }
   function drawTimeField(ctx,w,h){
     drawArt(ctx,w,h,stage.t);
-    if(mode==='clear'||depth===0)return;
+    if(mode==='clear'){drawPresent(ctx,w,h,()=>drawArt(ctx,w,h,stage.t));return;}
+    if(depth===0)return;
+    if(mode==='wave'||mode==='ribbon'){drawSlices(ctx,w,h);return;}
     const px=w*(.62+(stage.pointer.x-.5)*.28),py=h*(.43+(stage.pointer.y-.5)*.28);
     ctx.save();ctx.strokeStyle=chapters[chapterIndex].accent;ctx.lineWidth=.7;
     const layers=mode==='radial'?3:mode==='echo'?3:7;

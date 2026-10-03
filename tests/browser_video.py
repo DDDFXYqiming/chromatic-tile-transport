@@ -59,7 +59,13 @@ try:
         return scores
     check('Incoming video time stays continuous at both shot boundaries including the loop',seams)
     def bridge_play():
-        snap(4.2);before=state()['composition']['clips'];page.evaluate('MatrixMotion.play()');page.wait_for_timeout(450);after=state()
+        snap(4.2);before=state()['composition']['clips'];page.evaluate('MatrixMotion.play()')
+        # Observe the live overlap rather than assuming the render clock advances
+        # exactly 450 ms while headless video decoding and GPU readback run.
+        after=page.wait_for_function('''before=>{
+            const s=MatrixMotion.getState();
+            return s.frame.bridge>0&&s.composition.clips.every((c,i)=>!c.paused&&c.decodedFrames>before[i].decodedFrames&&c.currentTime>before[i].currentTime)?s:false;
+        }''',arg=before,timeout=15000).json_value()
         require(after['frame']['bridge']>0);require(all(not c['paused'] and c['decodedFrames']>b['decodedFrames'] and c['currentTime']>b['currentTime'] for c,b in zip(after['composition']['clips'],before)))
         page.evaluate('MatrixMotion.pause()');return {'before':before,'after':after['composition']['clips']}
     check('Both videos continue native playback during the Matrix bridge',bridge_play)

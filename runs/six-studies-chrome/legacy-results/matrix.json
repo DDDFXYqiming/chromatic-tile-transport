@@ -1,0 +1,1124 @@
+{
+  "executed": "2026-10-04",
+  "implementationCommit": "0a1ac5671441c40fc0c5580fee50e9be332f97e2",
+  "verification": "Full-run Matrix and layer suites, followed by successful targeted video, anime, battle and interface runs.",
+  "suites": [
+    {
+      "script": "browser_matrix.py",
+      "passed": true,
+      "checks": [
+        {
+          "name": "WebGL 2 runs the actual shader without fallback or warnings",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "All five images have distinct, nonblank actual renders",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Original, duotone, poster, line and matrix are visually different",
+          "passed": true,
+          "detail": {
+            "original": "75b2736534c3",
+            "duotone": "ce8d6a4985c1",
+            "poster": "3fdefaf04264",
+            "line": "6a47410e5ac7",
+            "matrix": "2f4b665e1e26"
+          }
+        },
+        {
+          "name": "Reverse seeking is pixel deterministic",
+          "passed": true,
+          "detail": "Exact pixel-identical reverse seek"
+        },
+        {
+          "name": "Paused frames remain still without continuously burning GPU work",
+          "passed": true,
+          "detail": "No drift and no extra draw calls"
+        },
+        {
+          "name": "All five short bridges continuously change with no blank frame",
+          "passed": true,
+          "detail": [
+            {
+              "scene": 0,
+              "successiveFrameMAD": [
+                1.7025,
+                14.6847,
+                33.9895,
+                42.6348,
+                54.4324,
+                59.8304,
+                38.5137,
+                24.5663,
+                40.1282,
+                34.2134,
+                13.6414,
+                1.3036
+              ]
+            },
+            {
+              "scene": 1,
+              "successiveFrameMAD": [
+                0.605,
+                8.515,
+                27.6742,
+                46.1534,
+                65.564,
+                59.0617,
+                25.3465,
+                21.9862,
+                52.1522,
+                57.6761,
+                26.9856,
+                2.4856
+              ]
+            },
+            {
+              "scene": 2,
+              "successiveFrameMAD": [
+                2.2066,
+                20.8079,
+                45.9768,
+                48.6802,
+                45.4693,
+                59.9548,
+                30.4921,
+                22.5946,
+                42.4047,
+                43.584,
+                19.941,
+                1.665
+              ]
+            },
+            {
+              "scene": 3,
+              "successiveFrameMAD": [
+                1.9739,
+                15.6943,
+                34.7222,
+                41.7417,
+                52.8589,
+                54.6224,
+                34.1225,
+                23.2382,
+                48.2877,
+                47.6089,
+                20.106,
+                2.1184
+              ]
+            },
+            {
+              "scene": 4,
+              "successiveFrameMAD": [
+                1.1472,
+                13.727,
+                37.1736,
+                48.6427,
+                54.5146,
+                46.7237,
+                34.1107,
+                26.4873,
+                49.1185,
+                43.2561,
+                14.9776,
+                1.2212
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Grid entry and exit stay in motion and avoid a whole-screen brightness surge",
+          "passed": true,
+          "detail": [
+            {
+              "scene": 0,
+              "previouslyStillIntervalsMAD": [
+                6.342592592592593,
+                7.8946604938271605
+              ],
+              "maximumEdgeStepMAD": 7.146851851851852
+            },
+            {
+              "scene": 1,
+              "previouslyStillIntervalsMAD": [
+                4.596234567901234,
+                14.314629629629628
+              ],
+              "maximumEdgeStepMAD": 13.800493827160494
+            },
+            {
+              "scene": 2,
+              "previouslyStillIntervalsMAD": [
+                9.744413580246913,
+                10.116203703703704
+              ],
+              "maximumEdgeStepMAD": 10.745246913580246
+            },
+            {
+              "scene": 3,
+              "previouslyStillIntervalsMAD": [
+                6.7525308641975315,
+                11.631635802469136
+              ],
+              "maximumEdgeStepMAD": 10.730216049382717
+            },
+            {
+              "scene": 4,
+              "previouslyStillIntervalsMAD": [
+                6.867376543209876,
+                10.592098765432098
+              ],
+              "maximumEdgeStepMAD": 9.377037037037036
+            }
+          ]
+        },
+        {
+          "name": "All bridge endpoints, including last-to-first, join continuously",
+          "passed": true,
+          "detail": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Timeline, next/previous and all scene controls work",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Director desk pins styles and pauses exactly at the bridge midpoint",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Grid density and shot duration update without stretching the bridge",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Invalid runtime configuration is rejected atomically",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Actual requestAnimationFrame playback advances and pauses",
+          "passed": true,
+          "detail": {
+            "advancedTo": 1.2400000000000002,
+            "fpsClaim": false
+          }
+        },
+        {
+          "name": "Card preview displays both full originals, holds, reverses and exits without jumping",
+          "passed": true,
+          "detail": {
+            "completeOriginalDwellSeconds": 1.5,
+            "targetPixelsHeld": true,
+            "smoothReverse": true,
+            "normalBridgeSeconds": 0.48
+          }
+        },
+        {
+          "name": "Wheel scrub moves through the same timeline",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Immersive entry, resize and Escape exit work",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Phone portrait, narrow phone and landscape have no horizontal overflow",
+          "passed": true,
+          "detail": [
+            {
+              "w": 390,
+              "sw": 390
+            },
+            {
+              "w": 320,
+              "sw": 320
+            },
+            {
+              "w": 844,
+              "sw": 844
+            }
+          ]
+        },
+        {
+          "name": "WebGL context loss restores a working paused renderer",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Explicit Canvas fallback renders and reverses correctly",
+          "passed": true,
+          "detail": "Simplified, deterministic fixed-grid fallback"
+        },
+        {
+          "name": "System reduced-motion preference disables autoplay and transitions",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Standalone effect requests no remote resource",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Gallery renders, linked targets exist, and preserved original still renders",
+          "passed": true,
+          "detail": {
+            "galleryRendered": true,
+            "linkedPathsExist": true,
+            "originalRendererStillWorks": true,
+            "localhostNavigation": "Not verified: blocked by administrator browser policy"
+          }
+        },
+        {
+          "name": "No unhandled JavaScript errors",
+          "passed": true,
+          "detail": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "script": "browser_layers.py",
+      "passed": true,
+      "checks": [
+        {
+          "name": "Default 02 uses five independent layer instances and three original-art shots",
+          "passed": true,
+          "detail": "WEBGL 2"
+        },
+        {
+          "name": "The three cutouts contain genuine transparent alpha",
+          "passed": true,
+          "detail": [
+            {
+              "asset": "character",
+              "fullyTransparentFraction": 0.36323992411295575
+            },
+            {
+              "asset": "fish",
+              "fullyTransparentFraction": 0.5867589314778646
+            },
+            {
+              "asset": "flowers",
+              "fullyTransparentFraction": 0.6669534047444662
+            }
+          ]
+        },
+        {
+          "name": "Director pacing gives the original art the longest unfiltered dwell",
+          "passed": true,
+          "detail": {
+            "shotSeconds": 5.2,
+            "originalSeconds": 3.04,
+            "bridgeSeconds": 1.2,
+            "accentSeconds": 0.96
+          }
+        },
+        {
+          "name": "Three camera compositions render visibly distinct frames",
+          "passed": true,
+          "detail": "Wide / close-up / negative-space images differ visibly"
+        },
+        {
+          "name": "Layer switches remove actual image content and restore it exactly",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Fish and portrait actually move independently",
+          "passed": true,
+          "detail": {
+            "background": 8.15399974757679,
+            "botanical-back": 7.203725103186571,
+            "character": 11.568945631865859,
+            "fish": -65.26273276214147,
+            "flowers": -3.570296090771194
+          }
+        },
+        {
+          "name": "All three camera joins and Matrix bridges are continuous",
+          "passed": true,
+          "detail": [
+            0.0,
+            0.006443897862191122,
+            0.0006021173485791785,
+            0.0,
+            0.01881945540531851,
+            0.0016700718448758643
+          ]
+        },
+        {
+          "name": "Layered textures and point-grid frames reproduce after reverse scrubbing",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Official PixiJS MeshPlane and MeshRope render on both WebGL surfaces",
+          "passed": true,
+          "detail": {
+            "library": "PixiJS 8.20.1",
+            "backend": "WebGL",
+            "nodes": [
+              {
+                "type": "Sprite",
+                "rig": "none",
+                "vertices": 4
+              },
+              {
+                "type": "MeshPlane",
+                "rig": "plant",
+                "vertices": 841
+              },
+              {
+                "type": "MeshPlane",
+                "rig": "character",
+                "vertices": 1813
+              },
+              {
+                "type": "MeshRope",
+                "rig": "fish",
+                "vertices": 50
+              },
+              {
+                "type": "MeshPlane",
+                "rig": "plant",
+                "vertices": 841
+              }
+            ]
+          }
+        },
+        {
+          "name": "Fixed-camera A/B proves local movement in each cutout with rigid transforms held",
+          "passed": true,
+          "detail": {
+            "fixedPose": true,
+            "offPixelsHeld": true,
+            "zeroEqualsOff": true,
+            "meanPixelChanges": {
+              "character": 5.253284973956963,
+              "fish": 2.042344414046287,
+              "flowers": 3.8295291793082082
+            }
+          }
+        },
+        {
+          "name": "Context restoration recreates Pixi surfaces and retains pose, visibility and pixels",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Bridge inspection and slow preview exit fixed-camera study correctly",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "All five existing visual treatments process the moving layer composition",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Actual requestAnimationFrame playback updates the composite textures",
+          "passed": true,
+          "detail": {
+            "advancedSeconds": 0.48000000000000026,
+            "compositedFrames": 8
+          }
+        },
+        {
+          "name": "Portrait and landscape layouts keep navigation and artwork inside the viewport",
+          "passed": true,
+          "detail": [
+            {
+              "width": 390,
+              "scrollWidth": 390
+            },
+            {
+              "width": 320,
+              "scrollWidth": 320
+            },
+            {
+              "width": 844,
+              "scrollWidth": 844
+            }
+          ]
+        },
+        {
+          "name": "Reduced motion stops both camera and independent layer drift",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Canvas fallback retains reversible layer composition",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Standalone build embeds every layer without remote requests",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "No game artwork or external services are requested by default 02",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "No uncaught browser errors",
+          "passed": true,
+          "detail": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "script": "browser_video.py",
+      "passed": true,
+      "checks": [
+        {
+          "name": "Both generated MP4s decode through real PixiJS VideoSource textures",
+          "passed": true,
+          "detail": {
+            "kind": "video",
+            "frames": 11,
+            "seeking": false,
+            "backend": "PixiJS WebGL",
+            "warning": null,
+            "clips": [
+              {
+                "slug": "garden",
+                "ready": true,
+                "failed": false,
+                "error": null,
+                "seeking": false,
+                "paused": true,
+                "currentTime": 1.84375,
+                "targetTime": 1.84375,
+                "seekableEnd": 5,
+                "duration": 5,
+                "decodedFrames": 4,
+                "source": "PixiJS VideoSource"
+              },
+              {
+                "slug": "encounter",
+                "ready": true,
+                "failed": false,
+                "error": null,
+                "seeking": false,
+                "paused": true,
+                "currentTime": 0.010416,
+                "targetTime": 0.010416666666666666,
+                "seekableEnd": 5,
+                "duration": 5,
+                "decodedFrames": 1,
+                "source": "PixiJS VideoSource"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Each shot has visible internal movement with no shader camera drift",
+          "passed": true,
+          "detail": {
+            "garden": 25.624550604163378,
+            "encounter": 36.66649677311867
+          }
+        },
+        {
+          "name": "Reverse scrubs reproduce the exact decoded pixels in original and grid modes",
+          "passed": true,
+          "detail": {
+            "original1.2": 0.0,
+            "matrix3.1": 0.0,
+            "auto4.6": 0.0,
+            "auto9.8": 0.0
+          }
+        },
+        {
+          "name": "Incoming video time stays continuous at both shot boundaries including the loop",
+          "passed": true,
+          "detail": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Both videos continue native playback during the Matrix bridge",
+          "passed": true,
+          "detail": {
+            "before": [
+              {
+                "slug": "garden",
+                "ready": true,
+                "failed": false,
+                "error": null,
+                "seeking": false,
+                "paused": true,
+                "currentTime": 4.177082,
+                "targetTime": 4.177083333333334,
+                "seekableEnd": 5,
+                "duration": 5,
+                "decodedFrames": 23,
+                "source": "PixiJS VideoSource"
+              },
+              {
+                "slug": "encounter",
+                "ready": true,
+                "failed": false,
+                "error": null,
+                "seeking": false,
+                "paused": true,
+                "currentTime": 0.135416,
+                "targetTime": 0.13541666666666666,
+                "seekableEnd": 5,
+                "duration": 5,
+                "decodedFrames": 14,
+                "source": "PixiJS VideoSource"
+              }
+            ],
+            "after": [
+              {
+                "slug": "garden",
+                "ready": true,
+                "failed": false,
+                "error": null,
+                "seeking": false,
+                "paused": false,
+                "currentTime": 4.305826,
+                "targetTime": 4.21875,
+                "seekableEnd": 5,
+                "duration": 5,
+                "decodedFrames": 24,
+                "source": "PixiJS VideoSource"
+              },
+              {
+                "slug": "encounter",
+                "ready": true,
+                "failed": false,
+                "error": null,
+                "seeking": false,
+                "paused": false,
+                "currentTime": 0.264108,
+                "targetTime": 0.17708333333333331,
+                "seekableEnd": 5,
+                "duration": 5,
+                "decodedFrames": 15,
+                "source": "PixiJS VideoSource"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Paused playback freezes pixels and stops continuous drawing",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "The actual motion checkbox switches between video movement and its still first frame",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Slow card preview holds both video frames, reverses, and returns to native playback",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Restoring the WebGL context recreates video resources at the same paused frame",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Mobile portrait and landscape keep the character and controls usable",
+          "passed": true,
+          "detail": [
+            [
+              390,
+              844
+            ],
+            [
+              320,
+              568
+            ],
+            [
+              844,
+              390
+            ]
+          ]
+        },
+        {
+          "name": "Reduced motion freezes the videos as well as the transition",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Canvas fallback can also draw real local video frames",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "An unavailable video uses its poster and reports the downgrade explicitly",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "The standalone artifact embeds both playable videos and makes no external requests",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "The website never contacts generation APIs or any remote media host",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "No uncaught browser errors",
+          "passed": true,
+          "detail": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "script": "browser_anime.py",
+      "passed": true,
+      "checks": [
+        {
+          "name": "Five real anime videos load with a 21.5-second cycle",
+          "passed": true,
+          "detail": {
+            "kind": "video",
+            "frames": 10,
+            "seeking": false,
+            "backend": "PixiJS WebGL",
+            "warning": null,
+            "clips": [
+              {
+                "slug": "rooftop",
+                "ready": true,
+                "failed": false,
+                "error": null,
+                "seeking": false,
+                "paused": true,
+                "currentTime": 1.760416,
+                "targetTime": 1.7604166666666667,
+                "seekableEnd": 5,
+                "duration": 5,
+                "decodedFrames": 4,
+                "source": "PixiJS VideoSource"
+              },
+              {
+                "slug": "turn",
+                "ready": true,
+                "failed": false,
+                "error": null,
+                "seeking": false,
+                "paused": true,
+                "currentTime": 0.010416,
+                "targetTime": 0.010416666666666666,
+                "seekableEnd": 5,
+                "duration": 5,
+                "decodedFrames": 1,
+                "source": "PixiJS VideoSource"
+              },
+              {
+                "slug": "fall",
+                "ready": true,
+                "failed": false,
+                "error": null,
+                "seeking": false,
+                "paused": true,
+                "currentTime": 0.010416,
+                "targetTime": 0.010416666666666666,
+                "seekableEnd": 5,
+                "duration": 5,
+                "decodedFrames": 1,
+                "source": "PixiJS VideoSource"
+              },
+              {
+                "slug": "tunnel",
+                "ready": true,
+                "failed": false,
+                "error": null,
+                "seeking": false,
+                "paused": true,
+                "currentTime": 0.010416,
+                "targetTime": 0.010416666666666666,
+                "seekableEnd": 5,
+                "duration": 5,
+                "decodedFrames": 1,
+                "source": "PixiJS VideoSource"
+              },
+              {
+                "slug": "sky",
+                "ready": true,
+                "failed": false,
+                "error": null,
+                "seeking": false,
+                "paused": true,
+                "currentTime": 0.010416,
+                "targetTime": 0.010416666666666666,
+                "seekableEnd": 5,
+                "duration": 5,
+                "decodedFrames": 1,
+                "source": "PixiJS VideoSource"
+              }
+            ]
+          }
+        },
+        {
+          "name": "All five shots are different and contain substantial image changes",
+          "passed": true,
+          "detail": {
+            "meanPixelChanges": {
+              "1": 60.45644623618199,
+              "2": 69.72326533207064,
+              "3": 55.32020951345411,
+              "4": 65.98322547833254,
+              "5": 83.23431279703969
+            },
+            "note": "Pixel differences demonstrate change, not an anatomy or aesthetic score."
+          }
+        },
+        {
+          "name": "All five video and grid boundaries join continuously including last-to-first",
+          "passed": true,
+          "detail": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Scrubbing across five sources returns exact decoded pixels",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Only the two bridging videos play while the other three remain paused",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "All five filmstrip buttons and the four version links are available",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Five-shot navigation fits mobile portrait and landscape layouts",
+          "passed": true,
+          "detail": [
+            [
+              390,
+              844
+            ],
+            [
+              320,
+              568
+            ],
+            [
+              844,
+              390
+            ]
+          ]
+        },
+        {
+          "name": "Offline output embeds and decodes all five videos without remote requests",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Normal playback makes no calls to model or external media services",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "No uncaught browser errors",
+          "passed": true,
+          "detail": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "script": "browser_anime.py --profile battle",
+      "passed": true,
+      "checks": [
+        {
+          "name": "Five real anime videos load with a 21.5-second cycle",
+          "passed": true,
+          "detail": {
+            "kind": "video",
+            "frames": 15,
+            "seeking": false,
+            "backend": "PixiJS WebGL",
+            "warning": null,
+            "clips": [
+              {
+                "slug": "faceoff",
+                "ready": true,
+                "failed": false,
+                "error": null,
+                "seeking": false,
+                "paused": true,
+                "currentTime": 1.760416,
+                "targetTime": 1.7604166666666667,
+                "seekableEnd": 5,
+                "duration": 5,
+                "decodedFrames": 7,
+                "source": "PixiJS VideoSource"
+              },
+              {
+                "slug": "charge",
+                "ready": true,
+                "failed": false,
+                "error": null,
+                "seeking": false,
+                "paused": true,
+                "currentTime": 0.010416,
+                "targetTime": 0.010416666666666666,
+                "seekableEnd": 5,
+                "duration": 5,
+                "decodedFrames": 1,
+                "source": "PixiJS VideoSource"
+              },
+              {
+                "slug": "clash",
+                "ready": true,
+                "failed": false,
+                "error": null,
+                "seeking": false,
+                "paused": true,
+                "currentTime": 0.010416,
+                "targetTime": 0.010416666666666666,
+                "seekableEnd": 5,
+                "duration": 5,
+                "decodedFrames": 1,
+                "source": "PixiJS VideoSource"
+              },
+              {
+                "slug": "vault",
+                "ready": true,
+                "failed": false,
+                "error": null,
+                "seeking": false,
+                "paused": true,
+                "currentTime": 0.010416,
+                "targetTime": 0.010416666666666666,
+                "seekableEnd": 5,
+                "duration": 5,
+                "decodedFrames": 1,
+                "source": "PixiJS VideoSource"
+              },
+              {
+                "slug": "finish",
+                "ready": true,
+                "failed": false,
+                "error": null,
+                "seeking": false,
+                "paused": true,
+                "currentTime": 0.010416,
+                "targetTime": 0.010416666666666666,
+                "seekableEnd": 5,
+                "duration": 5,
+                "decodedFrames": 1,
+                "source": "PixiJS VideoSource"
+              }
+            ]
+          }
+        },
+        {
+          "name": "All five shots are different and contain substantial image changes",
+          "passed": true,
+          "detail": {
+            "meanPixelChanges": {
+              "1": 72.32074294265855,
+              "2": 76.95379553147086,
+              "3": 59.976388450453925,
+              "4": 78.68371849844794,
+              "5": 53.93919053214313
+            },
+            "note": "Pixel differences demonstrate change, not an anatomy or aesthetic score."
+          }
+        },
+        {
+          "name": "All five video and grid boundaries join continuously including last-to-first",
+          "passed": true,
+          "detail": [
+            0.0,
+            0.0,
+            3.6536246879804516e-07,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "Scrubbing across five sources returns exact decoded pixels",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Only the two bridging videos play while the other three remain paused",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "All five filmstrip buttons and the four version links are available",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Five-shot navigation fits mobile portrait and landscape layouts",
+          "passed": true,
+          "detail": [
+            [
+              390,
+              844
+            ],
+            [
+              320,
+              568
+            ],
+            [
+              844,
+              390
+            ]
+          ]
+        },
+        {
+          "name": "Offline output embeds and decodes all five videos without remote requests",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Normal playback makes no calls to model or external media services",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "No uncaught browser errors",
+          "passed": true,
+          "detail": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "script": "browser_matrix_interface.py",
+      "passed": true,
+      "checks": [
+        {
+          "name": "The original garden and all three video collections retain full page components",
+          "passed": true,
+          "detail": {
+            "motion": 3,
+            "video": 2,
+            "anime": 5,
+            "battle": 5
+          }
+        },
+        {
+          "name": "Archive selection, side navigation, hero action and chapter copy stay synchronized",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Opening the archive freezes image and video motion; Escape restores focus and playback",
+          "passed": true,
+          "detail": [
+            "motion",
+            "battle"
+          ]
+        },
+        {
+          "name": "Closing the archive preserves a deliberately paused timeline",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Pure image and immersive modes remain available without losing the full page view",
+          "passed": true,
+          "detail": true
+        },
+        {
+          "name": "Desktop, small phone and landscape layouts avoid component overlap and horizontal scroll",
+          "passed": true,
+          "detail": [
+            [
+              "motion",
+              1731,
+              1184
+            ],
+            [
+              "motion",
+              1161,
+              790
+            ],
+            [
+              "motion",
+              390,
+              844
+            ],
+            [
+              "motion",
+              320,
+              568
+            ],
+            [
+              "motion",
+              844,
+              390
+            ],
+            [
+              "battle",
+              1731,
+              1184
+            ],
+            [
+              "battle",
+              1161,
+              790
+            ],
+            [
+              "battle",
+              390,
+              844
+            ],
+            [
+              "battle",
+              320,
+              568
+            ],
+            [
+              "battle",
+              844,
+              390
+            ]
+          ]
+        },
+        {
+          "name": "Shared page components have no uncaught browser errors",
+          "passed": true,
+          "detail": null
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "passed": true,
+  "totalChecks": 86
+}

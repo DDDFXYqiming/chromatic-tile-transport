@@ -18,6 +18,8 @@ from serve import RangeRequestHandler
 
 def run(args):
     catalog=json.loads((ROOT/'src/studies/catalog.json').read_text(encoding='utf-8'))
+    if args.study:
+        catalog=[item for item in catalog if item['id']==args.study]
     result={'loading':'offline-inline' if args.inline else 'HTTP native modules','checks':[],'screenshots':[]}
     args.output.mkdir(parents=True,exist_ok=True)
     server=None
@@ -124,7 +126,9 @@ def run(args):
                     chapter=item['chapters'][i]
                     check(scene+' optical world and narrative',state['chapter']==scene and state['world']==chapter['world'] and state['art']==chapter['image'] and page.locator('h1').inner_text().replace('\n','')==''.join(chapter['headline']))
                 elif item['id']=='shadow':check(scene+' light angle',abs(state['angle']-i*3.141592653589793/6)<1e-8)
-                elif item['id']=='folding':check(scene+' paper pose',state['open']==[.76,0,.5,1,1][i] and abs(state['orbit']-(65*3.141592653589793/180 if scene=='side' else .36))<1e-8)
+                elif item['id']=='folding':
+                    chapter=item['chapters'][i]
+                    check(scene+' paper journal and pose',state['chapter']==scene and state['art']==chapter['image'] and state['open']==chapter['pose']['open'] and state['orbit']==chapter['pose']['orbit'] and page.locator('h1').inner_text().replace('\n','')==''.join(chapter['headline']) and page.locator('.hero-copy > p').inner_text()==chapter['body'])
                 rendered.append(digest())
             check(item['id']+' content presets produce distinct canvases',len(set(rendered))>=3)
             page.locator('#study-next').click();pause()
@@ -138,7 +142,7 @@ def run(args):
             elif item['id']=='optical':change('分界位置',70)
             elif item['id']=='shadow':change('光源方位',43)
             elif item['id']=='folding':change('展开程度',34)
-            check(item['id']+' controls synchronize selection',page.locator('.study-strip [aria-current]').count()==(1 if item['id'] in ('temporal','fluid','optical') else 0))
+            check(item['id']+' controls synchronize selection',page.locator('.study-strip [aria-current]').count()==(1 if item['id'] in ('temporal','fluid','optical','shadow','folding') else 0))
             cards.first.click();pause();page.locator('#clean').click()
             with page.expect_download(timeout=4000) as download:
                 page.get_by_role('button',name='保存画面',exact=True).click()

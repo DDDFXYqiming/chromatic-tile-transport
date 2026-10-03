@@ -1,0 +1,88 @@
+/* FOLIO / the paper journal lives entirely inside study 08. */
+[data-study=folding] .study-app{height:auto;min-height:100svh;grid-template-rows:84px auto 140px}
+[data-study=folding] .stage{grid-template-rows:auto auto;background:#f4efe4;border-color:#d9cfbb60}
+[data-study=folding] .theater{--paper-ink:#466456;min-height:670px;background:#f4efe4;color:#302f28}
+[data-study=folding] #canvas{position:absolute;right:0;top:95px;width:61%;height:435px;cursor:grab;outline-color:var(--paper-ink)}
+[data-study=folding] #canvas:active{cursor:grabbing}
+[data-study=folding] .theater :focus-visible{outline-color:var(--paper-ink)}
+[data-study=folding] .art-shade,[data-study=folding] .stage-tag,[data-study=folding] .telemetry,[data-study=folding] .frame-corner{display:none}
+.folding-edition{position:absolute;left:4.5%;right:4.5%;top:28px;display:flex;align-items:center;justify-content:space-between;padding-bottom:23px;border-bottom:1px solid #b9ad9459;pointer-events:none}
+.folding-edition>span{font:30px "SimSun",serif;letter-spacing:.1em;color:#3a4033}
+.folding-edition b{font:29px Georgia,serif;letter-spacing:.12em;margin-left:13px;font-weight:400}
+.folding-edition small{font-size:10px;color:#777566;letter-spacing:.2em}
+[data-study=folding] .hero-copy{top:144px;left:4.5%;bottom:auto;max-width:35%;color:#302f28}
+[data-study=folding] .eyebrow{font-size:8px;gap:12px;letter-spacing:.08em;text-shadow:none;margin-bottom:24px}
+[data-study=folding] .eyebrow span{color:var(--paper-ink)}
+[data-study=folding] .eyebrow i{width:24px;background:#b0a891}
+[data-study=folding] h1{font-size:clamp(34px,3.3vw,57px);line-height:1.4;letter-spacing:.035em;text-shadow:none;color:#343a31}
+[data-study=folding] .hero-copy p{font-size:12px;line-height:2.1;letter-spacing:.025em;max-width:355px;margin-top:24px;text-shadow:none;color:#666457}
+[data-study=folding] .next-hero{font-size:11px;margin-top:22px;gap:24px;letter-spacing:.03em;color:var(--paper-ink)}
+[data-study=folding] .next-hero i{border-color:#9d9d8877;width:31px;height:31px}
+[data-study=folding] .next-hero:hover i{background:var(--paper-ink);color:#fbf7ec}
+.folding-folio{position:absolute;left:4.5%;bottom:37px;width:31.5%;border-top:1px solid #b9ad9459;padding-top:17px;pointer-events:none}
+.folding-folio>div{display:flex;align-items:center;justify-content:space-between;font:8px ui-monospace,monospace;letter-spacing:.15em;color:var(--paper-ink)}
+.folding-folio b{font-weight:400;color:#847d6c}
+.folding-folio h2{font:19px "SimSun",serif;letter-spacing:.02em;color:#414636;margin:16px 0 10px}
+.folding-folio p{font-size:11px;line-height:1.95;letter-spacing:.025em;color:#726c5d;margin:0;max-width:365px}
+.folding-note{position:absolute;left:43%;right:5%;bottom:36px;pointer-events:none;border-top:1px solid #b9ad9459;padding-top:17px}
+.folding-note>span{font-size:9px;letter-spacing:.1em;color:var(--paper-ink)}
+.folding-note p{font:16px "SimSun",serif;line-height:1.7;letter-spacing:.02em;color:#525844;margin:10px 0 7px}
+.folding-note small{font-size:8px;letter-spacing:.07em;color:#837e6e}
+.folding-page-mark{position:absolute;right:5%;top:112px;font:italic 54px Georgia,serif;line-height:1;color:#79775b42;pointer-events:none}
+[data-study=folding] .study-coordinate{right:5%;top:95px;bottom:auto;writing-mode:horizontal-tb;gap:12px;font-size:7px;letter-spacing:.08em;color:#777563}
+[data-study=folding] .study-coordinate b,[data-study=folding] .study-coordinate i{color:var(--paper-ink);text-shadow:none}
+[data-study=folding] .instrument-bar{padding-block:17px 13px;background:#18211f}
+[data-study=folding] .controls button[aria-pressed=true]{border-color:var(--accent);color:var(--accent)}
+[data-study=folding] .study-card{opacity:.7}[data-study=folding] .study-card[aria-current]{opacity:1}
+.folding-announcement{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+[data-study=folding].study-clean .folding-edition,[data-study=folding].study-clean .folding-folio,[data-study=folding].study-clean .folding-note,[data-study=folding].study-clean .folding-page-mark{display:none}
+[data-study=folding].study-clean #canvas{inset:0;width:100%;height:100%}
+@media(min-width:1700px){
+  [data-study=folding] .study-app{grid-template-rows:96px auto 142px}[data-study=folding] .theater{min-height:780px}
+  [data-study=folding] #canvas{top:110px;height:500px}[data-study=folding] .hero-copy{top:170px}
+  [data-study=folding] .hero-copy p{font-size:14px;max-width:425px}.folding-folio p{font-size:12px;max-width:440px}
+  .folding-folio h2{font-size:23px}.folding-folio,.folding-note{bottom:46px}.folding-note p{font-size:19px}
+}
+@media(max-width:1100px){
+  [data-study=folding] .study-app{grid-template-rows:78px auto 130px}
+  [data-study=folding] .theater{min-height:710px}[data-study=folding] .hero-copy{top:150px;max-width:37%}
+  [data-study=folding] h1{font-size:35px}[data-study=folding] .hero-copy p{font-size:11px}
+  [data-study=folding] #canvas{width:59%;top:125px;height:430px}
+  [data-study=folding] .eyebrow{font-size:7px;gap:7px}.folding-folio{width:33%}.folding-folio h2{font-size:17px}
+  .folding-note p{font-size:14px}.folding-folio p{font-size:10px}
+}
+@media(max-width:800px){
+  [data-study=folding] .study-app{grid-template-rows:112px auto 130px}
+  [data-study=folding] .theater{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:25px;min-height:0}
+  .folding-edition{position:relative;inset:auto;grid-column:1/-1;padding-bottom:20px;gap:12px}
+  [data-study=folding] .hero-copy{position:relative;inset:auto;max-width:none;grid-column:1/-1;margin:6px 0 0}
+  [data-study=folding] .hero-copy p{max-width:520px;font-size:12px}[data-study=folding] h1{font-size:40px}
+  [data-study=folding] #canvas{position:relative;inset:auto;width:100%;height:470px;grid-column:1/-1;grid-row:3;border:1px solid #c4bca849;border-radius:2px}
+  .folding-folio,.folding-note{position:relative;inset:auto;width:auto;padding-top:18px;margin:0}
+  .folding-folio{grid-column:1}.folding-note{grid-column:2}.folding-folio p{font-size:11px}
+  .folding-note p{font-size:15px}.folding-note small{display:block;line-height:1.9}
+  [data-study=folding] .study-coordinate,.folding-page-mark{display:none}
+  [data-study=folding].study-clean .theater{padding:0;display:block;min-height:580px}
+  [data-study=folding].study-clean #canvas{position:absolute;inset:0;height:100%;border:0}
+}
+@media(max-width:600px){
+  [data-study=folding] .study-app{grid-template-rows:112px auto 126px}
+  [data-study=folding] .theater{display:flex;flex-direction:column;padding:22px 20px 30px;gap:0}
+  .folding-edition{order:-2;align-items:baseline;padding-bottom:19px;flex:none}.folding-edition>span{font-size:23px;white-space:nowrap}
+  .folding-edition b{font-size:24px;margin-left:7px}.folding-edition small{font-size:8px;letter-spacing:.04em}
+  [data-study=folding] .hero-copy{order:-1;margin:29px 0 0;left:auto;bottom:auto}
+  [data-study=folding] .eyebrow{font-size:7px;margin-bottom:18px}
+  [data-study=folding] h1{font-size:36px;line-height:1.4;letter-spacing:.02em}
+  [data-study=folding] .hero-copy p{font-size:11px;max-width:none;margin-top:19px;line-height:2.1}
+  [data-study=folding] .next-hero{font-size:10px;margin-top:17px}
+  [data-study=folding] #canvas{flex:none;height:360px;margin:27px 0 0;width:100%}
+  .folding-note{order:1;margin-top:19px;border:0;padding-top:0}.folding-note p{font-size:14px}
+  .folding-folio{order:2;margin-top:26px;padding-top:18px}.folding-folio h2{font-size:19px}
+  .folding-folio p{font-size:11px;line-height:2}.folding-folio>div{font-size:8px}
+  [data-study=folding].study-clean #canvas{margin:0}
+}
+@media(max-width:360px){
+  [data-study=folding] .theater{padding-inline:17px}[data-study=folding] h1{font-size:30px}
+  .folding-edition b{font-size:20px}.folding-edition>span{font-size:21px}.folding-edition small{font-size:7px}
+  [data-study=folding] #canvas{height:310px}.folding-folio h2{font-size:17px}[data-study=folding] .eyebrow{font-size:6px}
+}

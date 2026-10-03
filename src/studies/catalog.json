@@ -377,17 +377,55 @@
     "slug": "folding-theater",
     "title": "折叠剧场",
     "english": "FOLDING THEATER",
-    "kicker": "PAPER / 纸张",
-    "line": "沿着折痕，平面的世界慢慢站起来。",
-    "help": "拖动展开程度、切换观察角度，或播放自动开合。三联画、地板与拱门的连接边始终相接。",
-    "mechanism": "显式铰链变换构建连续纸网：双侧翼围绕中心画铰接、地板绕下沿铰接、拱门绕地板上的折线立起。插画被分割成连续三联画贴图。",
-    "limits": "预先设计的刚性折痕运动，不是任意折纸的物理求解器。软件深度排序，不等于完整 Z-buffer 渲染器。",
+    "kicker": "FOLIO / 纸间",
+    "line": "山谷、星夜、海港与归途。纸间把四段小小的远行，装订成一本可以站起来的旅行刊物。",
+    "help": "底栏翻阅四章，插画与文章一起展开。拖动画面转动纸景，上下键或展开滑杆控制折痕；自动翻页每章停留 16 秒。",
+    "mechanism": "纸间 FOLIO 是一本虚构的立体旅行刊物。四章围绕山谷、观星台、海港与归途展开，每章包含一幅全景插画、一段旅行手记与一则纸艺札记。连续三联画、地板与拱门由连接的铰链结构构成，翻页时展开同一套纸网。",
+    "limits": "四幅章节插画由 Codex Image Gen 生成，地点与故事属于创作设定。画面采用预设刚性折痕和软件深度排序，展示纸艺的空间关系，不模拟真实纸张受力。",
     "cover": "folding-cover.png",
-    "accent": "#a9ccf2",
-    "headline1": "沿着折痕，",
-    "headline2": "世界站起来。",
-    "action": "展开纸上的宇宙",
-    "medium": "HINGED PAPER NET",
-    "signature": "φ / 0—1"
+    "accent": "#b9c8a8",
+    "headline1": "把一座山谷，",
+    "headline2": "寄进一页纸。",
+    "action": "下一页 · 星夜书签",
+    "medium": "A POP-UP TRAVEL JOURNAL",
+    "signature": "ISSUE 01 / SMALL JOURNEYS",
+    "chapters": [
+      {
+        "id": "valley", "title": "山谷来信", "english": "A LETTER FROM THE VALLEY",
+        "kicker": "01 / 把风景装订", "headline": ["把一座山谷，", "寄进一页纸。"],
+        "body": "清晨沿河走到植物站，雾还挂在山腰。我们把远山留在纸的两侧，把温室放在中间。合上时，它是一封薄薄的信；展开后，那条走过的小路又有了深处。",
+        "image": "studies/folding-valley.png", "accent": "#b9c8a8", "ink": "#466456", "floor": "#d2d5b9", "arch": "#e9dfbd",
+        "feature": "一道折痕，给远方留出位置", "detail": "先把风景连成一幅画，再沿两侧折起。远山向前围拢，中央的温室留在原处。一页纸里，近与远便有了各自的位置。",
+        "note": "信封很轻，里面装着一整座山谷。", "location": "第一站 · 山谷植物站", "time": "06:20", "annotation": "三联画 / 沿折痕读一段远近",
+        "action": "下一页 · 星夜书签", "pose": {"open": 0.64, "orbit": 0.14}
+      },
+      {
+        "id": "night", "title": "星夜书签", "english": "A BOOKMARK AFTER DARK",
+        "kicker": "02 / 让夜色立起", "headline": ["翻过这一页，", "星夜有了深处。"],
+        "body": "天暗下来，我们在山顶观星台等第一盏灯。铜色穹顶慢慢退进蓝里，台阶通向一片安静的天空。把书页撑开一点，拱门立起，今晚的星光就有了一个入口。",
+        "image": "studies/folding-night.png", "accent": "#b9c8eb", "ink": "#465b83", "floor": "#b4bfd1", "arch": "#ddd1af",
+        "feature": "让一座拱门，先替目光出发", "detail": "在纸页前方加一道小小的门。它随地板一起转起，让视线先经过门洞，再抵达穹顶。轻轻转动画面，前后两层会分得更清楚。",
+        "note": "星星还没出来，我们已经把夜晚打开了。", "location": "第二站 · 山顶观星台", "time": "20:45", "annotation": "立体拱门 / 为夜色添一层景深",
+        "action": "下一页 · 潮汐慢页", "pose": {"open": 0.84, "orbit": -0.16}
+      },
+      {
+        "id": "harbor", "title": "潮汐慢页", "english": "THE TIDE TAKES ITS TIME",
+        "kicker": "03 / 留住一个下午", "headline": ["把海风摊开，", "慢慢读一下午。"],
+        "body": "港口的船都停稳了，灯塔把影子落在防波堤上。我们沿岸画下几间小屋、一道浪线和那片浅蓝。将纸景转向光，折面之间的明暗，像潮水一样有了轻轻的起伏。",
+        "image": "studies/folding-harbor.png", "accent": "#a9d1d1", "ink": "#346d71", "floor": "#c1d7cf", "arch": "#edd7b4",
+        "feature": "换个角度，再读一次海岸", "detail": "纸景两侧向内环抱，平面的海岸便成为一个可以回望的小港口。试着从左边看到右边，留意灯塔与门洞怎样相互遮挡。",
+        "note": "今天没有下一班船，只有下一页海。", "location": "第三站 · 南岸小港", "time": "15:10", "annotation": "侧页环抱 / 转个角度看潮汐",
+        "action": "下一页 · 灯火归途", "pose": {"open": 0.72, "orbit": 0.24}
+      },
+      {
+        "id": "home", "title": "灯火归途", "english": "THE LAST TRAIN HOME",
+        "kicker": "04 / 收藏一段归途", "headline": ["远行折起来，", "灯火留在手边。"],
+        "body": "回程的列车停在旧车站，窗里透出暖黄的光。一路收藏的山色与潮声，到这里装订成册。缓缓收起纸景，屋顶回到同一张纸上，下一次展开，旅程还能从这里继续。",
+        "image": "studies/folding-home.png", "accent": "#e2b5a3", "ink": "#945747", "floor": "#dbc6b4", "arch": "#ecd6bb",
+        "feature": "把一本书，留成一次邀请", "detail": "折痕替我们记住了展开的顺序。收平、装好，再轻轻打开，立体的街景就能回来。纸间的第一期在车站收尾，也在这里等下一次出发。",
+        "note": "把书放回桌边，远方就没有那么远。", "location": "终点站 · 暮色车站", "time": "18:32", "annotation": "收起与重展 / 把远行放回手边",
+        "action": "重新出发 · 山谷来信", "pose": {"open": 0.55, "orbit": -0.12}
+      }
+    ]
   }
 ]

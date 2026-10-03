@@ -26,6 +26,7 @@ for item in json.loads((ROOT/'src/studies/catalog.json').read_text(encoding='utf
     path=ROOT/f'dist/{item["slug"]}.html';p=Links();p.feed(path.read_text(encoding='utf-8'))
     for rel in p.paths:assert (path.parent/rel).resolve().is_file(),(path,rel)
     assert (ROOT/'assets/studies'/item['cover']).is_file()
+<<<<<<< HEAD
     if item['id'] == 'optical':
         chapters = item['chapters']
         assert len(chapters) == 4
@@ -39,13 +40,21 @@ for item in json.loads((ROOT/'src/studies/catalog.json').read_text(encoding='utf
             assert all(chapter[k] for k in ('headline', 'body', 'detail', 'feature', 'note', 'action'))
             assert len(chapter['specs']) == 3
     if item['id'] == 'temporal':
+=======
+    if item['id'] in ('temporal', 'shadow'):
+>>>>>>> remodel/s07-shadow
         chapters = item['chapters']
         assert 4 <= len(chapters) <= 5
         for field in ('id', 'image', 'body', 'note', 'kicker'):
             assert len({chapter[field] for chapter in chapters}) == len(chapters), field
         for chapter in chapters:
             assert (ROOT/'assets'/chapter['image']).is_file()
-            assert all(chapter[key] for key in ('headline', 'detail', 'feature', 'annotation', 'action'))
+            assert all(chapter[key] for key in ('headline', 'detail', 'feature', 'action'))
+            if item['id'] == 'temporal':
+                assert chapter['annotation']
+            else:
+                assert all(chapter[key] for key in ('alt', 'material', 'experiment', 'observation'))
+                assert 0 <= chapter['angle'] <= 90
     if item['id'] == 'fluid':
         chapters = item['chapters']
         assert 4 <= len(chapters) <= 5

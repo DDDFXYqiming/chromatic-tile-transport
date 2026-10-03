@@ -18,7 +18,11 @@ export function filmstrip(stage, scenes) {
     const title=document.createElement('strong');title.textContent=item.title;copy.append(number,title);button.append(thumb,copy);
     button.addEventListener('click',()=>{item.apply();stage.dirty=true;sync();reveal(button);});
     // Editorial strips keep a pointer target still until its click is delivered.
+<<<<<<< HEAD
     button.addEventListener('focus',()=>{if(!['portal','temporal','fluid','optical'].includes(id)||button.matches(':focus-visible'))reveal(button);});strip.append(button);return button;
+=======
+    button.addEventListener('focus',()=>{if(!['portal','temporal','fluid','shadow'].includes(id)||button.matches(':focus-visible'))reveal(button);});strip.append(button);return button;
+>>>>>>> remodel/s07-shadow
   });
   function sync(){
     const index=items.findIndex(item=>item.active());

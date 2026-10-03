@@ -17,8 +17,8 @@ export function filmstrip(stage, scenes) {
     const number=document.createElement('small');number.textContent=String(index+1).padStart(2,'0')+' / '+scenes.kind;
     const title=document.createElement('strong');title.textContent=item.title;copy.append(number,title);button.append(thumb,copy);
     button.addEventListener('click',()=>{item.apply();stage.dirty=true;sync();reveal(button);});
-    // On portal's mobile strip, pointer focus must not move the target before click.
-    button.addEventListener('focus',()=>{if(id!=='portal'||button.matches(':focus-visible'))reveal(button);});strip.append(button);return button;
+    // Editorial strips keep a pointer target still until its click is delivered.
+    button.addEventListener('focus',()=>{if(!['portal','temporal'].includes(id)||button.matches(':focus-visible'))reveal(button);});strip.append(button);return button;
   });
   function sync(){
     const index=items.findIndex(item=>item.active());

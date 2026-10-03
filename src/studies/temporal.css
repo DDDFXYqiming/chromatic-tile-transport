@@ -1,0 +1,80 @@
+/* AFTERLIGHT is an editorial treatment local to study 04. */
+[data-study=temporal] .study-app{min-height:900px}
+[data-study=temporal] .header{position:sticky;top:0;z-index:20;background:#090e13f5;backdrop-filter:blur(16px)}
+[data-study=temporal] .theater{--chapter-enter:1;min-height:570px;background:#101a20}
+[data-study=temporal] .art-shade{background:linear-gradient(90deg,#070e18df 0%,#080e199c 24%,#070e1800 66%),linear-gradient(0deg,#070e18b3,transparent 42%)}
+[data-study=temporal] .stage-tag{left:4.5%;top:25px;font-size:8px}
+.temporal-edition{position:absolute;left:4.5%;top:57px;pointer-events:none;display:grid;gap:9px}
+.temporal-edition>span{font:28px "SimSun",serif;letter-spacing:.18em;color:#f1eadc}
+.temporal-edition b{font:10px ui-monospace,monospace;letter-spacing:.32em;margin-left:14px;font-weight:400;color:#dbceba}
+.temporal-edition small{font:7px ui-monospace,monospace;letter-spacing:.12em;color:#acb9c3}
+[data-study=temporal] .hero-copy{left:4.5%;top:25%;bottom:auto;max-width:480px;opacity:var(--chapter-enter);transform:translateY(calc((1 - var(--chapter-enter))*14px))}
+[data-study=temporal] h1{font-size:clamp(36px,3.5vw,64px);line-height:1.4;letter-spacing:.055em;color:#f5eee1}
+[data-study=temporal] .eyebrow{font-size:8px;margin-bottom:19px;gap:13px;letter-spacing:.12em}
+[data-study=temporal] .hero-copy p{font-size:12px;line-height:2.05;letter-spacing:.04em;max-width:335px;color:#d6dedc;margin-top:19px}
+[data-study=temporal] .next-hero{font-size:11px;margin-top:21px;gap:25px}
+[data-study=temporal] .next-hero i{width:33px;height:33px}
+.temporal-folio{position:absolute;right:5%;bottom:6%;width:310px;padding:20px 22px;background:linear-gradient(120deg,#101a23ed,#15202aca);border:1px solid #e7d4b84d;backdrop-filter:blur(16px);box-shadow:0 10px 50px #02070c33;opacity:var(--chapter-enter);transform:translateY(calc((1 - var(--chapter-enter))*18px));pointer-events:none}
+.temporal-folio-top{display:flex;justify-content:space-between;gap:10px;font:7px ui-monospace,monospace;letter-spacing:.08em;color:var(--accent)}
+.temporal-folio-top b{font-size:8px;font-weight:400;letter-spacing:.04em;color:#c4ccce}
+.temporal-folio h2{font:20px "SimSun",serif;letter-spacing:.04em;margin:17px 0 12px;color:#ece8dd}
+.temporal-folio p{font-size:10px;line-height:1.95;letter-spacing:.035em;color:#bac8cf;margin:0}
+.temporal-exposures{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:16px}
+.temporal-exposures i{height:43px;background-image:var(--chapter-art);background-size:300% auto;background-position:30% 50%;border:1px solid #e8e1d033;filter:saturate(.65)}
+.temporal-exposures i:nth-child(2){background-position:60% 50%}.temporal-exposures i:nth-child(3){background-position:90% 50%;filter:none}
+.temporal-tags{display:flex;justify-content:space-between;gap:12px;margin-top:13px;padding-top:11px;border-top:1px solid #dadbcb25;font:7px ui-monospace,"Microsoft YaHei",sans-serif;letter-spacing:.05em;color:#b1bcc4}
+.temporal-tags span:first-child{color:var(--accent)}
+.temporal-note{position:absolute;left:4.5%;bottom:6%;border-left:1px solid #d5d3bd70;padding-left:14px;max-width:440px;opacity:var(--chapter-enter);pointer-events:none}
+.temporal-note>span{font:7px ui-monospace,monospace;letter-spacing:.17em;color:var(--accent)}
+.temporal-note p{font:12px "SimSun",serif;letter-spacing:.08em;margin:11px 0;color:#e2e4da}
+.temporal-note small{font:8px "Microsoft YaHei",sans-serif;letter-spacing:.09em;color:#94a5b2}
+.temporal-stamp{position:absolute;right:6%;top:25%;display:grid;gap:9px;text-align:right;opacity:var(--chapter-enter);pointer-events:none}
+.temporal-stamp span{font:7px ui-monospace,monospace;letter-spacing:.18em;color:var(--accent)}
+.temporal-stamp b{font:italic 49px Georgia,serif;font-weight:400;color:#f5ecd4d9;line-height:1}
+.temporal-stamp small{font-size:9px;letter-spacing:.2em;color:#e6e7da}
+[data-study=temporal] .telemetry{right:25px;top:22px;width:208px;background:#0a131e70;border-color:#e7d4b82d;backdrop-filter:blur(12px)}
+[data-study=temporal] #status{min-height:0;font-size:9px}
+[data-study=temporal] .telemetry-bottom{font-size:6px}
+[data-study=temporal] .study-coordinate{right:17px;bottom:35px;font-size:7px;letter-spacing:.1em}
+[data-study=temporal] .instrument-bar{padding-block:14px 12px;background:linear-gradient(100deg,#141d28,#0b131e)}
+[data-study=temporal] .controls{gap:11px 14px}
+[data-study=temporal] .controls button[aria-pressed=true]{border-color:var(--accent);color:var(--accent)}
+[data-study=temporal] .study-card{opacity:.68}
+[data-study=temporal] .study-card[aria-current]{opacity:1}
+[data-study=temporal].study-clean .temporal-edition,[data-study=temporal].study-clean .temporal-folio,[data-study=temporal].study-clean .temporal-note,[data-study=temporal].study-clean .temporal-stamp{display:none}
+@media(min-width:1700px){[data-study=temporal] .theater{min-height:690px}.temporal-folio{width:365px;padding:25px}.temporal-folio p{font-size:12px}.temporal-note p{font-size:14px}[data-study=temporal] .hero-copy p{font-size:14px;max-width:390px}.temporal-exposures i{height:60px}}
+@media(max-width:1100px){
+  [data-study=temporal] .study-app{min-height:1020px}[data-study=temporal] .theater{min-height:650px}
+  [data-study=temporal] .hero-copy{top:26%;max-width:370px}[data-study=temporal] h1{font-size:40px}
+  [data-study=temporal] .hero-copy p{max-width:300px;font-size:11px}.temporal-folio{width:270px;padding:18px}.temporal-folio h2{font-size:18px}
+  .temporal-note{max-width:340px}.temporal-note p{font-size:11px}.temporal-stamp{top:25%}
+}
+@media(max-width:800px){
+  [data-study=temporal] .study-app{min-height:1040px}[data-study=temporal] h1{font-size:35px}[data-study=temporal] .hero-copy{max-width:290px;top:25%}
+  [data-study=temporal] .hero-copy p{max-width:270px}.temporal-folio{width:245px;right:4%;bottom:5%;padding:17px}
+  .temporal-note{max-width:285px;bottom:6%}.temporal-note p{font-size:10px}.temporal-stamp{right:5%;top:24%}
+}
+@media(max-width:600px){
+  [data-study=temporal] .study-app{min-height:100svh;grid-template-rows:112px auto 126px}
+  [data-study=temporal] .stage{grid-template-rows:auto auto}
+  [data-study=temporal] .theater{min-height:0;display:flex;flex-direction:column;padding:22px 22px 26px;gap:0}
+  [data-study=temporal] #canvas{position:absolute;inset:0}
+  [data-study=temporal] .stage-tag{top:19px;left:22px;font-size:6px}
+  [data-study=temporal] .art-shade{background:linear-gradient(0deg,#08111af5 0%,#08111ada 39%,#08111a55 74%,#08111a22)}
+  .temporal-edition{position:relative;order:-1;z-index:1;left:auto;top:auto;margin-top:35px;gap:9px}.temporal-edition>span{font-size:25px}.temporal-edition b{font-size:8px}.temporal-edition small{font-size:6px}
+  .temporal-stamp{top:132px;right:25px}.temporal-stamp b{font-size:39px}.temporal-stamp small{font-size:8px}
+  [data-study=temporal] .hero-copy{position:relative;top:auto;left:auto;bottom:auto;max-width:none;margin-top:84px}
+  [data-study=temporal] h1{font-size:33px;line-height:1.42;letter-spacing:.04em}
+  [data-study=temporal] .hero-copy p{max-width:100%;font-size:11px;line-height:2;letter-spacing:.035em;margin-top:16px}
+  [data-study=temporal] .eyebrow{font-size:6px;letter-spacing:.09em;gap:9px;margin-bottom:16px}
+  [data-study=temporal] .next-hero{font-size:10px;margin-top:17px}
+  .temporal-folio{position:relative;left:auto;right:auto;bottom:auto;width:100%;padding:17px;margin-top:28px}
+  .temporal-folio h2{font-size:19px}.temporal-folio p{font-size:10px}.temporal-exposures i{height:42px}
+  .temporal-note{position:relative;left:auto;bottom:auto;max-width:none;margin-top:24px;padding-left:12px}
+  .temporal-note p{font-size:11px;line-height:1.8;margin-block:9px}.temporal-note small{font-size:7px}
+  [data-study=temporal] .telemetry,[data-study=temporal] .study-coordinate{display:none}
+  [data-study=temporal].study-clean .theater{min-height:620px}
+  [data-study=temporal] .controls select{max-width:150px}
+}
+@media(max-width:360px){[data-study=temporal] h1{font-size:28px}.temporal-folio-top{font-size:6px}.temporal-folio-top b{font-size:7px}.temporal-tags{font-size:6px}[data-study=temporal] .controls{gap:12px 8px}[data-study=temporal] .controls select{max-width:141px}}
+@media(prefers-reduced-motion:reduce){[data-study=temporal] .hero-copy,.temporal-folio{transform:none}}

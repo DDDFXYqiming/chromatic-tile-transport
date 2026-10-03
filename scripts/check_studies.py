@@ -26,6 +26,14 @@ for item in json.loads((ROOT/'src/studies/catalog.json').read_text(encoding='utf
     path=ROOT/f'dist/{item["slug"]}.html';p=Links();p.feed(path.read_text(encoding='utf-8'))
     for rel in p.paths:assert (path.parent/rel).resolve().is_file(),(path,rel)
     assert (ROOT/'assets/studies'/item['cover']).is_file()
+    if item['id'] == 'temporal':
+        chapters = item['chapters']
+        assert 4 <= len(chapters) <= 5
+        for field in ('id', 'image', 'body', 'note', 'kicker'):
+            assert len({chapter[field] for chapter in chapters}) == len(chapters), field
+        for chapter in chapters:
+            assert (ROOT/'assets'/chapter['image']).is_file()
+            assert all(chapter[key] for key in ('headline', 'detail', 'feature', 'annotation', 'action'))
 s=(ROOT/'src/showcase.html').read_text(encoding='utf-8')
 assert s.count('class="card')==8
 assert 'href="dist/index.html"' in s and 'href="dist/matrix-battle.html"' in s

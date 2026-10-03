@@ -18,10 +18,10 @@ def outputs() -> dict[Path, str]:
         shell = runpy.run_path(str(ROOT / 'src/hall/build.py'))['render'](item['id'], output)
         page = template
         extra = ''
-        if item['id'] == 'portal':
+        if item['id'] in ('portal', 'temporal'):
             chapters = json.dumps(item['chapters'], ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')
-            extra = ('\n<link rel="stylesheet" href="../src/studies/portal.css">'
-                     '\n<script type="application/json" id="portal-chapters">' + chapters + '</script>')
+            extra = (f'\n<link rel="stylesheet" href="../src/studies/{item["id"]}.css">'
+                     f'\n<script type="application/json" id="{item["id"]}-chapters">' + chapters + '</script>')
         page = page.replace('@@STUDYEXTRA@@', extra)
         for key, value in item.items():
             page = page.replace('@@' + key.upper() + '@@', html.escape(str(value), quote=True))

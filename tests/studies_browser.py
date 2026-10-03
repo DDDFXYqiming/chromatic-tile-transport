@@ -78,9 +78,13 @@ def run(args):
                 change('穿越进度',100);check('camera crosses portal plane',inspect()['z']<0)
                 page.get_by_role('button',name='回头看',exact=True).click();page.wait_for_timeout(70);check('turn back uses camera yaw',inspect()['yaw']>3)
             elif item['id']=='temporal':
-                page.evaluate('VisualStudy.play()');page.wait_for_timeout(3200);pause();state=inspect();check('bounded frame cache',1<state['count']<=state['capacity']==64)
-                if args.video_fixture:check('real video decoding fixture',state['source']=='video' and state['readyState']>=2)
-                before=digest();page.get_by_label('时间形状',exact=True).select_option('wave');page.wait_for_timeout(100);check('2D time field changes sampled pixels',digest()!=before)
+                page.get_by_label('运动源',exact=True).select_option('video')
+                page.evaluate('VisualStudy.play()');page.wait_for_timeout(3200);pause();state=inspect()
+                if not args.inline or args.video_fixture:
+                    check('bounded frame cache',1<state['count']<=state['capacity']==64)
+                    check('real video decoding',state['source']=='video' and state['readyState']>=2)
+                    before=digest();change('历史深度（秒）',0);check('2D time field changes sampled pixels',digest()!=before)
+                else:check('missing offline video falls back to chapter art',state['source']=='art' and '读取失败' in page.locator('#status').inner_text())
                 page.get_by_label('运动源',exact=True).select_option('synthetic');page.evaluate('VisualStudy.play()');page.wait_for_timeout(180);pause();check('explicit synthetic source works',inspect()['source']=='synthetic')
             elif item['id']=='fluid':
                 page.get_by_role('button',name='轻推颜料',exact=True).click();page.evaluate('VisualStudy.play()');page.wait_for_timeout(1200);pause();check('pigment is transported',digest()!=h0)
@@ -110,7 +114,8 @@ def run(args):
                 if item['id']=='portal':
                     check(scene+' camera preset',state['auto'] if scene=='roam' else state['target']==(0 if scene=='threshold' else 1) and state['yaw']==(3.141592653589793 if scene=='return' else 0))
                 elif item['id']=='temporal':
-                    check(scene+' sampling source',state['source']=='synthetic' if scene=='pendulum' else state['mode']==scene and state['source']=='video')
+                    chapter=item['chapters'][i]
+                    check(scene+' art and prose',state['chapter']==scene and state['mode']==chapter['mode'] and state['source']=='art' and state['art']==chapter['image'] and page.locator('h1').inner_text().replace('\n','')==''.join(chapter['headline']))
                 elif item['id']=='fluid':check(scene+' pigment seed',state['seed']==scene and state['finite'] and state['steps']==(0 if scene=='still' else 24))
                 elif item['id']=='optical':
                     expected=[(1.46,.018,98),(1.46,.05,98),(1.7,.012,125),(1.18,0,72)][i]

@@ -1,0 +1,53 @@
+{
+  "created": "2026-10-04",
+  "generator": "Codex built-in Image Gen",
+  "processing": "Original generated PNG bytes copied unchanged",
+  "project": "AFTERLIGHT / temporal-field",
+  "assets": [
+    {
+      "file": "temporal-afterglow.png",
+      "role": "余光采样",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2580142,
+      "sha256": "c12440013fb20ed9866a8790c8a1490e60099504a048517d1619a9c92ed5d2f9",
+      "prompt": "Use case: editorial-illustration. Asset type: landscape chapter artwork for an elegant Chinese cinematic image-journal product called AFTERLIGHT. Primary request: a richly detailed cinematic anime painted still of a circular astronomical light-collecting instrument standing in an abandoned hilltop observatory at blue hour, an immense luminous amber sun seen through its circular brass lens, drifting dust, billowing translucent curtains, dark teal foreground, a tiny female observer in a cream coat on the right. Composition: 1536x1024 wide landscape, atmospheric depth, main circular instrument in right half, dark architectural negative space in left third for overlaid editorial copy, detailed stone steps across bottom. Style: exquisite hand-painted feature-animation environment, painterly clouds and textured architectural details, confident shapes, subtle film grain. Palette: ink teal, burnished amber, dusty peach. No lettering, text, watermark, logo, interface or frame. This is chapter 1, collecting the last light of a day."
+    },
+    {
+      "file": "temporal-street-slices.png",
+      "role": "街角切片",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2883073,
+      "sha256": "30241c4032203bad65252422383794c7d110891ec716ac98ee283ccc380a6e6e",
+      "prompt": "Use case: editorial-illustration. Asset type: chapter 2 landscape art for an elegant image-journal concept called AFTERLIGHT. A cinematic hand-painted anime environment: a rain-soaked old coastal city intersection at twilight seen from inside a dark tram shelter. Tall rectangular tram windows and hanging strips of translucent glass divide the street into luminous slices. A vintage burnt-orange tram is passing in the right half, tiny pedestrians with umbrellas, wet cobalt paving stones reflect warm coral windows, cables and tangled architecture recede into mist. Rich physical details, poignant quiet moment, no cyberpunk signage. Composition 1536x1024 landscape, main tram and glass panes on right, left third deep navy shadow for editorial copy, dramatic layered perspective. Painterly feature-animation quality, subtle film grain. Palette midnight cobalt, rain blue, coral and warm ivory. No text, letters, logo, watermark or UI."
+    },
+    {
+      "file": "temporal-tidal-notes.png",
+      "role": "流动备忘",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 3095499,
+      "sha256": "1c5b32040c12e11699ecbd428f1e181e38aa33cd17d8f7d4b5f35d1e242712d8",
+      "prompt": "Use case: editorial-illustration. Asset type: landscape chapter 3 for cinematic memory-journal concept AFTERLIGHT. Primary request: a magnificent hand-painted feature-animation environment of a windswept sea causeway at nightfall, bioluminescent turquoise surf curves like flowing silk around dark rocks, long golden reflections on water from a small lighthouse on the far right, one tiny cream-coated traveler and a red scarf on the causeway right of center, clouds stretched by coastal wind and a pale moon. Composition 1536x1024 landscape, sweeping horizontal motion in the waves, strong depth, left third dark textured rocks and shadow usable behind editorial type, center/right spacious and luminous. Delicate foam details, cinematic anime painting, textured brushwork, subtle grain, sophisticated restrained light. Palette petrol blue, sea glass, pale gold. No letters, logo, text, watermark or UI."
+    },
+    {
+      "file": "temporal-memory-layers.png",
+      "role": "记忆叠层",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 3052309,
+      "sha256": "5f90fa174aae0a804644ec06246132f1a5be83e73f684e47b35398c84d3d0207",
+      "prompt": "Use case: editorial-illustration. Asset type: landscape chapter 4 art for image-journal product AFTERLIGHT. A richly layered hand-painted cinematic anime environment: a huge abandoned glass conservatory at midnight, its repeating arched frames receding into a deep starry indigo sky. Several delicate translucent photographic glass plates are suspended at staggered depths on the right, each containing a luminous fragment of the same blooming ivory magnolia tree at different seasons, petals drift, old botanical worktable and archival drawers lower right, a small brass pendulum. Atmospheric magical realism, beautifully tactile glass, leaves, aged wood and luminous silver dust. 1536x1024 wide landscape, dark velvety aubergine in left third for editorial copy, main glowing glass plates and tree center/right, deep perspective. Palette smoky violet, lunar silver, restrained peach glow. Feature-animation environmental painting, no text, lettering, logos, watermark or UI."
+    },
+    {
+      "file": "temporal-present-tense.png",
+      "role": "重返此刻",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2773141,
+      "sha256": "fa5bd7e848d535083b8bf40a2e1869d64e38ee96f6018e782bcafadf0b0c34d6",
+      "prompt": "Use case: editorial-illustration. Asset type: landscape final chapter of cinematic image-journal product AFTERLIGHT. Primary request: an exquisite hand-painted cinematic anime still, a quiet attic photo-editing studio opening onto a misty terraced valley at dawn, enormous east-facing rectangular windows on the right, slanting pale apricot sunlight across a wooden desk, small vintage camera and closed linen notebook, a steaming porcelain cup, translucent curtains and ginkgo leaves just outside. A tiny cream coat hanging from a chair implies the traveler has come home. Dark deep olive shelves in the left third provide room for editorial copy; the right two thirds luminous spacious green valley and desk. Rich tactile materials, beautiful depth and breathing room, soft painterly cloud edges, subtle film grain. 1536x1024 landscape. Palette sage green, ivory, pale apricot and dark ink. No letters, numbers, writing, branding, watermark or UI."
+    }
+  ]
+}

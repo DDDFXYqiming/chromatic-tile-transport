@@ -36,6 +36,8 @@
 .portal-route i>b{position:absolute;left:calc(var(--travel,0)*100%);top:-3px;width:7px;height:7px;background:#eee4c7;transform:translateX(-50%)}
 .portal-route em{position:absolute;width:1px;height:9px;top:-4px;background:#eee4c77a}
 .portal-route output{position:absolute;left:0;right:0;top:16px;text-align:center;white-space:nowrap;color:#d6dedb;font-size:8px;letter-spacing:.04em}
+/* The journal is read at the stops; moving reveals the full architectural silhouette. */
+[data-study=portal] .theater[data-travelling=true] :is(.hero-copy,.portal-folio,.portal-note,.portal-chapter-mark){visibility:hidden;pointer-events:none}
 [data-study=portal] .instrument-bar{padding:9px 20px 7px;background:linear-gradient(100deg,#0e1b1f,#0a141b);gap:6px 20px}
 [data-study=portal] .instrument-title span{color:#b5c7b4}
 [data-study=portal] .study-card{opacity:.65}

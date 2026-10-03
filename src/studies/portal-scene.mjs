@@ -5,11 +5,12 @@ export const STOPS=[4.6,-5.4,-15.4,-25.4];
 export const DOORS=[0,-10,-20];
 export const routeX=z=>.72*Math.sin((STOPS[0]-z)*.26);
 export const roomAt=z=>DOORS.filter(door=>z<door).length;
-export const APERTURE={halfWidth:1.45,height:3.6,depth:1.4};
+export const APERTURE={halfWidth:1.18,height:3.25,depth:2.4};
 export const EYE_HEIGHT=1.72;
-export const ROOM={halfWidth:6.8,height:4.8};
+export const ROOM={halfWidth:5.6,height:4.6};
+export const SCENE_REVISION='solid-rooms-r9';
 // Keep the whole doorway visible at rest, including in a portrait viewport.
-export const lensForAspect=aspect=>Math.min(1.75,aspect*1.55);
+export const lensForAspect=aspect=>Math.min(1.42,aspect*1.42);
 
 const vertex=`
 attribute vec3 position,normal,color;
@@ -33,36 +34,36 @@ varying vec3 vPosition,vNormal,vColor;
 varying vec2 vUV;
 varying float vMaterial,vDepth;
 uniform sampler2D artwork;
-uniform float textured,time;
+uniform float textured;
 uniform vec3 eye;
 float hash(vec3 p){return fract(sin(dot(p,vec3(127.1,311.7,74.7)))*43758.5453);}
 void main(){
   vec3 p=vPosition,n=normalize(vNormal);
-  float light=.60+.38*abs(dot(n,normalize(vec3(-.45,.8,.3))));
+  float light=.54+.44*abs(dot(n,normalize(vec3(-.45,.8,.3))));
   vec3 c=vColor*light;
   if(textured>.5){
     vec2 uv=vUV;
-    if(vMaterial>1.5&&vMaterial<2.5){
-      uv+=vec2(sin(p.z*3.+time*.3),cos(p.x*3.-time*.22))*.0018;
-    }
     if(vMaterial>.5&&vMaterial<1.5){
       uv=abs(n.y)>.5?p.xz*.48:abs(n.x)>.5?p.zy*.48:p.xy*.48;
     }
     c=texture2D(artwork,uv).rgb;
-    // Scenery is fixed to world surfaces, so each wall has its own parallax.
-    if(vMaterial<.5)c*=.78+.20*abs(n.z);
+    // Artwork belongs to recessed exhibition walls; architecture has its own material.
+    if(vMaterial<.5)c*=.90+.08*abs(n.z);
     if(vMaterial>.5&&vMaterial<1.5){
       vec3 view=normalize(eye-p);
       float spec=pow(max(0.,dot(reflect(-normalize(vec3(-.45,.8,.3)),n),view)),20.);
       c=c*vColor*(light*1.48)+vec3(.56,.36,.15)*spec*.6;
     }
-    if(vMaterial>1.5&&vMaterial<2.5){
-      float wave=pow(.5+.5*sin(p.z*19.+sin(p.x*5.+time*.35)*2.-time*.5),20.);
-      c=c*.66+vColor*.13+vec3(.36,.42,.35)*wave*.11;
-    }
-    if(vMaterial>3.5)c*=light*.66;
   }else if(vMaterial>2.5&&vMaterial<3.5)c=vColor;
-  else c*=.84+hash(floor(p*150.))*.22;
+  else {
+    c*=.91+hash(floor(p*95.))*.14;
+    // World-space joints make the floor and masonry scale readable during a walk.
+    vec2 grid=abs(n.y)>.5?p.xz:abs(n.x)>.5?p.zy:p.xy;
+    vec2 cell=fract(grid/vec2(1.2,.6));
+    float seam=step(.976,cell.x)+step(.96,cell.y);
+    c*=1.-min(1.,seam)*.22;
+    if(vMaterial>3.5)c*=.85+.15*step(.018,fract(p.z*.5));
+  }
   float fog=1.-exp(-max(0.,vDepth)*.004);
   c=mix(c,vec3(.09,.14,.15),fog);
   gl_FragColor=vec4(c,1.);
@@ -89,79 +90,100 @@ export function buildPortalGeometry(art,patina){
     }
   }
   const palettes=[
-    {floor:'#467975',accent:'#f4d59e',stone:'#1c3836'},
-    {floor:'#344e38',accent:'#dae6a9',stone:'#1d3025'},
-    {floor:'#333e60',accent:'#c8c6f2',stone:'#252d42'},
-    {floor:'#578b99',accent:'#d4e9e8',stone:'#355459'},
+    {wall:'#52706b',floor:'#304b47',accent:'#e6c998',stone:'#7c9183'},
+    {wall:'#65725a',floor:'#354439',accent:'#dce2b0',stone:'#829178'},
+    {wall:'#566079',floor:'#303b50',accent:'#c9c5e9',stone:'#7d8a9d'},
+    {wall:'#68818a',floor:'#3b545e',accent:'#c9e0dc',stone:'#98aaa6'},
   ];
-  // Sample the scenery inside the original image's doorway. The originals stay intact.
+  // Use the original scenic crops as monumental wall works in a solid stone gallery.
   const crops=[[.285,.055,.740,.77],[.245,.03,.780,.94],[.205,.06,.80,.84],[.245,.045,.765,.79]];
   for(let i=0;i<4;i++){
     const front=10-i*10,back=-i*10,p=palettes[i],tex=art[i],crop=crops[i];
     const {halfWidth:wide,height:ceiling}=ROOM;
     const panoramaUV=([x,y])=>[crop[0]+(x+wide)/(wide*2)*(crop[2]-crop[0]),crop[1]+(ceiling-y)/ceiling*(crop[3]-crop[1])];
-    function landscape(points){quad(points,'#ffffff',0,tex,points.map(panoramaUV));}
+    function masonry(points){quad(points,p.wall,2);}
+    function mural(left,right,z,inward){
+      const low=.48,high=3.95;
+      // A deep stone backing and wide surround keep the art distinct from the aperture.
+      cuboid([(left+right)/2,(low+high)/2,z],[right-left+.20,high-low+.20,.12],p.floor,2);
+      const at=z+inward*.071;
+      const points=[[left,high,at],[right,high,at],[right,low,at],[left,low,at]];
+      quad(points,'#ffffff',0,tex,points.map(panoramaUV));
+      cuboid([(left+right)/2,low-.055,z+inward*.1],[right-left+.22,.07,.18],p.stone,2);
+    }
     function endWall(boundary,opening,inward){
       const z=boundary+(opening?inward*APERTURE.depth/2:0);
       const x=routeX(boundary),left=x-APERTURE.halfWidth,right=x+APERTURE.halfWidth;
-      if(!opening){landscape([[-wide,ceiling,z],[wide,ceiling,z],[wide,0,z],[-wide,0,z]]);return;}
-      landscape([[-wide,ceiling,z],[left,ceiling,z],[left,0,z],[-wide,0,z]]);
-      landscape([[right,ceiling,z],[wide,ceiling,z],[wide,0,z],[right,0,z]]);
-      landscape([[left,ceiling,z],[right,ceiling,z],[right,APERTURE.height,z],[left,APERTURE.height,z]]);
+      if(!opening){
+        masonry([[-wide,ceiling,z],[wide,ceiling,z],[wide,0,z],[-wide,0,z]]);
+        mural(-wide+.4,wide-.4,z+inward*.09,inward);return;
+      }
+      masonry([[-wide,ceiling,z],[left,ceiling,z],[left,0,z],[-wide,0,z]]);
+      masonry([[right,ceiling,z],[wide,ceiling,z],[wide,0,z],[right,0,z]]);
+      masonry([[left,ceiling,z],[right,ceiling,z],[right,APERTURE.height,z],[left,APERTURE.height,z]]);
+      mural(-wide+.4,left-.94,z+inward*.09,inward);
+      mural(right+.94,wide-.4,z+inward*.09,inward);
     }
     endWall(back,i<3,1);endWall(front,i>0,-1);
-    // Separate image-clad volumes surround the path, including during a return turn.
+    // The structural shell remains stone at every camera position.
     for(const side of [-1,1]){
       const x=side*wide;
-      quad([[x,ceiling,front],[x,ceiling,back],[x,0,back],[x,0,front]],'#ffffff',0,tex,
+      masonry([[x,ceiling,front],[x,ceiling,back],[x,0,back],[x,0,front]]);
+      // Side-wall panoramas are bounded exhibits, visible in perspective on arrival/return.
+      const at=x-side*.07,start=back+2,end=front-2;
+      cuboid([x-side*.035,2.22,(start+end)/2],[.06,3.38,end-start+.20],p.floor,2);
+      quad([[at,3.85,start],[at,3.85,end],[at,.6,end],[at,.6,start]],'#ffffff',0,tex,
         [[crop[0],crop[1]],[crop[2],crop[1]],[crop[2],crop[3]],[crop[0],crop[3]]]);
+      cuboid([x-side*.16,.48,(start+end)/2],[.32,.16,end-start+.24],p.stone,2);
     }
-    quad([[-wide,ceiling,front],[wide,ceiling,front],[wide,ceiling,back],[-wide,ceiling,back]],'#ffffff',0,tex,
-      [[crop[0],crop[1]],[crop[2],crop[1]],[crop[2],crop[1]+.22],[crop[0],crop[1]+.22]]);
-    // The scenic floor continues beneath the raised walkway, with restrained ripples.
-    quad([[-wide,-.04,front],[wide,-.04,front],[wide,-.04,back],[-wide,-.04,back]],p.floor,2,tex,
-      [[crop[0],crop[3]],[crop[2],crop[3]],[crop[2],.48],[crop[0],.48]]);
-    for(let z=back;z<front-.01;z+=.5){
-      const x=routeX(z+.25);
-      cuboid([x,.065,z+.25],[1.9,.13,.488],p.stone);
-      for(const side of [-1,1])cuboid([x+side*.96,.09,z+.25],[.025,.025,.49],p.accent,3);
+    quad([[-wide,ceiling,front],[wide,ceiling,front],[wide,ceiling,back],[-wide,ceiling,back]],p.floor,2);
+    quad([[-wide,0,front],[wide,0,front],[wide,0,back],[-wide,0,back]],p.floor,4);
+    const clearBack=back+(i<3?APERTURE.depth/2:0),clearFront=front-(i>0?APERTURE.depth/2:0);
+    for(let z=clearBack+.01;z<clearFront-.02;z+=.6){
+      const end=Math.min(z+.59,clearFront-.01),x=routeX((z+end)/2);
+      cuboid([x,.065,(z+end)/2],[1.92,.13,end-z],p.stone,4);
+      for(const side of [-1,1])cuboid([x+side*.97,.08,(z+end)/2],[.032,.025,end-z],p.accent,3);
     }
-    // Low stone markers at different depths establish scale beside the walkway.
-    for(const distance of [2.1,5,7.8])for(const side of [-1,1]){
-      const z=front-distance,x=routeX(z)+side*2.05;
-      cuboid([x,.38,z],[.25,.76,.25],p.stone);
-      cuboid([x,.775,z],[.27,.025,.27],p.accent,3);
-    }
-    // Irregular textured outcrops sit at several depths and visibly pass the eye.
-    for(const side of [-1,1])for(let j=0;j<8;j++){
-      const z=back+.65+j*1.16,x=side*(3.7+(j%3)*1.05),h=.42+(j%4)*.32;
-      const points=[[-.8,0,-.6],[.8,0,-.6],[.65,h,-.38],[-.4,h*1.2,-.4],[-.75,0,.6],[.65,0,.6],[.46,h*.8,.45],[-.55,h*.9,.32]].map(q=>[q[0]+x,q[1],q[2]+z]);
-      for(const ids of [[0,3,2,1],[4,5,6,7],[0,4,7,3],[1,2,6,5],[3,7,6,2]]){
-        quad(ids.map(k=>points[k]),p.stone,4,tex,[[.01,.46],[.18,.46],[.18,.77],[.01,.77]]);
+    // Repeated ceiling beams and piers cross the field of view at different depths.
+    for(const distance of [2,5,8]){
+      const z=front-distance;
+      cuboid([0,ceiling-.16,z],[wide*2,.32,.3],p.stone,2);
+      for(const side of [-1,1]){
+        cuboid([side*(wide-.14),ceiling/2,z],[.28,ceiling,.36],p.stone,2);
+        cuboid([side*(wide-.3),ceiling-.4,z],[.055,.05,.6],p.accent,3);
       }
     }
+    for(const side of [-1,1]){
+      const z=front-5.8,x=routeX(z)+side*2.3;
+      cuboid([x,.38,z],[.65,.76,1.15],p.floor,2);
+      cuboid([x,.79,z],[.75,.06,1.25],p.stone,2);
+      cuboid([x,1.13,z],[.22,.62,.32],p.accent,1,patina);
+    }
   }
-  // A 1.4 m deep reveal joins the two wall faces. All faces are opaque and depth-tested.
+  // Broad 2.4 m deep bronze piers fill the aperture surround, including both returns.
   for(const z of DOORS){
     const x=routeX(z),edge=APERTURE.halfWidth,h=APERTURE.height,depth=APERTURE.depth;
     for(const side of [-1,1]){
-      cuboid([x+side*(edge+.22),h/2,z],[.44,h,depth+.04],'#dbc098',1,patina);
-      cuboid([x+side*(edge+.5),h/2,z],[.10,h+.6,depth+.10],'#978268',1,patina);
+      cuboid([x+side*(edge+.38),h/2,z],[.76,h,depth+.04],'#dbc098',1,patina);
+      cuboid([x+side*(edge+.83),h/2,z],[.14,h+.8,depth+.16],'#8d9c87',2);
       for(const face of [-1,1]){
-        cuboid([x+side*(edge+.035),h/2,z+face*(depth/2+.04)],[.038,h,.035],'#f2d8ac',3);
-        cuboid([x+side*(edge+.3),h/2,z+face*(depth/2+.045)],[.018,h-.12,.03],'#c4aa75',3);
-        for(let y=.3;y<h;y+=.6)cuboid([x+side*(edge+.36),y,z+face*(depth/2+.06)],[.045,.045,.025],'#cfb58c',3);
+        cuboid([x+side*(edge+.065),h/2,z+face*(depth/2+.06)],[.10,h,.09],'#e9c78f',1,patina);
+        cuboid([x+side*(edge+.64),h/2,z+face*(depth/2+.05)],[.055,h-.12,.045],'#c4aa75',3);
+        for(let y=.3;y<h;y+=.6)cuboid([x+side*(edge+.48),y,z+face*(depth/2+.06)],[.07,.07,.05],'#cfb58c',3);
       }
-      // Bands across the inner jambs show the distance between entrance and exit.
-      for(const inset of [-.42,0,.42])cuboid([x+side*(edge+.012),h/2,z+inset],[.024,h,.025],'#b9a07a',3);
-      cuboid([x+side*(edge+.22),.11,z],[.44,.22,depth+.22],'#ae9670',1,patina);
+      // Three transverse ribs remain beside/above the eye while it is inside the passage.
+      for(const inset of [-.85,0,.85]){
+        cuboid([x+side*(edge+.003),h/2,z+inset],[.04,h,.055],'#d5b980',3);
+      }
+      cuboid([x+side*(edge+.38),.11,z],[.76,.22,depth+.22],'#ae9670',1,patina);
     }
-    cuboid([x,h+.22,z],[edge*2+.88,.44,depth+.04],'#dbc098',1,patina);
+    cuboid([x,h+.32,z],[edge*2+1.52,.64,depth+.04],'#dbc098',1,patina);
+    for(const inset of [-.85,0,.85])cuboid([x,h-.005,z+inset],[edge*2,.04,.055],'#d5b980',3);
     for(const face of [-1,1]){
-      cuboid([x,h+.035,z+face*(depth/2+.04)],[edge*2,.038,.035],'#f2d8ac',3);
-      cuboid([x,.15,z+face*(depth/2+.06)],[edge*2,.03,.045],'#e9c99b',3);
+      cuboid([x,h+.065,z+face*(depth/2+.06)],[edge*2,.10,.09],'#e9c78f',1,patina);
+      cuboid([x,.17,z+face*(depth/2+.07)],[edge*2,.035,.09],'#e9c99b',3);
     }
-    cuboid([x,.07,z],[edge*2,.14,depth],'#ac996f',1,patina);
+    cuboid([x,.08,z],[edge*2,.16,depth],'#ac996f',1,patina);
   }
   return batches;
 }
@@ -175,7 +197,7 @@ export function createArchitecture(art,patina){
   shaders.forEach(s=>gl.attachShader(program,s));gl.linkProgram(program);
   if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(program));
   gl.useProgram(program);gl.enable(gl.DEPTH_TEST);gl.disable(gl.BLEND);gl.depthMask(true);gl.clearColor(.035,.064,.075,1);
-  const uniforms=Object.fromEntries(['eye','yaw','aspect','lens','offset','artwork','textured','time'].map(n=>[n,gl.getUniformLocation(program,n)]));
+  const uniforms=Object.fromEntries(['eye','yaw','aspect','lens','offset','artwork','textured'].map(n=>[n,gl.getUniformLocation(program,n)]));
   const attributes=Object.fromEntries(['position','normal','color','uv','material'].map(n=>[n,gl.getAttribLocation(program,n)]));
   const batches=buildPortalGeometry(art,patina);
   for(const batch of batches){
@@ -196,12 +218,12 @@ export function createArchitecture(art,patina){
   }
   return {
     canvas,triangles:batches.reduce((sum,b)=>sum+b.count/3,0),
-    render(width,height,eye,yaw,time=0){
+    render(width,height,eye,yaw){
       if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;gl.viewport(0,0,width,height);}
       gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.useProgram(program);
       gl.uniform3fv(uniforms.eye,eye);gl.uniform1f(uniforms.yaw,yaw);gl.uniform1f(uniforms.aspect,width/height);
       gl.uniform1f(uniforms.lens,lensForAspect(width/height));gl.uniform1f(uniforms.offset,width/height>1.2?.12:0);
-      gl.uniform1f(uniforms.time,time);gl.uniform1i(uniforms.artwork,0);
+      gl.uniform1i(uniforms.artwork,0);
       for(const b of batches){
         gl.bindBuffer(gl.ARRAY_BUFFER,b.buffer);
         for(const [name,size,offset] of [['position',3,0],['normal',3,3],['color',3,6],['uv',2,9],['material',1,11]]){

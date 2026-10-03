@@ -62,11 +62,11 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
     <section class="instrument-bar" aria-label="互动导演台"><div class="instrument-title"><span>INTERACTION / 03</span><strong>画中门</strong></div><div class="controls" id="controls" aria-label="实验参数"></div><div class="utility-actions"><button id="reset" type="button">重置</button><button id="snapshot" type="button">保存画面</button></div><p class="hint">选择下方四册手记，或继续翻页。移动指针探索景深；方向键行走与回望。</p></section>
   </main>
   <footer class="study-footer hall-scene-footer" aria-label="当前作品内容">
-    <div class="hall-folio"><span class="hall-label" id="study-atlas-label">THE STUDY ATLAS</span><div><b id="study-current">01</b><span id="study-total"></span><i></i></div><button class="hall-open-atlas" type="button">八个体验 ↗</button></div>
+    <div class="hall-folio"><span class="hall-label" id="study-atlas-label">THE STUDY ATLAS</span><div><b id="study-current">01</b><span id="study-total"></span><i></i></div></div>
     <div class="hall-strip-wrap"><div class="hall-track" aria-hidden="true"><i></i></div><nav class="study-strip" aria-label="选择当前作品的内容"></nav></div>
     <div class="hall-transport"><div><button id="study-prev" type="button" aria-label="上一个内容">←</button><button id="study-next" type="button" aria-label="下一个内容">→</button></div><span><kbd>SPACE</kbd> 播放 / 暂停</span></div>
   </footer>
-  <footer id="hall-experience-atlas" class="hall-atlas" aria-label="八个体验导航" style="--hall-position:0.28571"><div class="hall-folio"><span class="hall-label">THE EXPERIENCE ATLAS</span><div><b>03</b><span>/ 08</span><i></i></div><button class="hall-close-atlas" type="button">返回当前影像 ↗</button></div><div class="hall-strip-wrap"><div class="hall-track" aria-hidden="true"><i></i></div><nav class="hall-strip" aria-label="切换体验"><a class="hall-card" href="index.html"><span class="hall-thumb"><img src="../assets/studies/atlas/transport.webp" alt="" width="160" height="96"></span><span class="hall-card-copy"><small>01 / EXPERIENCE</small><strong>寻色迁移</strong></span></a><a class="hall-card" href="matrix-battle.html"><span class="hall-thumb"><img src="../assets/studies/atlas/matrix.webp" alt="" width="160" height="96"></span><span class="hall-card-copy"><small>02 / EXPERIENCE</small><strong>动态显影</strong></span></a><a class="hall-card" href="portal-threshold.html" aria-current="page"><span class="hall-thumb"><img src="../assets/studies/atlas/portal.webp" alt="" width="160" height="96"></span><span class="hall-card-copy"><small>03 / EXPERIENCE</small><strong>画中门</strong></span></a><a class="hall-card" href="temporal-field.html"><span class="hall-thumb"><img src="../assets/studies/atlas/temporal.webp" alt="" width="160" height="96"></span><span class="hall-card-copy"><small>04 / EXPERIENCE</small><strong>时差场</strong></span></a><a class="hall-card" href="liquid-canvas.html"><span class="hall-thumb"><img src="../assets/studies/atlas/fluid.webp" alt="" width="160" height="96"></span><span class="hall-card-copy"><small>05 / EXPERIENCE</small><strong>液态画布</strong></span></a><a class="hall-card" href="optical-vault.html"><span class="hall-thumb"><img src="../assets/studies/atlas/optical.webp" alt="" width="160" height="96"></span><span class="hall-card-copy"><small>06 / EXPERIENCE</small><strong>光学展柜</strong></span></a><a class="hall-card" href="shadow-apparatus.html"><span class="hall-thumb"><img src="../assets/studies/atlas/shadow.webp" alt="" width="160" height="96"></span><span class="hall-card-copy"><small>07 / EXPERIENCE</small><strong>影子机关</strong></span></a><a class="hall-card" href="folding-theater.html"><span class="hall-thumb"><img src="../assets/studies/atlas/folding.webp" alt="" width="160" height="96"></span><span class="hall-card-copy"><small>08 / EXPERIENCE</small><strong>折叠剧场</strong></span></a></nav></div><div class="hall-transport"><div><a href="matrix-battle.html" aria-label="上一个体验">←</a><a href="temporal-field.html" aria-label="下一个体验">→</a></div><span><kbd>SPACE</kbd> 播放 / 暂停</span></div></footer>
+  <!-- HALL:ATLAS omitted on studies: bottom bar stays page-local -->
 </div>
 <dialog class="study-dialog" id="about" aria-labelledby="about-title"><div class="dialog-head"><span>EXHIBITION NOTES / 03</span><button id="about-close" type="button" aria-label="关闭作品说明">×</button></div><h2 id="about-title">画中门</h2><p>彼处 ELSEWHERE 是虚构的空间声音手记产品。四个章节展示空间采集、分层聆听、地点札记与漫游编排的产品构想。铜门、自然场景与文字一起切换，镜头可以穿过门槛并回望。</p><p class="muted">本页是产品概念影像。场景图与铜锈材质由 Image Gen 生成；声音采集与播放属于故事中的产品设定。画面使用二维画布上的三维投影与章节交叉淡化。</p><p class="muted">图片和视频在浏览器本地处理。示例插画与概念封面由 Image Gen 生成。已有战斗视频沿用仓库的素材许可。</p><a href="../docs/SIX_STUDIES.md">实现、素材与验收说明 ↗</a></dialog>
 <script>
@@ -85,35 +85,42 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
   document.querySelector('.hall-modes')?.addEventListener('focusin', e => {
     if (e.target.matches('a:focus-visible')) revealItem(e.currentTarget, e.target);
   });
+  // Study pages: bottom bar stays page-local. Cross-page jumps live in the top bar only.
+  const onStudy = Boolean(document.body.dataset.study);
   const opener = document.querySelector('.hall-open-atlas');
-  opener?.setAttribute('aria-controls', 'hall-experience-atlas');
-  opener?.setAttribute('aria-expanded', 'false');
-  opener?.addEventListener('click', () => {
-    document.body.classList.add('hall-experiences');
-    opener.setAttribute('aria-expanded', 'true');
-    revealCurrent();
-    document.querySelector('.hall-close-atlas').focus({preventScroll:true});
-  });
-  const closeAtlas = () => {
+  const atlas = document.querySelector('#hall-experience-atlas');
+  if (!onStudy && opener && atlas) {
+    opener.setAttribute('aria-controls', 'hall-experience-atlas');
+    opener.setAttribute('aria-expanded', 'false');
+    opener.addEventListener('click', () => {
+      document.body.classList.add('hall-experiences');
+      opener.setAttribute('aria-expanded', 'true');
+      revealCurrent();
+      document.querySelector('.hall-close-atlas')?.focus({preventScroll:true});
+    });
+    const closeAtlas = () => {
+      document.body.classList.remove('hall-experiences');
+      opener.setAttribute('aria-expanded', 'false');
+      opener.focus({preventScroll:true});
+      revealCurrent();
+    };
+    document.querySelector('.hall-close-atlas')?.addEventListener('click', closeAtlas);
+    document.addEventListener('keydown', e => {
+      if (document.querySelector('dialog[open]')) return;
+      if (e.key === 'Escape' && document.body.classList.contains('hall-experiences')) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeAtlas();
+      } else if (e.target.closest('.hall-modes,.hall-atlas,.hall-open-atlas,.study-footer')) {
+        e.stopPropagation();
+      }
+    });
+  } else {
     document.body.classList.remove('hall-experiences');
-    opener?.setAttribute('aria-expanded', 'false');
-    opener?.focus({preventScroll:true});
-    revealCurrent();
-  };
-  document.querySelector('.hall-close-atlas')?.addEventListener('click', closeAtlas);
-  document.addEventListener('keydown', e => {
-    // Native dialogs own Escape before the underlying experience atlas.
-    if (document.querySelector('dialog[open]')) return;
-    if (e.key === 'Escape' && document.body.classList.contains('hall-experiences')) {
-      e.preventDefault();
-      e.stopPropagation();
-      closeAtlas();
-    } else if (e.target.closest('.hall-modes,.hall-atlas,.hall-open-atlas,.study-footer')) {
-      // Let links/buttons keep native keyboard activation without also invoking
-      // a legacy page's global playback or chapter shortcuts.
-      e.stopPropagation();
-    }
-  });
+    document.addEventListener('keydown', e => {
+      if (e.target.closest('.hall-modes,.study-footer')) e.stopPropagation();
+    });
+  }
   window.addEventListener('resize', revealCurrent);
   revealCurrent();
 })();

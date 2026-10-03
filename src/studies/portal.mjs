@@ -15,7 +15,7 @@ export async function create(stage,controls) {
   const telemetry=document.querySelector('.telemetry');
   const before=offscreen(1,1),beforeContext=before.getContext('2d');
   let chapterIndex=0,progress=0,target=0,yaw=0,auto=false,custom=false;
-  let transition=1,chapterTime=0,travelTime=0;
+  let transition=1,chapterTime=0,travelTime=0,copyPending=false;
   const transitionSeconds=1.2,holdSeconds=12;
 
   const edition=document.createElement('div');edition.className='portal-edition';
@@ -88,7 +88,10 @@ export async function create(stage,controls) {
     auto=continueRoam||index===3;
     // A paused chapter selection stays paused, including the roaming chapter.
     if(!animate||!stage.playing||reduced.matches)progress=target;
-    writeCopy();stage.dirty=true;
+    // Hold previous copy until the crossfade midpoint so art and text switch together.
+    if(animate&&stage.playing&&!reduced.matches&&stage.frame>0)copyPending=true;
+    else{copyPending=false;writeCopy();}
+    stage.dirty=true;
   }
   function reset(){select(0,{animate:false});progress=0;slider.value=0;}
   const scenes={label:'THE FIELD ATLAS',kind:'JOURNAL',items:chapters.map((chapter,index)=>({
@@ -130,6 +133,10 @@ export async function create(stage,controls) {
       ctx.clearRect(0,0,w,h);drawEnvironment(ctx,w,h);
       transition=(!stage.playing||reduced.matches)?1:Math.min(1,transition+dt/transitionSeconds);
       const blend=transition*transition*(3-2*transition);
+      if(copyPending&&blend>=.5){writeCopy();copyPending=false;}
+      // Fade old copy out, then new copy in around the same midpoint as the art mix.
+      const enter=copyPending?(1-Math.min(1,blend*2)):((!stage.playing||reduced.matches||transition>=1)?1:Math.min(1,Math.max(0,(blend-.5)*2)));
+      theater.style.setProperty('--chapter-enter',String(enter));
       if(transition<1){
         ctx.save();ctx.globalAlpha=1-blend;
         const scale=1+blend*.075;ctx.translate(w/2,h/2);ctx.scale(scale,scale);
@@ -138,7 +145,6 @@ export async function create(stage,controls) {
         ctx.strokeStyle=chapters[chapterIndex].accent;ctx.lineWidth=1;
         const aperture=.22+blend*.82;ctx.strokeRect(w*(1-aperture)*.5,h*(1-aperture)*.5,w*aperture,h*aperture);ctx.restore();
       }
-      theater.style.setProperty('--chapter-enter',String(blend));
       roamButton.setAttribute('aria-pressed',String(auto));
       const chapter=chapters[chapterIndex];
       stage.status(chapter.location+' · '+chapter.time+(auto?' · 漫游中':' · 手记已展开'));

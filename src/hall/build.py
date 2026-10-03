@@ -47,6 +47,9 @@ def render(current, output, inline=False):
              f'<div class="hall-transport"><div><a href="{link(entries[(active - 1) % 8])}" aria-label="上一个体验">←</a>'
              f'<a href="{link(entries[(active + 1) % 8])}" aria-label="下一个体验">→</a></div>'
              '<span><kbd>SPACE</kbd> 播放 / 暂停</span></div></footer>')
-    return dict(nav=nav, atlas=atlas,
+    # Studies keep page-local footers only; top bar already lists all eight experiences.
+    study_ids = {item['id'] for item in studies}
+    atlas_html = '' if current in study_ids else atlas
+    return dict(nav=nav, atlas=atlas_html,
                 style=(ROOT / 'src/hall/style.css').read_text(encoding='utf-8'),
                 script=(ROOT / 'src/hall/main.js').read_text(encoding='utf-8'))

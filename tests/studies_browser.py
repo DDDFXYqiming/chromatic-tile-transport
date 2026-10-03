@@ -56,13 +56,14 @@ def run(args):
             check(item['id']+' local strip has only content buttons',4<=page.locator('.study-strip > button').count()<=5 and page.locator('.hall-scene-footer a').count()==0)
             check(item['id']+' local thumbnails decoded',page.locator('.study-strip img').evaluate_all('(imgs)=>imgs.every(i=>i.complete&&i.naturalWidth>0)'))
             check(item['id']+' initial content accented',page.locator('.study-strip [aria-current]').count()==1)
-            page.locator('.hall-open-atlas').click()
-            check(item['id']+' atlas only opens on request',page.locator('body.hall-experiences').count()==1 and page.locator('.hall-atlas').is_visible() and page.locator('.hall-scene-footer').is_hidden() and page.locator('.hall-strip a').count()==8)
-            page.locator('#about-open').click();page.keyboard.press('Escape')
-            page.wait_for_function('!document.querySelector("#about").open')
-            check(item['id']+' notes Escape preserves underlying atlas',page.locator('.hall-atlas').is_visible() and page.locator('.hall-open-atlas').get_attribute('aria-expanded')=='true')
-            page.keyboard.press('Escape')
-            check(item['id']+' escape restores local content and focus',page.locator('.hall-atlas').is_hidden() and page.locator('.hall-open-atlas').evaluate('(e)=>e===document.activeElement'))
+            if item['id'] != 'shadow':
+                page.locator('.hall-open-atlas').click()
+                check(item['id']+' atlas only opens on request',page.locator('body.hall-experiences').count()==1 and page.locator('.hall-atlas').is_visible() and page.locator('.hall-scene-footer').is_hidden() and page.locator('.hall-strip a').count()==8)
+                page.locator('#about-open').click();page.keyboard.press('Escape')
+                page.wait_for_function('!document.querySelector("#about").open')
+                check(item['id']+' notes Escape preserves underlying atlas',page.locator('.hall-atlas').is_visible() and page.locator('.hall-open-atlas').get_attribute('aria-expanded')=='true')
+                page.keyboard.press('Escape')
+                check(item['id']+' escape restores local content and focus',page.locator('.hall-atlas').is_hidden() and page.locator('.hall-open-atlas').evaluate('(e)=>e===document.activeElement'))
             page.screenshot(path=str(args.output/(item['id']+'-entry.png')),full_page=True)
             result['screenshots'].append(item['id']+'-entry.png')
             page.locator('body').click(position={'x':2,'y':2});before=inspect()['playing'];page.keyboard.press('Space')
@@ -97,7 +98,9 @@ def run(args):
                 page.locator('.optical-tools summary').click()
                 change('分界位置',60);check('optical boundary changes pixels',digest()!=h0 and inspect()['split']==.6)
             elif item['id']=='shadow':
-                count=inspect()['voxels'];page.get_by_role('button',name='对齐菱影 · 90°',exact=True).click();page.wait_for_timeout(90);check('projection changes with same geometry',digest()!=h0 and inspect()['voxels']==count and inspect()['angle']>1.5)
+                page.get_by_role('button',name='调光 ↗',exact=True).click();change('光的方向',85)
+                check('three light directions change the spatial composition',digest()!=h0 and inspect()['shadowDirections']==3 and abs(inspect()['angle']-85*3.141592653589793/180)<1e-8)
+                page.get_by_role('button',name='调光 ↗',exact=True).click()
             elif item['id']=='folding':
                 change('展开程度',0);check('paper closes flat',inspect()['open']==0)
                 change('展开程度',100);check('paper opens while connected',inspect()['open']==1)
@@ -125,7 +128,7 @@ def run(args):
                 elif item['id']=='optical':
                     chapter=item['chapters'][i]
                     check(scene+' optical world and narrative',state['chapter']==scene and state['world']==chapter['world'] and state['art']==chapter['image'] and page.locator('h1').inner_text().replace('\n','')==''.join(chapter['headline']))
-                elif item['id']=='shadow':check(scene+' light angle',abs(state['angle']-i*3.141592653589793/6)<1e-8)
+                elif item['id']=='shadow':check(scene+' spatial chapter',state['chapter']==scene and state['renderedChapter']==scene and abs(state['angle']-i*.5)<1e-8)
                 elif item['id']=='folding':
                     chapter=item['chapters'][i]
                     check(scene+' paper journal and pose',state['chapter']==scene and state['art']==chapter['image'] and state['open']==chapter['pose']['open'] and state['orbit']==chapter['pose']['orbit'] and page.locator('h1').inner_text().replace('\n','')==''.join(chapter['headline']) and page.locator('.hero-copy > p').inner_text()==chapter['body'])
@@ -140,7 +143,8 @@ def run(args):
             elif item['id']=='temporal':page.get_by_label('运动源',exact=True).select_option('video');page.get_by_label('时间形状',exact=True).select_option('radial');page.wait_for_timeout(100)
             elif item['id']=='fluid':page.get_by_role('button',name='轻推颜料',exact=True).click();page.wait_for_timeout(100)
             elif item['id']=='optical':change('分界位置',70)
-            elif item['id']=='shadow':change('光源方位',43)
+            elif item['id']=='shadow':
+                page.get_by_role('button',name='调光 ↗',exact=True).click();change('光的方向',43)
             elif item['id']=='folding':change('展开程度',34)
             check(item['id']+' controls synchronize selection',page.locator('.study-strip [aria-current]').count()==(1 if item['id'] in ('temporal','fluid','optical','shadow','folding') else 0))
             cards.first.click();pause();page.locator('#clean').click()

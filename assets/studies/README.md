@@ -7,7 +7,7 @@ files were copied byte-for-byte, ordered by LastWriteTime, into the names below.
 | File | Used by | Role |
 | --- | --- | --- |
 | `quiet-orbit.png` | Optical | Full-size illustration |
-| `tidal-garden.png` | Fluid | Full-size illustration |
+| `tidal-garden.png` | Fluid archive | Original full-size illustration |
 | `paper-world.png` | Folding | Full-size panorama |
 | `portal-cover.png` | Gallery / Portal | Concept cover |
 | `temporal-cover.png` | Gallery / Temporal | Concept cover |
@@ -46,3 +46,21 @@ Image Gen tool. The source PNGs were copied unchanged into this directory.
 These are generated environment illustrations and a material texture for the
 fictional ELSEWHERE product story. The four chapter illustrations also supply
 the portal's local filmstrip thumbnails.
+
+## INKFIELD / fluid chapter art
+
+The 2026-10-04 material-journal edition adds four original 1536 × 1024 PNGs,
+generated with the built-in Codex Image Gen tool and copied unchanged.
+`fluid-assets.json` records the final creative prompts, dimensions, byte sizes
+and SHA-256 hashes. These are artistic illustrations for a fictional journal.
+
+| File | Chapter |
+| --- | --- |
+| `fluid-mineral.png` | 山石取色 · mineral facets and ground pigment |
+| `fluid-ink.png` | 墨的呼吸 · indigo suspended in water |
+| `fluid-paper.png` | 纸上潮汐 · terracotta wash on handmade paper |
+| `fluid-light.png` | 光里显色 · translucent amber sheets in sunlight |
+
+The same four images supply the local chapter strip. The original gallery
+cover remains in use. Runtime flow and chapter transitions are rendered by the
+page from these still images.

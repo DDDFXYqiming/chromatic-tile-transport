@@ -116,7 +116,9 @@ def run(args):
                 elif item['id']=='temporal':
                     chapter=item['chapters'][i]
                     check(scene+' art and prose',state['chapter']==scene and state['mode']==chapter['mode'] and state['source']=='art' and state['art']==chapter['image'] and page.locator('h1').inner_text().replace('\n','')==''.join(chapter['headline']))
-                elif item['id']=='fluid':check(scene+' pigment seed',state['seed']==scene and state['finite'] and state['steps']==(0 if scene=='still' else 24))
+                elif item['id']=='fluid':
+                    chapter=item['chapters'][i]
+                    check(scene+' artwork and material journal',state['chapter']==scene and state['finite'] and state['steps']==0 and state['source']=='art' and state['art']==chapter['image'] and page.locator('h1').inner_text().replace('\n','')==''.join(chapter['headline']) and page.locator('.hero-copy > p').inner_text()==chapter['body'])
                 elif item['id']=='optical':
                     expected=[(1.46,.018,98),(1.46,.05,98),(1.7,.012,125),(1.18,0,72)][i]
                     check(scene+' optical parameters',(state['ior'],state['dispersion'],state['radius'])==expected)
@@ -135,7 +137,7 @@ def run(args):
             elif item['id']=='optical':change('折射率',1.31)
             elif item['id']=='shadow':change('光源方位',43)
             elif item['id']=='folding':change('展开程度',34)
-            check(item['id']+' controls synchronize selection',page.locator('.study-strip [aria-current]').count()==(1 if item['id']=='temporal' else 0))
+            check(item['id']+' controls synchronize selection',page.locator('.study-strip [aria-current]').count()==(1 if item['id'] in ('temporal','fluid') else 0))
             cards.first.click();pause();page.locator('#clean').click()
             with page.expect_download(timeout=4000) as download:
                 page.get_by_role('button',name='保存画面',exact=True).click()

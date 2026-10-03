@@ -1,82 +1,84 @@
-/** A shared receiver plane, elevated type, and three independent point lights. */
-export function projectShadow(point, light) {
-  const t=light[2]/(light[2]-point[2]);
-  return [light[0]+(point[0]-light[0])*t,light[1]+(point[1]-light[1])*t,0];
-}
-export function fieldLights(angle=0) {
-  return [[-.38+Math.sin(angle)*.28,-.65,1.3],[1.45,.18+Math.sin(angle+.7)*.35,1.55],[.35+Math.cos(angle)*.4,1.65,1.45]];
-}
-export function fieldLayout(width,height) {
-  const portrait=width/height<.85;
-  return portrait ? {portrait,glyphs:[[.10,.29,.47,.24,-.10],[.45,.40,.47,.24,.10]],plates:[[.06,.60,.29,.17,-.09],[.66,.18,.27,.18,.10]]}
-    : {portrait,glyphs:[[.25,.25,.29,.40,-.10],[.51,.34,.29,.40,.09]],plates:[[.045,.42,.19,.30,-.10],[.795,.19,.17,.30,.10]]};
-}
+import {projectShadow,fieldLights,fieldLayout,sculptureMesh,faceNormal} from './shadow-geometry.mjs';
+export {projectShadow,fieldLights,fieldLayout} from './shadow-geometry.mjs';
+
+const LIGHT_COLORS=['#69cfc5','#d68d91','#e9c47a'];
+const SHADOW_COLORS=['#123638','#432c3c','#4a3f27'];
 function canvas(w,h){const c=document.createElement('canvas');c.width=w;c.height=h;return c;}
 function quad([x,y,w,h,angle],z,aspect) {
   const c=Math.cos(angle),s=Math.sin(angle),u=[w*c,w*s*aspect],v=[-h*s/aspect,h*c];
   return [[x,y,z],[x+u[0],y+u[1],z],[x+u[0]+v[0],y+u[1]+v[1],z],[x+v[0],y+v[1],z]];
 }
-function screen(points,w,h,view=0){return points.map(([x,y,z])=>[(x+z*(.09+view*.08))*w,(y-z*.22)*h]);}
+function screen(points,w,h,view=0){return points.map(([x,y,z])=>[(x+z*(.09+view*.08))*w,(y-z*.16)*h]);}
 function path(ctx,points){ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.closePath();}
 function mapped(ctx,texture,p){ctx.save();ctx.transform((p[1][0]-p[0][0])/texture.width,(p[1][1]-p[0][1])/texture.width,(p[3][0]-p[0][0])/texture.height,(p[3][1]-p[0][1])/texture.height,...p[0]);ctx.drawImage(texture,0,0);ctx.restore();}
 function glyphTexture(char,color){
-  const c=canvas(640,640),ctx=c.getContext('2d');
-  ctx.font='540px "Noto Serif CJK SC", "SimSun", serif';ctx.textAlign='center';ctx.textBaseline='middle';
-  ctx.fillStyle='#fff';ctx.fillText(char,320,335);
-  ctx.globalCompositeOperation='source-in';
-  if(color){ctx.fillStyle=color;ctx.fillRect(0,0,640,640);return c;}
-  const g=ctx.createLinearGradient(0,0,600,560);[[0,'#fff0cb'],[.19,'#b67c47'],[.36,'#fce8bd'],[.49,'#916034'],[.55,'#d4b98e'],[.75,'#73928b'],[1,'#e2cba0']].forEach(([p,c])=>g.addColorStop(p,c));ctx.fillStyle=g;ctx.fillRect(0,0,640,640);
-  ctx.globalAlpha=.1;ctx.fillStyle='#fff0ce';for(let y=0;y<640;y+=3)ctx.fillRect(0,y,640,1);
-  return c;
+  const c=canvas(512,512),ctx=c.getContext('2d');
+  ctx.font='430px "Noto Serif CJK SC", "SimSun", serif';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillStyle='#fff';ctx.fillText(char,256,268);ctx.globalCompositeOperation='source-in';
+  if(color){ctx.fillStyle=color;ctx.fillRect(0,0,512,512);return c;}
+  const g=ctx.createLinearGradient(0,0,480,448);
+  [[0,'#fae2ab'],[.3,'#b78757'],[.49,'#eee0ae'],[.52,'#83623e'],[.8,'#c7ad78'],[1,'#72938c']].forEach(([p,c])=>g.addColorStop(p,c));
+  ctx.fillStyle=g;ctx.fillRect(0,0,512,512);return c;
 }
-function cropTexture(img){const c=canvas(460,580),ctx=c.getContext('2d'),s=Math.max(460/img.width,580/img.height);ctx.drawImage(img,(460-img.width*s)/2,(580-img.height*s)/2,img.width*s,img.height*s);return c;}
-export function exhibitionRenderer(images,chapters) {
-  const glyphs=chapters.map(c=>Array.from(c.display).map(char=>({face:glyphTexture(char),side:glyphTexture(char,'#453824'),edge:glyphTexture(char,'#f4dba7'),shadows:['#082c30','#382337','#392d1d'].map(color=>glyphTexture(char,color))})));
-  const plates=images.map(cropTexture),grain=canvas(180,180),g=grain.getContext('2d');let seed=17;
-  for(let i=0;i<6000;i++){seed=(Math.imul(seed,1664525)+1013904223)>>>0;g.fillStyle=i%2?'#ffffff08':'#00000012';g.fillRect(seed%180,(seed>>>9)%180,1,1);}
-  let last={};
+export function exhibitionRenderer(chapters) {
+  const glyphs=chapters.map(c=>Array.from(c.display).map(char=>({face:glyphTexture(char),side:glyphTexture(char,'#473622'),shadows:SHADOW_COLORS.map(color=>glyphTexture(char,color))})));
+  const shadow=canvas(1,1),sc=shadow.getContext('2d'),grain=canvas(180,180),g=grain.getContext('2d');let seed=17,last={};
+  for(let i=0;i<5000;i++){seed=(Math.imul(seed,1664525)+1013904223)>>>0;g.fillStyle=i%2?'#ffffff08':'#0000000b';g.fillRect(seed%180,(seed>>>9)%180,1,1);}
   function draw(ctx,w,h,{chapter,angle,view,time,strength}){
-    const layout=fieldLayout(w,h),lights=fieldLights(angle),aspect=w/h,colors=['#54b9b5','#cb8675','#d6b46b'];
-    ctx.fillStyle='#102321';ctx.fillRect(0,0,w,h);
-    const atmosphere=ctx.createLinearGradient(0,0,w,h);atmosphere.addColorStop(0,'#182d2c');atmosphere.addColorStop(.48,'#5c6451');atmosphere.addColorStop(1,'#102724');ctx.fillStyle=atmosphere;ctx.fillRect(0,0,w,h);
+    const layout=fieldLayout(w,h),lights=fieldLights(angle),mesh=sculptureMesh(chapter,w,h,{view,time});
+    const objects=layout.glyphs.map((box,i)=>({texture:glyphs[chapter][i],q:quad(box,.115,w/h)}));
+    const atmosphere=ctx.createLinearGradient(0,0,w,h);
+    atmosphere.addColorStop(0,'#122c2b');atmosphere.addColorStop(.56,chapter===1?'#77705a':'#6c7966');atmosphere.addColorStop(1,'#203b36');
+    ctx.fillStyle=atmosphere;ctx.fillRect(0,0,w,h);
+    // Light pools and their silhouettes follow the same moving sources.
     for(let i=0;i<3;i++){
-      const x=[.1,.93,.53][i]*w,y=[.29,.47,.98][i]*h,r=Math.max(w,h)*.7;
-      const glow=ctx.createRadialGradient(x,y,0,x,y,r);glow.addColorStop(0,colors[i]+'50');glow.addColorStop(1,colors[i]+'00');ctx.fillStyle=glow;ctx.fillRect(0,0,w,h);
+      const x=(.5+(lights[i][0]-.5)*.44)*w,y=(.5+(lights[i][1]-.5)*.5)*h,r=Math.max(w,h)*.75;
+      const glow=ctx.createRadialGradient(x,y,0,x,y,r);glow.addColorStop(0,LIGHT_COLORS[i]+'55');glow.addColorStop(1,LIGHT_COLORS[i]+'00');ctx.fillStyle=glow;ctx.fillRect(0,0,w,h);
     }
-    // Architectural lines run across the same plane as every cast shadow.
-    ctx.strokeStyle='#ecdab315';ctx.lineWidth=1;
-    for(let i=-4;i<14;i++){ctx.beginPath();ctx.moveTo(i*w/9,0);ctx.lineTo(i*w/9-w*.32,h);ctx.stroke();}
-    for(let i=1;i<8;i++){ctx.beginPath();ctx.moveTo(0,h*i/8);ctx.lineTo(w,h*i/8-w*.05);ctx.stroke();}
-    ctx.save();ctx.translate(w*.035,h*(layout.portrait?.24:.225));ctx.rotate(-.035);ctx.font=`${w*(layout.portrait?.15:.122)}px Georgia,serif`;ctx.fillStyle='#e4d6b723';ctx.fillText('PENUMBRA',0,0);ctx.restore();
-    const objects=layout.glyphs.map((box,i)=>({type:'glyph',texture:glyphs[chapter][i],q:quad(box,.17,aspect)}));
-    layout.plates.forEach((box,i)=>objects.push({type:'plate',texture:plates[(chapter+i)%plates.length],q:quad(box,.105,aspect)}));
-    // The exact same elevated planes supply the front faces and all shadow directions.
-    for(let li=0;li<lights.length;li++)for(const object of objects){
-      const points=screen(object.q.map(p=>projectShadow(p,lights[li])),w,h,view);
-      ctx.save();ctx.globalCompositeOperation='multiply';ctx.globalAlpha=strength*(li===0?.68:.50);
-      if(object.type==='glyph')mapped(ctx,object.texture.shadows[li],points);
-      else{path(ctx,points);ctx.fillStyle=['#0b3335','#472238','#403922'][li];ctx.fill();}
+    ctx.strokeStyle='#efe0b914';ctx.lineWidth=1;
+    for(let i=1;i<6;i++){ctx.beginPath();ctx.moveTo(w*i/5,0);ctx.lineTo(w*i/5-w*.13,h);ctx.stroke();}
+    ctx.save();ctx.translate(w*.035,h*(layout.portrait?.36:.25));ctx.rotate(-.025);
+    ctx.font=`${w*(layout.portrait?.145:.118)}px Georgia,serif`;ctx.fillStyle='#e4d6b71a';ctx.fillText('PENUMBRA',0,0);ctx.restore();
+    // Union opaque mesh faces before compositing each light once, avoiding dark seams.
+    const sw=Math.max(1,Math.round(w*.75)),sh=Math.max(1,Math.round(h*.75));
+    if(shadow.width!==sw||shadow.height!==sh){shadow.width=sw;shadow.height=sh;}
+    let projectedFaces=0;
+    for(let li=0;li<lights.length;li++){
+      sc.clearRect(0,0,sw,sh);sc.fillStyle=SHADOW_COLORS[li];sc.strokeStyle=SHADOW_COLORS[li];sc.lineWidth=.65;
+      for(const face of mesh){path(sc,screen(face.map(p=>projectShadow(p,lights[li])),sw,sh));sc.fill();sc.stroke();projectedFaces++;}
+      ctx.save();ctx.globalCompositeOperation='multiply';ctx.globalAlpha=strength*(li===0?.72:.56);ctx.drawImage(shadow,0,0,w,h);
+      for(const object of objects)mapped(ctx,object.texture.shadows[li],screen(object.q.map(p=>projectShadow(p,lights[li])),w,h));
       ctx.restore();
     }
-    // Fine reflected lines and a broad ground inscription remain behind the raised type.
-    ctx.save();ctx.translate(w*.04,h*.805);ctx.rotate(-.025);ctx.font=`italic ${w*(layout.portrait?.065:.05)}px Georgia,serif`;ctx.fillStyle='#e8d9b955';ctx.fillText(chapters[chapter].english,0,0);ctx.restore();
+    ctx.save();ctx.translate(w*(layout.portrait?.07:.35),h*.79);ctx.rotate(-.02);
+    ctx.font=`italic ${Math.min(w*.033,h*.044)}px Georgia,serif`;ctx.fillStyle='#ead9b96b';ctx.fillText(chapters[chapter].english,0,0);ctx.restore();
     for(const o of objects){
-      if(o.type==='glyph'){
-        for(let k=0;k<10;k++){const p=screen(o.q.map(([x,y,z])=>[x,y,z-.028+k*.0028]),w,h,view);mapped(ctx,o.texture.side,p);}
-        mapped(ctx,o.texture.edge,screen(o.q.map(([x,y,z])=>[x-.0008,y-.001,z]),w,h,view));
-        mapped(ctx,o.texture.face,screen(o.q,w,h,view));
-      }else{
-        const points=screen(o.q,w,h,view);ctx.save();ctx.shadowColor='#071612a0';ctx.shadowBlur=15;ctx.shadowOffsetY=8;path(ctx,points);ctx.fillStyle='#c9b488';ctx.fill();ctx.restore();
-        mapped(ctx,o.texture,points);path(ctx,points);ctx.strokeStyle='#e3cda080';ctx.lineWidth=1;ctx.stroke();
-      }
+      for(let k=0;k<5;k++)mapped(ctx,o.texture.side,screen(o.q.map(([x,y,z])=>[x,y,z-.02+k*.004]),w,h,view));
+      mapped(ctx,o.texture.face,screen(o.q,w,h,view));
     }
-    // Moving light threads span the exhibition, not a separate instrument diagram.
-    ctx.save();ctx.globalCompositeOperation='screen';
-    for(let i=0;i<3;i++){const y=h*(.2+i*.25+Math.sin(angle+i)*.06),beam=ctx.createLinearGradient(0,y,w,h-y);beam.addColorStop(0,colors[i]+'00');beam.addColorStop(.45,colors[i]+'5a');beam.addColorStop(1,colors[i]+'00');ctx.strokeStyle=beam;ctx.lineWidth=.7;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,h-y);ctx.stroke();}
-    for(let i=0;i<32;i++){const x=((i*.61803+time*.002)%1)*w,y=((i*.3819)%1)*h;ctx.fillStyle=i%3?'#f5e0b74a':'#c6f7ef65';ctx.fillRect(x,y,i%5?1:2,1);}
+    // Surface normals, light directions and the shadow rays share one geometry.
+    const faces=mesh.map(face=>({face,normal:faceNormal(face,w,h),center:face[0].map((_,i)=>face.reduce((s,p)=>s+p[i],0)/face.length)}))
+      .filter(o=>o.normal[2]+o.normal[1]*.16-o.normal[0]*(.09+view*.08)*w/h>0)
+      .sort((a,b)=>a.center[2]-b.center[2]);
+    for(const {face,normal,center} of faces){
+      const rgb=[58,44,29];
+      lights.forEach((light,i)=>{
+        const delta=light.map((v,j)=>(v-center[j])*(j===0?w:h)),length=Math.hypot(...delta);
+        const diffuse=Math.max(0,normal.reduce((sum,n,j)=>sum+n*delta[j]/length,0));
+        const specular=Math.pow(Math.max(0,normal[2]*.85+diffuse*.3),16);
+        const tint=[[95,115,92],[127,75,52],[137,114,67]][i];
+        for(let j=0;j<3;j++)rgb[j]+=tint[j]*diffuse*.82+specular*20;
+      });
+      const color=`rgb(${rgb.map(v=>Math.round(Math.min(255,v))).join(',')})`;
+      path(ctx,screen(face,w,h,view));ctx.fillStyle=color;ctx.strokeStyle=color;ctx.lineWidth=.6;ctx.fill();ctx.stroke();
+    }
+    ctx.save();ctx.globalAlpha=.15;ctx.strokeStyle='#fff1c5';ctx.lineWidth=.6;
+    for(const {face,normal} of faces)if(normal[2]>.65){path(ctx,screen(face,w,h,view));ctx.stroke();}
     ctx.restore();ctx.fillStyle=ctx.createPattern(grain,'repeat');ctx.fillRect(0,0,w,h);
-    const shade=ctx.createLinearGradient(0,0,0,h);shade.addColorStop(0,'#081814d9');shade.addColorStop(.16,'#08181400');shade.addColorStop(.72,'#08181400');shade.addColorStop(1,'#081814f2');ctx.fillStyle=shade;ctx.fillRect(0,0,w,h);
-    last={lights,shadowDirections:lights.length,receiver:'full-viewport',contentPlanes:objects.length,portrait:layout.portrait,renderedChapter:chapters[chapter].id};
+    const shade=ctx.createLinearGradient(0,0,0,h);shade.addColorStop(0,'#091c1bea');shade.addColorStop(.18,'#091c1b00');shade.addColorStop(.72,'#091c1b00');shade.addColorStop(1,'#091c1bf2');ctx.fillStyle=shade;ctx.fillRect(0,0,w,h);
+    if(!layout.portrait){const veil=ctx.createLinearGradient(0,0,w*.4,0);veil.addColorStop(0,'#0a2224c0');veil.addColorStop(1,'#0a222400');ctx.fillStyle=veil;ctx.fillRect(0,0,w,h);}
+    last={lights,shadowDirections:lights.length,receiver:'full-viewport',contentPlanes:objects.length,sculptureFaces:mesh.length,projectedFaces,
+      sculpture:['crescent','curved-sheets','seven-plates','diamond'][chapter],portrait:layout.portrait,renderedChapter:chapters[chapter].id};
   }
   return {draw,inspect:()=>last};
 }

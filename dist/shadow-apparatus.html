@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#090c13"><title>影子机关 · 星海视觉实验室</title>
-<link rel="stylesheet" href="../src/studies/style.css">
-<link rel="stylesheet" href="../src/studies/shadow.css">
+<link rel="stylesheet" href="../src/studies/style.css?v=b486111fdaa5">
+<link rel="stylesheet" href="../src/studies/shadow.css?v=70d3e13a8cb5">
 <script type="application/json" id="shadow-chapters">[{"id":"silhouette","title":"轮廓的开场","english":"THE SHAPE OF SILENCE","kicker":"01 / SILHOUETTE · 轮廓","headline":["让光穿过，","让影留下。"],"body":"一弯铜月，一片微光。青色从远处抵达，绯色擦过边缘，金色在文字下方停住。你走进来，影子便有了新的方向。","image":"studies/shadow-silhouette.png","alt":"暗色展厅内，铜质月牙立在石台上，暖光在墙面留下弯曲影子。","accent":"#d9ba7f","material":"PLATE 01 / 铜 · 石 · 暖光","feature":"在静默中，听见回声","detail":"月牙悬在暗处，字浮在光里。两道轮廓擦肩而过，留下第三种形状。","note":"光照到哪里，故事就从哪里开始。","action":"下一篇 · 边界的温度","display":"半影"},{"id":"boundary","title":"边界的温度","english":"WHERE LIGHT ENDS","kicker":"02 / BOUNDARY · 边界","headline":["光止于此，","故事向外。"],"body":"暖墙上的一条亮边，把两个世界轻轻分开。深处的青与近处的绯交叠，明暗之间，还容得下一次回望。","image":"studies/shadow-boundary.png","alt":"弯曲铜板与错开的薄金属片立在赭色墙前，斜光划出细致明暗边界。","accent":"#dfa68b","material":"PLATE 02 / 曲面 · 赭墙 · 斜光","feature":"明暗相接的地方","detail":"把光留在边缘，让影越过边缘。曲面的一线微亮，接住了整个房间的呼吸。","note":"那条细细的亮边，足够让视线停下来。","action":"下一篇 · 深处的秩序","display":"边界"},{"id":"depth","title":"深处的秩序","english":"READING IN LAYERS","kicker":"03 / DEPTH · 层次","headline":["一层远方，","一层回响。"],"body":"薄片彼此错开，微光沿着缝隙穿行。前面的影子往左，后面的影子向右，视线顺着它们，在平面里走向深处。","image":"studies/shadow-depth.png","alt":"七片错位的铜板悬在石座上，冷光照亮边缘，并在蓝灰墙上投下层叠影子。","accent":"#a4c1d0","material":"PLATE 03 / 薄片 · 冷墙 · 层叠","feature":"层叠之间，自有秩序","detail":"七片铜，七次停顿。眼前的线条退后一步，藏起的面便渐渐浮出。","note":"前与后之间，是留给发现的距离。","action":"下一篇 · 第二种答案","display":"深处"},{"id":"alignment","title":"第二种答案","english":"ANOTHER WAY TO SEE","kicker":"04 / ALIGNMENT · 对齐","headline":["换个方向，","再看一眼。"],"body":"金色的菱面停在半空。来时看过的字，此刻投下另一道影。光仍在缓缓转动，空间替你保留了一次新的相遇。","image":"studies/shadow-alignment.png","alt":"铜质菱形雕塑立在深色圆柱台上，金色侧光在暖墙上形成大幅菱形影子。","accent":"#e6cb91","material":"PLATE 04 / 菱面 · 金光 · 对齐","feature":"转身之后，光还在","detail":"展览走到末尾，影子又回到开头。把那个未看清的角度，留给下一次经过。","note":"物体还在原处，目光已经走了一程。","action":"重新翻阅 · 轮廓的开场","display":"回望"}]</script>
+<script type="importmap">{"imports":{"../src/studies/main.mjs":"../src/studies/main.mjs?v=b09f5e65b507","../src/studies/core.mjs":"../src/studies/core.mjs?v=76af05383ae4","../src/studies/filmstrip.mjs":"../src/studies/filmstrip.mjs?v=e1cdd27b4366","../src/studies/math.mjs":"../src/studies/math.mjs?v=36cea5790b88","../src/studies/shadow.mjs":"../src/studies/shadow.mjs?v=2bb72d82d32d","../src/studies/shadow-apparatus.mjs":"../src/studies/shadow-apparatus.mjs?v=296296bcfcd4","../src/studies/shadow-geometry.mjs":"../src/studies/shadow-geometry.mjs?v=3aa252d867c5"}}</script>
 <style>
 /* Exhibition tokens and atlas proportions from Transport's header / filmstrip. */
 .hall-modes{display:flex;flex-wrap:nowrap;align-items:center;gap:4px;border:1px solid var(--hairline,rgba(230,224,210,.14));border-radius:40px;padding:5px;flex:0 1 auto;min-width:0;max-width:100%;overflow-x:auto;scrollbar-width:none;position:relative;z-index:20;font-family:Arial,"Microsoft YaHei",sans-serif}
@@ -50,7 +51,7 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
   </header>
   <main class="stage" aria-label="影子机关互动实验">
     <div class="theater">
-      <canvas id="canvas" tabindex="0" aria-label="拖动展场改变光的方向。底栏选择四章，空格暂停；调光可改变方向、浓度与自动换章。"></canvas>
+      <canvas id="canvas" tabindex="0" aria-label="拖动展场改变光向与视角。底栏选择四章，空格暂停；调光可改变方向、浓度与自动换章。"></canvas>
       <div class="art-shade" aria-hidden="true"></div>
       <div class="stage-tag"><span></span>SHADOW APPARATUS <b>PENUMBRA / 半影</b></div>
       <aside class="telemetry" aria-label="当前实验状态"><div class="telemetry-top"><i></i><span id="play-state">影像准备中</span><b aria-hidden="true">✧</b></div><p id="status" role="status" aria-live="off">初始化</p><div class="telemetry-bottom"><span>THREE LIGHTS / FOUR POEMS</span><span>07 / LIVE</span></div></aside>
@@ -59,7 +60,7 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
       <div class="frame-corner tl" aria-hidden="true"></div><div class="frame-corner tr" aria-hidden="true"></div><div class="frame-corner bl" aria-hidden="true"></div><div class="frame-corner br" aria-hidden="true"></div>
       <div class="loading" id="loading" role="status"><span>✦</span>正在准备画面…</div>
     </div>
-    <section class="instrument-bar" aria-label="互动导演台"><div class="instrument-title"><span>INTERACTION / 07</span><strong>影子机关</strong></div><div class="controls" id="controls" aria-label="实验参数"></div><div class="utility-actions"><button id="reset" type="button">重置</button><button id="snapshot" type="button">保存画面</button></div><p class="hint">拖动展场改变光的方向。底栏选择四章，空格暂停；调光可改变方向、浓度与自动换章。</p></section>
+    <section class="instrument-bar" aria-label="互动导演台"><div class="instrument-title"><span>INTERACTION / 07</span><strong>影子机关</strong></div><div class="controls" id="controls" aria-label="实验参数"></div><div class="utility-actions"><button id="reset" type="button">重置</button><button id="snapshot" type="button">保存画面</button></div><p class="hint">拖动展场改变光向与视角。底栏选择四章，空格暂停；调光可改变方向、浓度与自动换章。</p></section>
   </main>
   <footer class="study-footer hall-scene-footer" aria-label="当前作品内容">
     <div class="hall-folio"><span class="hall-label" id="study-atlas-label">THE STUDY ATLAS</span><div><b id="study-current">01</b><span id="study-total"></span><i></i></div></div>
@@ -68,7 +69,7 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
   </footer>
   <!-- HALL:ATLAS omitted on studies: bottom bar stays page-local -->
 </div>
-<dialog class="study-dialog" id="about" aria-labelledby="about-title"><div class="dialog-head"><span>EXHIBITION NOTES / 07</span><button id="about-close" type="button" aria-label="关闭作品说明">×</button></div><h2 id="about-title">影子机关</h2><p>半影 PENUMBRA 是一组空间诗。铜色文字、原画与三束异色光共享整面展场。四章依次展现轮廓、边界、层次与回望，影子从不同方向穿过字与图，在同一平面相遇。</p><p class="muted">原画沿用四张 AI 光影概念图。浮字与影像使用升起的平面和点光源投影，字体表面为程序生成的铜色纹理；呈现为艺术化空间排版。</p><p class="muted">图片和视频在浏览器本地处理。示例插画与概念封面由 Image Gen 生成。已有战斗视频沿用仓库的素材许可。</p><a href="../docs/SIX_STUDIES.md">实现、素材与验收说明 ↗</a></dialog>
+<dialog class="study-dialog" id="about" aria-labelledby="about-title"><div class="dialog-head"><span>EXHIBITION NOTES / 07</span><button id="about-close" type="button" aria-label="关闭作品说明">×</button></div><h2 id="about-title">影子机关</h2><p>半影 PENUMBRA 是一组空间诗。月牙、曲面铜板、七片错层与菱面轮流悬在展墙前，青、绯、金三束光沿不同方向缓缓行进。雕塑、浮字与它们的影子铺满同一面展场，四章依次写下轮廓、边界、层次与回望。</p><p class="muted">铜质造型由实时三维几何生成，三个点光源向共同墙面投影，采用艺术化色彩与硬边阴影。底栏保留四张 AI 光影概念原画，作为章节图录。</p><p class="muted">图片和视频在浏览器本地处理。示例插画与概念封面由 Image Gen 生成。已有战斗视频沿用仓库的素材许可。</p><a href="../docs/SIX_STUDIES.md">实现、素材与验收说明 ↗</a></dialog>
 <script>
 (() => {
   const revealItem = (strip, current) => {
@@ -126,5 +127,5 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
 })();
 
 </script>
-<script type="module" src="../src/studies/main.mjs"></script>
+<script type="module" src="../src/studies/main.mjs?v=b09f5e65b507"></script>
 </body></html>

@@ -26,6 +26,16 @@ for item in json.loads((ROOT/'src/studies/catalog.json').read_text(encoding='utf
     path=ROOT/f'dist/{item["slug"]}.html';p=Links();p.feed(path.read_text(encoding='utf-8'))
     for rel in p.paths:assert (path.parent/rel).resolve().is_file(),(path,rel)
     assert (ROOT/'assets/studies'/item['cover']).is_file()
+    if item['id'] == 'folding':
+        chapters = item['chapters']
+        assert len(chapters) == 4
+        for field in ('id', 'image', 'body', 'note', 'kicker'):
+            assert len({chapter[field] for chapter in chapters}) == 4, field
+        for chapter in chapters:
+            assert (ROOT/'assets'/chapter['image']).is_file()
+            assert chapter['image'].startswith('studies/folding-')
+            assert all(chapter[key] for key in ('headline', 'feature', 'detail', 'annotation', 'action'))
+            assert 0 <= chapter['pose']['open'] <= 1 and abs(chapter['pose']['orbit']) <= 1
     if item['id'] == 'temporal':
         chapters = item['chapters']
         assert 4 <= len(chapters) <= 5

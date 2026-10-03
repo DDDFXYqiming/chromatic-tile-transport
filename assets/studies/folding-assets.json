@@ -1,0 +1,35 @@
+{
+  "generator": "Codex Image Gen",
+  "mode": "built-in",
+  "created": "2026-10-04",
+  "assets": [
+    {
+      "file": "folding-valley.png",
+      "prompt": "Use case: illustration-story. Asset type: a continuous panoramic illustration printed across three hinged pages in a paper pop-up travel journal named FOLIO. Generate one landscape image, 1536x1024. Scene: a quiet emerald mountain valley in early morning, a small cream-colored botanical field station and its arched greenhouse at the center, a narrow river leads toward it, paper-cut pine trees and wildflowers at both edges, layered mountain silhouettes and fine mist behind. Style: exquisite editorial gouache illustration mixed with layered handmade paper collage, tactile paper fibers, restrained ink linework, architectural miniature storytelling, sophisticated print publication. Palette: sage, deep petrol green, pale oat paper, small terracotta details. Composition: straight-on continuous landscape filling entire frame edge to edge, natural three-part balance without visible dividers; the central building is clearly readable within the middle third and the horizon at 45 percent. Detailed enough to enjoy as an article illustration, calm light and generous sky. Do not depict a book, frame, UI, typography, labels, letters, watermarks, fold marks, borders, or separate panels.",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "9c9ea8b375628c1c2ca727c9e6b63cf3211644aa5b772131309355bb83cd0c1f"
+    },
+    {
+      "file": "folding-night.png",
+      "prompt": "Use case: illustration-story. Asset type: a continuous panoramic illustration printed across three hinged pages in a paper pop-up travel journal named FOLIO. Generate one landscape image, 1536x1024. Scene: a tiny indigo observatory perched on a mountain at blue hour, central copper telescope dome and cream arched entrance, sweeping staircase and cut-paper alpine slopes, constellations rendered as delicate gold pinpoints in a vast deep blue sky, warm window light, small crescent moon off center. Style: exquisite editorial gouache illustration mixed with layered handmade paper collage, tactile paper fibers, restrained ink linework, architectural miniature storytelling, sophisticated print publication. Palette: midnight ultramarine, dusty blue, oat cream and antique gold. Composition: straight-on continuous landscape filling entire frame edge to edge, natural three-part balance without visible dividers; central observatory clearly readable within middle third; sky occupies upper half. Calm, intimate, imaginative travel journal. Do not depict a book, frame, UI, typography, labels, letters, watermarks, fold marks, borders, or separate panels.",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "a50ed871bfe9bbf7bbde12ed3f2a5bb6bd5c5e10e4669a3f8d61f13ef3d07266"
+    },
+    {
+      "file": "folding-harbor.png",
+      "prompt": "Use case: illustration-story. Asset type: a continuous panoramic illustration printed across three hinged pages in a paper pop-up travel journal named FOLIO. Generate one landscape image, 1536x1024. Scene: a sun-washed Mediterranean harbor at late afternoon, a small cream lighthouse with terracotta cap at the center, an arched breakwater entrance, calm turquoise water, moored tiny sailing boats, ochre fishing houses along the left shore, distant blue coastal headlands. Style: exquisite editorial gouache illustration mixed with layered handmade paper collage, tactile paper fibers, restrained ink linework, architectural miniature storytelling, sophisticated print publication. Palette: dusty turquoise, warm sand, terracotta, cream paper and faded marine blue. Composition: straight-on continuous landscape filling entire frame edge to edge, natural three-part balance without visible dividers; central lighthouse clearly readable within middle third; layered cut-paper waves in foreground, wide pale luminous sky. Quiet, inviting, tactile. Do not depict a book, frame, UI, typography, labels, letters, watermarks, fold marks, borders, or separate panels.",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "14e3cf0fd9a13e55699021bfa963b15fc2757a676084e03a5172f6b3b08fb55c"
+    },
+    {
+      "file": "folding-home.png",
+      "prompt": "Use case: illustration-story. Asset type: a continuous panoramic illustration printed across three hinged pages in a paper pop-up travel journal named FOLIO. Generate one landscape image, 1536x1024. Scene: a quiet old hill town at dusk, a small cream-colored railway station with a central arched entry and glowing windows at the center; a short red vintage train rests on tracks across the lower scene; layered terracotta roofs, a cypress tree and brick viaduct, pale peach sunset with tiny scattered clouds. Style: exquisite editorial gouache illustration mixed with layered handmade paper collage, tactile paper fibers, restrained ink linework, architectural miniature storytelling, sophisticated print publication. Palette: dusty rose, terracotta red, warm oat cream, dark aubergine shadows, muted sage. Composition: straight-on continuous landscape filling entire frame edge to edge, natural three-part balance without visible dividers; central station clearly readable within middle third; balanced rooftops at both sides; warm intimate light. Do not depict a book, frame, UI, typography, labels, letters, watermarks, fold marks, borders, or separate panels.",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "cc932ebdf850f6115763371867fa74d084631da3168166cece665e15475cb79b"
+    }
+  ]
+}

@@ -8,7 +8,7 @@
   <title>{{TITLE}}</title>
   <!-- BUILD:STYLE -->
 </head>
-<body>
+<body data-hall-legacy>
   <div class="ambient" aria-hidden="true"></div>
   <main class="app" id="archive">
     <header class="header">
@@ -16,10 +16,7 @@
         <svg class="brand-emblem" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 3 26.4 17.6 41 22 26.4 26.4 22 41 17.6 26.4 3 22 17.6 17.6Z" fill="currentColor"/><ellipse cx="22" cy="22" rx="21" ry="7.2" transform="rotate(-34 22 22)" stroke="currentColor" stroke-width=".8"/><path d="M4 35h13M29 9h11" stroke="currentColor" stroke-width=".65"/></svg>
         <span class="brand-text"><strong>{{BRAND}}</strong><small>CHROMATIC TRANSPORT <span> / </span> 寻色迁移 · V3.1</small></span>
       </a>
-      <nav class="effect-nav" aria-label="效果导航">
-        <a class="current" href="#archive" aria-current="page">01 寻色迁移</a>
-        <a href="{{MATRIX}}">02 MATRIX MOTION</a>
-      </nav>
+      <!-- HALL:NAV -->
       <div class="header-actions">
         <button type="button" class="icon-button" data-open="galleryDialog" aria-label="打开影像档案" title="影像档案"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><rect x="3" y="3" width="5" height="5" rx="1"/><rect x="12" y="3" width="5" height="5" rx="1"/><rect x="3" y="12" width="5" height="5" rx="1"/><rect x="12" y="12" width="5" height="5" rx="1"/></svg></button>
         <button type="button" class="auto-button" id="autoButton" aria-label="暂停自动巡航" aria-pressed="true"><svg class="auto-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 3h2.5v10H4zm5.5 0H12v10H9.5z"/></svg><span id="autoText">暂停巡航</span></button>
@@ -51,14 +48,15 @@
       <button type="button" id="exitImmersive" class="exit-immersive" aria-label="退出沉浸模式">退出沉浸 <span>ESC</span></button>
     </section>
 
-    <footer class="footer">
-      <div class="transport-caption"><span class="folio-label">THE MEMORY ATLAS</span><div class="folio-numbers"><b id="currentNumber">01</b><span>/ {{COUNT}}</span><span class="orbit-dot"></span></div><span class="folio-note">让每一种颜色，找到下一站</span></div>
+    <footer class="footer hall-scene-footer">
+      <div class="transport-caption"><span class="folio-label">THE MEMORY ATLAS</span><div class="folio-numbers"><b id="currentNumber">01</b><span>/ {{COUNT}}</span><span class="orbit-dot"></span></div><span class="folio-note">让每一种颜色，找到下一站</span><button class="hall-open-atlas" type="button">八个体验 ↗</button></div>
       <div class="filmstrip-wrap">
         <div class="timeline-track"><div class="timeline-base"></div><div id="timelineFill" class="timeline-fill"></div><input id="timeline" type="range" min="0" max="{{TIMELINE_MAX}}" step="1" value="0" aria-label="全局影像时间轴：拖动可停在转场中间"></div>
         <div class="filmstrip" id="filmstrip" aria-label="影像选择"></div>
       </div>
       <div class="transport"><div class="transport-buttons"><button type="button" id="prevButton" class="step-button" aria-label="上一幕，左方向键">←</button><button type="button" id="nextButton" class="step-button" aria-label="下一幕，右方向键">→</button></div><span class="transport-note"><kbd>SPACE</kbd> 播放 / 暂停</span></div>
     </footer>
+  <!-- HALL:ATLAS -->
   </main>
 
   <dialog id="galleryDialog" class="dialog gallery-dialog" aria-labelledby="galleryTitle">

@@ -1,20 +1,42 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#091d26"><title>@@TITLE@@ · 星海视觉实验室</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090c13"><title>@@TITLE@@ · 星海视觉实验室</title>
 <link rel="stylesheet" href="../src/studies/style.css">
+<!-- HALL:STYLE -->
 </head>
-<body data-study="@@ID@@">
-<header><a class="brand" href="../index.html"><span>✦</span> 星海视觉实验室</a><a class="back" href="../index.html">全部实验 ↗</a></header>
-<main>
-<section class="intro"><div><p class="eyebrow">EXPERIMENT @@NUMBER@@ / @@ENGLISH@@</p><h1>@@TITLE@@<span>@@KICKER@@</span></h1></div><p class="lead">@@LINE@@</p></section>
-<section class="theater" aria-label="@@TITLE@@互动实验"><canvas id="canvas" tabindex="0" aria-label="@@HELP@@"></canvas><div class="loading" id="loading">正在准备画面…</div></section>
-<div class="transport"><div class="buttons"><button id="play" type="button">暂停</button><button id="reset" type="button">重置</button><button id="snapshot" type="button">保存画面</button></div><p id="status" role="status" aria-live="polite">初始化</p><span class="number">@@NUMBER@@ / 08</span></div>
-<section class="controls" id="controls" aria-label="实验参数"></section>
-<p class="hint">@@HELP@@</p>
-<details><summary>它是怎么工作的？</summary><p>@@MECHANISM@@</p><p class="muted">边界：@@LIMITS@@</p><p class="muted">图片和视频在浏览器本地处理，不上传。示例插画与概念封面由 Image Gen 生成。已有战斗视频沿用仓库的素材许可。</p></details>
-<nav class="study-nav" aria-label="切换实验">@@NAV@@</nav>
-</main><footer><span>LOCAL FIRST. NO API. NO CDN.</span><a href="../docs/SIX_STUDIES.md">实现、素材与验收说明 ↗</a></footer>
+<body data-study="@@ID@@" style="--accent:@@ACCENT@@">
+<div class="ambient" aria-hidden="true"></div>
+<div class="study-app">
+  <header class="header">
+    <a class="brand" href="../index.html" aria-label="返回效果展厅">
+      <svg class="brand-emblem" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 3 26.4 17.6 41 22 26.4 26.4 22 41 17.6 26.4 3 22 17.6 17.6Z" fill="currentColor"/><ellipse cx="22" cy="22" rx="21" ry="7.2" transform="rotate(-34 22 22)" stroke="currentColor" stroke-width=".8"/><path d="M4 35h13M29 9h11" stroke="currentColor" stroke-width=".65"/></svg>
+      <span class="brand-text"><strong>星海视觉实验室</strong><small>@@ENGLISH@@ <span>/</span> @@TITLE@@ · @@NUMBER@@</small></span>
+    </a>
+    <!-- HALL:NAV -->
+    <div class="header-actions">
+      <button id="play" class="auto-button" type="button" aria-pressed="true"><span class="play-glyph" aria-hidden="true">Ⅱ</span><span id="play-label">暂停巡航</span></button>
+      <button id="clean" class="icon-button" type="button" aria-label="纯画面" aria-pressed="false" title="纯画面 · H"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 7V3h4m6 0h4v4M3 13v4h4m6 0h4v-4"/></svg></button>
+      <button id="about-open" class="icon-button" type="button" aria-label="作品说明" title="作品说明">ⓘ</button>
+    </div>
+  </header>
+  <main class="stage" aria-label="@@TITLE@@互动实验">
+    <div class="theater">
+      <canvas id="canvas" tabindex="0" aria-label="@@HELP@@"></canvas>
+      <div class="art-shade" aria-hidden="true"></div>
+      <div class="stage-tag"><span></span>@@ENGLISH@@ <b>@@KICKER@@</b></div>
+      <aside class="telemetry" aria-label="当前实验状态"><div class="telemetry-top"><i></i><span id="play-state">影像准备中</span><b aria-hidden="true">✧</b></div><p id="status" role="status" aria-live="off">初始化</p><div class="telemetry-bottom"><span>@@MEDIUM@@</span><span>@@NUMBER@@ / LIVE</span></div></aside>
+      <div class="hero-copy"><div class="eyebrow">@@ENGLISH@@ <i></i><span>@@NUMBER@@ / 08</span></div><h1><span>@@HEADLINE1@@</span><span>@@HEADLINE2@@</span></h1><p>@@LINE@@</p><button class="next-hero" id="interact" type="button"><span>@@ACTION@@</span><i aria-hidden="true">↗</i></button></div>
+      <div class="study-coordinate" aria-hidden="true"><span>@@KICKER@@</span><i>◇</i><b>@@SIGNATURE@@</b></div>
+      <div class="frame-corner tl" aria-hidden="true"></div><div class="frame-corner tr" aria-hidden="true"></div><div class="frame-corner bl" aria-hidden="true"></div><div class="frame-corner br" aria-hidden="true"></div>
+      <div class="loading" id="loading" role="status"><span>✦</span>正在准备画面…</div>
+    </div>
+    <section class="instrument-bar" aria-label="互动导演台"><div class="instrument-title"><span>INTERACTION / @@NUMBER@@</span><strong>@@TITLE@@</strong></div><div class="controls" id="controls" aria-label="实验参数"></div><div class="utility-actions"><button id="reset" type="button">重置</button><button id="snapshot" type="button">保存画面</button></div><p class="hint">@@HELP@@</p></section>
+  </main>
+  <!-- HALL:ATLAS -->
+</div>
+<dialog class="study-dialog" id="about" aria-labelledby="about-title"><div class="dialog-head"><span>EXHIBITION NOTES / @@NUMBER@@</span><button id="about-close" type="button" aria-label="关闭作品说明">×</button></div><h2 id="about-title">@@TITLE@@</h2><p>@@MECHANISM@@</p><p class="muted">@@LIMITS@@</p><p class="muted">图片和视频在浏览器本地处理。示例插画与概念封面由 Image Gen 生成。已有战斗视频沿用仓库的素材许可。</p><a href="../docs/SIX_STUDIES.md">实现、素材与验收说明 ↗</a></dialog>
+<!-- HALL:SCRIPT -->
 <script type="module" src="../src/studies/main.mjs"></script>
 </body></html>

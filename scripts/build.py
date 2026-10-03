@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build a validated, completely offline HTML. Python >=3.10, standard library only."""
 from __future__ import annotations
-import argparse, base64, copy, html, json, math, os, re, struct
+import argparse, base64, copy, html, json, math, os, re, struct, runpy
 from pathlib import Path
 from urllib.parse import quote
 
@@ -117,6 +117,9 @@ def build(output: Path, scenes_path: Path=DEFAULT_SCENES, config_path: Path=DEFA
         return quote(Path(os.path.relpath(target, output.parent)).as_posix(), safe='/')
     src = ROOT/'src'
     result = (src/'index.template.html').read_text(encoding='utf-8')
+    shell = runpy.run_path(str(src/'hall/build.py'))['render']('transport', output, inline=True)
+    for key in ('nav', 'atlas'):
+        result = result.replace('<!-- HALL:' + key.upper() + ' -->', shell[key])
     tokens={**{k.upper():str(config[k]) for k in ('title','brand','description','notice')},
             'COUNT':str(len(scenes)).zfill(2),'TIMELINE_MAX':str(len(scenes)*1000),
             'GALLERY':link(ROOT/'index.html') if output.is_relative_to(ROOT) else './index.html',
@@ -125,7 +128,8 @@ def build(output: Path, scenes_path: Path=DEFAULT_SCENES, config_path: Path=DEFA
     worker=(src/'matcher.js').read_text(encoding='utf-8')
     js='window.MATCH_WORKER_SOURCE='+script_json(worker)+';\n'
     js+='\n'.join((src/f).read_text(encoding='utf-8') for f in ('timing.js','transport.js','main.js'))
-    result=result.replace('<!-- BUILD:STYLE -->','<style>\n'+(src/'style.css').read_text(encoding='utf-8')+'\n</style>')
+    js+='\n'+shell['script']
+    result=result.replace('<!-- BUILD:STYLE -->','<style>\n'+(src/'style.css').read_text(encoding='utf-8')+'\n'+shell['style']+'\n</style>')
     result=result.replace('<!-- BUILD:ASSETS -->','<script>window.ARCHIVE_CONFIG='+script_json(config)+';window.ARCHIVE_MEDIA='+script_json(scenes)+';</script>')
     result=result.replace('<!-- BUILD:SCRIPT -->','<script>\n'+js+'\n</script>')
     if '<!-- BUILD:' in result or re.search(r'{{[A-Z_]+}}', result): raise ValueError('Unresolved template token')

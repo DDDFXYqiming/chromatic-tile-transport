@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import html
 import json
+import runpy
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -13,14 +14,16 @@ def outputs() -> dict[Path, str]:
     template = (ROOT / 'src/studies/page.html').read_text(encoding='utf-8')
     generated = {}
     for item in catalog:
-        nav = ''.join(
-            f'<a href="{x["slug"]}.html"' + (' aria-current="page"' if x['id'] == item['id'] else '') +
-            f'>{x["number"]} / {html.escape(x["title"])}</a>' for x in catalog
-        )
+        output = ROOT / f'dist/{item["slug"]}.html'
+        shell = runpy.run_path(str(ROOT / 'src/hall/build.py'))['render'](item['id'], output)
         page = template
         for key, value in item.items():
             page = page.replace('@@' + key.upper() + '@@', html.escape(str(value), quote=True))
-        page = page.replace('@@NAV@@', nav)
+        for key, value in shell.items():
+            if key in ('style', 'script'):
+                tag = 'style' if key == 'style' else 'script'
+                value = f'<{tag}>\n{value}\n</{tag}>'
+            page = page.replace('<!-- HALL:' + key.upper() + ' -->', value)
         if '@@' in page:
             raise ValueError(f'Unresolved template token in {item["slug"]}')
         generated[ROOT / f'dist/{item["slug"]}.html'] = page

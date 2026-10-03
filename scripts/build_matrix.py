@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build effect 02 without modifying effect 01. Default: offline HTML; --linked: small repository preview."""
 from __future__ import annotations
-import argparse, base64, hashlib, html, json, math, os, re
+import argparse, base64, hashlib, html, json, math, os, re, runpy
 from pathlib import Path
 from build import ROOT, local, load_scenes, script_json, image_info
 
@@ -103,6 +103,11 @@ def build(output: Path, scenes_path: Path=DEFAULT_SCENES, config_path: Path=DEFA
         scripts='<script>\n'+'\n'.join(f.read_text(encoding='utf-8').replace('</script','<\\/script') for f in modules)+'\n</script>'
         gallery=rel(ROOT/'index.html') if output.is_relative_to(ROOT) else './index.html'
         transport=rel(ROOT/'dist/index.html') if output.is_relative_to(ROOT) else './starrail_color_transport_v3_1.html'
+    shell = runpy.run_path(str(ROOT/'src/hall/build.py'))['render']('matrix', output, inline=not linked)
+    for key in ('nav', 'atlas'):
+        result = result.replace('<!-- HALL:' + key.upper() + ' -->', shell[key])
+    css += '<style>\n' + shell['style'] + '\n</style>'
+    scripts += '<script>\n' + shell['script'] + '\n</script>'
     replacements={'<!-- MATRIX:STYLE -->':css,'<!-- MATRIX:SCRIPT -->':scripts,
       '<!-- MATRIX:ASSETS -->':'<script>window.MATRIX_DATA='+script_json({'config':config,'scenes':scenes})+';</script>',
       '{{TITLE}}':html.escape(config['title']),'{{NOTICE}}':html.escape(config['notice']),

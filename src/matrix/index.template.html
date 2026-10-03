@@ -7,7 +7,7 @@
 <title>{{TITLE}}</title>
 <!-- MATRIX:STYLE -->
 </head>
-<body>
+<body data-hall-legacy>
 <div class="ambient" aria-hidden="true"></div>
 <div class="app">
   <header class="topbar">
@@ -15,7 +15,7 @@
       <svg viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 3 26.4 17.6 41 22 26.4 26.4 22 41 17.6 26.4 3 22 17.6 17.6Z" fill="currentColor"/><ellipse cx="22" cy="22" rx="21" ry="7.2" transform="rotate(-34 22 22)" stroke="currentColor" stroke-width=".8"/><path d="M4 35h13M29 9h11" stroke="currentColor" stroke-width=".65"/></svg>
       <span><b>{{BRAND}}</b><small>MATRIX MOTION <span>/</span> 动态显影 · 02</small></span>
     </a>
-    <nav class="topnav" aria-label="效果导航"><a href="{{TRANSPORT}}">01 寻色迁移</a><a class="current" href="#" aria-current="page">02 MATRIX MOTION</a></nav>
+    <!-- HALL:NAV -->
     <div class="top-actions">
       <button id="galleryOpen" class="icon-button" aria-label="打开影像档案" title="影像档案"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="5" height="5" rx="1"/><rect x="12" y="3" width="5" height="5" rx="1"/><rect x="3" y="12" width="5" height="5" rx="1"/><rect x="12" y="12" width="5" height="5" rx="1"/></svg></button>
       <button id="playButton" class="auto-button" aria-label="暂停播放" aria-pressed="true"><span id="playGlyph" aria-hidden="true">Ⅱ</span><span id="playLabel">暂停巡航</span></button>
@@ -43,11 +43,12 @@
     <div id="error" class="error" role="alert" hidden></div>
     <div id="mediaWarning" class="media-warning" role="status" hidden></div>
   </main>
-  <footer class="bottom-bar">
-    <div class="sequence-meta"><span class="tiny-label">THE MOTION ATLAS</span><strong id="chapter">01<span>/ {{COUNT}}</span></strong><span id="sceneTitle" class="folio-note">{{FIRST_NAME}}</span></div>
+  <footer class="bottom-bar hall-scene-footer">
+    <div class="sequence-meta"><span class="tiny-label">THE MOTION ATLAS</span><strong id="chapter">01<span>/ {{COUNT}}</span></strong><span id="sceneTitle" class="folio-note">{{FIRST_NAME}}</span><button class="hall-open-atlas" type="button">八个体验 ↗</button></div>
     <div class="filmstrip-wrap"><div class="timeline-row"><span id="elapsed">00.00</span><div class="timeline-track"><div id="timelineFill" class="timeline-fill" aria-hidden="true"></div><input id="timeline" type="range" min="0" max="34" step="0.005" value="0" aria-label="全片时间轴，单位秒"></div><span id="totalTime">34.00</span></div><nav id="filmstrip" class="filmstrip" aria-label="选择影像"></nav></div>
     <div class="transport-controls"><div class="transport-buttons"><button id="previous" aria-label="上一幕">←</button><button id="next" aria-label="下一幕">→</button></div><span><kbd>SPACE</kbd> 播放 / 暂停</span></div>
   </footer>
+  <!-- HALL:ATLAS -->
 </div>
 <button id="exitImmersive" class="exit-immersive">退出沉浸 ↙</button>
 <dialog id="gallery" class="gallery-dialog" aria-labelledby="galleryTitle">

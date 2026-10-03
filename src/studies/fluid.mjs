@@ -43,7 +43,7 @@ export class Fluid {
 }
 export async function create(stage,controls) {
   const W=432,H=270,fluid=new Fluid(),small=offscreen(W,H),cx=small.getContext('2d');
-  let original=await image(asset('studies/tidal-garden.svg')),dye=new Float32Array(W*H*4),next=new Float32Array(dye.length),output=new ImageData(W,H),damping=.6;
+  let original=await image(asset('studies/tidal-garden.png')),dye=new Float32Array(W*H*4),next=new Float32Array(dye.length),output=new ImageData(W,H),damping=.6;
   let steps=0,acc=0,last=null,sourceName='原创矢量画 · 潮汐花园',generation=0;
   function reset(){dye.set(sampleImage(original,W,H).data);for(const k of ['u','v','u0','v0','p','p0','div'])fluid[k].fill(0);steps=0;acc=0;stage.dirty=true;}
   reset();

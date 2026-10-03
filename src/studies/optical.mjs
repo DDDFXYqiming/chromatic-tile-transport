@@ -2,7 +2,7 @@ import {clamp,lensRay} from './math.mjs';
 import {asset,image,sampleImage,offscreen,range,fileInput,caption,bilinear,coverFit,sourcePointer} from './core.mjs';
 export async function create(stage,controls) {
   const W=600,H=375,small=offscreen(W,H),cx=small.getContext('2d');
-  let artwork=await image(asset('studies/quiet-orbit.svg')),src=sampleImage(artwork,W,H),output=new ImageData(W,H);
+  let artwork=await image(asset('studies/quiet-orbit.png')),src=sampleImage(artwork,W,H),output=new ImageData(W,H);
   let ior=1.46,dispersion=.018,radius=98,pos=[.5,.51],lut=[],generation=0,sourceName='原创矢量画 · 静谧轨道';
   function build(){lut=[];for(let y=-radius;y<=radius;y++)for(let x=-radius;x<=radius;x++)if(x*x+y*y<radius*radius){const rays=[ior-dispersion,ior,ior+dispersion].map(n=>lensRay(x/radius,y/radius,n));if(rays[1])lut.push({x,y,rays});}stage.dirty=true;}
   range(controls,'折射率',1.05,1.8,ior,.01,v=>{ior=v;build();});

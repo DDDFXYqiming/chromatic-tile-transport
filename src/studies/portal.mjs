@@ -1,7 +1,7 @@
 import {camera,face,box,sphere,renderFaces,imageQuad,clamp} from './math.mjs';
 import {asset,image,range,button,sky,caption} from './core.mjs';
 export async function create(stage,controls) {
-  const painting=await image(asset('studies/quiet-orbit.svg'));
+  const painting=await image(asset('studies/quiet-orbit.png'));
   let progress=0,target=0,yaw=0,auto=false;
   const slider=range(controls,'穿越进度',0,100,0,1,v=>{target=v/100;auto=false;stage.dirty=true;});
   button(controls,'穿过画框',()=>{target=target>.5?0:1;auto=false;stage.dirty=true;});

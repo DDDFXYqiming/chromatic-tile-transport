@@ -1,7 +1,7 @@
 import {foldingPanels,face,imageQuad,camera,renderFaces,mix,clamp,sub,cross,unit,add,mul,dot} from './math.mjs';
 import {asset,image,offscreen,range,button,sky,caption} from './core.mjs';
 export async function create(stage,controls) {
-  const art=await image(asset('studies/paper-world.svg'));
+  const art=await image(asset('studies/paper-world.png'));
   const textures=[0,1,2].map(i=>{const c=offscreen(320,600);c.getContext('2d').drawImage(art,i*art.width/3,0,art.width/3,art.height,0,0,320,600);return c;});
   let open=.76,target=.76,orbit=.36,auto=false;
   const input=range(controls,'展开程度',0,100,76,1,v=>{target=v/100;auto=false;stage.dirty=true;});

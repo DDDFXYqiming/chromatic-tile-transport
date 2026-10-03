@@ -10,7 +10,8 @@ ORDER=['math','core','portal','fluid','temporal','optical','shadow','folding']
 
 def bundle(video_fixture: Path | None = None):
     entries=[]
-    assets={p.relative_to(ROOT/'assets').as_posix():'data:image/svg+xml;base64,'+base64.b64encode(p.read_bytes()).decode() for p in (ROOT/'assets/studies').glob('*.svg')}
+    image_types={'.svg':'image/svg+xml','.png':'image/png'}
+    assets={p.relative_to(ROOT/'assets').as_posix():'data:'+image_types[p.suffix]+';base64,'+base64.b64encode(p.read_bytes()).decode() for p in (ROOT/'assets/studies').iterdir() if p.suffix in image_types}
     if video_fixture:
         assets['matrix-battle/03-clash.mp4']='data:video/mp4;base64,'+base64.b64encode(video_fixture.read_bytes()).decode()
     for name in ORDER:
@@ -32,4 +33,3 @@ def inline_page(slug):
     s=re.sub(r'<link rel="stylesheet"[^>]+>',lambda m:'<style>'+(ROOT/'src/studies/style.css').read_text(encoding='utf-8')+'</style>',s)
     s=re.sub(r'<script\b[^>]*>.*?</script>','',s,flags=re.S)
     return s
-

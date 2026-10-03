@@ -1,0 +1,17 @@
+Built dist\portal-threshold.html
+Built dist\temporal-field.html
+Built dist\liquid-canvas.html
+Built dist\optical-vault.html
+Built dist\shadow-apparatus.html
+Built dist\folding-theater.html
+Built index.html
+Studies and gallery are reproducible.
+Native module/resource graph, SVGs, eight-entry gallery and generated files: PASS
+PASS near clipping stays finite in front of camera
+PASS unit-index sphere does not move background samples
+PASS different refractive indices actually bend different rays
+PASS one immutable solid projects to both required silhouettes
+PASS all sheet hinges stay attached throughout folding
+PASS pressure projection reduces velocity divergence
+PASS fluid remains finite over 240 fixed time steps
+7 tests passed.

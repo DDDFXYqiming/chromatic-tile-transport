@@ -68,8 +68,8 @@ for item in json.loads((ROOT/'src/studies/catalog.json').read_text(encoding='utf
             if item['id'] == 'temporal':
                 assert chapter['annotation']
             else:
-                assert all(chapter[key] for key in ('alt', 'material', 'experiment', 'observation'))
-                assert 0 <= chapter['angle'] <= 90
+                assert len(chapter['display']) == 2
+                assert all(chapter[key] for key in ('alt', 'material'))
     if item['id'] == 'fluid':
         chapters = item['chapters']
         assert 4 <= len(chapters) <= 5

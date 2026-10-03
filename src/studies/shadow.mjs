@@ -1,143 +1,51 @@
-import {shadowSolid,camera,box,renderFaces,clamp} from './math.mjs';
-import {asset,image,range,button,caption} from './core.mjs';
+import {clamp} from './math.mjs';
+import {range,button,asset,image} from './core.mjs';
+import {exhibitionRenderer} from './shadow-apparatus.mjs';
 
 export async function create(stage,controls) {
   const chapters=JSON.parse(document.querySelector('#shadow-chapters').textContent);
-  const art=await Promise.all(chapters.map(chapter=>image(asset(chapter.image))));
-  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  const images=await Promise.all(chapters.map(c=>image(asset(c.image))));
+  const renderer=exhibitionRenderer(images,chapters),reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const theater=document.querySelector('.theater'),hero=document.querySelector('.hero-copy');
-  const solid=shadowSolid(27),pedestal=box([0,-1.2,0],[2.5,.25,2.5],'#6a5947');
-  for(const face of solid.faces)face.color='#b6986c';
-  let chapterIndex=0,angle=0,orbit=.64,transition=1,chapterTime=0,scan=false,lastTick=0;
-  const holdSeconds=18,transitionSeconds=.85;
-
-  const gallery=document.createElement('div');gallery.className='shadow-art';
-  art.forEach((img,i)=>{img.alt=chapters[i].alt;img.className='shadow-plate';img.draggable=false;gallery.append(img);});
-  theater.prepend(gallery);
-  const edition=document.createElement('div');edition.className='shadow-edition';
-  edition.innerHTML='<span>半影 <b>PENUMBRA</b></span><small>光的设计札记 <i>ISSUE 01 / FORM & LIGHT</i></small>';
-  theater.append(edition);
-  const folio=document.createElement('aside');folio.className='shadow-folio';
-  folio.setAttribute('aria-label','本章设计札记');
-  folio.innerHTML='<span class="shadow-rule"></span><div><small></small><h2></h2><p></p></div>';
-  theater.append(folio);
-  const artCaption=document.createElement('div');artCaption.className='shadow-art-caption';
-  artCaption.innerHTML='<span></span><p></p><small>光影概念图 / AI IMAGE</small>';theater.append(artCaption);
-  const chapterMark=document.createElement('div');chapterMark.className='shadow-chapter-mark';
-  chapterMark.setAttribute('aria-hidden','true');theater.append(chapterMark);
+  let chapterIndex=0,angle=0,view=0,strength=.9,time=0,auto=true,age=0,dragging=false;
+  const edition=document.createElement('div');edition.className='shadow-edition';edition.innerHTML='<span>半影 <i>／</i> PENUMBRA</span><small>光的三重奏 · A SPATIAL ANTHOLOGY</small>';theater.append(edition);
+  const caption=document.createElement('div');caption.className='shadow-caption';caption.innerHTML='<small></small><p></p>';theater.append(caption);
+  const note=document.createElement('div');note.className='shadow-note';note.innerHTML='<span></span><p></p>';theater.append(note);
+  const index=document.createElement('div');index.className='shadow-index';index.innerHTML='<b>01</b><span>光有来处<br>影无定形</span>';theater.append(index);
+  const reading=document.createElement('section');reading.className='shadow-reading';reading.innerHTML='<h3></h3><p></p><p></p>';document.querySelector('#about h2').after(reading);
+  const directions=document.createElement('div');directions.className='shadow-directions';directions.innerHTML='<span>Ⅰ <i></i> 青光</span><span>Ⅱ <i></i> 绯光</span><span>Ⅲ <i></i> 金光</span>';theater.append(directions);
+  const toggle=document.createElement('button');toggle.type='button';toggle.className='shadow-settings';toggle.textContent='调光 ↗';toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-controls','shadow-instruments');theater.append(toggle);
+  const bar=document.querySelector('.instrument-bar');bar.id='shadow-instruments';bar.hidden=true;
+  toggle.addEventListener('click',()=>{bar.hidden=!bar.hidden;toggle.setAttribute('aria-expanded',String(!bar.hidden));});
+  bar.addEventListener('keydown',e=>{if(e.key==='Escape'){bar.hidden=true;toggle.setAttribute('aria-expanded','false');toggle.focus();}});
+  document.querySelector('.instrument-title strong').textContent='光的三重奏';
+  document.querySelector('.instrument-title>span').textContent='PENUMBRA / 07';
   hero.setAttribute('aria-live','polite');hero.setAttribute('aria-atomic','true');
-
-  // Editorial photography and the live optical model use distinct surfaces.
-  const bench=document.createElement('section');bench.className='shadow-workbench';
-  bench.setAttribute('aria-label','光学小实验');
-  bench.innerHTML='<div class="shadow-experiment-copy"><span>TRY THE IDEA / 光学小实验</span><h2></h2><p></p><small>拖动光源滑杆，或在模型上左右拖动</small></div><div class="shadow-demo"></div>';
-  theater.after(bench);bench.querySelector('.shadow-demo').append(stage.canvas);
-  stage.canvas.setAttribute('aria-label','固定实体与实时投影。左右方向键移动光源，上下方向键旋转观察角度。');
-  const status=document.querySelector('#status');
-  bench.querySelector('.shadow-experiment-copy').append(status);
-  document.querySelector('.telemetry').hidden=true;
-  document.querySelector('.instrument-title strong').textContent='光源与视角';
-  document.querySelector('.instrument-title > span').textContent='LIGHT TABLE / 07';
-  document.querySelector('#snapshot').textContent='保存投影';
-
-  function manualLight(degrees) {
-    angle=clamp(degrees,0,90)*Math.PI/180;scan=false;syncInputs();stage.dirty=true;
+  stage.canvas.setAttribute('aria-label','半影空间展。拖动改变三束光的方向，左右方向键调光，上下方向键调整浮起的字。');
+  const angleInput=range(controls,'光的方向',-180,180,0,1,v=>{angle=v*Math.PI/180;age=0;stage.dirty=true;});
+  range(controls,'影的浓度',.2,1,.9,.05,v=>{strength=v;stage.dirty=true;});
+  const autoButton=button(controls,'自动换章',()=>{auto=!auto;autoButton.setAttribute('aria-pressed',String(auto));age=0;});autoButton.setAttribute('aria-pressed','true');
+  function select(i){chapterIndex=(i+chapters.length)%chapters.length;age=0;angle=chapterIndex*.5;const c=chapters[chapterIndex];
+    document.body.dataset.chapter=c.id;document.body.style.setProperty('--accent',c.accent);
+    hero.querySelector('.eyebrow').textContent=c.kicker;[...hero.querySelector('h1').children].forEach((el,j)=>el.textContent=c.headline[j]);
+    hero.querySelector('p').textContent=c.body;document.querySelector('#interact>span').textContent=c.action;
+    caption.querySelector('small').textContent=c.material;caption.querySelector('p').textContent=c.note;
+    note.querySelector('span').textContent=c.feature;note.querySelector('p').textContent=c.detail;
+    reading.querySelector('h3').textContent=c.title;reading.querySelectorAll('p')[0].textContent=c.body;reading.querySelectorAll('p')[1].textContent=c.detail;
+    index.querySelector('b').textContent=String(chapterIndex+1).padStart(2,'0');stage.status(c.title);stage.dirty=true;
   }
-  const input=range(controls,'光源方位',0,90,0,1,manualLight);
-  button(controls,'对齐月影 · 0°',()=>manualLight(0));
-  button(controls,'对齐菱影 · 90°',()=>manualLight(90));
-  const orbitInput=range(controls,'观察雕塑',-170,170,37,1,v=>{orbit=v*Math.PI/180;stage.dirty=true;});
-  const scanButton=button(controls,'扫描光源',()=>{scan=!scan;syncInputs();stage.dirty=true;});
-  function syncInputs(){
-    input.value=Math.round(angle/Math.PI*180);orbitInput.value=Math.round(orbit/Math.PI*180);
-    scanButton.setAttribute('aria-pressed',String(scan));
-    scanButton.textContent=scan?'停止扫描':'扫描光源';
-  }
-
-  function writeCopy() {
-    const chapter=chapters[chapterIndex],number=String(chapterIndex+1).padStart(2,'0');
-    document.body.style.setProperty('--accent',chapter.accent);
-    document.body.dataset.chapter=hero.dataset.chapter=folio.dataset.chapter=chapter.id;
-    hero.querySelector('.eyebrow').textContent=chapter.kicker;
-    [...hero.querySelector('h1').children].forEach((line,i)=>line.textContent=chapter.headline[i]);
-    hero.querySelector('p').textContent=chapter.body;
-    document.querySelector('#interact > span').textContent=chapter.action;
-    folio.querySelector('small').textContent='DESIGN NOTE / '+number;
-    folio.querySelector('h2').textContent=chapter.feature;
-    folio.querySelector('p').textContent=chapter.detail;
-    artCaption.querySelector('span').textContent=chapter.material;
-    artCaption.querySelector('p').textContent=chapter.note;
-    chapterMark.textContent=number;
-    bench.querySelector('h2').textContent=chapter.experiment;
-    bench.querySelector('p').textContent=chapter.observation;
-    art.forEach((img,i)=>{img.classList.toggle('is-current',i===chapterIndex);img.setAttribute('aria-hidden',String(i!==chapterIndex));});
-    stage.status('平行光投影 · 同一份固定实体 · 27³ 构造网格');
-  }
-
-  function select(index,{animate=true}={}) {
-    chapterIndex=(index+chapters.length)%chapters.length;chapterTime=0;scan=false;lastTick=0;
-    angle=chapters[chapterIndex].angle*Math.PI/180;
-    transition=animate&&stage.playing&&!reduced.matches?0:1;
-    // Art and prose enter as one plate, including rapid selections.
-    writeCopy();syncInputs();stage.dirty=true;
-  }
-  const scenes={label:'THE LIGHT JOURNAL',kind:'ESSAY',items:chapters.map((chapter,index)=>({
-    ...chapter,apply:()=>select(index),active:()=>chapterIndex===index,
-  }))};
-
-  function drawExperiment() {
-    const {ctx,width:w,height:h}=stage,half=w*.5;
-    ctx.fillStyle='#171b1e';ctx.fillRect(0,0,half,h);
-    ctx.save();ctx.beginPath();ctx.rect(0,0,half,h);ctx.clip();
-    const cam=camera([Math.sin(orbit)*5,2.3,Math.cos(orbit)*5],[0,-.1,0],half,h,.91);
-    renderFaces(ctx,[...pedestal,...solid.faces],cam,{light:[Math.sin(angle),.3,Math.cos(angle)]});
-    caption(ctx,'01 / FIXED SOLID',14,22,'#c6bca9',9);
-    ctx.restore();
-    const gradient=ctx.createRadialGradient(half+(w-half)*.5,h*.5,10,half+(w-half)*.5,h*.5,w-half);
-    gradient.addColorStop(0,'#e5d9bd');gradient.addColorStop(1,'#aba18c');
-    ctx.fillStyle=gradient;ctx.fillRect(half,0,w-half,h);
-    ctx.save();ctx.beginPath();ctx.rect(half,0,w-half,h);ctx.clip();
-    const scale=Math.min(w-half,h)*.32,cx=half+(w-half)/2,cy=h*.53;
-    // Project the same faces drawn at left. Normalize winding to union the faces.
-    ctx.fillStyle='#242923';ctx.beginPath();
-    for(const face of solid.faces){
-      const points=face.points.map(p=>[cx+(p[0]*Math.cos(angle)+p[2]*Math.sin(angle))*scale,cy-p[1]*scale]);
-      const area=points.reduce((sum,p,i)=>{const q=points[(i+1)%points.length];return sum+p[0]*q[1]-q[0]*p[1];},0);
-      if(Math.abs(area)<1e-8)continue;if(area<0)points.reverse();
-      points.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.closePath();
-    }
-    ctx.fill('nonzero');
-    caption(ctx,'02 / PROJECTION',half+14,22,'#383d32',9);
-    caption(ctx,Math.round(angle/Math.PI*180)+'°',half+14,h-16,'#383d32',12);
-    caption(ctx,angle<.035?'月牙':angle>1.535?'菱形':'过渡投影',half+54,h-17,'#383d32',10);
-    ctx.restore();
-  }
-  select(0,{animate:false});
+  const motionChange=()=>{if(reduced.matches)stage.setPlaying(false);stage.dirty=true;};reduced.addEventListener('change',motionChange);
+  select(0);
   return {
-    scenes,interact:()=>select(chapterIndex+1),
-    reset(){orbit=.64;select(chapterIndex,{animate:false});},
-    key(key){if(key==='ArrowRight')manualLight(angle/Math.PI*180+3);if(key==='ArrowLeft')manualLight(angle/Math.PI*180-3);
-      if(key==='ArrowUp'||key==='ArrowDown'){orbit=clamp(orbit+(key==='ArrowUp'?.08:-.08),-2.96,2.96);syncInputs();}},
-    pointer(p){if(p.down){orbit=clamp(orbit+p.dx*3,-2.96,2.96);syncInputs();}},
-    visibility(on){lastTick=0;if(!on&&transition<1){transition=1;theater.style.setProperty('--chapter-enter',1);}},
-    render(dt){
-      // Reading time follows the visible clock, independently of the shared
-      // physics timestep cap. Pausing and backgrounding reset this clock.
-      const now=performance.now(),elapsed=dt&&lastTick?(now-lastTick)/1000:0;lastTick=now;
-      if(dt&&!reduced.matches){
-        chapterTime+=elapsed;
-        if(chapterTime>=holdSeconds)select(chapterIndex+1);
-        if(scan){angle=(.5-.5*Math.cos(stage.t*.55))*Math.PI/2;syncInputs();}
-        transition=clamp(transition+elapsed/transitionSeconds);
-      }else if(reduced.matches)transition=1;
-      const enter=transition*transition*(3-2*transition);
-      theater.style.setProperty('--chapter-enter',enter);
-      const drift=reduced.matches?0:Math.sin(stage.t*.13)*.004;
-      art[chapterIndex].style.transform=`scale(${1.015+drift})`;
-      drawExperiment();
+    scenes:{label:'FOUR SHADOW POEMS',kind:'篇',items:chapters.map((c,i)=>({...c,apply:()=>select(i),active:()=>chapterIndex===i}))},
+    interact(){select(chapterIndex+1);},reset(){view=0;strength=.9;controls.querySelectorAll('input')[1].value='.9';select(chapterIndex);},
+    key(key){if(key==='ArrowRight')angle+=.08;if(key==='ArrowLeft')angle-=.08;if(key==='ArrowUp')view=clamp(view+.1,-1,1);if(key==='ArrowDown')view=clamp(view-.1,-1,1);age=0;},
+    pointer(p){if(p.down){if(dragging){angle+=p.dx*3;view=clamp(view+p.dy,-1,1);}dragging=true;age=0;}},release(){dragging=false;},
+    render(dt){if(dt&&!reduced.matches&&!dragging){time+=dt;angle+=dt*.065;age+=dt;if(auto&&age>=18)select(chapterIndex+1);}
+      angle=((angle+Math.PI)%(Math.PI*2)+Math.PI*2)%(Math.PI*2)-Math.PI;angleInput.value=String(Math.round(angle*180/Math.PI));
+      renderer.draw(stage.ctx,stage.width,stage.height,{chapter:chapterIndex,angle,view,time,strength});
     },
-    inspect:()=>({angle,orbit,voxels:solid.voxels.length,faces:solid.faces.length,model:'fixed-intersection-solid',
-      chapter:chapters[chapterIndex].id,art:chapters[chapterIndex].image,texturesLoaded:art.length,
-      transition,chapterTime,holdSeconds,scan}),
+    inspect:()=>({chapter:chapters[chapterIndex].id,art:chapters[chapterIndex].image,texturesLoaded:images.length,angle,view,strength,auto,age,time,renderer:'multi-light-spatial-typography',...renderer.inspect()}),
+    dispose(){reduced.removeEventListener('change',motionChange);},
   };
 }

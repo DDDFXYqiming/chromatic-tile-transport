@@ -35,7 +35,7 @@ account, or secret is used at runtime.
 | 04 Temporal | `dist/temporal-field.html` | Existing local video, bounded 64-frame cache, timestamp-based 2D history sampling and temporal interpolation |
 | 05 Fluid | `dist/liquid-canvas.html` | Semi-Lagrangian velocity transport, pressure projection and persistent dye advection |
 | 06 Optical | `dist/optical-vault.html` | PHASE dual space: black-field product stories and white-room research notes, paired chapter navigation and a draggable glass boundary |
-| 07 Shadow | `dist/shadow-apparatus.html` | One fixed intersection solid; the same surface geometry produces both orthographic silhouettes |
+| 07 Shadow | `dist/shadow-apparatus.html` | PENUMBRA spatial anthology: monumental copper type and original artwork cast three directional shadows across a full-viewport receiver |
 | 08 Folding | `dist/folding-theater.html` | Connected triptych, hinged floor, independently actuated popup hinge, front/back paper surfaces |
 
 ## Source layout
@@ -113,9 +113,18 @@ not a claim about rendering throughput, especially for static-on-demand studies.
   new typography during world transitions. This is an artistic optical effect.
   Run `python tests/optical_browser.py` for chapter, playback, keyboard, export,
   reduced-motion and responsive acceptance.
-* Shadow uses a 27³ construction grid. Row support is reconciled before forming
-  the intersection so the selected two silhouettes are achievable by the same
-  solid. It is not a solver for arbitrary incompatible target images.
+* Shadow raises two typographic planes and two artwork planes above a shared
+  receiver. Three point-light rays project those same planes onto the field;
+  direction, density, pointer dragging and keyboard controls update live.
+  Four chapters synchronize typography, artwork, captions and the reading dialog.
+  Playback changes chapter every 18 seconds and respects reduced motion.
+  The Canvas renderer uses layered glyph masks for copper relief and artistic
+  colored shadows. It is an illustration of spatial typography, not a volumetric
+  light-transport simulation. The original four PNG artworks remain in use.
+  Run `node tests/shadow_geometry.mjs` for projection invariants and
+  `python tests/shadow_browser.py` for native-HTTP browser acceptance.
+  The read-only `tests/shadow_acceptance.mjs` audit is also callable through
+  browser-control tools on the repository-served page.
 * Folding is prescribed hinge kinematics, not an arbitrary origami simulation.
   The popup hinge is independently actuated; this is not claimed as a physically
   linked, single-pull commercial pop-up mechanism.

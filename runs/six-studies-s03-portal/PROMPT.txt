@@ -1,0 +1,22 @@
+Repo: D:\AI_Projects\chromatic-tile-transport
+Branch: feat/visual-lab-six-studies
+HEAD includes chrome commits 0a1ac56 / ed1be83 (eight peer top nav + page-local bottom strips). Keep that chrome; do not regress to experience-jumping bottom strips.
+
+THIS PASS = ONLY page 03 画中门 / portal-threshold remodel (content-first). Leave 04–08 for later passes.
+
+USER INTENT (must match 01/02 spirit):
+- Effects exist to SHOWCASE invented website content (product intro OR tech blog OK — invent it).
+- Switching bottom strip items must change BOTH visuals AND copy (title/body/kicker) together — cinematic site, not flat blog layout.
+- Portal hall bones can stay, but current look is “website showing a sparse whitebox 3D hall”. Invert: hall/portal is the vehicle to present rich content cards/articles/product beats.
+- Add textures (Codex image gen). No empty white-modely surfaces as the hero.
+- Density: more than one lonely vignette — several content beats in the local strip (already has 正面门槛/穿过画框/回头看/自动漫游 — upgrade each into a real content beat with art + text).
+
+Do:
+1) Invent a coherent mini content set (CN+EN ok) for 03 — e.g. 4 portal “chapters” of a product/tech story. Wire into catalog/page copy + scene metadata so strip selection updates overlaid text.
+2) Generate textures / hero stills / door-frame art / environment maps with Codex image tools; save under assets/studies/ (portal*). Wire into portal.mjs / materials.
+3) Upgrade portal.mjs + page chrome so strip switches feel like 01 MEMORY transitions (crossfade/portal wipe OK) with matching prose.
+4) Rebuild studies dist; run studies/hall browser checks that touch portal.
+5) Commit + push origin feat/visual-lab-six-studies.
+6) Write runs/six-studies-s03-portal/RESULT.md with commit sha, content outline, asset list.
+
+Model gpt-6-astra / xhigh, full write. Do NOT open Chrome for the user. Stop after RESULT + push.

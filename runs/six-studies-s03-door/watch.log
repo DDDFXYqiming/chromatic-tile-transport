@@ -1,0 +1,9 @@
+label=s03-door-r2
+started=2026-10-04T05:19:02.9628237+08:00
+pid=33756
+workdir=D:\AI_Projects\chromatic-wt-s03-door
+model=gpt-6-astra
+effort=xhigh
+note=midcourse-relaunch
+exit=-1
+finished=2026-10-04T05:19:17.8255131+08:00

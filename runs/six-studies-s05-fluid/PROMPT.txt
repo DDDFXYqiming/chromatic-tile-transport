@@ -1,0 +1,11 @@
+Repo: D:\AI_Projects\chromatic-tile-transport
+Branch: feat/visual-lab-six-studies
+HEAD ~6b9d99a. Do not regress chrome, 03 portal, or 04 temporal.
+
+THIS PASS = ONLY page 05 液态画布 / liquid-canvas content-first remodel.
+
+USER: current page is empty flex / no content. Invent product or tech-blog chapters; bottom strip switches VISUALS + COPY together; fluid/pigment effect serves the content (not pure tech demo). Generate chapter art with Codex image tools.
+
+Do: invent 4–5 chapters; wire catalog + fluid.mjs/css; generate assets/studies/fluid-*; cinematic transitions; rebuild; run studies/hall/fluid checks; commit+push; write runs/six-studies-s05-fluid/RESULT.md.
+
+Model gpt-6-astra / xhigh. Do NOT open Chrome. Stop after RESULT + push.

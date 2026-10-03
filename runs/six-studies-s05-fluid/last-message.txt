@@ -1,0 +1,7 @@
+已完成并推送，远端 HEAD 已核对为 `b1fe944`。
+
+05 现为四章「洇 · 材料手记」，包含四张 Image Gen 原画、图文同步切换和液态转场。
+
+检查通过：fluid 119、studies 246、hall 1,928；导航、03、04 回归正常。
+
+素材路径、生成提示词和播放证据见 [RESULT.md](D:/AI_Projects/chromatic-tile-transport/runs/six-studies-s05-fluid/RESULT.md)。

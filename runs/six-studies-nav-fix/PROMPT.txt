@@ -1,0 +1,24 @@
+Repo: D:\AI_Projects\chromatic-tile-transport
+Branch: feat/visual-lab-six-studies
+Current HEAD includes 17af96b / 32bdb81 exhibition chrome.
+
+USER REJECTION (must fix):
+The top/center mode switch currently shows:
+  [01 寻色迁移] [02 MATRIX MOTION] [03—08 六个体验 v]
+03–08 must NOT be a dropdown. All EIGHT destinations must sit in ONE horizontal row of equal peer buttons (same interaction model as the original two-mode pill), each directly clickable:
+  01 寻色迁移 | 02 MATRIX MOTION | 03 画中门 | 04 时差场 | 05 液态画布 | 06 光学展柜 | 07 影子机关 | 08 折叠剧场
+(Short labels OK if needed for fit, but still eight separate buttons — never a grouped dropdown.)
+
+Also keep/ensure the bottom MEMORY/MOTION ATLAS can switch experiences; primary complaint is the 03—08 dropdown in the mode switch.
+
+Do:
+1) Find where "03—08" / experience menu / dropdown is built (likely src/hall/*, templates, study page.html, index.template, matrix templates).
+2) Replace with eight peer switch items everywhere that chrome appears.
+3) On narrow screens: allow horizontal scroll of the eight-item row if needed; still no dropdown grouping.
+4) Rebuild: python scripts/build_studies.py (+ transport/matrix builds if templates changed).
+5) Run hall/studies browser checks that cover navigation.
+6) Commit + push origin feat/visual-lab-six-studies.
+7) Write runs/six-studies-nav-fix/RESULT.md with commit sha and before/after note.
+
+Model context: gpt-6-astra, reasoning xhigh. Use full write access.
+Do not open Chrome for the user. Stop after RESULT.md + push.

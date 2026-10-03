@@ -1,0 +1,198 @@
+{
+  "passed": 93,
+  "checks": [
+    "four chapter artworks decode",
+    "valley switches all prose and the paper image together",
+    "valley selection preserves pause and restores its pose",
+    "night switches all prose and the paper image together",
+    "night selection preserves pause and restores its pose",
+    "harbor switches all prose and the paper image together",
+    "harbor selection preserves pause and restores its pose",
+    "home switches all prose and the paper image together",
+    "home selection preserves pause and restores its pose",
+    "all four chapters render distinct paper canvases",
+    "chapter changes stay on the same local page",
+    "next wraps to the first chapter",
+    "previous wraps to the last chapter",
+    "reading CTA turns both image and article",
+    "0% fold keeps all eight hinge endpoints attached",
+    "0% fold keeps rigid panel lengths",
+    "10% fold keeps all eight hinge endpoints attached",
+    "10% fold keeps rigid panel lengths",
+    "34% fold keeps all eight hinge endpoints attached",
+    "34% fold keeps rigid panel lengths",
+    "50% fold keeps all eight hinge endpoints attached",
+    "50% fold keeps rigid panel lengths",
+    "76% fold keeps all eight hinge endpoints attached",
+    "76% fold keeps rigid panel lengths",
+    "100% fold keeps all eight hinge endpoints attached",
+    "100% fold keeps rigid panel lengths",
+    "manual folding preserves article selection",
+    "angle slider changes the projected scene",
+    "starting a drag does not jump the viewpoint",
+    "drag rotates the connected paper",
+    "keyboard can unfold the current article",
+    "keyboard can orbit the paper",
+    "paused canvas is pixel stable",
+    "export writes a nonempty PNG",
+    "clean mode hides all editorial overlays",
+    "reset restores the first complete article",
+    "1920px valley fits viewport with readable complete copy",
+    "1920px night fits viewport with readable complete copy",
+    "1920px harbor fits viewport with readable complete copy",
+    "1920px home fits viewport with readable complete copy",
+    "1920px article, art and notes do not overlap",
+    "1024px valley fits viewport with readable complete copy",
+    "1024px night fits viewport with readable complete copy",
+    "1024px harbor fits viewport with readable complete copy",
+    "1024px home fits viewport with readable complete copy",
+    "1024px article, art and notes do not overlap",
+    "768px valley fits viewport with readable complete copy",
+    "768px night fits viewport with readable complete copy",
+    "768px harbor fits viewport with readable complete copy",
+    "768px home fits viewport with readable complete copy",
+    "768px article, art and notes do not overlap",
+    "390px valley fits viewport with readable complete copy",
+    "390px night fits viewport with readable complete copy",
+    "390px harbor fits viewport with readable complete copy",
+    "390px home fits viewport with readable complete copy",
+    "390px article, art and notes do not overlap",
+    "390px chapter strip remains available",
+    "390px pointer selection reaches valley",
+    "390px pointer selection reaches home",
+    "390px pointer selection reaches night",
+    "390px pointer selection reaches harbor",
+    "320px valley fits viewport with readable complete copy",
+    "320px night fits viewport with readable complete copy",
+    "320px harbor fits viewport with readable complete copy",
+    "320px home fits viewport with readable complete copy",
+    "320px article, art and notes do not overlap",
+    "320px chapter strip remains available",
+    "320px pointer selection reaches valley",
+    "320px pointer selection reaches home",
+    "320px pointer selection reaches night",
+    "320px pointer selection reaches harbor",
+    "rapid selections settle on the last requested chapter",
+    "notes dialog pauses motion",
+    "notes dialog restores playback",
+    "reduced motion starts paused",
+    "reduced motion selects valley immediately",
+    "reduced motion selects night immediately",
+    "reduced motion selects harbor immediately",
+    "reduced motion selects home immediately",
+    "night plays a real unfolding transition",
+    "night settles at its full reading pose",
+    "harbor plays a real unfolding transition",
+    "harbor settles at its full reading pose",
+    "home plays a real unfolding transition",
+    "home settles at its full reading pose",
+    "valley plays a real unfolding transition",
+    "valley settles at its full reading pose",
+    "automatic reading is explicitly enabled",
+    "pause freezes the automatic reading clock",
+    "automatic reading advances image, copy and strip after its hold",
+    "manual selection stops automatic turning",
+    "recorded browser playback is nonempty",
+    "no runtime exceptions or failed local resources"
+  ],
+  "errors": [],
+  "failed_requests": [],
+  "playback": [
+    {
+      "chapter": "night",
+      "open": 0.48089370418625194,
+      "target": 0.84,
+      "frame": 5
+    },
+    {
+      "chapter": "night",
+      "open": 0.8350040957173618,
+      "target": 0.84,
+      "frame": 24
+    },
+    {
+      "chapter": "night",
+      "open": 0.84,
+      "target": 0.84,
+      "frame": 42
+    },
+    {
+      "chapter": "night",
+      "open": 0.84,
+      "target": 0.84,
+      "frame": 42
+    },
+    {
+      "chapter": "harbor",
+      "open": 0.41773075003394433,
+      "target": 0.72,
+      "frame": 46
+    },
+    {
+      "chapter": "harbor",
+      "open": 0.5272646168520442,
+      "target": 0.72,
+      "frame": 48
+    },
+    {
+      "chapter": "harbor",
+      "open": 0.6801023200194773,
+      "target": 0.72,
+      "frame": 55
+    },
+    {
+      "chapter": "harbor",
+      "open": 0.7194449415323384,
+      "target": 0.72,
+      "frame": 74
+    },
+    {
+      "chapter": "home",
+      "open": 0.27201068027309305,
+      "target": 0.55,
+      "frame": 85
+    },
+    {
+      "chapter": "home",
+      "open": 0.4084599530007205,
+      "target": 0.55,
+      "frame": 88
+    },
+    {
+      "chapter": "home",
+      "open": 0.5207001412643039,
+      "target": 0.55,
+      "frame": 95
+    },
+    {
+      "chapter": "home",
+      "open": 0.5493607229211066,
+      "target": 0.55,
+      "frame": 112
+    },
+    {
+      "chapter": "valley",
+      "open": 0.3755144062797024,
+      "target": 0.64,
+      "frame": 125
+    },
+    {
+      "chapter": "valley",
+      "open": 0.5053354617991108,
+      "target": 0.64,
+      "frame": 128
+    },
+    {
+      "chapter": "valley",
+      "open": 0.6121234235140963,
+      "target": 0.64,
+      "frame": 135
+    },
+    {
+      "chapter": "valley",
+      "open": 0.639612179709811,
+      "target": 0.64,
+      "frame": 154
+    }
+  ]
+}

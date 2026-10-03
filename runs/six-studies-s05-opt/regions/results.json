@@ -1,0 +1,186 @@
+{
+  "baseline": null,
+  "passed": 27,
+  "checks": [
+    "reading redraws at most 13 Hz",
+    "settled flow stops solver and texture uploads",
+    "settled painting survives sleep",
+    "new pigment input wakes sleeping solver",
+    "mineral empty drag stays inert",
+    "mineral pigment drag visibly moves pixels",
+    "mineral exterior pixels stay identical",
+    "ink empty drag stays inert",
+    "ink pigment drag visibly moves pixels",
+    "ink exterior pixels stay identical",
+    "paper empty drag stays inert",
+    "paper pigment drag visibly moves pixels",
+    "paper exterior pixels stay identical",
+    "light empty drag stays inert",
+    "light pigment drag visibly moves pixels",
+    "light exterior pixels stay identical",
+    "leaving and reentering does not bridge strokes",
+    ".hero-copy drag stays inert",
+    ".fluid-folio drag stays inert",
+    ".fluid-edition drag stays inert",
+    ".telemetry drag stays inert",
+    ".fluid-stamp drag stays inert",
+    "390px crop keeps pigment interactive",
+    "390px editorial card stays inert",
+    "320px crop keeps pigment interactive",
+    "320px editorial card stays inert",
+    "no browser runtime errors"
+  ],
+  "errors": [],
+  "profiles": {
+    "reading": {
+      "seconds": 3.0145860000011453,
+      "main_thread_ms_per_second": 47.45129181915714,
+      "frames_per_second": 10.283335754889137,
+      "simulation_steps": 0,
+      "uploads": 0,
+      "state": {
+        "id": "fluid",
+        "playing": true,
+        "frame": 32,
+        "width": 1386,
+        "height": 637,
+        "rafHz": 60,
+        "chapter": "mineral",
+        "chapterIndex": 0,
+        "art": "studies/fluid-mineral.png",
+        "source": "art",
+        "texturesLoaded": 4,
+        "transition": 1,
+        "transitionSeconds": 2.2,
+        "holdSeconds": 18,
+        "tour": false,
+        "chapterTime": 0,
+        "steps": 0,
+        "damping": 1.1,
+        "disturbed": false,
+        "renderer": "texture-flow",
+        "grid": [
+          72,
+          48
+        ],
+        "flowSize": [
+          120,
+          80
+        ],
+        "active": false,
+        "speed": 0,
+        "uploads": 0,
+        "renderSize": [
+          917,
+          395
+        ],
+        "activeCells": 1296,
+        "projectionIterations": 12,
+        "idleHz": 12,
+        "pointerInside": false,
+        "divergence": 0,
+        "finite": true
+      }
+    },
+    "flow": {
+      "seconds": 3.0091339999999036,
+      "main_thread_ms_per_second": 885.1171134286758,
+      "frames_per_second": 57.823945361025984,
+      "simulation_steps": 180,
+      "uploads": 174,
+      "state": {
+        "id": "fluid",
+        "playing": true,
+        "frame": 207,
+        "width": 1386,
+        "height": 637,
+        "rafHz": 58,
+        "chapter": "mineral",
+        "chapterIndex": 0,
+        "art": "studies/fluid-mineral.png",
+        "source": "art",
+        "texturesLoaded": 4,
+        "transition": 1,
+        "transitionSeconds": 2.2,
+        "holdSeconds": 18,
+        "tour": false,
+        "chapterTime": 0,
+        "steps": 180,
+        "damping": 1.1,
+        "disturbed": true,
+        "renderer": "texture-flow",
+        "grid": [
+          72,
+          48
+        ],
+        "flowSize": [
+          120,
+          80
+        ],
+        "active": true,
+        "speed": 0.003084839011232058,
+        "uploads": 174,
+        "renderSize": [
+          917,
+          395
+        ],
+        "activeCells": 1296,
+        "projectionIterations": 12,
+        "idleHz": 12,
+        "pointerInside": false,
+        "divergence": 0.005113097714802807,
+        "finite": true
+      }
+    },
+    "settled": {
+      "seconds": 3.0090760000020964,
+      "main_thread_ms_per_second": 66.76534590680333,
+      "frames_per_second": 10.302165847581916,
+      "simulation_steps": 0,
+      "uploads": 0,
+      "state": {
+        "id": "fluid",
+        "playing": true,
+        "frame": 430,
+        "width": 1386,
+        "height": 637,
+        "rafHz": 60,
+        "chapter": "mineral",
+        "chapterIndex": 0,
+        "art": "studies/fluid-mineral.png",
+        "source": "art",
+        "texturesLoaded": 4,
+        "transition": 1,
+        "transitionSeconds": 2.2,
+        "holdSeconds": 18,
+        "tour": false,
+        "chapterTime": 0,
+        "steps": 314,
+        "damping": 1.1,
+        "disturbed": true,
+        "renderer": "texture-flow",
+        "grid": [
+          72,
+          48
+        ],
+        "flowSize": [
+          120,
+          80
+        ],
+        "active": false,
+        "speed": 0.00023851138151561221,
+        "uploads": 305,
+        "renderSize": [
+          917,
+          395
+        ],
+        "activeCells": 1296,
+        "projectionIterations": 12,
+        "idleHz": 12,
+        "pointerInside": false,
+        "divergence": 0,
+        "finite": true
+      }
+    }
+  }
+}

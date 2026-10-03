@@ -1,0 +1,8 @@
+error: unrecognized subcommand 'the'
+
+  tip: a similar subcommand exists: 'help'
+
+Usage: codex exec [OPTIONS] [PROMPT]
+       codex exec [OPTIONS] <COMMAND> [ARGS]
+
+For more information, try '--help'.

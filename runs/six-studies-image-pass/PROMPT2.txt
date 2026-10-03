@@ -1,0 +1,27 @@
+Continue chromatic-tile-transport image wire-up at D:\AI_Projects\chromatic-tile-transport.
+
+Previous turn already generated 9 PNGs here:
+C:\Users\39795\.codex\generated_images\01a1028b-833e-7220-b7f4-cfbfa9a505fd\
+
+They were sorted by LastWriteTime as generation order matching:
+1 quiet-orbit
+2 tidal-garden
+3 paper-world
+4 portal-cover
+5 temporal-cover
+6 fluid-cover
+7 optical-cover
+8 shadow-cover
+9 folding-cover
+
+Your job NOW (workspace writes allowed; do the file work yourself):
+1. Copy/rename those 9 PNGs into assets/studies/ with the names above (.png).
+2. Update every reference that pointed at the old .svg files (catalog.json covers, study modules, showcase/index if needed) to the new .png paths. Keep the old SVGs or remove them only if unused.
+3. Update assets/studies/README.md provenance: Image Gen DID run; list the new PNG files.
+4. Run: python scripts/build_studies.py
+5. Run: node tests/studies_math.mjs
+6. Run browser tests if feasible: python tests/studies_browser.py (install playwright if needed)
+7. Ensure branch feat/visual-lab-six-studies exists from current content; commit and push origin.
+8. Write runs/six-studies-image-pass/RESULT.md with file list, commit sha, test results.
+
+Do NOT open Chrome yet. Stop after RESULT.md + push.

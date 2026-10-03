@@ -1,0 +1,25 @@
+Repo: D:\AI_Projects\chromatic-tile-transport
+Branch: feat/visual-lab-six-studies (checkout/create from current if needed)
+Working HEAD already has six study mechanisms + PNG assets.
+
+USER REJECTION: current six study pages look rough vs the polished exhibition hall of effect 01 (寻色迁移) and 02 (MATRIX MOTION). Bob QA will not sign until style + bottom-bar navigation match that quality.
+
+REFERENCE UI (open and match closely):
+- Visual/layout gold standard: dist/index.html (Chromatic Transport / THE MEMORY ATLAS bottom bar, header mode toggle, neon dark HUD overlays)
+- Also: dist/matrix-battle.html / MATRIX MOTION atlas bar
+- User screenshots of the target look are at:
+  runs/six-studies-style-pass/refs/ref-transport-atlas.png
+  runs/six-studies-style-pass/refs/ref-matrix-atlas.png
+  runs/six-studies-style-pass/refs/ref-mode-toggle.png
+
+REQUIREMENTS:
+1) Bottom-bar switching like the original two-page hall: expand the atlas/mode switch so the user can jump across ALL eight experiences (01 transport, 02 matrix, 03-08 studies) without needing the card gallery as the only path. Keep the gallery page if useful, but every study page must include the shared polished chrome (header + bottom atlas) for switching.
+2) Restyle each of 03-08 study pages individually to the same exhibition-hall texture: dark HUD, gold star brand language, neon accents, typography hierarchy, translucent tech meta boxes, bottom atlas with thumbnails + prev/next + SPACE hint. Do not leave the current sparse lab-demo chrome.
+3) Keep existing study MECHANISMS (portal/temporal/fluid/optical/shadow/folding). Do not gut physics/math; wrap them in the polished shell. Prefer shared shell CSS/JS extracted from dist/index.html / matrix pages rather than inventing a third visual language.
+4) Rebuild generated pages (python scripts/build_studies.py). Update showcase/index if needed so entry points stay coherent.
+5) Run: node tests/studies_math.mjs and python tests/studies_browser.py (HTTP and/or inline). Fix regressions you introduce in the six studies. Do not rewrite effect-01 unless required for shared shell; if effect-01 browser suite still fails pre-existing items, record them honestly.
+6) Commit + push origin feat/visual-lab-six-studies.
+7) Write runs/six-studies-style-pass/RESULT.md with commit sha, files changed, screenshots paths if taken, test outcomes.
+
+Do NOT open Chrome for the user in this pass (Bob Dev will). Stop after RESULT.md + push.
+Use your image tools only if a missing cover/thumbnail truly blocks the atlas polish; prefer existing PNG covers already in assets/studies/.

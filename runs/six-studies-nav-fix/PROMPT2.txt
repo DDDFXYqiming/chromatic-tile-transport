@@ -1,0 +1,39 @@
+Repo: D:\AI_Projects\chromatic-tile-transport
+Branch: feat/visual-lab-six-studies
+Working tree already has a PARTIAL WIP from a killed earlier pass (keep the useful bits):
+- src/hall/main.js, style.css, build.py already removed the 03—08 <details> dropdown and use eight peer .hall-modes links + horizontal scroll. Finish/polish that; do not reintroduce a dropdown.
+- Many dist/*.html are dirty from a mid-build. Rebuild cleanly at the end.
+
+USER + QA REJECTION (blocking — higher priority than the dropdown alone):
+
+Architecture of chrome (match original two-page hall):
+1) TOP bar (.hall-modes): page switching only. Eight peer buttons in ONE row, each directly clickable:
+   01 寻色迁移 | 02 MATRIX MOTION (or 动态显影) | 03 画中门 | 04 时差场 | 05 液态画布 | 06 光学展柜 | 07 影子机关 | 08 折叠剧场
+   Narrow screens: horizontal scroll OK; NEVER group 03–08 into a dropdown.
+
+2) BOTTOM bar (visible by default): page-LOCAL content only — like original Transport "THE MEMORY ATLAS" filmstrip (images) and Matrix "THE MOTION ATLAS" filmstrip (clips). It must NOT list the eight experiences / jump to other studies.
+   Wrong (user screenshots): bottom strip showing 01 寻色迁移 … 08 折叠剧场 as STUDY cards.
+   Right (reference): Transport bottom MEMORY 霓虹疾行 / 春日剑影 / … ; Matrix bottom MOTION chapters.
+
+3) The eight-experience atlas may remain ONLY as an overlay opened by a control like the existing "八个体验" button (.hall-open-atlas → body.hall-experiences), same pattern as index.template.html / matrix/index.template.html. Default visible footer must be hall-scene-footer / filmstrip style, not the experience atlas.
+
+What to change:
+- src/hall/build.py currently injects the same 8 experience cards into BOTH nav and atlas footer. Split responsibility:
+  - Always emit eight-item top nav.
+  - Stop making the default footer the experience atlas for studies (and ensure transport/matrix keep their native MEMORY/MOTION filmstrips via hall-scene-footer + HALL:ATLAS overlay markers).
+- src/studies/page.html + study modules: give EACH study a real in-page content strip (variants of THAT page: images / viewpoints / angles / modes / model poses / media), wired to existing controls where possible. Labels can be STUDY/VIEW/ANGLE/MEDIA as appropriate — not cross-page destinations.
+  Sensible defaults if data is thin (examples, adapt to real controls in portal/temporal/fluid/optical/shadow/folding modules):
+  - portal: 正面门槛 / 穿过画框 / 回头看 / 自动漫游 (or discrete camera presets)
+  - temporal: 圆形采样 / 矩形采样 / 本机视频 / 重置场
+  - fluid: 默认颜料 / 换图预设 A·B / 重置动量 (if only one image, invent 3–5 look presets or paint seeds)
+  - optical: 默认展品 / 换图 / 色散档 / 焦距档
+  - shadow: 0° / 30° / 60° / 90° light stops (and maybe one orbit view)
+  - folding: 折叠0 / 半展 / 全展 / 俯视 / 侧视
+  Keep interaction quality close to MEMORY/MOTION filmstrip (thumb + number + title, accent current).
+- Rebuild: python scripts that regenerate dist for transport, matrix, studies (use existing build scripts).
+- Update tests (tests/hall_browser.py, tests/studies_browser.py) so they assert: modes has 8 links; default visible strip is NOT eight experience destinations on study pages; experience atlas only when opened.
+- Commit + push origin feat/visual-lab-six-studies.
+- Write runs/six-studies-nav-fix/RESULT.md with commit sha, before/after, and how each study’s bottom strip maps to in-page content.
+
+Model: gpt-6-astra, reasoning xhigh. Full write access already.
+Do NOT open Chrome for the user. Stop after RESULT.md + push.

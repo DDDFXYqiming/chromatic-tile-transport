@@ -1,0 +1,9 @@
+label=s03-r4
+started=2026-10-04T05:20:28.0405431+08:00
+pid=5012
+workdir=D:\AI_Projects\chromatic-wt-s03-door
+model=gpt-6-astra
+effort=xhigh
+note=stdin-prompt-relaunch
+exit=1
+finished=2026-10-04T05:20:42.1933527+08:00

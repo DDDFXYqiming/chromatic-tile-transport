@@ -1,0 +1,24 @@
+Repo: D:\AI_Projects\chromatic-tile-transport
+Branch: feat/visual-lab-six-studies
+
+SCOPE FOR THIS PASS ONLY (chrome semantics — do not remodel study visuals yet):
+
+1) TOP (.hall-modes): eight peer links in one row. WIP already removed the 03—08 dropdown in src/hall/* — finish polish, rebuild, keep horizontal scroll on narrow screens. Never restore dropdown.
+
+2) BOTTOM default footer: page-LOCAL content only.
+   - Transport (01) and Matrix (02): keep native MEMORY / MOTION filmstrips via hall-scene-footer. Experience atlas only via .hall-open-atlas overlay (HALL:ATLAS), same as original templates.
+   - Studies 03–08: STOP using the eight-experience atlas as the default visible footer (src/hall/build.py currently dumps all eight STUDY cards into .hall-strip). Replace with a real in-page strip for EACH study that switches content/variants ON THAT PAGE (hooks into existing controls where possible). Labels like VIEW/ANGLE/MEDIA/STUDY — not other experience titles that navigate away.
+     Suggested starter strips (wire to real controls; thumbs can reuse covers temporarily):
+     - portal: 正面门槛 / 穿过画框 / 回头看 / 自动漫游
+     - temporal: 圆形采样 / 矩形采样 / 本机视频 / 重置场
+     - fluid: 默认颜料 / 预设A / 预设B / 重置
+     - optical: 默认展品 / 换图 / 色散 / 焦距  (optical visual remodel comes later; chrome only now)
+     - shadow: 0° / 30° / 60° / 90°
+     - folding: 折叠 / 半展 / 全展 / 俯视
+   Eight-experience atlas may remain as overlay opened by a "八个体验" control, not as default bottom.
+
+3) Rebuild all dist pages; update tests/hall_browser.py and tests/studies_browser.py accordingly.
+4) Commit + push origin feat/visual-lab-six-studies.
+5) Write runs/six-studies-chrome/RESULT.md with commit sha.
+
+Do NOT open Chrome. Do NOT redesign 03–08 look/content density in this pass (next passes will). Model gpt-6-astra / xhigh, full write access.

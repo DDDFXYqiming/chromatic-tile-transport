@@ -1,0 +1,2091 @@
+127.0.0.1 - - [04/Oct/2026 02:06:19] "GET /dist/index.html HTTP/1.1" 200 -
+PASS 1440px top link reaches index
+PASS index 1440px eight peer links
+PASS index 1440px direct destinations
+PASS index 1440px active mode
+PASS index 1440px single row with equal button heights
+PASS index 1440px no grouped menu
+PASS index 1440px switch fits header
+PASS index 1440px active mode visible
+PASS index 1440px all eight visible on desktop
+PASS index 1440px default scene strip visible
+PASS index 1440px default strip has no experience destinations
+PASS index 1440px native MEMORY images
+PASS index 1440px atlas opens explicitly
+PASS index 1440px atlas announces open state
+PASS index 1440px atlas closes back to local footer
+PASS index 1440px atlas restores focus and collapsed state
+PASS index 1440px SPACE opens atlas without toggling playback
+PASS index 1440px SPACE restores local content without toggling playback
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /dist/matrix-battle.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /src/matrix/style.css?v=e415395217ad HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/studies/atlas/transport.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/studies/atlas/matrix.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/studies/atlas/portal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/studies/atlas/fluid.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/studies/atlas/temporal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /src/vendor/pixi-8.20.1.min.js?v=994859108379 HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /src/matrix/timeline.js?v=d8ad5c949d9e HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /src/matrix/video.js?v=3b2d896299be HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /src/matrix/layers.js?v=404168512e24 HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /src/matrix/main.js?v=139bf0cd528d HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /src/matrix/renderer.js?v=cfa8d85529c5 HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/studies/atlas/optical.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/studies/atlas/shadow.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/studies/atlas/folding.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/matrix-battle/01-faceoff-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/matrix-battle/02-charge-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/matrix-battle/03-clash-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/matrix-battle/04-vault-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/matrix-battle/05-finish-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/matrix-battle/01-faceoff.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/matrix-battle/02-charge.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/matrix-battle/04-vault.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/matrix-battle/05-finish.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:06:23] "GET /assets/matrix-battle/03-clash.mp4 HTTP/1.1" 206 -
+PASS 1440px top link reaches matrix-battle
+PASS matrix-battle 1440px eight peer links
+PASS matrix-battle 1440px direct destinations
+PASS matrix-battle 1440px active mode
+PASS matrix-battle 1440px single row with equal button heights
+PASS matrix-battle 1440px no grouped menu
+PASS matrix-battle 1440px switch fits header
+PASS matrix-battle 1440px active mode visible
+PASS matrix-battle 1440px all eight visible on desktop
+PASS matrix-battle 1440px default scene strip visible
+PASS matrix-battle 1440px default strip has no experience destinations
+PASS matrix-battle 1440px native MOTION chapters
+PASS matrix-battle 1440px atlas opens explicitly
+PASS matrix-battle 1440px atlas announces open state
+PASS matrix-battle 1440px atlas closes back to local footer
+PASS matrix-battle 1440px atlas restores focus and collapsed state
+PASS matrix-battle 1440px SPACE opens atlas without toggling playback
+PASS matrix-battle 1440px SPACE restores local content without toggling playback
+127.0.0.1 - - [04/Oct/2026 02:06:25] "GET /dist/portal-threshold.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:25] "GET /src/studies/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:25] "GET /src/studies/portal.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:25] "GET /src/studies/main.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:25] "GET /src/studies/core.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:25] "GET /src/studies/filmstrip.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:25] "GET /src/studies/math.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:25] "GET /src/studies/portal.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:25] "GET /assets/studies/portal-tidal-archive.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:25] "GET /assets/studies/portal-canopy-frequencies.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:25] "GET /assets/studies/portal-night-coordinates.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:25] "GET /assets/studies/portal-slow-expedition.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:25] "GET /assets/studies/portal-patina.png HTTP/1.1" 200 -
+PASS 1440px top link reaches portal-threshold
+PASS portal-threshold 1440px eight peer links
+PASS portal-threshold 1440px direct destinations
+PASS portal-threshold 1440px active mode
+PASS portal-threshold 1440px single row with equal button heights
+PASS portal-threshold 1440px no grouped menu
+PASS portal-threshold 1440px switch fits header
+PASS portal-threshold 1440px active mode visible
+PASS portal-threshold 1440px all eight visible on desktop
+PASS portal-threshold 1440px default scene strip visible
+PASS portal-threshold 1440px default strip has no experience destinations
+PASS portal-threshold 1440px study-local content buttons
+PASS portal-threshold 1440px atlas opens explicitly
+PASS portal-threshold 1440px atlas announces open state
+PASS portal-threshold 1440px atlas closes back to local footer
+PASS portal-threshold 1440px atlas restores focus and collapsed state
+PASS portal-threshold 1440px SPACE opens atlas without toggling playback
+PASS portal-threshold 1440px SPACE restores local content without toggling playback
+127.0.0.1 - - [04/Oct/2026 02:06:26] "GET /dist/temporal-field.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:26] "GET /src/studies/temporal.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:26] "GET /src/studies/temporal.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:26] "GET /assets/studies/temporal-afterglow.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:26] "GET /assets/studies/temporal-street-slices.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:26] "GET /assets/studies/temporal-tidal-notes.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:26] "GET /assets/studies/temporal-memory-layers.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:26] "GET /assets/studies/temporal-present-tense.png HTTP/1.1" 200 -
+PASS 1440px top link reaches temporal-field
+PASS temporal-field 1440px eight peer links
+PASS temporal-field 1440px direct destinations
+PASS temporal-field 1440px active mode
+PASS temporal-field 1440px single row with equal button heights
+PASS temporal-field 1440px no grouped menu
+PASS temporal-field 1440px switch fits header
+PASS temporal-field 1440px active mode visible
+PASS temporal-field 1440px all eight visible on desktop
+PASS temporal-field 1440px default scene strip visible
+PASS temporal-field 1440px default strip has no experience destinations
+PASS temporal-field 1440px study-local content buttons
+PASS temporal-field 1440px atlas opens explicitly
+PASS temporal-field 1440px atlas announces open state
+PASS temporal-field 1440px atlas closes back to local footer
+PASS temporal-field 1440px atlas restores focus and collapsed state
+PASS temporal-field 1440px SPACE opens atlas without toggling playback
+PASS temporal-field 1440px SPACE restores local content without toggling playback
+127.0.0.1 - - [04/Oct/2026 02:06:28] "GET /dist/liquid-canvas.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:28] "GET /src/studies/fluid.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:28] "GET /assets/studies/tidal-garden.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:28] "GET /assets/studies/filmstrip/fluid-still.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:28] "GET /assets/studies/filmstrip/fluid-vortex.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:28] "GET /assets/studies/filmstrip/fluid-ribbon.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:28] "GET /assets/studies/filmstrip/fluid-tide.webp HTTP/1.1" 200 -
+PASS 1440px top link reaches liquid-canvas
+PASS liquid-canvas 1440px eight peer links
+PASS liquid-canvas 1440px direct destinations
+PASS liquid-canvas 1440px active mode
+PASS liquid-canvas 1440px single row with equal button heights
+PASS liquid-canvas 1440px no grouped menu
+PASS liquid-canvas 1440px switch fits header
+PASS liquid-canvas 1440px active mode visible
+PASS liquid-canvas 1440px all eight visible on desktop
+PASS liquid-canvas 1440px default scene strip visible
+PASS liquid-canvas 1440px default strip has no experience destinations
+PASS liquid-canvas 1440px study-local content buttons
+PASS liquid-canvas 1440px atlas opens explicitly
+PASS liquid-canvas 1440px atlas announces open state
+PASS liquid-canvas 1440px atlas closes back to local footer
+PASS liquid-canvas 1440px atlas restores focus and collapsed state
+PASS liquid-canvas 1440px SPACE opens atlas without toggling playback
+PASS liquid-canvas 1440px SPACE restores local content without toggling playback
+127.0.0.1 - - [04/Oct/2026 02:06:28] "GET /dist/optical-vault.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:28] "GET /src/studies/optical.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:28] "GET /assets/studies/quiet-orbit.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:29] "GET /assets/studies/filmstrip/optical-exhibit.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:29] "GET /assets/studies/filmstrip/optical-clear.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:29] "GET /assets/studies/filmstrip/optical-prism.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:29] "GET /assets/studies/filmstrip/optical-focus.webp HTTP/1.1" 200 -
+PASS 1440px top link reaches optical-vault
+PASS optical-vault 1440px eight peer links
+PASS optical-vault 1440px direct destinations
+PASS optical-vault 1440px active mode
+PASS optical-vault 1440px single row with equal button heights
+PASS optical-vault 1440px no grouped menu
+PASS optical-vault 1440px switch fits header
+PASS optical-vault 1440px active mode visible
+PASS optical-vault 1440px all eight visible on desktop
+PASS optical-vault 1440px default scene strip visible
+PASS optical-vault 1440px default strip has no experience destinations
+PASS optical-vault 1440px study-local content buttons
+PASS optical-vault 1440px atlas opens explicitly
+PASS optical-vault 1440px atlas announces open state
+PASS optical-vault 1440px atlas closes back to local footer
+PASS optical-vault 1440px atlas restores focus and collapsed state
+PASS optical-vault 1440px SPACE opens atlas without toggling playback
+PASS optical-vault 1440px SPACE restores local content without toggling playback
+127.0.0.1 - - [04/Oct/2026 02:06:29] "GET /dist/shadow-apparatus.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:29] "GET /src/studies/shadow.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:29] "GET /assets/studies/filmstrip/shadow-light-0.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:29] "GET /assets/studies/filmstrip/shadow-light-90.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:29] "GET /assets/studies/filmstrip/shadow-light-60.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:29] "GET /assets/studies/filmstrip/shadow-light-30.webp HTTP/1.1" 200 -
+PASS 1440px top link reaches shadow-apparatus
+PASS shadow-apparatus 1440px eight peer links
+PASS shadow-apparatus 1440px direct destinations
+PASS shadow-apparatus 1440px active mode
+PASS shadow-apparatus 1440px single row with equal button heights
+PASS shadow-apparatus 1440px no grouped menu
+PASS shadow-apparatus 1440px switch fits header
+PASS shadow-apparatus 1440px active mode visible
+PASS shadow-apparatus 1440px all eight visible on desktop
+PASS shadow-apparatus 1440px default scene strip visible
+PASS shadow-apparatus 1440px default strip has no experience destinations
+PASS shadow-apparatus 1440px study-local content buttons
+PASS shadow-apparatus 1440px atlas opens explicitly
+PASS shadow-apparatus 1440px atlas announces open state
+PASS shadow-apparatus 1440px atlas closes back to local footer
+PASS shadow-apparatus 1440px atlas restores focus and collapsed state
+PASS shadow-apparatus 1440px SPACE opens atlas without toggling playback
+PASS shadow-apparatus 1440px SPACE restores local content without toggling playback
+127.0.0.1 - - [04/Oct/2026 02:06:30] "GET /dist/folding-theater.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:30] "GET /src/studies/folding.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:30] "GET /assets/studies/paper-world.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:30] "GET /assets/studies/filmstrip/folding-opening.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:30] "GET /assets/studies/filmstrip/folding-closed.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:30] "GET /assets/studies/filmstrip/folding-half.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:30] "GET /assets/studies/filmstrip/folding-open.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:06:30] "GET /assets/studies/filmstrip/folding-side.webp HTTP/1.1" 200 -
+PASS 1440px top link reaches folding-theater
+PASS folding-theater 1440px eight peer links
+PASS folding-theater 1440px direct destinations
+PASS folding-theater 1440px active mode
+PASS folding-theater 1440px single row with equal button heights
+PASS folding-theater 1440px no grouped menu
+PASS folding-theater 1440px switch fits header
+PASS folding-theater 1440px active mode visible
+PASS folding-theater 1440px all eight visible on desktop
+PASS folding-theater 1440px default scene strip visible
+PASS folding-theater 1440px default strip has no experience destinations
+PASS folding-theater 1440px study-local content buttons
+PASS folding-theater 1440px atlas opens explicitly
+PASS folding-theater 1440px atlas announces open state
+PASS folding-theater 1440px atlas closes back to local footer
+PASS folding-theater 1440px atlas restores focus and collapsed state
+PASS folding-theater 1440px SPACE opens atlas without toggling playback
+PASS folding-theater 1440px SPACE restores local content without toggling playback
+PASS 1440px top links return to 01
+PASS 390px top link reaches index
+PASS index 390px eight peer links
+PASS index 390px direct destinations
+PASS index 390px active mode
+PASS index 390px single row with equal button heights
+PASS index 390px no grouped menu
+PASS index 390px switch fits header
+PASS index 390px active mode visible
+PASS index 390px mobile row scrolls
+PASS index 390px keyboard reaches 01
+PASS index 390px keyboard reaches 02
+PASS index 390px keyboard reaches 03
+PASS index 390px keyboard reaches 04
+PASS index 390px keyboard reaches 05
+PASS index 390px keyboard reaches 06
+PASS index 390px keyboard reaches 07
+PASS index 390px keyboard reaches 08
+PASS index 390px default scene strip visible
+PASS index 390px default strip has no experience destinations
+PASS index 390px native MEMORY images
+PASS index 390px atlas opens explicitly
+PASS index 390px atlas announces open state
+PASS index 390px atlas closes back to local footer
+PASS index 390px atlas restores focus and collapsed state
+PASS index 390px SPACE opens atlas without toggling playback
+PASS index 390px SPACE restores local content without toggling playback
+127.0.0.1 - - [04/Oct/2026 02:06:36] "GET /assets/matrix-battle/01-faceoff.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:06:36] "GET /assets/matrix-battle/02-charge.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:06:36] "GET /assets/matrix-battle/03-clash.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:06:36] "GET /assets/matrix-battle/04-vault.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:06:36] "GET /assets/matrix-battle/05-finish.mp4 HTTP/1.1" 206 -
+PASS 390px top link reaches matrix-battle
+PASS matrix-battle 390px eight peer links
+PASS matrix-battle 390px direct destinations
+PASS matrix-battle 390px active mode
+PASS matrix-battle 390px single row with equal button heights
+PASS matrix-battle 390px no grouped menu
+PASS matrix-battle 390px switch fits header
+PASS matrix-battle 390px active mode visible
+PASS matrix-battle 390px mobile row scrolls
+PASS matrix-battle 390px keyboard reaches 01
+PASS matrix-battle 390px keyboard reaches 02
+PASS matrix-battle 390px keyboard reaches 03
+PASS matrix-battle 390px keyboard reaches 04
+PASS matrix-battle 390px keyboard reaches 05
+PASS matrix-battle 390px keyboard reaches 06
+PASS matrix-battle 390px keyboard reaches 07
+PASS matrix-battle 390px keyboard reaches 08
+PASS matrix-battle 390px default scene strip visible
+PASS matrix-battle 390px default strip has no experience destinations
+PASS matrix-battle 390px native MOTION chapters
+PASS matrix-battle 390px atlas opens explicitly
+PASS matrix-battle 390px atlas announces open state
+PASS matrix-battle 390px atlas closes back to local footer
+PASS matrix-battle 390px atlas restores focus and collapsed state
+PASS matrix-battle 390px SPACE opens atlas without toggling playback
+PASS matrix-battle 390px SPACE restores local content without toggling playback
+PASS 390px top link reaches portal-threshold
+PASS portal-threshold 390px eight peer links
+PASS portal-threshold 390px direct destinations
+PASS portal-threshold 390px active mode
+PASS portal-threshold 390px single row with equal button heights
+PASS portal-threshold 390px no grouped menu
+PASS portal-threshold 390px switch fits header
+PASS portal-threshold 390px active mode visible
+PASS portal-threshold 390px mobile row scrolls
+PASS portal-threshold 390px keyboard reaches 01
+PASS portal-threshold 390px keyboard reaches 02
+PASS portal-threshold 390px keyboard reaches 03
+PASS portal-threshold 390px keyboard reaches 04
+PASS portal-threshold 390px keyboard reaches 05
+PASS portal-threshold 390px keyboard reaches 06
+PASS portal-threshold 390px keyboard reaches 07
+PASS portal-threshold 390px keyboard reaches 08
+PASS portal-threshold 390px default scene strip visible
+PASS portal-threshold 390px default strip has no experience destinations
+PASS portal-threshold 390px study-local content buttons
+PASS portal-threshold 390px atlas opens explicitly
+PASS portal-threshold 390px atlas announces open state
+PASS portal-threshold 390px atlas closes back to local footer
+PASS portal-threshold 390px atlas restores focus and collapsed state
+PASS portal-threshold 390px SPACE opens atlas without toggling playback
+PASS portal-threshold 390px SPACE restores local content without toggling playback
+127.0.0.1 - - [04/Oct/2026 02:06:38] "GET /src/studies/temporal.css HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 02:06:38] "GET /src/studies/temporal.mjs HTTP/1.1" 304 -
+PASS 390px top link reaches temporal-field
+PASS temporal-field 390px eight peer links
+PASS temporal-field 390px direct destinations
+PASS temporal-field 390px active mode
+PASS temporal-field 390px single row with equal button heights
+PASS temporal-field 390px no grouped menu
+PASS temporal-field 390px switch fits header
+PASS temporal-field 390px active mode visible
+PASS temporal-field 390px mobile row scrolls
+PASS temporal-field 390px keyboard reaches 01
+PASS temporal-field 390px keyboard reaches 02
+PASS temporal-field 390px keyboard reaches 03
+PASS temporal-field 390px keyboard reaches 04
+PASS temporal-field 390px keyboard reaches 05
+PASS temporal-field 390px keyboard reaches 06
+PASS temporal-field 390px keyboard reaches 07
+PASS temporal-field 390px keyboard reaches 08
+PASS temporal-field 390px default scene strip visible
+PASS temporal-field 390px default strip has no experience destinations
+PASS temporal-field 390px study-local content buttons
+PASS temporal-field 390px atlas opens explicitly
+PASS temporal-field 390px atlas announces open state
+PASS temporal-field 390px atlas closes back to local footer
+PASS temporal-field 390px atlas restores focus and collapsed state
+PASS temporal-field 390px SPACE opens atlas without toggling playback
+PASS temporal-field 390px SPACE restores local content without toggling playback
+PASS 390px top link reaches liquid-canvas
+PASS liquid-canvas 390px eight peer links
+PASS liquid-canvas 390px direct destinations
+PASS liquid-canvas 390px active mode
+PASS liquid-canvas 390px single row with equal button heights
+PASS liquid-canvas 390px no grouped menu
+PASS liquid-canvas 390px switch fits header
+PASS liquid-canvas 390px active mode visible
+PASS liquid-canvas 390px mobile row scrolls
+PASS liquid-canvas 390px keyboard reaches 01
+PASS liquid-canvas 390px keyboard reaches 02
+PASS liquid-canvas 390px keyboard reaches 03
+PASS liquid-canvas 390px keyboard reaches 04
+PASS liquid-canvas 390px keyboard reaches 05
+PASS liquid-canvas 390px keyboard reaches 06
+PASS liquid-canvas 390px keyboard reaches 07
+PASS liquid-canvas 390px keyboard reaches 08
+PASS liquid-canvas 390px default scene strip visible
+PASS liquid-canvas 390px default strip has no experience destinations
+PASS liquid-canvas 390px study-local content buttons
+PASS liquid-canvas 390px atlas opens explicitly
+PASS liquid-canvas 390px atlas announces open state
+PASS liquid-canvas 390px atlas closes back to local footer
+PASS liquid-canvas 390px atlas restores focus and collapsed state
+PASS liquid-canvas 390px SPACE opens atlas without toggling playback
+PASS liquid-canvas 390px SPACE restores local content without toggling playback
+PASS 390px top link reaches optical-vault
+PASS optical-vault 390px eight peer links
+PASS optical-vault 390px direct destinations
+PASS optical-vault 390px active mode
+PASS optical-vault 390px single row with equal button heights
+PASS optical-vault 390px no grouped menu
+PASS optical-vault 390px switch fits header
+PASS optical-vault 390px active mode visible
+PASS optical-vault 390px mobile row scrolls
+PASS optical-vault 390px keyboard reaches 01
+PASS optical-vault 390px keyboard reaches 02
+PASS optical-vault 390px keyboard reaches 03
+PASS optical-vault 390px keyboard reaches 04
+PASS optical-vault 390px keyboard reaches 05
+PASS optical-vault 390px keyboard reaches 06
+PASS optical-vault 390px keyboard reaches 07
+PASS optical-vault 390px keyboard reaches 08
+PASS optical-vault 390px default scene strip visible
+PASS optical-vault 390px default strip has no experience destinations
+PASS optical-vault 390px study-local content buttons
+PASS optical-vault 390px atlas opens explicitly
+PASS optical-vault 390px atlas announces open state
+PASS optical-vault 390px atlas closes back to local footer
+PASS optical-vault 390px atlas restores focus and collapsed state
+PASS optical-vault 390px SPACE opens atlas without toggling playback
+PASS optical-vault 390px SPACE restores local content without toggling playback
+PASS 390px top link reaches shadow-apparatus
+PASS shadow-apparatus 390px eight peer links
+PASS shadow-apparatus 390px direct destinations
+PASS shadow-apparatus 390px active mode
+PASS shadow-apparatus 390px single row with equal button heights
+PASS shadow-apparatus 390px no grouped menu
+PASS shadow-apparatus 390px switch fits header
+PASS shadow-apparatus 390px active mode visible
+PASS shadow-apparatus 390px mobile row scrolls
+PASS shadow-apparatus 390px keyboard reaches 01
+PASS shadow-apparatus 390px keyboard reaches 02
+PASS shadow-apparatus 390px keyboard reaches 03
+PASS shadow-apparatus 390px keyboard reaches 04
+PASS shadow-apparatus 390px keyboard reaches 05
+PASS shadow-apparatus 390px keyboard reaches 06
+PASS shadow-apparatus 390px keyboard reaches 07
+PASS shadow-apparatus 390px keyboard reaches 08
+PASS shadow-apparatus 390px default scene strip visible
+PASS shadow-apparatus 390px default strip has no experience destinations
+PASS shadow-apparatus 390px study-local content buttons
+PASS shadow-apparatus 390px atlas opens explicitly
+PASS shadow-apparatus 390px atlas announces open state
+PASS shadow-apparatus 390px atlas closes back to local footer
+PASS shadow-apparatus 390px atlas restores focus and collapsed state
+PASS shadow-apparatus 390px SPACE opens atlas without toggling playback
+PASS shadow-apparatus 390px SPACE restores local content without toggling playback
+PASS 390px top link reaches folding-theater
+PASS folding-theater 390px eight peer links
+PASS folding-theater 390px direct destinations
+PASS folding-theater 390px active mode
+PASS folding-theater 390px single row with equal button heights
+PASS folding-theater 390px no grouped menu
+PASS folding-theater 390px switch fits header
+PASS folding-theater 390px active mode visible
+PASS folding-theater 390px mobile row scrolls
+PASS folding-theater 390px keyboard reaches 01
+PASS folding-theater 390px keyboard reaches 02
+PASS folding-theater 390px keyboard reaches 03
+PASS folding-theater 390px keyboard reaches 04
+PASS folding-theater 390px keyboard reaches 05
+PASS folding-theater 390px keyboard reaches 06
+PASS folding-theater 390px keyboard reaches 07
+PASS folding-theater 390px keyboard reaches 08
+PASS folding-theater 390px default scene strip visible
+PASS folding-theater 390px default strip has no experience destinations
+PASS folding-theater 390px study-local content buttons
+PASS folding-theater 390px atlas opens explicitly
+PASS folding-theater 390px atlas announces open state
+PASS folding-theater 390px atlas closes back to local footer
+PASS folding-theater 390px atlas restores focus and collapsed state
+PASS folding-theater 390px SPACE opens atlas without toggling playback
+PASS folding-theater 390px SPACE restores local content without toggling playback
+127.0.0.1 - - [04/Oct/2026 02:06:43] "GET /dist/index.html HTTP/1.1" 304 -
+PASS 390px top links return to 01
+127.0.0.1 - - [04/Oct/2026 02:06:47] "GET /assets/matrix-battle/01-faceoff.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:06:47] "GET /assets/matrix-battle/02-charge.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:06:47] "GET /assets/matrix-battle/03-clash.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:06:47] "GET /assets/matrix-battle/04-vault.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:06:47] "GET /assets/matrix-battle/05-finish.mp4 HTTP/1.1" 206 -
+PASS index opened atlas thumbnail changes experience
+127.0.0.1 - - [04/Oct/2026 02:06:48] "GET /dist/portal-threshold.html HTTP/1.1" 304 -
+PASS matrix-battle opened atlas thumbnail changes experience
+127.0.0.1 - - [04/Oct/2026 02:06:49] "GET /dist/temporal-field.html HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 02:06:49] "GET /src/studies/temporal.css HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 02:06:49] "GET /src/studies/temporal.mjs HTTP/1.1" 304 -
+PASS portal-threshold opened atlas thumbnail changes experience
+PASS temporal-field opened atlas thumbnail changes experience
+PASS liquid-canvas opened atlas thumbnail changes experience
+PASS optical-vault opened atlas thumbnail changes experience
+PASS shadow-apparatus opened atlas thumbnail changes experience
+PASS folding-theater opened atlas thumbnail changes experience
+PASS index reached through atlas next
+PASS index active atlas item
+PASS index atlas fits desktop viewport
+PASS index all eight thumbnails decoded
+PASS index restores scene navigation
+127.0.0.1 - - [04/Oct/2026 02:07:12] "GET /assets/matrix-battle/01-faceoff.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:07:12] "GET /assets/matrix-battle/03-clash.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:07:12] "GET /assets/matrix-battle/04-vault.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:07:12] "GET /assets/matrix-battle/05-finish.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:07:12] "GET /assets/matrix-battle/02-charge.mp4 HTTP/1.1" 206 -
+PASS matrix-battle reached through atlas next
+PASS matrix-battle active atlas item
+PASS matrix-battle atlas fits desktop viewport
+PASS matrix-battle all eight thumbnails decoded
+PASS matrix-battle restores scene navigation
+127.0.0.1 - - [04/Oct/2026 02:07:15] "GET /dist/portal-threshold.html HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 02:07:15] "GET /src/studies/filmstrip.mjs HTTP/1.1" 304 -
+PASS portal-threshold reached through atlas next
+PASS portal-threshold active atlas item
+PASS portal-threshold atlas fits desktop viewport
+PASS portal-threshold all eight thumbnails decoded
+PASS portal-threshold restores scene navigation
+127.0.0.1 - - [04/Oct/2026 02:07:17] "GET /dist/temporal-field.html HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 02:07:17] "GET /src/studies/temporal.css HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 02:07:17] "GET /src/studies/temporal.mjs HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 02:07:17] "GET /assets/studies/temporal-memory-layers.png HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 02:07:17] "GET /assets/studies/temporal-present-tense.png HTTP/1.1" 304 -
+PASS temporal-field reached through atlas next
+PASS temporal-field active atlas item
+PASS temporal-field atlas fits desktop viewport
+PASS temporal-field all eight thumbnails decoded
+PASS temporal-field restores scene navigation
+127.0.0.1 - - [04/Oct/2026 02:07:19] "GET /dist/liquid-canvas.html HTTP/1.1" 304 -
+PASS liquid-canvas reached through atlas next
+PASS liquid-canvas active atlas item
+PASS liquid-canvas atlas fits desktop viewport
+PASS liquid-canvas all eight thumbnails decoded
+PASS liquid-canvas restores scene navigation
+127.0.0.1 - - [04/Oct/2026 02:07:20] "GET /dist/optical-vault.html HTTP/1.1" 304 -
+PASS optical-vault reached through atlas next
+PASS optical-vault active atlas item
+PASS optical-vault atlas fits desktop viewport
+PASS optical-vault all eight thumbnails decoded
+PASS optical-vault restores scene navigation
+127.0.0.1 - - [04/Oct/2026 02:07:22] "GET /dist/shadow-apparatus.html HTTP/1.1" 304 -
+PASS shadow-apparatus reached through atlas next
+PASS shadow-apparatus active atlas item
+PASS shadow-apparatus atlas fits desktop viewport
+PASS shadow-apparatus all eight thumbnails decoded
+PASS shadow-apparatus restores scene navigation
+127.0.0.1 - - [04/Oct/2026 02:07:23] "GET /dist/folding-theater.html HTTP/1.1" 304 -
+PASS folding-theater reached through atlas next
+PASS folding-theater active atlas item
+PASS folding-theater atlas fits desktop viewport
+PASS folding-theater all eight thumbnails decoded
+PASS folding-theater restores scene navigation
+127.0.0.1 - - [04/Oct/2026 02:07:24] "GET /dist/index.html HTTP/1.1" 304 -
+PASS next wraps 08 to 01
+PASS previous wraps 01 to 08
+PASS index 1920px fits
+PASS index 1920px eight peer links
+PASS index 1920px direct destinations
+PASS index 1920px active mode
+PASS index 1920px single row with equal button heights
+PASS index 1920px no grouped menu
+PASS index 1920px switch fits header
+PASS index 1920px active mode visible
+PASS index 1920px all eight visible on desktop
+PASS index 1920px default scene strip visible
+PASS index 1920px default strip has no experience destinations
+PASS index 1920px native MEMORY images
+PASS index 1920px atlas opens explicitly
+PASS index 1920px atlas announces open state
+PASS index 1920px atlas closes back to local footer
+PASS index 1920px atlas restores focus and collapsed state
+PASS index 1920px atlas visible
+PASS index 1024px fits
+PASS index 1024px eight peer links
+PASS index 1024px direct destinations
+PASS index 1024px active mode
+PASS index 1024px single row with equal button heights
+PASS index 1024px no grouped menu
+PASS index 1024px switch fits header
+PASS index 1024px active mode visible
+PASS index 1024px default scene strip visible
+PASS index 1024px default strip has no experience destinations
+PASS index 1024px native MEMORY images
+PASS index 1024px atlas opens explicitly
+PASS index 1024px atlas announces open state
+PASS index 1024px atlas closes back to local footer
+PASS index 1024px atlas restores focus and collapsed state
+PASS index 1024px atlas visible
+PASS index 768px fits
+PASS index 768px eight peer links
+PASS index 768px direct destinations
+PASS index 768px active mode
+PASS index 768px single row with equal button heights
+PASS index 768px no grouped menu
+PASS index 768px switch fits header
+PASS index 768px active mode visible
+PASS index 768px default scene strip visible
+PASS index 768px default strip has no experience destinations
+PASS index 768px native MEMORY images
+PASS index 768px atlas opens explicitly
+PASS index 768px atlas announces open state
+PASS index 768px atlas closes back to local footer
+PASS index 768px atlas restores focus and collapsed state
+PASS index 768px atlas visible
+PASS index 320px fits
+PASS index 320px eight peer links
+PASS index 320px direct destinations
+PASS index 320px active mode
+PASS index 320px single row with equal button heights
+PASS index 320px no grouped menu
+PASS index 320px switch fits header
+PASS index 320px active mode visible
+PASS index 320px mobile row scrolls
+PASS index 320px keyboard reaches 01
+PASS index 320px keyboard reaches 02
+PASS index 320px keyboard reaches 03
+PASS index 320px keyboard reaches 04
+PASS index 320px keyboard reaches 05
+PASS index 320px keyboard reaches 06
+PASS index 320px keyboard reaches 07
+PASS index 320px keyboard reaches 08
+PASS index 320px default scene strip visible
+PASS index 320px default strip has no experience destinations
+PASS index 320px native MEMORY images
+PASS index 320px atlas opens explicitly
+PASS index 320px atlas announces open state
+PASS index 320px atlas closes back to local footer
+PASS index 320px atlas restores focus and collapsed state
+PASS index 320px atlas visible
+PASS index 844px fits
+PASS index 844px eight peer links
+PASS index 844px direct destinations
+PASS index 844px active mode
+PASS index 844px single row with equal button heights
+PASS index 844px no grouped menu
+PASS index 844px switch fits header
+PASS index 844px active mode visible
+PASS index 844px default scene strip visible
+PASS index 844px default strip has no experience destinations
+PASS index 844px native MEMORY images
+PASS index 844px atlas opens explicitly
+PASS index 844px atlas announces open state
+PASS index 844px atlas closes back to local footer
+PASS index 844px atlas restores focus and collapsed state
+PASS index 844px atlas visible
+PASS index 390px fits
+PASS index 390px eight peer links
+PASS index 390px direct destinations
+PASS index 390px active mode
+PASS index 390px single row with equal button heights
+PASS index 390px no grouped menu
+PASS index 390px switch fits header
+PASS index 390px active mode visible
+PASS index 390px mobile row scrolls
+PASS index 390px keyboard reaches 01
+PASS index 390px keyboard reaches 02
+PASS index 390px keyboard reaches 03
+PASS index 390px keyboard reaches 04
+PASS index 390px keyboard reaches 05
+PASS index 390px keyboard reaches 06
+PASS index 390px keyboard reaches 07
+PASS index 390px keyboard reaches 08
+PASS index 390px default scene strip visible
+PASS index 390px default strip has no experience destinations
+PASS index 390px native MEMORY images
+PASS index 390px atlas opens explicitly
+PASS index 390px atlas announces open state
+PASS index 390px atlas closes back to local footer
+PASS index 390px atlas restores focus and collapsed state
+PASS index 390px atlas visible
+PASS index header links to study 03
+127.0.0.1 - - [04/Oct/2026 02:07:41] "GET /assets/matrix-battle/01-faceoff.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:07:41] "GET /assets/matrix-battle/02-charge.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:07:41] "GET /assets/matrix-battle/03-clash.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:07:41] "GET /assets/matrix-battle/04-vault.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:07:41] "GET /assets/matrix-battle/05-finish.mp4 HTTP/1.1" 206 -
+PASS matrix-battle 1920px fits
+PASS matrix-battle 1920px eight peer links
+PASS matrix-battle 1920px direct destinations
+PASS matrix-battle 1920px active mode
+PASS matrix-battle 1920px single row with equal button heights
+PASS matrix-battle 1920px no grouped menu
+PASS matrix-battle 1920px switch fits header
+PASS matrix-battle 1920px active mode visible
+PASS matrix-battle 1920px all eight visible on desktop
+PASS matrix-battle 1920px default scene strip visible
+PASS matrix-battle 1920px default strip has no experience destinations
+PASS matrix-battle 1920px native MOTION chapters
+PASS matrix-battle 1920px atlas opens explicitly
+PASS matrix-battle 1920px atlas announces open state
+PASS matrix-battle 1920px atlas closes back to local footer
+PASS matrix-battle 1920px atlas restores focus and collapsed state
+PASS matrix-battle 1920px atlas visible
+PASS matrix-battle 1024px fits
+PASS matrix-battle 1024px eight peer links
+PASS matrix-battle 1024px direct destinations
+PASS matrix-battle 1024px active mode
+PASS matrix-battle 1024px single row with equal button heights
+PASS matrix-battle 1024px no grouped menu
+PASS matrix-battle 1024px switch fits header
+PASS matrix-battle 1024px active mode visible
+PASS matrix-battle 1024px default scene strip visible
+PASS matrix-battle 1024px default strip has no experience destinations
+PASS matrix-battle 1024px native MOTION chapters
+PASS matrix-battle 1024px atlas opens explicitly
+PASS matrix-battle 1024px atlas announces open state
+PASS matrix-battle 1024px atlas closes back to local footer
+PASS matrix-battle 1024px atlas restores focus and collapsed state
+PASS matrix-battle 1024px atlas visible
+PASS matrix-battle 768px fits
+PASS matrix-battle 768px eight peer links
+PASS matrix-battle 768px direct destinations
+PASS matrix-battle 768px active mode
+PASS matrix-battle 768px single row with equal button heights
+PASS matrix-battle 768px no grouped menu
+PASS matrix-battle 768px switch fits header
+PASS matrix-battle 768px active mode visible
+PASS matrix-battle 768px default scene strip visible
+PASS matrix-battle 768px default strip has no experience destinations
+PASS matrix-battle 768px native MOTION chapters
+PASS matrix-battle 768px atlas opens explicitly
+PASS matrix-battle 768px atlas announces open state
+PASS matrix-battle 768px atlas closes back to local footer
+PASS matrix-battle 768px atlas restores focus and collapsed state
+PASS matrix-battle 768px atlas visible
+PASS matrix-battle 320px fits
+PASS matrix-battle 320px eight peer links
+PASS matrix-battle 320px direct destinations
+PASS matrix-battle 320px active mode
+PASS matrix-battle 320px single row with equal button heights
+PASS matrix-battle 320px no grouped menu
+PASS matrix-battle 320px switch fits header
+PASS matrix-battle 320px active mode visible
+PASS matrix-battle 320px mobile row scrolls
+PASS matrix-battle 320px keyboard reaches 01
+PASS matrix-battle 320px keyboard reaches 02
+PASS matrix-battle 320px keyboard reaches 03
+PASS matrix-battle 320px keyboard reaches 04
+PASS matrix-battle 320px keyboard reaches 05
+PASS matrix-battle 320px keyboard reaches 06
+PASS matrix-battle 320px keyboard reaches 07
+PASS matrix-battle 320px keyboard reaches 08
+PASS matrix-battle 320px default scene strip visible
+PASS matrix-battle 320px default strip has no experience destinations
+PASS matrix-battle 320px native MOTION chapters
+PASS matrix-battle 320px atlas opens explicitly
+PASS matrix-battle 320px atlas announces open state
+PASS matrix-battle 320px atlas closes back to local footer
+PASS matrix-battle 320px atlas restores focus and collapsed state
+PASS matrix-battle 320px atlas visible
+PASS matrix-battle 844px fits
+PASS matrix-battle 844px eight peer links
+PASS matrix-battle 844px direct destinations
+PASS matrix-battle 844px active mode
+PASS matrix-battle 844px single row with equal button heights
+PASS matrix-battle 844px no grouped menu
+PASS matrix-battle 844px switch fits header
+PASS matrix-battle 844px active mode visible
+PASS matrix-battle 844px default scene strip visible
+PASS matrix-battle 844px default strip has no experience destinations
+PASS matrix-battle 844px native MOTION chapters
+PASS matrix-battle 844px atlas opens explicitly
+PASS matrix-battle 844px atlas announces open state
+PASS matrix-battle 844px atlas closes back to local footer
+PASS matrix-battle 844px atlas restores focus and collapsed state
+PASS matrix-battle 844px atlas visible
+PASS matrix-battle 390px fits
+PASS matrix-battle 390px eight peer links
+PASS matrix-battle 390px direct destinations
+PASS matrix-battle 390px active mode
+PASS matrix-battle 390px single row with equal button heights
+PASS matrix-battle 390px no grouped menu
+PASS matrix-battle 390px switch fits header
+PASS matrix-battle 390px active mode visible
+PASS matrix-battle 390px mobile row scrolls
+PASS matrix-battle 390px keyboard reaches 01
+PASS matrix-battle 390px keyboard reaches 02
+PASS matrix-battle 390px keyboard reaches 03
+PASS matrix-battle 390px keyboard reaches 04
+PASS matrix-battle 390px keyboard reaches 05
+PASS matrix-battle 390px keyboard reaches 06
+PASS matrix-battle 390px keyboard reaches 07
+PASS matrix-battle 390px keyboard reaches 08
+PASS matrix-battle 390px default scene strip visible
+PASS matrix-battle 390px default strip has no experience destinations
+PASS matrix-battle 390px native MOTION chapters
+PASS matrix-battle 390px atlas opens explicitly
+PASS matrix-battle 390px atlas announces open state
+PASS matrix-battle 390px atlas closes back to local footer
+PASS matrix-battle 390px atlas restores focus and collapsed state
+PASS matrix-battle 390px atlas visible
+127.0.0.1 - - [04/Oct/2026 02:07:45] "GET /dist/portal-threshold.html HTTP/1.1" 304 -
+PASS matrix-battle header links to study 03
+PASS portal-threshold 1920px fits
+PASS portal-threshold 1920px eight peer links
+PASS portal-threshold 1920px direct destinations
+PASS portal-threshold 1920px active mode
+PASS portal-threshold 1920px single row with equal button heights
+PASS portal-threshold 1920px no grouped menu
+PASS portal-threshold 1920px switch fits header
+PASS portal-threshold 1920px active mode visible
+PASS portal-threshold 1920px all eight visible on desktop
+PASS portal-threshold 1920px default scene strip visible
+PASS portal-threshold 1920px default strip has no experience destinations
+PASS portal-threshold 1920px study-local content buttons
+PASS portal-threshold 1920px atlas opens explicitly
+PASS portal-threshold 1920px atlas announces open state
+PASS portal-threshold 1920px atlas closes back to local footer
+PASS portal-threshold 1920px atlas restores focus and collapsed state
+PASS portal-threshold 1920px atlas visible
+PASS portal-threshold 1024px fits
+PASS portal-threshold 1024px eight peer links
+PASS portal-threshold 1024px direct destinations
+PASS portal-threshold 1024px active mode
+PASS portal-threshold 1024px single row with equal button heights
+PASS portal-threshold 1024px no grouped menu
+PASS portal-threshold 1024px switch fits header
+PASS portal-threshold 1024px active mode visible
+PASS portal-threshold 1024px default scene strip visible
+PASS portal-threshold 1024px default strip has no experience destinations
+PASS portal-threshold 1024px study-local content buttons
+PASS portal-threshold 1024px atlas opens explicitly
+PASS portal-threshold 1024px atlas announces open state
+PASS portal-threshold 1024px atlas closes back to local footer
+PASS portal-threshold 1024px atlas restores focus and collapsed state
+PASS portal-threshold 1024px atlas visible
+PASS portal-threshold 768px fits
+PASS portal-threshold 768px eight peer links
+PASS portal-threshold 768px direct destinations
+PASS portal-threshold 768px active mode
+PASS portal-threshold 768px single row with equal button heights
+PASS portal-threshold 768px no grouped menu
+PASS portal-threshold 768px switch fits header
+PASS portal-threshold 768px active mode visible
+PASS portal-threshold 768px default scene strip visible
+PASS portal-threshold 768px default strip has no experience destinations
+PASS portal-threshold 768px study-local content buttons
+PASS portal-threshold 768px atlas opens explicitly
+PASS portal-threshold 768px atlas announces open state
+PASS portal-threshold 768px atlas closes back to local footer
+PASS portal-threshold 768px atlas restores focus and collapsed state
+PASS portal-threshold 768px atlas visible
+PASS portal-threshold 320px fits
+PASS portal-threshold 320px eight peer links
+PASS portal-threshold 320px direct destinations
+PASS portal-threshold 320px active mode
+PASS portal-threshold 320px single row with equal button heights
+PASS portal-threshold 320px no grouped menu
+PASS portal-threshold 320px switch fits header
+PASS portal-threshold 320px active mode visible
+PASS portal-threshold 320px mobile row scrolls
+PASS portal-threshold 320px keyboard reaches 01
+PASS portal-threshold 320px keyboard reaches 02
+PASS portal-threshold 320px keyboard reaches 03
+PASS portal-threshold 320px keyboard reaches 04
+PASS portal-threshold 320px keyboard reaches 05
+PASS portal-threshold 320px keyboard reaches 06
+PASS portal-threshold 320px keyboard reaches 07
+PASS portal-threshold 320px keyboard reaches 08
+PASS portal-threshold 320px default scene strip visible
+PASS portal-threshold 320px default strip has no experience destinations
+PASS portal-threshold 320px study-local content buttons
+PASS portal-threshold 320px atlas opens explicitly
+PASS portal-threshold 320px atlas announces open state
+PASS portal-threshold 320px atlas closes back to local footer
+PASS portal-threshold 320px atlas restores focus and collapsed state
+PASS portal-threshold 320px atlas visible
+PASS portal-threshold 844px fits
+PASS portal-threshold 844px eight peer links
+PASS portal-threshold 844px direct destinations
+PASS portal-threshold 844px active mode
+PASS portal-threshold 844px single row with equal button heights
+PASS portal-threshold 844px no grouped menu
+PASS portal-threshold 844px switch fits header
+PASS portal-threshold 844px active mode visible
+PASS portal-threshold 844px default scene strip visible
+PASS portal-threshold 844px default strip has no experience destinations
+PASS portal-threshold 844px study-local content buttons
+PASS portal-threshold 844px atlas opens explicitly
+PASS portal-threshold 844px atlas announces open state
+PASS portal-threshold 844px atlas closes back to local footer
+PASS portal-threshold 844px atlas restores focus and collapsed state
+PASS portal-threshold 844px atlas visible
+PASS portal-threshold 390px fits
+PASS portal-threshold 390px eight peer links
+PASS portal-threshold 390px direct destinations
+PASS portal-threshold 390px active mode
+PASS portal-threshold 390px single row with equal button heights
+PASS portal-threshold 390px no grouped menu
+PASS portal-threshold 390px switch fits header
+PASS portal-threshold 390px active mode visible
+PASS portal-threshold 390px mobile row scrolls
+PASS portal-threshold 390px keyboard reaches 01
+PASS portal-threshold 390px keyboard reaches 02
+PASS portal-threshold 390px keyboard reaches 03
+PASS portal-threshold 390px keyboard reaches 04
+PASS portal-threshold 390px keyboard reaches 05
+PASS portal-threshold 390px keyboard reaches 06
+PASS portal-threshold 390px keyboard reaches 07
+PASS portal-threshold 390px keyboard reaches 08
+PASS portal-threshold 390px default scene strip visible
+PASS portal-threshold 390px default strip has no experience destinations
+PASS portal-threshold 390px study-local content buttons
+PASS portal-threshold 390px atlas opens explicitly
+PASS portal-threshold 390px atlas announces open state
+PASS portal-threshold 390px atlas closes back to local footer
+PASS portal-threshold 390px atlas restores focus and collapsed state
+PASS portal-threshold 390px atlas visible
+PASS portal-threshold header links to study 03
+127.0.0.1 - - [04/Oct/2026 02:07:49] "GET /dist/temporal-field.html HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 02:07:49] "GET /src/studies/temporal.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:07:49] "GET /src/studies/temporal.mjs HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 02:07:49] "GET /assets/studies/temporal-afterglow.png HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 02:07:49] "GET /assets/studies/temporal-street-slices.png HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 02:07:49] "GET /assets/studies/temporal-tidal-notes.png HTTP/1.1" 304 -
+PASS temporal-field 1920px fits
+PASS temporal-field 1920px eight peer links
+PASS temporal-field 1920px direct destinations
+PASS temporal-field 1920px active mode
+PASS temporal-field 1920px single row with equal button heights
+PASS temporal-field 1920px no grouped menu
+PASS temporal-field 1920px switch fits header
+PASS temporal-field 1920px active mode visible
+PASS temporal-field 1920px all eight visible on desktop
+PASS temporal-field 1920px default scene strip visible
+PASS temporal-field 1920px default strip has no experience destinations
+PASS temporal-field 1920px study-local content buttons
+PASS temporal-field 1920px atlas opens explicitly
+PASS temporal-field 1920px atlas announces open state
+PASS temporal-field 1920px atlas closes back to local footer
+PASS temporal-field 1920px atlas restores focus and collapsed state
+PASS temporal-field 1920px atlas visible
+PASS temporal-field 1024px fits
+PASS temporal-field 1024px eight peer links
+PASS temporal-field 1024px direct destinations
+PASS temporal-field 1024px active mode
+PASS temporal-field 1024px single row with equal button heights
+PASS temporal-field 1024px no grouped menu
+PASS temporal-field 1024px switch fits header
+PASS temporal-field 1024px active mode visible
+PASS temporal-field 1024px default scene strip visible
+PASS temporal-field 1024px default strip has no experience destinations
+PASS temporal-field 1024px study-local content buttons
+PASS temporal-field 1024px atlas opens explicitly
+PASS temporal-field 1024px atlas announces open state
+PASS temporal-field 1024px atlas closes back to local footer
+PASS temporal-field 1024px atlas restores focus and collapsed state
+PASS temporal-field 1024px atlas visible
+PASS temporal-field 768px fits
+PASS temporal-field 768px eight peer links
+PASS temporal-field 768px direct destinations
+PASS temporal-field 768px active mode
+PASS temporal-field 768px single row with equal button heights
+PASS temporal-field 768px no grouped menu
+PASS temporal-field 768px switch fits header
+PASS temporal-field 768px active mode visible
+PASS temporal-field 768px default scene strip visible
+PASS temporal-field 768px default strip has no experience destinations
+PASS temporal-field 768px study-local content buttons
+PASS temporal-field 768px atlas opens explicitly
+PASS temporal-field 768px atlas announces open state
+PASS temporal-field 768px atlas closes back to local footer
+PASS temporal-field 768px atlas restores focus and collapsed state
+PASS temporal-field 768px atlas visible
+PASS temporal-field 320px fits
+PASS temporal-field 320px eight peer links
+PASS temporal-field 320px direct destinations
+PASS temporal-field 320px active mode
+PASS temporal-field 320px single row with equal button heights
+PASS temporal-field 320px no grouped menu
+PASS temporal-field 320px switch fits header
+PASS temporal-field 320px active mode visible
+PASS temporal-field 320px mobile row scrolls
+PASS temporal-field 320px keyboard reaches 01
+PASS temporal-field 320px keyboard reaches 02
+PASS temporal-field 320px keyboard reaches 03
+PASS temporal-field 320px keyboard reaches 04
+PASS temporal-field 320px keyboard reaches 05
+PASS temporal-field 320px keyboard reaches 06
+PASS temporal-field 320px keyboard reaches 07
+PASS temporal-field 320px keyboard reaches 08
+PASS temporal-field 320px default scene strip visible
+PASS temporal-field 320px default strip has no experience destinations
+PASS temporal-field 320px study-local content buttons
+PASS temporal-field 320px atlas opens explicitly
+PASS temporal-field 320px atlas announces open state
+PASS temporal-field 320px atlas closes back to local footer
+PASS temporal-field 320px atlas restores focus and collapsed state
+PASS temporal-field 320px atlas visible
+PASS temporal-field 844px fits
+PASS temporal-field 844px eight peer links
+PASS temporal-field 844px direct destinations
+PASS temporal-field 844px active mode
+PASS temporal-field 844px single row with equal button heights
+PASS temporal-field 844px no grouped menu
+PASS temporal-field 844px switch fits header
+PASS temporal-field 844px active mode visible
+PASS temporal-field 844px default scene strip visible
+PASS temporal-field 844px default strip has no experience destinations
+PASS temporal-field 844px study-local content buttons
+PASS temporal-field 844px atlas opens explicitly
+PASS temporal-field 844px atlas announces open state
+PASS temporal-field 844px atlas closes back to local footer
+PASS temporal-field 844px atlas restores focus and collapsed state
+PASS temporal-field 844px atlas visible
+PASS temporal-field 390px fits
+PASS temporal-field 390px eight peer links
+PASS temporal-field 390px direct destinations
+PASS temporal-field 390px active mode
+PASS temporal-field 390px single row with equal button heights
+PASS temporal-field 390px no grouped menu
+PASS temporal-field 390px switch fits header
+PASS temporal-field 390px active mode visible
+PASS temporal-field 390px mobile row scrolls
+PASS temporal-field 390px keyboard reaches 01
+PASS temporal-field 390px keyboard reaches 02
+PASS temporal-field 390px keyboard reaches 03
+PASS temporal-field 390px keyboard reaches 04
+PASS temporal-field 390px keyboard reaches 05
+PASS temporal-field 390px keyboard reaches 06
+PASS temporal-field 390px keyboard reaches 07
+PASS temporal-field 390px keyboard reaches 08
+PASS temporal-field 390px default scene strip visible
+PASS temporal-field 390px default strip has no experience destinations
+PASS temporal-field 390px study-local content buttons
+PASS temporal-field 390px atlas opens explicitly
+PASS temporal-field 390px atlas announces open state
+PASS temporal-field 390px atlas closes back to local footer
+PASS temporal-field 390px atlas restores focus and collapsed state
+PASS temporal-field 390px atlas visible
+PASS temporal-field header links to study 03
+127.0.0.1 - - [04/Oct/2026 02:07:52] "GET /dist/liquid-canvas.html HTTP/1.1" 304 -
+PASS liquid-canvas 1920px fits
+PASS liquid-canvas 1920px eight peer links
+PASS liquid-canvas 1920px direct destinations
+PASS liquid-canvas 1920px active mode
+PASS liquid-canvas 1920px single row with equal button heights
+PASS liquid-canvas 1920px no grouped menu
+PASS liquid-canvas 1920px switch fits header
+PASS liquid-canvas 1920px active mode visible
+PASS liquid-canvas 1920px all eight visible on desktop
+PASS liquid-canvas 1920px default scene strip visible
+PASS liquid-canvas 1920px default strip has no experience destinations
+PASS liquid-canvas 1920px study-local content buttons
+PASS liquid-canvas 1920px atlas opens explicitly
+PASS liquid-canvas 1920px atlas announces open state
+PASS liquid-canvas 1920px atlas closes back to local footer
+PASS liquid-canvas 1920px atlas restores focus and collapsed state
+PASS liquid-canvas 1920px atlas visible
+PASS liquid-canvas 1024px fits
+PASS liquid-canvas 1024px eight peer links
+PASS liquid-canvas 1024px direct destinations
+PASS liquid-canvas 1024px active mode
+PASS liquid-canvas 1024px single row with equal button heights
+PASS liquid-canvas 1024px no grouped menu
+PASS liquid-canvas 1024px switch fits header
+PASS liquid-canvas 1024px active mode visible
+PASS liquid-canvas 1024px default scene strip visible
+PASS liquid-canvas 1024px default strip has no experience destinations
+PASS liquid-canvas 1024px study-local content buttons
+PASS liquid-canvas 1024px atlas opens explicitly
+PASS liquid-canvas 1024px atlas announces open state
+PASS liquid-canvas 1024px atlas closes back to local footer
+PASS liquid-canvas 1024px atlas restores focus and collapsed state
+PASS liquid-canvas 1024px atlas visible
+PASS liquid-canvas 768px fits
+PASS liquid-canvas 768px eight peer links
+PASS liquid-canvas 768px direct destinations
+PASS liquid-canvas 768px active mode
+PASS liquid-canvas 768px single row with equal button heights
+PASS liquid-canvas 768px no grouped menu
+PASS liquid-canvas 768px switch fits header
+PASS liquid-canvas 768px active mode visible
+PASS liquid-canvas 768px default scene strip visible
+PASS liquid-canvas 768px default strip has no experience destinations
+PASS liquid-canvas 768px study-local content buttons
+PASS liquid-canvas 768px atlas opens explicitly
+PASS liquid-canvas 768px atlas announces open state
+PASS liquid-canvas 768px atlas closes back to local footer
+PASS liquid-canvas 768px atlas restores focus and collapsed state
+PASS liquid-canvas 768px atlas visible
+PASS liquid-canvas 320px fits
+PASS liquid-canvas 320px eight peer links
+PASS liquid-canvas 320px direct destinations
+PASS liquid-canvas 320px active mode
+PASS liquid-canvas 320px single row with equal button heights
+PASS liquid-canvas 320px no grouped menu
+PASS liquid-canvas 320px switch fits header
+PASS liquid-canvas 320px active mode visible
+PASS liquid-canvas 320px mobile row scrolls
+PASS liquid-canvas 320px keyboard reaches 01
+PASS liquid-canvas 320px keyboard reaches 02
+PASS liquid-canvas 320px keyboard reaches 03
+PASS liquid-canvas 320px keyboard reaches 04
+PASS liquid-canvas 320px keyboard reaches 05
+PASS liquid-canvas 320px keyboard reaches 06
+PASS liquid-canvas 320px keyboard reaches 07
+PASS liquid-canvas 320px keyboard reaches 08
+PASS liquid-canvas 320px default scene strip visible
+PASS liquid-canvas 320px default strip has no experience destinations
+PASS liquid-canvas 320px study-local content buttons
+PASS liquid-canvas 320px atlas opens explicitly
+PASS liquid-canvas 320px atlas announces open state
+PASS liquid-canvas 320px atlas closes back to local footer
+PASS liquid-canvas 320px atlas restores focus and collapsed state
+PASS liquid-canvas 320px atlas visible
+PASS liquid-canvas 844px fits
+PASS liquid-canvas 844px eight peer links
+PASS liquid-canvas 844px direct destinations
+PASS liquid-canvas 844px active mode
+PASS liquid-canvas 844px single row with equal button heights
+PASS liquid-canvas 844px no grouped menu
+PASS liquid-canvas 844px switch fits header
+PASS liquid-canvas 844px active mode visible
+PASS liquid-canvas 844px default scene strip visible
+PASS liquid-canvas 844px default strip has no experience destinations
+PASS liquid-canvas 844px study-local content buttons
+PASS liquid-canvas 844px atlas opens explicitly
+PASS liquid-canvas 844px atlas announces open state
+PASS liquid-canvas 844px atlas closes back to local footer
+PASS liquid-canvas 844px atlas restores focus and collapsed state
+PASS liquid-canvas 844px atlas visible
+PASS liquid-canvas 390px fits
+PASS liquid-canvas 390px eight peer links
+PASS liquid-canvas 390px direct destinations
+PASS liquid-canvas 390px active mode
+PASS liquid-canvas 390px single row with equal button heights
+PASS liquid-canvas 390px no grouped menu
+PASS liquid-canvas 390px switch fits header
+PASS liquid-canvas 390px active mode visible
+PASS liquid-canvas 390px mobile row scrolls
+PASS liquid-canvas 390px keyboard reaches 01
+PASS liquid-canvas 390px keyboard reaches 02
+PASS liquid-canvas 390px keyboard reaches 03
+PASS liquid-canvas 390px keyboard reaches 04
+PASS liquid-canvas 390px keyboard reaches 05
+PASS liquid-canvas 390px keyboard reaches 06
+PASS liquid-canvas 390px keyboard reaches 07
+PASS liquid-canvas 390px keyboard reaches 08
+PASS liquid-canvas 390px default scene strip visible
+PASS liquid-canvas 390px default strip has no experience destinations
+PASS liquid-canvas 390px study-local content buttons
+PASS liquid-canvas 390px atlas opens explicitly
+PASS liquid-canvas 390px atlas announces open state
+PASS liquid-canvas 390px atlas closes back to local footer
+PASS liquid-canvas 390px atlas restores focus and collapsed state
+PASS liquid-canvas 390px atlas visible
+PASS liquid-canvas header links to study 03
+127.0.0.1 - - [04/Oct/2026 02:07:55] "GET /dist/optical-vault.html HTTP/1.1" 304 -
+PASS optical-vault 1920px fits
+PASS optical-vault 1920px eight peer links
+PASS optical-vault 1920px direct destinations
+PASS optical-vault 1920px active mode
+PASS optical-vault 1920px single row with equal button heights
+PASS optical-vault 1920px no grouped menu
+PASS optical-vault 1920px switch fits header
+PASS optical-vault 1920px active mode visible
+PASS optical-vault 1920px all eight visible on desktop
+PASS optical-vault 1920px default scene strip visible
+PASS optical-vault 1920px default strip has no experience destinations
+PASS optical-vault 1920px study-local content buttons
+PASS optical-vault 1920px atlas opens explicitly
+PASS optical-vault 1920px atlas announces open state
+PASS optical-vault 1920px atlas closes back to local footer
+PASS optical-vault 1920px atlas restores focus and collapsed state
+PASS optical-vault 1920px atlas visible
+PASS optical-vault 1024px fits
+PASS optical-vault 1024px eight peer links
+PASS optical-vault 1024px direct destinations
+PASS optical-vault 1024px active mode
+PASS optical-vault 1024px single row with equal button heights
+PASS optical-vault 1024px no grouped menu
+PASS optical-vault 1024px switch fits header
+PASS optical-vault 1024px active mode visible
+PASS optical-vault 1024px default scene strip visible
+PASS optical-vault 1024px default strip has no experience destinations
+PASS optical-vault 1024px study-local content buttons
+PASS optical-vault 1024px atlas opens explicitly
+PASS optical-vault 1024px atlas announces open state
+PASS optical-vault 1024px atlas closes back to local footer
+PASS optical-vault 1024px atlas restores focus and collapsed state
+PASS optical-vault 1024px atlas visible
+PASS optical-vault 768px fits
+PASS optical-vault 768px eight peer links
+PASS optical-vault 768px direct destinations
+PASS optical-vault 768px active mode
+PASS optical-vault 768px single row with equal button heights
+PASS optical-vault 768px no grouped menu
+PASS optical-vault 768px switch fits header
+PASS optical-vault 768px active mode visible
+PASS optical-vault 768px default scene strip visible
+PASS optical-vault 768px default strip has no experience destinations
+PASS optical-vault 768px study-local content buttons
+PASS optical-vault 768px atlas opens explicitly
+PASS optical-vault 768px atlas announces open state
+PASS optical-vault 768px atlas closes back to local footer
+PASS optical-vault 768px atlas restores focus and collapsed state
+PASS optical-vault 768px atlas visible
+PASS optical-vault 320px fits
+PASS optical-vault 320px eight peer links
+PASS optical-vault 320px direct destinations
+PASS optical-vault 320px active mode
+PASS optical-vault 320px single row with equal button heights
+PASS optical-vault 320px no grouped menu
+PASS optical-vault 320px switch fits header
+PASS optical-vault 320px active mode visible
+PASS optical-vault 320px mobile row scrolls
+PASS optical-vault 320px keyboard reaches 01
+PASS optical-vault 320px keyboard reaches 02
+PASS optical-vault 320px keyboard reaches 03
+PASS optical-vault 320px keyboard reaches 04
+PASS optical-vault 320px keyboard reaches 05
+PASS optical-vault 320px keyboard reaches 06
+PASS optical-vault 320px keyboard reaches 07
+PASS optical-vault 320px keyboard reaches 08
+PASS optical-vault 320px default scene strip visible
+PASS optical-vault 320px default strip has no experience destinations
+PASS optical-vault 320px study-local content buttons
+PASS optical-vault 320px atlas opens explicitly
+PASS optical-vault 320px atlas announces open state
+PASS optical-vault 320px atlas closes back to local footer
+PASS optical-vault 320px atlas restores focus and collapsed state
+PASS optical-vault 320px atlas visible
+PASS optical-vault 844px fits
+PASS optical-vault 844px eight peer links
+PASS optical-vault 844px direct destinations
+PASS optical-vault 844px active mode
+PASS optical-vault 844px single row with equal button heights
+PASS optical-vault 844px no grouped menu
+PASS optical-vault 844px switch fits header
+PASS optical-vault 844px active mode visible
+PASS optical-vault 844px default scene strip visible
+PASS optical-vault 844px default strip has no experience destinations
+PASS optical-vault 844px study-local content buttons
+PASS optical-vault 844px atlas opens explicitly
+PASS optical-vault 844px atlas announces open state
+PASS optical-vault 844px atlas closes back to local footer
+PASS optical-vault 844px atlas restores focus and collapsed state
+PASS optical-vault 844px atlas visible
+PASS optical-vault 390px fits
+PASS optical-vault 390px eight peer links
+PASS optical-vault 390px direct destinations
+PASS optical-vault 390px active mode
+PASS optical-vault 390px single row with equal button heights
+PASS optical-vault 390px no grouped menu
+PASS optical-vault 390px switch fits header
+PASS optical-vault 390px active mode visible
+PASS optical-vault 390px mobile row scrolls
+PASS optical-vault 390px keyboard reaches 01
+PASS optical-vault 390px keyboard reaches 02
+PASS optical-vault 390px keyboard reaches 03
+PASS optical-vault 390px keyboard reaches 04
+PASS optical-vault 390px keyboard reaches 05
+PASS optical-vault 390px keyboard reaches 06
+PASS optical-vault 390px keyboard reaches 07
+PASS optical-vault 390px keyboard reaches 08
+PASS optical-vault 390px default scene strip visible
+PASS optical-vault 390px default strip has no experience destinations
+PASS optical-vault 390px study-local content buttons
+PASS optical-vault 390px atlas opens explicitly
+PASS optical-vault 390px atlas announces open state
+PASS optical-vault 390px atlas closes back to local footer
+PASS optical-vault 390px atlas restores focus and collapsed state
+PASS optical-vault 390px atlas visible
+PASS optical-vault header links to study 03
+127.0.0.1 - - [04/Oct/2026 02:07:59] "GET /dist/shadow-apparatus.html HTTP/1.1" 304 -
+PASS shadow-apparatus 1920px fits
+PASS shadow-apparatus 1920px eight peer links
+PASS shadow-apparatus 1920px direct destinations
+PASS shadow-apparatus 1920px active mode
+PASS shadow-apparatus 1920px single row with equal button heights
+PASS shadow-apparatus 1920px no grouped menu
+PASS shadow-apparatus 1920px switch fits header
+PASS shadow-apparatus 1920px active mode visible
+PASS shadow-apparatus 1920px all eight visible on desktop
+PASS shadow-apparatus 1920px default scene strip visible
+PASS shadow-apparatus 1920px default strip has no experience destinations
+PASS shadow-apparatus 1920px study-local content buttons
+PASS shadow-apparatus 1920px atlas opens explicitly
+PASS shadow-apparatus 1920px atlas announces open state
+PASS shadow-apparatus 1920px atlas closes back to local footer
+PASS shadow-apparatus 1920px atlas restores focus and collapsed state
+PASS shadow-apparatus 1920px atlas visible
+PASS shadow-apparatus 1024px fits
+PASS shadow-apparatus 1024px eight peer links
+PASS shadow-apparatus 1024px direct destinations
+PASS shadow-apparatus 1024px active mode
+PASS shadow-apparatus 1024px single row with equal button heights
+PASS shadow-apparatus 1024px no grouped menu
+PASS shadow-apparatus 1024px switch fits header
+PASS shadow-apparatus 1024px active mode visible
+PASS shadow-apparatus 1024px default scene strip visible
+PASS shadow-apparatus 1024px default strip has no experience destinations
+PASS shadow-apparatus 1024px study-local content buttons
+PASS shadow-apparatus 1024px atlas opens explicitly
+PASS shadow-apparatus 1024px atlas announces open state
+PASS shadow-apparatus 1024px atlas closes back to local footer
+PASS shadow-apparatus 1024px atlas restores focus and collapsed state
+PASS shadow-apparatus 1024px atlas visible
+PASS shadow-apparatus 768px fits
+PASS shadow-apparatus 768px eight peer links
+PASS shadow-apparatus 768px direct destinations
+PASS shadow-apparatus 768px active mode
+PASS shadow-apparatus 768px single row with equal button heights
+PASS shadow-apparatus 768px no grouped menu
+PASS shadow-apparatus 768px switch fits header
+PASS shadow-apparatus 768px active mode visible
+PASS shadow-apparatus 768px default scene strip visible
+PASS shadow-apparatus 768px default strip has no experience destinations
+PASS shadow-apparatus 768px study-local content buttons
+PASS shadow-apparatus 768px atlas opens explicitly
+PASS shadow-apparatus 768px atlas announces open state
+PASS shadow-apparatus 768px atlas closes back to local footer
+PASS shadow-apparatus 768px atlas restores focus and collapsed state
+PASS shadow-apparatus 768px atlas visible
+PASS shadow-apparatus 320px fits
+PASS shadow-apparatus 320px eight peer links
+PASS shadow-apparatus 320px direct destinations
+PASS shadow-apparatus 320px active mode
+PASS shadow-apparatus 320px single row with equal button heights
+PASS shadow-apparatus 320px no grouped menu
+PASS shadow-apparatus 320px switch fits header
+PASS shadow-apparatus 320px active mode visible
+PASS shadow-apparatus 320px mobile row scrolls
+PASS shadow-apparatus 320px keyboard reaches 01
+PASS shadow-apparatus 320px keyboard reaches 02
+PASS shadow-apparatus 320px keyboard reaches 03
+PASS shadow-apparatus 320px keyboard reaches 04
+PASS shadow-apparatus 320px keyboard reaches 05
+PASS shadow-apparatus 320px keyboard reaches 06
+PASS shadow-apparatus 320px keyboard reaches 07
+PASS shadow-apparatus 320px keyboard reaches 08
+PASS shadow-apparatus 320px default scene strip visible
+PASS shadow-apparatus 320px default strip has no experience destinations
+PASS shadow-apparatus 320px study-local content buttons
+PASS shadow-apparatus 320px atlas opens explicitly
+PASS shadow-apparatus 320px atlas announces open state
+PASS shadow-apparatus 320px atlas closes back to local footer
+PASS shadow-apparatus 320px atlas restores focus and collapsed state
+PASS shadow-apparatus 320px atlas visible
+PASS shadow-apparatus 844px fits
+PASS shadow-apparatus 844px eight peer links
+PASS shadow-apparatus 844px direct destinations
+PASS shadow-apparatus 844px active mode
+PASS shadow-apparatus 844px single row with equal button heights
+PASS shadow-apparatus 844px no grouped menu
+PASS shadow-apparatus 844px switch fits header
+PASS shadow-apparatus 844px active mode visible
+PASS shadow-apparatus 844px default scene strip visible
+PASS shadow-apparatus 844px default strip has no experience destinations
+PASS shadow-apparatus 844px study-local content buttons
+PASS shadow-apparatus 844px atlas opens explicitly
+PASS shadow-apparatus 844px atlas announces open state
+PASS shadow-apparatus 844px atlas closes back to local footer
+PASS shadow-apparatus 844px atlas restores focus and collapsed state
+PASS shadow-apparatus 844px atlas visible
+PASS shadow-apparatus 390px fits
+PASS shadow-apparatus 390px eight peer links
+PASS shadow-apparatus 390px direct destinations
+PASS shadow-apparatus 390px active mode
+PASS shadow-apparatus 390px single row with equal button heights
+PASS shadow-apparatus 390px no grouped menu
+PASS shadow-apparatus 390px switch fits header
+PASS shadow-apparatus 390px active mode visible
+PASS shadow-apparatus 390px mobile row scrolls
+PASS shadow-apparatus 390px keyboard reaches 01
+PASS shadow-apparatus 390px keyboard reaches 02
+PASS shadow-apparatus 390px keyboard reaches 03
+PASS shadow-apparatus 390px keyboard reaches 04
+PASS shadow-apparatus 390px keyboard reaches 05
+PASS shadow-apparatus 390px keyboard reaches 06
+PASS shadow-apparatus 390px keyboard reaches 07
+PASS shadow-apparatus 390px keyboard reaches 08
+PASS shadow-apparatus 390px default scene strip visible
+PASS shadow-apparatus 390px default strip has no experience destinations
+PASS shadow-apparatus 390px study-local content buttons
+PASS shadow-apparatus 390px atlas opens explicitly
+PASS shadow-apparatus 390px atlas announces open state
+PASS shadow-apparatus 390px atlas closes back to local footer
+PASS shadow-apparatus 390px atlas restores focus and collapsed state
+PASS shadow-apparatus 390px atlas visible
+127.0.0.1 - - [04/Oct/2026 02:08:03] "GET /src/studies/filmstrip.mjs HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 02:08:03] "GET /src/studies/portal.mjs HTTP/1.1" 304 -
+PASS shadow-apparatus header links to study 03
+127.0.0.1 - - [04/Oct/2026 02:08:03] "GET /dist/folding-theater.html HTTP/1.1" 304 -
+PASS folding-theater 1920px fits
+PASS folding-theater 1920px eight peer links
+PASS folding-theater 1920px direct destinations
+PASS folding-theater 1920px active mode
+PASS folding-theater 1920px single row with equal button heights
+PASS folding-theater 1920px no grouped menu
+PASS folding-theater 1920px switch fits header
+PASS folding-theater 1920px active mode visible
+PASS folding-theater 1920px all eight visible on desktop
+PASS folding-theater 1920px default scene strip visible
+PASS folding-theater 1920px default strip has no experience destinations
+PASS folding-theater 1920px study-local content buttons
+PASS folding-theater 1920px atlas opens explicitly
+PASS folding-theater 1920px atlas announces open state
+PASS folding-theater 1920px atlas closes back to local footer
+PASS folding-theater 1920px atlas restores focus and collapsed state
+PASS folding-theater 1920px atlas visible
+PASS folding-theater 1024px fits
+PASS folding-theater 1024px eight peer links
+PASS folding-theater 1024px direct destinations
+PASS folding-theater 1024px active mode
+PASS folding-theater 1024px single row with equal button heights
+PASS folding-theater 1024px no grouped menu
+PASS folding-theater 1024px switch fits header
+PASS folding-theater 1024px active mode visible
+PASS folding-theater 1024px default scene strip visible
+PASS folding-theater 1024px default strip has no experience destinations
+PASS folding-theater 1024px study-local content buttons
+PASS folding-theater 1024px atlas opens explicitly
+PASS folding-theater 1024px atlas announces open state
+PASS folding-theater 1024px atlas closes back to local footer
+PASS folding-theater 1024px atlas restores focus and collapsed state
+PASS folding-theater 1024px atlas visible
+PASS folding-theater 768px fits
+PASS folding-theater 768px eight peer links
+PASS folding-theater 768px direct destinations
+PASS folding-theater 768px active mode
+PASS folding-theater 768px single row with equal button heights
+PASS folding-theater 768px no grouped menu
+PASS folding-theater 768px switch fits header
+PASS folding-theater 768px active mode visible
+PASS folding-theater 768px default scene strip visible
+PASS folding-theater 768px default strip has no experience destinations
+PASS folding-theater 768px study-local content buttons
+PASS folding-theater 768px atlas opens explicitly
+PASS folding-theater 768px atlas announces open state
+PASS folding-theater 768px atlas closes back to local footer
+PASS folding-theater 768px atlas restores focus and collapsed state
+PASS folding-theater 768px atlas visible
+PASS folding-theater 320px fits
+PASS folding-theater 320px eight peer links
+PASS folding-theater 320px direct destinations
+PASS folding-theater 320px active mode
+PASS folding-theater 320px single row with equal button heights
+PASS folding-theater 320px no grouped menu
+PASS folding-theater 320px switch fits header
+PASS folding-theater 320px active mode visible
+PASS folding-theater 320px mobile row scrolls
+PASS folding-theater 320px keyboard reaches 01
+PASS folding-theater 320px keyboard reaches 02
+PASS folding-theater 320px keyboard reaches 03
+PASS folding-theater 320px keyboard reaches 04
+PASS folding-theater 320px keyboard reaches 05
+PASS folding-theater 320px keyboard reaches 06
+PASS folding-theater 320px keyboard reaches 07
+PASS folding-theater 320px keyboard reaches 08
+PASS folding-theater 320px default scene strip visible
+PASS folding-theater 320px default strip has no experience destinations
+PASS folding-theater 320px study-local content buttons
+PASS folding-theater 320px atlas opens explicitly
+PASS folding-theater 320px atlas announces open state
+PASS folding-theater 320px atlas closes back to local footer
+PASS folding-theater 320px atlas restores focus and collapsed state
+PASS folding-theater 320px atlas visible
+PASS folding-theater 844px fits
+PASS folding-theater 844px eight peer links
+PASS folding-theater 844px direct destinations
+PASS folding-theater 844px active mode
+PASS folding-theater 844px single row with equal button heights
+PASS folding-theater 844px no grouped menu
+PASS folding-theater 844px switch fits header
+PASS folding-theater 844px active mode visible
+PASS folding-theater 844px default scene strip visible
+PASS folding-theater 844px default strip has no experience destinations
+PASS folding-theater 844px study-local content buttons
+PASS folding-theater 844px atlas opens explicitly
+PASS folding-theater 844px atlas announces open state
+PASS folding-theater 844px atlas closes back to local footer
+PASS folding-theater 844px atlas restores focus and collapsed state
+PASS folding-theater 844px atlas visible
+PASS folding-theater 390px fits
+PASS folding-theater 390px eight peer links
+PASS folding-theater 390px direct destinations
+PASS folding-theater 390px active mode
+PASS folding-theater 390px single row with equal button heights
+PASS folding-theater 390px no grouped menu
+PASS folding-theater 390px switch fits header
+PASS folding-theater 390px active mode visible
+PASS folding-theater 390px mobile row scrolls
+PASS folding-theater 390px keyboard reaches 01
+PASS folding-theater 390px keyboard reaches 02
+PASS folding-theater 390px keyboard reaches 03
+PASS folding-theater 390px keyboard reaches 04
+PASS folding-theater 390px keyboard reaches 05
+PASS folding-theater 390px keyboard reaches 06
+PASS folding-theater 390px keyboard reaches 07
+PASS folding-theater 390px keyboard reaches 08
+PASS folding-theater 390px default scene strip visible
+PASS folding-theater 390px default strip has no experience destinations
+PASS folding-theater 390px study-local content buttons
+PASS folding-theater 390px atlas opens explicitly
+PASS folding-theater 390px atlas announces open state
+PASS folding-theater 390px atlas closes back to local footer
+PASS folding-theater 390px atlas restores focus and collapsed state
+PASS folding-theater 390px atlas visible
+PASS folding-theater header links to study 03
+127.0.0.1 - - [04/Oct/2026 02:08:07] "GET /dist/matrix-motion.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:07] "GET /src/matrix/deformation.js?v=281a8c76cee6 HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:07] "GET /src/matrix/mesh.js?v=79b7ee283695 HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:07] "GET /assets/matrix-botanical/preview-wide.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:07] "GET /assets/matrix-botanical/preview-closeup.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:07] "GET /assets/matrix-botanical/preview-air.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:07] "GET /assets/matrix-botanical/character.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:07] "GET /assets/matrix-botanical/flowers.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:07] "GET /assets/matrix-botanical/background.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:07] "GET /assets/matrix-botanical/fish.png HTTP/1.1" 200 -
+PASS matrix-motion 1920px fits
+PASS matrix-motion 1920px eight peer links
+PASS matrix-motion 1920px direct destinations
+PASS matrix-motion 1920px active mode
+PASS matrix-motion 1920px single row with equal button heights
+PASS matrix-motion 1920px no grouped menu
+PASS matrix-motion 1920px switch fits header
+PASS matrix-motion 1920px active mode visible
+PASS matrix-motion 1920px all eight visible on desktop
+PASS matrix-motion 1920px default scene strip visible
+PASS matrix-motion 1920px default strip has no experience destinations
+PASS matrix-motion 1920px native MOTION chapters
+PASS matrix-motion 1920px atlas opens explicitly
+PASS matrix-motion 1920px atlas announces open state
+PASS matrix-motion 1920px atlas closes back to local footer
+PASS matrix-motion 1920px atlas restores focus and collapsed state
+PASS matrix-motion 1920px atlas visible
+PASS matrix-motion 1024px fits
+PASS matrix-motion 1024px eight peer links
+PASS matrix-motion 1024px direct destinations
+PASS matrix-motion 1024px active mode
+PASS matrix-motion 1024px single row with equal button heights
+PASS matrix-motion 1024px no grouped menu
+PASS matrix-motion 1024px switch fits header
+PASS matrix-motion 1024px active mode visible
+PASS matrix-motion 1024px default scene strip visible
+PASS matrix-motion 1024px default strip has no experience destinations
+PASS matrix-motion 1024px native MOTION chapters
+PASS matrix-motion 1024px atlas opens explicitly
+PASS matrix-motion 1024px atlas announces open state
+PASS matrix-motion 1024px atlas closes back to local footer
+PASS matrix-motion 1024px atlas restores focus and collapsed state
+PASS matrix-motion 1024px atlas visible
+PASS matrix-motion 768px fits
+PASS matrix-motion 768px eight peer links
+PASS matrix-motion 768px direct destinations
+PASS matrix-motion 768px active mode
+PASS matrix-motion 768px single row with equal button heights
+PASS matrix-motion 768px no grouped menu
+PASS matrix-motion 768px switch fits header
+PASS matrix-motion 768px active mode visible
+PASS matrix-motion 768px default scene strip visible
+PASS matrix-motion 768px default strip has no experience destinations
+PASS matrix-motion 768px native MOTION chapters
+PASS matrix-motion 768px atlas opens explicitly
+PASS matrix-motion 768px atlas announces open state
+PASS matrix-motion 768px atlas closes back to local footer
+PASS matrix-motion 768px atlas restores focus and collapsed state
+PASS matrix-motion 768px atlas visible
+PASS matrix-motion 320px fits
+PASS matrix-motion 320px eight peer links
+PASS matrix-motion 320px direct destinations
+PASS matrix-motion 320px active mode
+PASS matrix-motion 320px single row with equal button heights
+PASS matrix-motion 320px no grouped menu
+PASS matrix-motion 320px switch fits header
+PASS matrix-motion 320px active mode visible
+PASS matrix-motion 320px mobile row scrolls
+PASS matrix-motion 320px keyboard reaches 01
+PASS matrix-motion 320px keyboard reaches 02
+PASS matrix-motion 320px keyboard reaches 03
+PASS matrix-motion 320px keyboard reaches 04
+PASS matrix-motion 320px keyboard reaches 05
+PASS matrix-motion 320px keyboard reaches 06
+PASS matrix-motion 320px keyboard reaches 07
+PASS matrix-motion 320px keyboard reaches 08
+PASS matrix-motion 320px default scene strip visible
+PASS matrix-motion 320px default strip has no experience destinations
+PASS matrix-motion 320px native MOTION chapters
+PASS matrix-motion 320px atlas opens explicitly
+PASS matrix-motion 320px atlas announces open state
+PASS matrix-motion 320px atlas closes back to local footer
+PASS matrix-motion 320px atlas restores focus and collapsed state
+PASS matrix-motion 320px atlas visible
+PASS matrix-motion 844px fits
+PASS matrix-motion 844px eight peer links
+PASS matrix-motion 844px direct destinations
+PASS matrix-motion 844px active mode
+PASS matrix-motion 844px single row with equal button heights
+PASS matrix-motion 844px no grouped menu
+PASS matrix-motion 844px switch fits header
+PASS matrix-motion 844px active mode visible
+PASS matrix-motion 844px default scene strip visible
+PASS matrix-motion 844px default strip has no experience destinations
+PASS matrix-motion 844px native MOTION chapters
+PASS matrix-motion 844px atlas opens explicitly
+PASS matrix-motion 844px atlas announces open state
+PASS matrix-motion 844px atlas closes back to local footer
+PASS matrix-motion 844px atlas restores focus and collapsed state
+PASS matrix-motion 844px atlas visible
+PASS matrix-motion 390px fits
+PASS matrix-motion 390px eight peer links
+PASS matrix-motion 390px direct destinations
+PASS matrix-motion 390px active mode
+PASS matrix-motion 390px single row with equal button heights
+PASS matrix-motion 390px no grouped menu
+PASS matrix-motion 390px switch fits header
+PASS matrix-motion 390px active mode visible
+PASS matrix-motion 390px mobile row scrolls
+PASS matrix-motion 390px keyboard reaches 01
+PASS matrix-motion 390px keyboard reaches 02
+PASS matrix-motion 390px keyboard reaches 03
+PASS matrix-motion 390px keyboard reaches 04
+PASS matrix-motion 390px keyboard reaches 05
+PASS matrix-motion 390px keyboard reaches 06
+PASS matrix-motion 390px keyboard reaches 07
+PASS matrix-motion 390px keyboard reaches 08
+PASS matrix-motion 390px default scene strip visible
+PASS matrix-motion 390px default strip has no experience destinations
+PASS matrix-motion 390px native MOTION chapters
+PASS matrix-motion 390px atlas opens explicitly
+PASS matrix-motion 390px atlas announces open state
+PASS matrix-motion 390px atlas closes back to local footer
+PASS matrix-motion 390px atlas restores focus and collapsed state
+PASS matrix-motion 390px atlas visible
+PASS matrix-motion header links to study 03
+127.0.0.1 - - [04/Oct/2026 02:08:13] "GET /dist/matrix-video.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:13] "GET /assets/matrix-video/encounter-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:13] "GET /assets/matrix-video/garden-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:13] "GET /assets/matrix-video/garden.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:08:13] "GET /assets/matrix-video/encounter.mp4 HTTP/1.1" 206 -
+PASS matrix-video 1920px fits
+PASS matrix-video 1920px eight peer links
+PASS matrix-video 1920px direct destinations
+PASS matrix-video 1920px active mode
+PASS matrix-video 1920px single row with equal button heights
+PASS matrix-video 1920px no grouped menu
+PASS matrix-video 1920px switch fits header
+PASS matrix-video 1920px active mode visible
+PASS matrix-video 1920px all eight visible on desktop
+PASS matrix-video 1920px default scene strip visible
+PASS matrix-video 1920px default strip has no experience destinations
+PASS matrix-video 1920px native MOTION chapters
+PASS matrix-video 1920px atlas opens explicitly
+PASS matrix-video 1920px atlas announces open state
+PASS matrix-video 1920px atlas closes back to local footer
+PASS matrix-video 1920px atlas restores focus and collapsed state
+PASS matrix-video 1920px atlas visible
+PASS matrix-video 1024px fits
+PASS matrix-video 1024px eight peer links
+PASS matrix-video 1024px direct destinations
+PASS matrix-video 1024px active mode
+PASS matrix-video 1024px single row with equal button heights
+PASS matrix-video 1024px no grouped menu
+PASS matrix-video 1024px switch fits header
+PASS matrix-video 1024px active mode visible
+PASS matrix-video 1024px default scene strip visible
+PASS matrix-video 1024px default strip has no experience destinations
+PASS matrix-video 1024px native MOTION chapters
+PASS matrix-video 1024px atlas opens explicitly
+PASS matrix-video 1024px atlas announces open state
+PASS matrix-video 1024px atlas closes back to local footer
+PASS matrix-video 1024px atlas restores focus and collapsed state
+PASS matrix-video 1024px atlas visible
+PASS matrix-video 768px fits
+PASS matrix-video 768px eight peer links
+PASS matrix-video 768px direct destinations
+PASS matrix-video 768px active mode
+PASS matrix-video 768px single row with equal button heights
+PASS matrix-video 768px no grouped menu
+PASS matrix-video 768px switch fits header
+PASS matrix-video 768px active mode visible
+PASS matrix-video 768px default scene strip visible
+PASS matrix-video 768px default strip has no experience destinations
+PASS matrix-video 768px native MOTION chapters
+PASS matrix-video 768px atlas opens explicitly
+PASS matrix-video 768px atlas announces open state
+PASS matrix-video 768px atlas closes back to local footer
+PASS matrix-video 768px atlas restores focus and collapsed state
+PASS matrix-video 768px atlas visible
+PASS matrix-video 320px fits
+PASS matrix-video 320px eight peer links
+PASS matrix-video 320px direct destinations
+PASS matrix-video 320px active mode
+PASS matrix-video 320px single row with equal button heights
+PASS matrix-video 320px no grouped menu
+PASS matrix-video 320px switch fits header
+PASS matrix-video 320px active mode visible
+PASS matrix-video 320px mobile row scrolls
+PASS matrix-video 320px keyboard reaches 01
+PASS matrix-video 320px keyboard reaches 02
+PASS matrix-video 320px keyboard reaches 03
+PASS matrix-video 320px keyboard reaches 04
+PASS matrix-video 320px keyboard reaches 05
+PASS matrix-video 320px keyboard reaches 06
+PASS matrix-video 320px keyboard reaches 07
+PASS matrix-video 320px keyboard reaches 08
+PASS matrix-video 320px default scene strip visible
+PASS matrix-video 320px default strip has no experience destinations
+PASS matrix-video 320px native MOTION chapters
+PASS matrix-video 320px atlas opens explicitly
+PASS matrix-video 320px atlas announces open state
+PASS matrix-video 320px atlas closes back to local footer
+PASS matrix-video 320px atlas restores focus and collapsed state
+PASS matrix-video 320px atlas visible
+PASS matrix-video 844px fits
+PASS matrix-video 844px eight peer links
+PASS matrix-video 844px direct destinations
+PASS matrix-video 844px active mode
+PASS matrix-video 844px single row with equal button heights
+PASS matrix-video 844px no grouped menu
+PASS matrix-video 844px switch fits header
+PASS matrix-video 844px active mode visible
+PASS matrix-video 844px default scene strip visible
+PASS matrix-video 844px default strip has no experience destinations
+PASS matrix-video 844px native MOTION chapters
+PASS matrix-video 844px atlas opens explicitly
+PASS matrix-video 844px atlas announces open state
+PASS matrix-video 844px atlas closes back to local footer
+PASS matrix-video 844px atlas restores focus and collapsed state
+PASS matrix-video 844px atlas visible
+PASS matrix-video 390px fits
+PASS matrix-video 390px eight peer links
+PASS matrix-video 390px direct destinations
+PASS matrix-video 390px active mode
+PASS matrix-video 390px single row with equal button heights
+PASS matrix-video 390px no grouped menu
+PASS matrix-video 390px switch fits header
+PASS matrix-video 390px active mode visible
+PASS matrix-video 390px mobile row scrolls
+PASS matrix-video 390px keyboard reaches 01
+PASS matrix-video 390px keyboard reaches 02
+PASS matrix-video 390px keyboard reaches 03
+PASS matrix-video 390px keyboard reaches 04
+PASS matrix-video 390px keyboard reaches 05
+PASS matrix-video 390px keyboard reaches 06
+PASS matrix-video 390px keyboard reaches 07
+PASS matrix-video 390px keyboard reaches 08
+PASS matrix-video 390px default scene strip visible
+PASS matrix-video 390px default strip has no experience destinations
+PASS matrix-video 390px native MOTION chapters
+PASS matrix-video 390px atlas opens explicitly
+PASS matrix-video 390px atlas announces open state
+PASS matrix-video 390px atlas closes back to local footer
+PASS matrix-video 390px atlas restores focus and collapsed state
+PASS matrix-video 390px atlas visible
+127.0.0.1 - - [04/Oct/2026 02:08:18] "GET /dist/portal-threshold.html HTTP/1.1" 304 -
+PASS matrix-video header links to study 03
+127.0.0.1 - - [04/Oct/2026 02:08:18] "GET /dist/matrix-anime.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:18] "GET /assets/matrix-anime/01-rooftop-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:18] "GET /assets/matrix-anime/02-turn-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:18] "GET /assets/matrix-anime/04-tunnel-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:18] "GET /assets/matrix-anime/03-fall-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:18] "GET /assets/matrix-anime/05-sky-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 02:08:18] "GET /assets/matrix-anime/01-rooftop.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:08:18] "GET /assets/matrix-anime/02-turn.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:08:18] "GET /assets/matrix-anime/03-fall.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:08:18] "GET /assets/matrix-anime/04-tunnel.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 02:08:18] "GET /assets/matrix-anime/05-sky.mp4 HTTP/1.1" 206 -
+PASS matrix-anime 1920px fits
+PASS matrix-anime 1920px eight peer links
+PASS matrix-anime 1920px direct destinations
+PASS matrix-anime 1920px active mode
+PASS matrix-anime 1920px single row with equal button heights
+PASS matrix-anime 1920px no grouped menu
+PASS matrix-anime 1920px switch fits header
+PASS matrix-anime 1920px active mode visible
+PASS matrix-anime 1920px all eight visible on desktop
+PASS matrix-anime 1920px default scene strip visible
+PASS matrix-anime 1920px default strip has no experience destinations
+PASS matrix-anime 1920px native MOTION chapters
+PASS matrix-anime 1920px atlas opens explicitly
+PASS matrix-anime 1920px atlas announces open state
+PASS matrix-anime 1920px atlas closes back to local footer
+PASS matrix-anime 1920px atlas restores focus and collapsed state
+PASS matrix-anime 1920px atlas visible
+PASS matrix-anime 1024px fits
+PASS matrix-anime 1024px eight peer links
+PASS matrix-anime 1024px direct destinations
+PASS matrix-anime 1024px active mode
+PASS matrix-anime 1024px single row with equal button heights
+PASS matrix-anime 1024px no grouped menu
+PASS matrix-anime 1024px switch fits header
+PASS matrix-anime 1024px active mode visible
+PASS matrix-anime 1024px default scene strip visible
+PASS matrix-anime 1024px default strip has no experience destinations
+PASS matrix-anime 1024px native MOTION chapters
+PASS matrix-anime 1024px atlas opens explicitly
+PASS matrix-anime 1024px atlas announces open state
+PASS matrix-anime 1024px atlas closes back to local footer
+PASS matrix-anime 1024px atlas restores focus and collapsed state
+PASS matrix-anime 1024px atlas visible
+PASS matrix-anime 768px fits
+PASS matrix-anime 768px eight peer links
+PASS matrix-anime 768px direct destinations
+PASS matrix-anime 768px active mode
+PASS matrix-anime 768px single row with equal button heights
+PASS matrix-anime 768px no grouped menu
+PASS matrix-anime 768px switch fits header
+PASS matrix-anime 768px active mode visible
+PASS matrix-anime 768px default scene strip visible
+PASS matrix-anime 768px default strip has no experience destinations
+PASS matrix-anime 768px native MOTION chapters
+PASS matrix-anime 768px atlas opens explicitly
+PASS matrix-anime 768px atlas announces open state
+PASS matrix-anime 768px atlas closes back to local footer
+PASS matrix-anime 768px atlas restores focus and collapsed state
+PASS matrix-anime 768px atlas visible
+PASS matrix-anime 320px fits
+PASS matrix-anime 320px eight peer links
+PASS matrix-anime 320px direct destinations
+PASS matrix-anime 320px active mode
+PASS matrix-anime 320px single row with equal button heights
+PASS matrix-anime 320px no grouped menu
+PASS matrix-anime 320px switch fits header
+PASS matrix-anime 320px active mode visible
+PASS matrix-anime 320px mobile row scrolls
+PASS matrix-anime 320px keyboard reaches 01
+PASS matrix-anime 320px keyboard reaches 02
+PASS matrix-anime 320px keyboard reaches 03
+PASS matrix-anime 320px keyboard reaches 04
+PASS matrix-anime 320px keyboard reaches 05
+PASS matrix-anime 320px keyboard reaches 06
+PASS matrix-anime 320px keyboard reaches 07
+PASS matrix-anime 320px keyboard reaches 08
+PASS matrix-anime 320px default scene strip visible
+PASS matrix-anime 320px default strip has no experience destinations
+PASS matrix-anime 320px native MOTION chapters
+PASS matrix-anime 320px atlas opens explicitly
+PASS matrix-anime 320px atlas announces open state
+PASS matrix-anime 320px atlas closes back to local footer
+PASS matrix-anime 320px atlas restores focus and collapsed state
+PASS matrix-anime 320px atlas visible
+PASS matrix-anime 844px fits
+PASS matrix-anime 844px eight peer links
+PASS matrix-anime 844px direct destinations
+PASS matrix-anime 844px active mode
+PASS matrix-anime 844px single row with equal button heights
+PASS matrix-anime 844px no grouped menu
+PASS matrix-anime 844px switch fits header
+PASS matrix-anime 844px active mode visible
+PASS matrix-anime 844px default scene strip visible
+PASS matrix-anime 844px default strip has no experience destinations
+PASS matrix-anime 844px native MOTION chapters
+PASS matrix-anime 844px atlas opens explicitly
+PASS matrix-anime 844px atlas announces open state
+PASS matrix-anime 844px atlas closes back to local footer
+PASS matrix-anime 844px atlas restores focus and collapsed state
+PASS matrix-anime 844px atlas visible
+PASS matrix-anime 390px fits
+PASS matrix-anime 390px eight peer links
+PASS matrix-anime 390px direct destinations
+PASS matrix-anime 390px active mode
+PASS matrix-anime 390px single row with equal button heights
+PASS matrix-anime 390px no grouped menu
+PASS matrix-anime 390px switch fits header
+PASS matrix-anime 390px active mode visible
+PASS matrix-anime 390px mobile row scrolls
+PASS matrix-anime 390px keyboard reaches 01
+PASS matrix-anime 390px keyboard reaches 02
+PASS matrix-anime 390px keyboard reaches 03
+PASS matrix-anime 390px keyboard reaches 04
+PASS matrix-anime 390px keyboard reaches 05
+PASS matrix-anime 390px keyboard reaches 06
+PASS matrix-anime 390px keyboard reaches 07
+PASS matrix-anime 390px keyboard reaches 08
+PASS matrix-anime 390px default scene strip visible
+PASS matrix-anime 390px default strip has no experience destinations
+PASS matrix-anime 390px native MOTION chapters
+PASS matrix-anime 390px atlas opens explicitly
+PASS matrix-anime 390px atlas announces open state
+PASS matrix-anime 390px atlas closes back to local footer
+PASS matrix-anime 390px atlas restores focus and collapsed state
+PASS matrix-anime 390px atlas visible
+127.0.0.1 - - [04/Oct/2026 02:08:24] "GET /src/studies/portal.css HTTP/1.1" 304 -
+PASS matrix-anime header links to study 03
+PASS no uncaught runtime exceptions
+127.0.0.1 - - [04/Oct/2026 02:08:24] "GET /dist/readme-transport.html HTTP/1.1" 200 -
+PASS readme-transport 1440px eight peer links
+PASS readme-transport 1440px direct destinations
+PASS readme-transport 1440px active mode
+PASS readme-transport 1440px single row with equal button heights
+PASS readme-transport 1440px no grouped menu
+PASS readme-transport 1440px switch fits header
+PASS readme-transport 1440px active mode visible
+PASS readme-transport 1440px all eight visible on desktop
+PASS readme-transport 1440px default scene strip visible
+PASS readme-transport 1440px default strip has no experience destinations
+PASS readme-transport 1440px native MEMORY images
+PASS readme-transport 1440px atlas opens explicitly
+PASS readme-transport 1440px atlas announces open state
+PASS readme-transport 1440px atlas closes back to local footer
+PASS readme-transport 1440px atlas restores focus and collapsed state
+PASS readme-transport 1440px bottom atlas
+PASS readme-transport 390px eight peer links
+PASS readme-transport 390px direct destinations
+PASS readme-transport 390px active mode
+PASS readme-transport 390px single row with equal button heights
+PASS readme-transport 390px no grouped menu
+PASS readme-transport 390px switch fits header
+PASS readme-transport 390px active mode visible
+PASS readme-transport 390px mobile row scrolls
+PASS readme-transport 390px keyboard reaches 01
+PASS readme-transport 390px keyboard reaches 02
+PASS readme-transport 390px keyboard reaches 03
+PASS readme-transport 390px keyboard reaches 04
+PASS readme-transport 390px keyboard reaches 05
+PASS readme-transport 390px keyboard reaches 06
+PASS readme-transport 390px keyboard reaches 07
+PASS readme-transport 390px keyboard reaches 08
+PASS readme-transport 390px default scene strip visible
+PASS readme-transport 390px default strip has no experience destinations
+PASS readme-transport 390px native MEMORY images
+PASS readme-transport 390px atlas opens explicitly
+PASS readme-transport 390px atlas announces open state
+PASS readme-transport 390px atlas closes back to local footer
+PASS readme-transport 390px atlas restores focus and collapsed state
+PASS readme-transport 390px bottom atlas
+PASS readme-transport direct study link
+127.0.0.1 - - [04/Oct/2026 02:08:29] "GET /dist/two-images.html HTTP/1.1" 200 -
+PASS two-images 1440px eight peer links
+PASS two-images 1440px direct destinations
+PASS two-images 1440px active mode
+PASS two-images 1440px single row with equal button heights
+PASS two-images 1440px no grouped menu
+PASS two-images 1440px switch fits header
+PASS two-images 1440px active mode visible
+PASS two-images 1440px all eight visible on desktop
+PASS two-images 1440px default scene strip visible
+PASS two-images 1440px default strip has no experience destinations
+PASS two-images 1440px native MEMORY images
+PASS two-images 1440px atlas opens explicitly
+PASS two-images 1440px atlas announces open state
+PASS two-images 1440px atlas closes back to local footer
+PASS two-images 1440px atlas restores focus and collapsed state
+PASS two-images 1440px bottom atlas
+PASS two-images 390px eight peer links
+PASS two-images 390px direct destinations
+PASS two-images 390px active mode
+PASS two-images 390px single row with equal button heights
+PASS two-images 390px no grouped menu
+PASS two-images 390px switch fits header
+PASS two-images 390px active mode visible
+PASS two-images 390px mobile row scrolls
+PASS two-images 390px keyboard reaches 01
+PASS two-images 390px keyboard reaches 02
+PASS two-images 390px keyboard reaches 03
+PASS two-images 390px keyboard reaches 04
+PASS two-images 390px keyboard reaches 05
+PASS two-images 390px keyboard reaches 06
+PASS two-images 390px keyboard reaches 07
+PASS two-images 390px keyboard reaches 08
+PASS two-images 390px default scene strip visible
+PASS two-images 390px default strip has no experience destinations
+PASS two-images 390px native MEMORY images
+PASS two-images 390px atlas opens explicitly
+PASS two-images 390px atlas announces open state
+PASS two-images 390px atlas closes back to local footer
+PASS two-images 390px atlas restores focus and collapsed state
+PASS two-images 390px bottom atlas
+PASS two-images direct study link
+127.0.0.1 - - [04/Oct/2026 02:08:31] "GET /dist/matrix-motion-offline.html HTTP/1.1" 200 -
+PASS matrix-motion-offline 1440px eight peer links
+PASS matrix-motion-offline 1440px direct destinations
+PASS matrix-motion-offline 1440px active mode
+PASS matrix-motion-offline 1440px single row with equal button heights
+PASS matrix-motion-offline 1440px no grouped menu
+PASS matrix-motion-offline 1440px switch fits header
+PASS matrix-motion-offline 1440px active mode visible
+PASS matrix-motion-offline 1440px all eight visible on desktop
+PASS matrix-motion-offline 1440px default scene strip visible
+PASS matrix-motion-offline 1440px default strip has no experience destinations
+PASS matrix-motion-offline 1440px native MOTION chapters
+PASS matrix-motion-offline 1440px atlas opens explicitly
+PASS matrix-motion-offline 1440px atlas announces open state
+PASS matrix-motion-offline 1440px atlas closes back to local footer
+PASS matrix-motion-offline 1440px atlas restores focus and collapsed state
+PASS matrix-motion-offline 1440px bottom atlas
+PASS matrix-motion-offline 390px eight peer links
+PASS matrix-motion-offline 390px direct destinations
+PASS matrix-motion-offline 390px active mode
+PASS matrix-motion-offline 390px single row with equal button heights
+PASS matrix-motion-offline 390px no grouped menu
+PASS matrix-motion-offline 390px switch fits header
+PASS matrix-motion-offline 390px active mode visible
+PASS matrix-motion-offline 390px mobile row scrolls
+PASS matrix-motion-offline 390px keyboard reaches 01
+PASS matrix-motion-offline 390px keyboard reaches 02
+PASS matrix-motion-offline 390px keyboard reaches 03
+PASS matrix-motion-offline 390px keyboard reaches 04
+PASS matrix-motion-offline 390px keyboard reaches 05
+PASS matrix-motion-offline 390px keyboard reaches 06
+PASS matrix-motion-offline 390px keyboard reaches 07
+PASS matrix-motion-offline 390px keyboard reaches 08
+PASS matrix-motion-offline 390px default scene strip visible
+PASS matrix-motion-offline 390px default strip has no experience destinations
+PASS matrix-motion-offline 390px native MOTION chapters
+PASS matrix-motion-offline 390px atlas opens explicitly
+PASS matrix-motion-offline 390px atlas announces open state
+PASS matrix-motion-offline 390px atlas closes back to local footer
+PASS matrix-motion-offline 390px atlas restores focus and collapsed state
+PASS matrix-motion-offline 390px bottom atlas
+PASS matrix-motion-offline direct study link
+127.0.0.1 - - [04/Oct/2026 02:08:36] "GET /dist/matrix-video-offline.html HTTP/1.1" 200 -
+PASS matrix-video-offline 1440px eight peer links
+PASS matrix-video-offline 1440px direct destinations
+PASS matrix-video-offline 1440px active mode
+PASS matrix-video-offline 1440px single row with equal button heights
+PASS matrix-video-offline 1440px no grouped menu
+PASS matrix-video-offline 1440px switch fits header
+PASS matrix-video-offline 1440px active mode visible
+PASS matrix-video-offline 1440px all eight visible on desktop
+PASS matrix-video-offline 1440px default scene strip visible
+PASS matrix-video-offline 1440px default strip has no experience destinations
+PASS matrix-video-offline 1440px native MOTION chapters
+PASS matrix-video-offline 1440px atlas opens explicitly
+PASS matrix-video-offline 1440px atlas announces open state
+PASS matrix-video-offline 1440px atlas closes back to local footer
+PASS matrix-video-offline 1440px atlas restores focus and collapsed state
+PASS matrix-video-offline 1440px bottom atlas
+PASS matrix-video-offline 390px eight peer links
+PASS matrix-video-offline 390px direct destinations
+PASS matrix-video-offline 390px active mode
+PASS matrix-video-offline 390px single row with equal button heights
+PASS matrix-video-offline 390px no grouped menu
+PASS matrix-video-offline 390px switch fits header
+PASS matrix-video-offline 390px active mode visible
+PASS matrix-video-offline 390px mobile row scrolls
+PASS matrix-video-offline 390px keyboard reaches 01
+PASS matrix-video-offline 390px keyboard reaches 02
+PASS matrix-video-offline 390px keyboard reaches 03
+PASS matrix-video-offline 390px keyboard reaches 04
+PASS matrix-video-offline 390px keyboard reaches 05
+PASS matrix-video-offline 390px keyboard reaches 06
+PASS matrix-video-offline 390px keyboard reaches 07
+PASS matrix-video-offline 390px keyboard reaches 08
+PASS matrix-video-offline 390px default scene strip visible
+PASS matrix-video-offline 390px default strip has no experience destinations
+PASS matrix-video-offline 390px native MOTION chapters
+PASS matrix-video-offline 390px atlas opens explicitly
+PASS matrix-video-offline 390px atlas announces open state
+PASS matrix-video-offline 390px atlas closes back to local footer
+PASS matrix-video-offline 390px atlas restores focus and collapsed state
+PASS matrix-video-offline 390px bottom atlas
+PASS matrix-video-offline direct study link
+127.0.0.1 - - [04/Oct/2026 02:08:39] "GET /dist/matrix-anime-offline.html HTTP/1.1" 200 -
+PASS matrix-anime-offline 1440px eight peer links
+PASS matrix-anime-offline 1440px direct destinations
+PASS matrix-anime-offline 1440px active mode
+PASS matrix-anime-offline 1440px single row with equal button heights
+PASS matrix-anime-offline 1440px no grouped menu
+PASS matrix-anime-offline 1440px switch fits header
+PASS matrix-anime-offline 1440px active mode visible
+PASS matrix-anime-offline 1440px all eight visible on desktop
+PASS matrix-anime-offline 1440px default scene strip visible
+PASS matrix-anime-offline 1440px default strip has no experience destinations
+PASS matrix-anime-offline 1440px native MOTION chapters
+PASS matrix-anime-offline 1440px atlas opens explicitly
+PASS matrix-anime-offline 1440px atlas announces open state
+PASS matrix-anime-offline 1440px atlas closes back to local footer
+PASS matrix-anime-offline 1440px atlas restores focus and collapsed state
+PASS matrix-anime-offline 1440px bottom atlas
+PASS matrix-anime-offline 390px eight peer links
+PASS matrix-anime-offline 390px direct destinations
+PASS matrix-anime-offline 390px active mode
+PASS matrix-anime-offline 390px single row with equal button heights
+PASS matrix-anime-offline 390px no grouped menu
+PASS matrix-anime-offline 390px switch fits header
+PASS matrix-anime-offline 390px active mode visible
+PASS matrix-anime-offline 390px mobile row scrolls
+PASS matrix-anime-offline 390px keyboard reaches 01
+PASS matrix-anime-offline 390px keyboard reaches 02
+PASS matrix-anime-offline 390px keyboard reaches 03
+PASS matrix-anime-offline 390px keyboard reaches 04
+PASS matrix-anime-offline 390px keyboard reaches 05
+PASS matrix-anime-offline 390px keyboard reaches 06
+PASS matrix-anime-offline 390px keyboard reaches 07
+PASS matrix-anime-offline 390px keyboard reaches 08
+PASS matrix-anime-offline 390px default scene strip visible
+PASS matrix-anime-offline 390px default strip has no experience destinations
+PASS matrix-anime-offline 390px native MOTION chapters
+PASS matrix-anime-offline 390px atlas opens explicitly
+PASS matrix-anime-offline 390px atlas announces open state
+PASS matrix-anime-offline 390px atlas closes back to local footer
+PASS matrix-anime-offline 390px atlas restores focus and collapsed state
+PASS matrix-anime-offline 390px bottom atlas
+PASS matrix-anime-offline direct study link
+127.0.0.1 - - [04/Oct/2026 02:08:42] "GET /dist/matrix-battle-offline.html HTTP/1.1" 200 -
+PASS matrix-battle-offline 1440px eight peer links
+PASS matrix-battle-offline 1440px direct destinations
+PASS matrix-battle-offline 1440px active mode
+PASS matrix-battle-offline 1440px single row with equal button heights
+PASS matrix-battle-offline 1440px no grouped menu
+PASS matrix-battle-offline 1440px switch fits header
+PASS matrix-battle-offline 1440px active mode visible
+PASS matrix-battle-offline 1440px all eight visible on desktop
+PASS matrix-battle-offline 1440px default scene strip visible
+PASS matrix-battle-offline 1440px default strip has no experience destinations
+PASS matrix-battle-offline 1440px native MOTION chapters
+PASS matrix-battle-offline 1440px atlas opens explicitly
+PASS matrix-battle-offline 1440px atlas announces open state
+PASS matrix-battle-offline 1440px atlas closes back to local footer
+PASS matrix-battle-offline 1440px atlas restores focus and collapsed state
+PASS matrix-battle-offline 1440px bottom atlas
+PASS matrix-battle-offline 390px eight peer links
+PASS matrix-battle-offline 390px direct destinations
+PASS matrix-battle-offline 390px active mode
+PASS matrix-battle-offline 390px single row with equal button heights
+PASS matrix-battle-offline 390px no grouped menu
+PASS matrix-battle-offline 390px switch fits header
+PASS matrix-battle-offline 390px active mode visible
+PASS matrix-battle-offline 390px mobile row scrolls
+PASS matrix-battle-offline 390px keyboard reaches 01
+PASS matrix-battle-offline 390px keyboard reaches 02
+PASS matrix-battle-offline 390px keyboard reaches 03
+PASS matrix-battle-offline 390px keyboard reaches 04
+PASS matrix-battle-offline 390px keyboard reaches 05
+PASS matrix-battle-offline 390px keyboard reaches 06
+PASS matrix-battle-offline 390px keyboard reaches 07
+PASS matrix-battle-offline 390px keyboard reaches 08
+PASS matrix-battle-offline 390px default scene strip visible
+PASS matrix-battle-offline 390px default strip has no experience destinations
+PASS matrix-battle-offline 390px native MOTION chapters
+PASS matrix-battle-offline 390px atlas opens explicitly
+PASS matrix-battle-offline 390px atlas announces open state
+PASS matrix-battle-offline 390px atlas closes back to local footer
+PASS matrix-battle-offline 390px atlas restores focus and collapsed state
+PASS matrix-battle-offline 390px bottom atlas
+PASS matrix-battle-offline direct study link
+PASS all generated variants have no runtime exceptions
+TOTAL 1928

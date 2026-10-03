@@ -1,0 +1,8 @@
+start True {'seconds': 2.6544000000000003, 'playing': True, 'preview': {'position': 2.6544000000000003, 'phase': 'hold-source', 'cycleSeconds': 17.560000000000002, 'bridgeSeconds': 0.96}, 'bridgeLoop': True}
+source hold True {'seconds': 2.6544000000000003, 'playing': True, 'preview': {'position': 2.6544000000000003, 'phase': 'hold-source', 'cycleSeconds': 17.560000000000002, 'bridgeSeconds': 0.96}, 'bridgeLoop': True}
+target True {'seconds': 9.454400000000001, 'playing': True, 'preview': {'position': 9.454400000000001, 'phase': 'hold-target', 'cycleSeconds': 17.560000000000002, 'bridgeSeconds': 0.96}, 'bridgeLoop': True}
+target hold True {'seconds': 9.454400000000001, 'playing': True, 'preview': {'position': 9.454400000000001, 'phase': 'hold-target', 'cycleSeconds': 17.560000000000002, 'bridgeSeconds': 0.96}, 'bridgeLoop': True}
+target pixels True {'seconds': 9.454400000000001, 'playing': True, 'preview': {'position': 9.454400000000001, 'phase': 'hold-target', 'cycleSeconds': 17.560000000000002, 'bridgeSeconds': 0.96}, 'bridgeLoop': True}
+reverse True {'seconds': 9.141400000000035, 'playing': True, 'preview': {'position': 9.141400000000035, 'phase': 'reverse', 'cycleSeconds': 17.560000000000002, 'bridgeSeconds': 0.96}, 'bridgeLoop': True}
+exit False {'seconds': 8.721400000000031, 'playing': True, 'preview': None, 'bridgeLoop': False}
+seek exits True {'seconds': 4.1, 'playing': False, 'preview': None, 'bridgeLoop': False}

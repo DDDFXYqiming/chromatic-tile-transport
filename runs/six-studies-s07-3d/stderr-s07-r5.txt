@@ -1,0 +1,7 @@
+error: unexpected argument 'D:\AI_Projects\chromatic-wt-s07-3d
+Branch:' found
+
+Usage: codex exec [OPTIONS] [PROMPT]
+       codex exec [OPTIONS] <COMMAND> [ARGS]
+
+For more information, try '--help'.

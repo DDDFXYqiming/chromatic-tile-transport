@@ -1,0 +1,16 @@
+你在 Windows 本机 worktree：D:\AI_Projects\chromatic-wt-s04-fx，分支 remodel/s04-chapter-fx（基于 feat/visual-lab-six-studies @ 54be389）。
+
+用户+QA 对 04 时差场反馈：
+- 第1段（radial）超级棒，有鼠标特效 → 样板，保留并让后续段也有同等指针响应。
+- 第2段（wave）、第3段（ribbon）：几乎无特效、像静图 → 必须补页面动效（时间切片/延迟场要真动，并响应鼠标）。
+- 第4段（echo/pendulum）超级棒，春夏秋冬动态感 → 保留。
+- 第5段（clear/present）一般 → 补页面动效（即使「清晰」也要有活的指针/微动，不能死图）。
+
+任务：
+1. 读 src/studies/temporal.mjs，让 drawHistory/drawTimeField/指针逻辑在 wave、ribbon、clear 上也有可见动效与鼠标跟随（对齐 radial 的互动强度；echo 保留现有季节感）。
+2. 不要毁掉第1、第4段的现有效果。
+3. build_studies + check_studies 通过。
+4. Chrome 扩展打开 http://127.0.0.1:8765/dist/temporal-field.html，逐段截图证明 2/3/5 有动效，RESULT 写到 runs/six-studies-s04-fx/RESULT.md。
+5. commit remodel/s04-chapter-fx 并 push。
+
+注意：可与 03 并行，但 Chrome 一次只控一页；若扩展忙就先改代码测静态，再抢浏览器。

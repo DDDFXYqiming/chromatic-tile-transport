@@ -1,0 +1,7 @@
+Completed and pushed `aaa919b` to `remodel/s07-shadow-3d`.
+
+Full-page shadow exhibition rebuilt; build, geometry, browser, and playback checks passed.
+
+[RESULT.md](D:/AI_Projects/chromatic-tile-transport/runs/six-studies-s07-3d/RESULT.md) · [Live preview](http://127.0.0.1:8797/dist/shadow-apparatus.html)
+
+![Finished exhibition](D:/AI_Projects/chromatic-tile-transport/runs/six-studies-s07-3d/shadow-final.jpg)

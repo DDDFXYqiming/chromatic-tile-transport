@@ -1,0 +1,374 @@
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /dist/portal-threshold.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /src/studies/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /src/studies/portal.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /assets/studies/atlas/transport.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /assets/studies/atlas/matrix.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /src/studies/main.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /assets/studies/atlas/portal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /assets/studies/atlas/temporal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /assets/studies/atlas/fluid.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /assets/studies/atlas/optical.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /assets/studies/atlas/shadow.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /assets/studies/atlas/folding.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /src/studies/core.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /src/studies/filmstrip.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /src/studies/math.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /src/studies/portal.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /assets/studies/portal-tidal-archive.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /assets/studies/portal-canopy-frequencies.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /assets/studies/portal-night-coordinates.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /assets/studies/portal-patina.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:46] "GET /assets/studies/portal-slow-expedition.png HTTP/1.1" 200 -
+PASS portal initialized
+PASS portal default local filmstrip
+PASS portal local strip has only content buttons
+PASS portal local thumbnails decoded
+PASS portal initial content accented
+PASS portal atlas only opens on request
+PASS portal notes Escape preserves underlying atlas
+PASS portal escape restores local content and focus
+PASS portal global SPACE toggles once
+PASS portal clean canvas hides HUD
+PASS portal canvas H restores clean-view control
+PASS portal canvas SPACE toggles once
+PASS portal header has eight peer links
+PASS portal header is one visible row
+PASS portal notes pause playback
+PASS portal notes restore playback
+PASS portal pause is stable
+PASS camera crosses portal plane
+PASS turn back uses camera yaw
+PASS portal threshold stays in page and accents selection
+PASS threshold camera preset
+PASS portal through stays in page and accents selection
+PASS through camera preset
+PASS portal return stays in page and accents selection
+PASS return camera preset
+PASS portal roam stays in page and accents selection
+PASS roam camera preset
+PASS portal content presets produce distinct canvases
+PASS portal local next wraps to first content
+PASS portal local previous wraps to last content
+PASS portal controls synchronize selection
+PASS portal exports PNG
+PASS portal mobile layout fits
+PASS portal mobile local filmstrip visible by default
+PASS portal mobile last content scrolls into view
+PASS portal mobile switch scrolls inside viewport
+PASS portal active mobile mode visible
+PASS portal narrow phone fits
+127.0.0.1 - - [04/Oct/2026 01:42:55] "GET /dist/portal-threshold.html HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 01:42:55] "GET /src/studies/portal.css HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 01:42:55] "GET /src/studies/portal.mjs HTTP/1.1" 304 -
+PASS portal honors reduced motion
+PASS portal no uncaught exceptions: []
+127.0.0.1 - - [04/Oct/2026 01:42:55] "GET /dist/temporal-field.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:55] "GET /src/studies/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:55] "GET /src/studies/main.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:55] "GET /assets/studies/atlas/transport.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:55] "GET /assets/studies/atlas/temporal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:55] "GET /assets/studies/atlas/portal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:55] "GET /assets/studies/atlas/fluid.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:55] "GET /assets/studies/atlas/matrix.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:56] "GET /assets/studies/atlas/shadow.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:56] "GET /assets/studies/atlas/optical.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:56] "GET /assets/studies/atlas/folding.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:56] "GET /src/studies/filmstrip.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:56] "GET /src/studies/core.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:56] "GET /src/studies/math.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:56] "GET /src/studies/temporal.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:56] "GET /assets/studies/filmstrip/temporal-radial.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:56] "GET /assets/studies/filmstrip/temporal-wave.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:56] "GET /assets/studies/filmstrip/temporal-ribbon.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:56] "GET /assets/studies/filmstrip/temporal-pendulum.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:42:56] "GET /assets/matrix-battle/03-clash.mp4 HTTP/1.1" 206 -
+PASS temporal initialized
+PASS temporal default local filmstrip
+PASS temporal local strip has only content buttons
+PASS temporal local thumbnails decoded
+PASS temporal initial content accented
+PASS temporal atlas only opens on request
+PASS temporal notes Escape preserves underlying atlas
+PASS temporal escape restores local content and focus
+PASS temporal global SPACE toggles once
+PASS temporal clean canvas hides HUD
+PASS temporal canvas H restores clean-view control
+PASS temporal canvas SPACE toggles once
+PASS temporal header has eight peer links
+PASS temporal header is one visible row
+PASS temporal notes pause playback
+PASS temporal notes restore playback
+PASS temporal pause is stable
+PASS bounded frame cache
+PASS 2D time field changes sampled pixels
+PASS explicit synthetic source works
+PASS temporal radial stays in page and accents selection
+PASS radial sampling source
+PASS temporal wave stays in page and accents selection
+PASS wave sampling source
+PASS temporal ribbon stays in page and accents selection
+PASS ribbon sampling source
+PASS temporal pendulum stays in page and accents selection
+PASS pendulum sampling source
+PASS temporal content presets produce distinct canvases
+PASS temporal local next wraps to first content
+PASS temporal local previous wraps to last content
+PASS temporal controls synchronize selection
+PASS temporal exports PNG
+PASS temporal mobile layout fits
+PASS temporal mobile local filmstrip visible by default
+PASS temporal mobile last content scrolls into view
+PASS temporal mobile switch scrolls inside viewport
+PASS temporal active mobile mode visible
+PASS temporal narrow phone fits
+127.0.0.1 - - [04/Oct/2026 01:43:09] "GET /dist/temporal-field.html HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 01:43:09] "GET /assets/matrix-battle/03-clash.mp4 HTTP/1.1" 206 -
+PASS temporal honors reduced motion
+PASS temporal no uncaught exceptions: []
+127.0.0.1 - - [04/Oct/2026 01:43:09] "GET /dist/liquid-canvas.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:09] "GET /src/studies/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:09] "GET /assets/studies/atlas/matrix.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:09] "GET /src/studies/main.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:09] "GET /assets/studies/atlas/transport.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:09] "GET /assets/studies/atlas/portal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:09] "GET /assets/studies/atlas/temporal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:09] "GET /assets/studies/atlas/fluid.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:09] "GET /assets/studies/atlas/shadow.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:09] "GET /assets/studies/atlas/optical.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:09] "GET /assets/studies/atlas/folding.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:10] "GET /src/studies/core.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:10] "GET /src/studies/filmstrip.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:10] "GET /src/studies/math.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:10] "GET /src/studies/fluid.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:10] "GET /assets/studies/tidal-garden.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:10] "GET /assets/studies/filmstrip/fluid-still.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:10] "GET /assets/studies/filmstrip/fluid-vortex.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:10] "GET /assets/studies/filmstrip/fluid-tide.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:10] "GET /assets/studies/filmstrip/fluid-ribbon.webp HTTP/1.1" 200 -
+PASS fluid initialized
+PASS fluid default local filmstrip
+PASS fluid local strip has only content buttons
+PASS fluid local thumbnails decoded
+PASS fluid initial content accented
+PASS fluid atlas only opens on request
+PASS fluid notes Escape preserves underlying atlas
+PASS fluid escape restores local content and focus
+PASS fluid global SPACE toggles once
+PASS fluid clean canvas hides HUD
+PASS fluid canvas H restores clean-view control
+PASS fluid canvas SPACE toggles once
+PASS fluid header has eight peer links
+PASS fluid header is one visible row
+PASS fluid notes pause playback
+PASS fluid notes restore playback
+PASS fluid pause is stable
+PASS pigment is transported
+PASS fluid finite after interaction
+PASS flow continues without pointer
+PASS fluid still stays in page and accents selection
+PASS still pigment seed
+PASS fluid tide stays in page and accents selection
+PASS tide pigment seed
+PASS fluid vortex stays in page and accents selection
+PASS vortex pigment seed
+PASS fluid ribbon stays in page and accents selection
+PASS ribbon pigment seed
+PASS fluid content presets produce distinct canvases
+PASS fluid local next wraps to first content
+PASS fluid local previous wraps to last content
+PASS fluid controls synchronize selection
+PASS fluid exports PNG
+PASS fluid mobile layout fits
+PASS fluid mobile local filmstrip visible by default
+PASS fluid mobile last content scrolls into view
+PASS fluid mobile switch scrolls inside viewport
+PASS fluid active mobile mode visible
+PASS fluid narrow phone fits
+127.0.0.1 - - [04/Oct/2026 01:43:19] "GET /dist/liquid-canvas.html HTTP/1.1" 304 -
+PASS fluid honors reduced motion
+PASS fluid no uncaught exceptions: []
+127.0.0.1 - - [04/Oct/2026 01:43:19] "GET /dist/optical-vault.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:19] "GET /src/studies/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:19] "GET /src/studies/main.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:19] "GET /assets/studies/atlas/transport.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:19] "GET /assets/studies/atlas/temporal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:19] "GET /assets/studies/atlas/matrix.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:19] "GET /assets/studies/atlas/fluid.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:19] "GET /assets/studies/atlas/portal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:19] "GET /assets/studies/atlas/optical.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:19] "GET /assets/studies/atlas/shadow.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:19] "GET /assets/studies/atlas/folding.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:19] "GET /src/studies/core.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:19] "GET /src/studies/filmstrip.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:19] "GET /src/studies/math.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:19] "GET /src/studies/optical.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:19] "GET /assets/studies/quiet-orbit.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:20] "GET /assets/studies/filmstrip/optical-exhibit.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:20] "GET /assets/studies/filmstrip/optical-prism.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:20] "GET /assets/studies/filmstrip/optical-focus.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:20] "GET /assets/studies/filmstrip/optical-clear.webp HTTP/1.1" 200 -
+PASS optical initialized
+PASS optical default local filmstrip
+PASS optical local strip has only content buttons
+PASS optical local thumbnails decoded
+PASS optical initial content accented
+PASS optical atlas only opens on request
+PASS optical notes Escape preserves underlying atlas
+PASS optical escape restores local content and focus
+PASS optical global SPACE toggles once
+PASS optical clean canvas hides HUD
+PASS optical canvas H restores clean-view control
+PASS optical canvas SPACE toggles once
+PASS optical header has eight peer links
+PASS optical header is one visible row
+PASS optical notes pause playback
+PASS optical notes restore playback
+PASS optical pause is stable
+PASS refraction parameter changes pixels
+PASS lens follows drag
+PASS optical exhibit stays in page and accents selection
+PASS exhibit optical parameters
+PASS optical prism stays in page and accents selection
+PASS prism optical parameters
+PASS optical focus stays in page and accents selection
+PASS focus optical parameters
+PASS optical clear stays in page and accents selection
+PASS clear optical parameters
+PASS optical content presets produce distinct canvases
+PASS optical local next wraps to first content
+PASS optical local previous wraps to last content
+PASS optical controls synchronize selection
+PASS optical exports PNG
+PASS optical mobile layout fits
+PASS optical mobile local filmstrip visible by default
+PASS optical mobile last content scrolls into view
+PASS optical mobile switch scrolls inside viewport
+PASS optical active mobile mode visible
+PASS optical narrow phone fits
+127.0.0.1 - - [04/Oct/2026 01:43:30] "GET /dist/optical-vault.html HTTP/1.1" 304 -
+PASS optical honors reduced motion
+PASS optical no uncaught exceptions: []
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /dist/shadow-apparatus.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /src/studies/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /assets/studies/atlas/transport.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /src/studies/main.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /assets/studies/atlas/portal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /assets/studies/atlas/matrix.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /assets/studies/atlas/fluid.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /assets/studies/atlas/temporal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /assets/studies/atlas/optical.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /assets/studies/atlas/shadow.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /assets/studies/atlas/folding.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /src/studies/core.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /src/studies/filmstrip.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /src/studies/math.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /src/studies/shadow.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /assets/studies/filmstrip/shadow-light-0.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /assets/studies/filmstrip/shadow-light-30.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /assets/studies/filmstrip/shadow-light-90.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:31] "GET /assets/studies/filmstrip/shadow-light-60.webp HTTP/1.1" 200 -
+PASS shadow initialized
+PASS shadow default local filmstrip
+PASS shadow local strip has only content buttons
+PASS shadow local thumbnails decoded
+PASS shadow initial content accented
+PASS shadow atlas only opens on request
+PASS shadow notes Escape preserves underlying atlas
+PASS shadow escape restores local content and focus
+PASS shadow global SPACE toggles once
+PASS shadow clean canvas hides HUD
+PASS shadow canvas H restores clean-view control
+PASS shadow canvas SPACE toggles once
+PASS shadow header has eight peer links
+PASS shadow header is one visible row
+PASS shadow notes pause playback
+PASS shadow notes restore playback
+PASS shadow pause is stable
+PASS projection changes with same geometry
+PASS shadow light-0 stays in page and accents selection
+PASS light-0 light angle
+PASS shadow light-30 stays in page and accents selection
+PASS light-30 light angle
+PASS shadow light-60 stays in page and accents selection
+PASS light-60 light angle
+PASS shadow light-90 stays in page and accents selection
+PASS light-90 light angle
+PASS shadow content presets produce distinct canvases
+PASS shadow local next wraps to first content
+PASS shadow local previous wraps to last content
+PASS shadow controls synchronize selection
+PASS shadow exports PNG
+PASS shadow mobile layout fits
+PASS shadow mobile local filmstrip visible by default
+PASS shadow mobile last content scrolls into view
+PASS shadow mobile switch scrolls inside viewport
+PASS shadow active mobile mode visible
+PASS shadow narrow phone fits
+127.0.0.1 - - [04/Oct/2026 01:43:39] "GET /dist/shadow-apparatus.html HTTP/1.1" 304 -
+PASS shadow honors reduced motion
+PASS shadow no uncaught exceptions: []
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /dist/folding-theater.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /src/studies/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /src/studies/main.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /assets/studies/atlas/matrix.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /assets/studies/atlas/temporal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /assets/studies/atlas/portal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /assets/studies/atlas/transport.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /assets/studies/atlas/fluid.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /assets/studies/atlas/optical.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /assets/studies/atlas/shadow.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /assets/studies/atlas/folding.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /src/studies/core.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /src/studies/filmstrip.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /src/studies/math.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /src/studies/folding.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /assets/studies/paper-world.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /assets/studies/filmstrip/folding-opening.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /assets/studies/filmstrip/folding-closed.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /assets/studies/filmstrip/folding-half.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /assets/studies/filmstrip/folding-open.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:43:40] "GET /assets/studies/filmstrip/folding-side.webp HTTP/1.1" 200 -
+PASS folding initialized
+PASS folding default local filmstrip
+PASS folding local strip has only content buttons
+PASS folding local thumbnails decoded
+PASS folding initial content accented
+PASS folding atlas only opens on request
+PASS folding notes Escape preserves underlying atlas
+PASS folding escape restores local content and focus
+PASS folding global SPACE toggles once
+PASS folding clean canvas hides HUD
+PASS folding canvas H restores clean-view control
+PASS folding canvas SPACE toggles once
+PASS folding header has eight peer links
+PASS folding header is one visible row
+PASS folding notes pause playback
+PASS folding notes restore playback
+PASS folding pause is stable
+PASS paper closes flat
+PASS paper opens while connected
+PASS folding opening stays in page and accents selection
+PASS opening paper pose
+PASS folding closed stays in page and accents selection
+PASS closed paper pose
+PASS folding half stays in page and accents selection
+PASS half paper pose
+PASS folding open stays in page and accents selection
+PASS open paper pose
+PASS folding side stays in page and accents selection
+PASS side paper pose
+PASS folding content presets produce distinct canvases
+PASS folding local next wraps to first content
+PASS folding local previous wraps to last content
+PASS folding controls synchronize selection
+PASS folding exports PNG
+PASS folding mobile layout fits
+PASS folding mobile local filmstrip visible by default
+PASS folding mobile last content scrolls into view
+PASS folding mobile switch scrolls inside viewport
+PASS folding active mobile mode visible
+PASS folding narrow phone fits
+127.0.0.1 - - [04/Oct/2026 01:43:49] "GET /dist/folding-theater.html HTTP/1.1" 304 -
+PASS folding honors reduced motion
+PASS folding no uncaught exceptions: []
+TOTAL 243

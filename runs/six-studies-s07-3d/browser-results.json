@@ -1,0 +1,2273 @@
+{
+  "mode": "Chrome browser-control API",
+  "interactionChecks": [
+    "direction slider updates all three-light projection",
+    "shadow density slider",
+    "reset restores chapter lighting",
+    "Escape closes lighting panel",
+    "keyboard changes light direction",
+    "1440 silhouette complete chapter",
+    "1440 silhouette full-width receiver",
+    "1440 silhouette copy clears footer",
+    "1440 boundary complete chapter",
+    "1440 boundary full-width receiver",
+    "1440 boundary copy clears footer",
+    "1440 depth complete chapter",
+    "1440 depth full-width receiver",
+    "1440 depth copy clears footer",
+    "1440 alignment complete chapter",
+    "1440 alignment full-width receiver",
+    "1440 alignment copy clears footer",
+    "390 silhouette complete chapter",
+    "390 silhouette full-width receiver",
+    "390 silhouette copy clears footer",
+    "390 boundary complete chapter",
+    "390 boundary full-width receiver",
+    "390 boundary copy clears footer",
+    "390 depth complete chapter",
+    "390 depth full-width receiver",
+    "390 depth copy clears footer",
+    "390 alignment complete chapter",
+    "390 alignment full-width receiver",
+    "390 alignment copy clears footer",
+    "paused canvas pixels remain stable",
+    "actual playback advances shadows",
+    "actual playback advances chapters",
+    "footer next and previous update the whole chapter",
+    "chapter story is available in reading dialog",
+    "pointer dragging changes direction and depth",
+    "export button writes a real PNG",
+    "reduced motion starts with playback paused",
+    "reduced motion keeps shadows still after chapter change",
+    "clean view hides all editorial text",
+    "no browser JavaScript errors"
+  ],
+  "audits": [
+    {
+      "canvasHash": 1289516521,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 0,
+        "art": "studies/shadow-silhouette.png",
+        "auto": true,
+        "chapter": "silhouette",
+        "contentPlanes": 4,
+        "frame": 47,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.38,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.40547619053319184,
+            1.55
+          ],
+          [
+            0.75,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 180,
+        "receiver": "full-viewport",
+        "renderedChapter": "silhouette",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4111000000000003,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 4001791678,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 0.5,
+        "art": "studies/shadow-boundary.png",
+        "auto": true,
+        "chapter": "boundary",
+        "contentPlanes": 4,
+        "frame": 48,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.2457608491908231,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.5062136800885292,
+            1.55
+          ],
+          [
+            0.7010330247561491,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 180,
+        "receiver": "full-viewport",
+        "renderedChapter": "boundary",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4111000000000003,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 1600770621,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 1,
+        "art": "studies/shadow-depth.png",
+        "auto": true,
+        "chapter": "depth",
+        "contentPlanes": 4,
+        "frame": 49,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.14438812425378897,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.527082683658364,
+            1.55
+          ],
+          [
+            0.5661209223472559,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 179,
+        "receiver": "full-viewport",
+        "renderedChapter": "depth",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4111000000000003,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 3021799104,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 1.5,
+        "art": "studies/shadow-alignment.png",
+        "auto": true,
+        "chapter": "alignment",
+        "contentPlanes": 4,
+        "frame": 50,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.10070140375086473,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.4629737413368565,
+            1.55
+          ],
+          [
+            0.3782948806670812,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 178,
+        "receiver": "full-viewport",
+        "renderedChapter": "alignment",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4111000000000003,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 3648852193,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 0,
+        "art": "studies/shadow-silhouette.png",
+        "auto": true,
+        "chapter": "silhouette",
+        "contentPlanes": 4,
+        "frame": 52,
+        "height": 844,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.38,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.40547619053319184,
+            1.55
+          ],
+          [
+            0.75,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": true,
+        "rafHz": 170,
+        "receiver": "full-viewport",
+        "renderedChapter": "silhouette",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4111000000000003,
+        "view": 0,
+        "width": 390
+      },
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "canvasHash": 641382476,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 0.5,
+        "art": "studies/shadow-boundary.png",
+        "auto": true,
+        "chapter": "boundary",
+        "contentPlanes": 4,
+        "frame": 53,
+        "height": 844,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.2457608491908231,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.5062136800885292,
+            1.55
+          ],
+          [
+            0.7010330247561491,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": true,
+        "rafHz": 143,
+        "receiver": "full-viewport",
+        "renderedChapter": "boundary",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4111000000000003,
+        "view": 0,
+        "width": 390
+      },
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "canvasHash": 3757559378,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 1,
+        "art": "studies/shadow-depth.png",
+        "auto": true,
+        "chapter": "depth",
+        "contentPlanes": 4,
+        "frame": 54,
+        "height": 844,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.14438812425378897,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.527082683658364,
+            1.55
+          ],
+          [
+            0.5661209223472559,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": true,
+        "rafHz": 146,
+        "receiver": "full-viewport",
+        "renderedChapter": "depth",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4111000000000003,
+        "view": 0,
+        "width": 390
+      },
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "canvasHash": 3494836189,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 1.5,
+        "art": "studies/shadow-alignment.png",
+        "auto": true,
+        "chapter": "alignment",
+        "contentPlanes": 4,
+        "frame": 55,
+        "height": 844,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.10070140375086473,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.4629737413368565,
+            1.55
+          ],
+          [
+            0.3782948806670812,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": true,
+        "rafHz": 141,
+        "receiver": "full-viewport",
+        "renderedChapter": "alignment",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4111000000000003,
+        "view": 0,
+        "width": 390
+      },
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "canvasHash": 2878990973,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 1.5,
+        "art": "studies/shadow-alignment.png",
+        "auto": true,
+        "chapter": "alignment",
+        "contentPlanes": 4,
+        "frame": 56,
+        "height": 1080,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.10070140375086473,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.4629737413368565,
+            1.55
+          ],
+          [
+            0.3782948806670812,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 178,
+        "receiver": "full-viewport",
+        "renderedChapter": "alignment",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4111000000000003,
+        "view": 0,
+        "width": 1920
+      },
+      "viewport": {
+        "height": 1080,
+        "width": 1920
+      }
+    },
+    {
+      "canvasHash": 2878990973,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 1.5,
+        "art": "studies/shadow-alignment.png",
+        "auto": true,
+        "chapter": "alignment",
+        "contentPlanes": 4,
+        "frame": 56,
+        "height": 1080,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.10070140375086473,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.4629737413368565,
+            1.55
+          ],
+          [
+            0.3782948806670812,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 172,
+        "receiver": "full-viewport",
+        "renderedChapter": "alignment",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4111000000000003,
+        "view": 0,
+        "width": 1920
+      },
+      "viewport": {
+        "height": 1080,
+        "width": 1920
+      }
+    },
+    {
+      "canvasHash": 4143332825,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 1.5,
+        "art": "studies/shadow-alignment.png",
+        "auto": true,
+        "chapter": "alignment",
+        "contentPlanes": 4,
+        "frame": 57,
+        "height": 768,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.10070140375086473,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.4629737413368565,
+            1.55
+          ],
+          [
+            0.3782948806670812,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 177,
+        "receiver": "full-viewport",
+        "renderedChapter": "alignment",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4111000000000003,
+        "view": 0,
+        "width": 1024
+      },
+      "viewport": {
+        "height": 768,
+        "width": 1024
+      }
+    },
+    {
+      "canvasHash": 4143332825,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 1.5,
+        "art": "studies/shadow-alignment.png",
+        "auto": true,
+        "chapter": "alignment",
+        "contentPlanes": 4,
+        "frame": 57,
+        "height": 768,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.10070140375086473,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.4629737413368565,
+            1.55
+          ],
+          [
+            0.3782948806670812,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 175,
+        "receiver": "full-viewport",
+        "renderedChapter": "alignment",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4111000000000003,
+        "view": 0,
+        "width": 1024
+      },
+      "viewport": {
+        "height": 768,
+        "width": 1024
+      }
+    },
+    {
+      "canvasHash": 1610540212,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 1.5,
+        "art": "studies/shadow-alignment.png",
+        "auto": true,
+        "chapter": "alignment",
+        "contentPlanes": 4,
+        "frame": 58,
+        "height": 1024,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.10070140375086473,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.4629737413368565,
+            1.55
+          ],
+          [
+            0.3782948806670812,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": true,
+        "rafHz": 176,
+        "receiver": "full-viewport",
+        "renderedChapter": "alignment",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4111000000000003,
+        "view": 0,
+        "width": 768
+      },
+      "viewport": {
+        "height": 1024,
+        "width": 768
+      }
+    },
+    {
+      "canvasHash": 1610540212,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 1.5,
+        "art": "studies/shadow-alignment.png",
+        "auto": true,
+        "chapter": "alignment",
+        "contentPlanes": 4,
+        "frame": 58,
+        "height": 1024,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.10070140375086473,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.4629737413368565,
+            1.55
+          ],
+          [
+            0.3782948806670812,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": true,
+        "rafHz": 176,
+        "receiver": "full-viewport",
+        "renderedChapter": "alignment",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4111000000000003,
+        "view": 0,
+        "width": 768
+      },
+      "viewport": {
+        "height": 1024,
+        "width": 768
+      }
+    },
+    {
+      "canvasHash": 3528464853,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 1.5,
+        "art": "studies/shadow-alignment.png",
+        "auto": true,
+        "chapter": "alignment",
+        "contentPlanes": 4,
+        "frame": 46,
+        "height": 568,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.10070140375086473,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.4629737413368565,
+            1.55
+          ],
+          [
+            0.3782948806670812,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": true,
+        "rafHz": 141,
+        "receiver": "full-viewport",
+        "renderedChapter": "alignment",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4388000000000002,
+        "view": 0,
+        "width": 320
+      },
+      "viewport": {
+        "height": 568,
+        "width": 320
+      }
+    },
+    {
+      "canvasHash": 2878990973,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 1.5,
+        "art": "studies/shadow-alignment.png",
+        "auto": true,
+        "chapter": "alignment",
+        "contentPlanes": 4,
+        "frame": 47,
+        "height": 1080,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.10070140375086473,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.4629737413368565,
+            1.55
+          ],
+          [
+            0.3782948806670812,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 178,
+        "receiver": "full-viewport",
+        "renderedChapter": "alignment",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4388000000000002,
+        "view": 0,
+        "width": 1920
+      },
+      "viewport": {
+        "height": 1080,
+        "width": 1920
+      }
+    },
+    {
+      "canvasHash": 1872510637,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 1.5,
+        "art": "studies/shadow-alignment.png",
+        "auto": true,
+        "chapter": "alignment",
+        "contentPlanes": 4,
+        "frame": 48,
+        "height": 768,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.10070140375086473,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.4629737413368565,
+            1.55
+          ],
+          [
+            0.3782948806670812,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 180,
+        "receiver": "full-viewport",
+        "renderedChapter": "alignment",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4388000000000002,
+        "view": 0,
+        "width": 1024
+      },
+      "viewport": {
+        "height": 768,
+        "width": 1024
+      }
+    },
+    {
+      "canvasHash": 1609913103,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 1.5,
+        "art": "studies/shadow-alignment.png",
+        "auto": true,
+        "chapter": "alignment",
+        "contentPlanes": 4,
+        "frame": 49,
+        "height": 1024,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.10070140375086473,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.4629737413368565,
+            1.55
+          ],
+          [
+            0.3782948806670812,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": true,
+        "rafHz": 180,
+        "receiver": "full-viewport",
+        "renderedChapter": "alignment",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4388000000000002,
+        "view": 0,
+        "width": 768
+      },
+      "viewport": {
+        "height": 1024,
+        "width": 768
+      }
+    },
+    {
+      "canvasHash": 942106663,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 1.5,
+        "art": "studies/shadow-alignment.png",
+        "auto": true,
+        "chapter": "alignment",
+        "contentPlanes": 4,
+        "frame": 50,
+        "height": 634,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.10070140375086473,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.4629737413368565,
+            1.55
+          ],
+          [
+            0.3782948806670812,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 178,
+        "receiver": "full-viewport",
+        "renderedChapter": "alignment",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4388000000000002,
+        "view": 0,
+        "width": 1512
+      },
+      "viewport": {
+        "height": 634,
+        "width": 1512
+      }
+    },
+    {
+      "canvasHash": 3636314992,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 0,
+        "art": "studies/shadow-silhouette.png",
+        "auto": true,
+        "chapter": "silhouette",
+        "contentPlanes": 4,
+        "frame": 52,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.38,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.40547619053319184,
+            1.55
+          ],
+          [
+            0.75,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 179,
+        "receiver": "full-viewport",
+        "renderedChapter": "silhouette",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4388000000000002,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 3636314992,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 0,
+        "art": "studies/shadow-silhouette.png",
+        "auto": true,
+        "chapter": "silhouette",
+        "contentPlanes": 4,
+        "frame": 52,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.38,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.40547619053319184,
+            1.55
+          ],
+          [
+            0.75,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 176,
+        "receiver": "full-viewport",
+        "renderedChapter": "silhouette",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.4388000000000002,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 4265448501,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0.2724000000000016,
+        "angle": 0.017705999999991562,
+        "art": "studies/shadow-silhouette.png",
+        "auto": true,
+        "chapter": "silhouette",
+        "contentPlanes": 4,
+        "frame": 91,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.3750425790367347,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.4101804036550889,
+            1.55
+          ],
+          [
+            0.7499373011508459,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": true,
+        "portrait": false,
+        "rafHz": 152,
+        "receiver": "full-viewport",
+        "renderedChapter": "silhouette",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.7112000000000008,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 4213087567,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0.40010000000000223,
+        "angle": 0.026006499999990496,
+        "art": "studies/shadow-silhouette.png",
+        "auto": true,
+        "chapter": "silhouette",
+        "contentPlanes": 4,
+        "frame": 104,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.3727190008008924,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.41236096495929486,
+            1.55
+          ],
+          [
+            0.749864740015264,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": true,
+        "portrait": false,
+        "rafHz": 155,
+        "receiver": "full-viewport",
+        "renderedChapter": "silhouette",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.8389000000000013,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 203815772,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 9.990999999999994,
+        "angle": 1.14941500000001,
+        "art": "studies/shadow-boundary.png",
+        "auto": true,
+        "chapter": "boundary",
+        "contentPlanes": 4,
+        "frame": 2663,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.12449305069794164,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.5165026905710033,
+            1.55
+          ],
+          [
+            0.5136085351445756,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": true,
+        "portrait": false,
+        "rafHz": 26,
+        "receiver": "full-viewport",
+        "renderedChapter": "boundary",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 28.447600000000172,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 376696257,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 10.090999999999996,
+        "angle": 1.1559150000000091,
+        "art": "studies/shadow-boundary.png",
+        "auto": true,
+        "chapter": "boundary",
+        "contentPlanes": 4,
+        "frame": 2665,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.12375403467027218,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.515869898015392,
+            1.55
+          ],
+          [
+            0.5112325311039797,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": true,
+        "portrait": false,
+        "rafHz": 25,
+        "receiver": "full-viewport",
+        "renderedChapter": "boundary",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 28.547600000000173,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 4148020688,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 11.507800000000016,
+        "angle": 1.2480069999999976,
+        "art": "studies/shadow-boundary.png",
+        "auto": true,
+        "chapter": "boundary",
+        "contentPlanes": 4,
+        "frame": 2698,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.114460796672761,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.5053934739916701,
+            1.55
+          ],
+          [
+            0.4768852245007374,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 27,
+        "receiver": "full-viewport",
+        "renderedChapter": "boundary",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 29.964400000000197,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 4148020688,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 11.507800000000016,
+        "angle": 1.2480069999999976,
+        "art": "studies/shadow-boundary.png",
+        "auto": true,
+        "chapter": "boundary",
+        "contentPlanes": 4,
+        "frame": 2698,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.114460796672761,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.5053934739916701,
+            1.55
+          ],
+          [
+            0.4768852245007374,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 27,
+        "receiver": "full-viewport",
+        "renderedChapter": "boundary",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 29.964400000000197,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 4065503154,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 1,
+        "art": "studies/shadow-depth.png",
+        "auto": true,
+        "chapter": "depth",
+        "contentPlanes": 4,
+        "frame": 2699,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.14438812425378897,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.527082683658364,
+            1.55
+          ],
+          [
+            0.5661209223472559,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 108,
+        "receiver": "full-viewport",
+        "renderedChapter": "depth",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 29.964400000000197,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 2411876419,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 0.5,
+        "art": "studies/shadow-boundary.png",
+        "auto": true,
+        "chapter": "boundary",
+        "contentPlanes": 4,
+        "frame": 2700,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.2457608491908231,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.5062136800885292,
+            1.55
+          ],
+          [
+            0.7010330247561491,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 94,
+        "receiver": "full-viewport",
+        "renderedChapter": "boundary",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 29.964400000000197,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 2453655212,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 0.75,
+        "art": "studies/shadow-boundary.png",
+        "auto": true,
+        "chapter": "boundary",
+        "contentPlanes": 4,
+        "frame": 2704,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.1891411471934664,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.5274495468631559,
+            1.55
+          ],
+          [
+            0.6426755475495283,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 180,
+        "receiver": "full-viewport",
+        "renderedChapter": "boundary",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 29.964400000000197,
+        "view": 0.022222222222222254,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 3786020659,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 0,
+        "art": "studies/shadow-silhouette.png",
+        "auto": true,
+        "chapter": "silhouette",
+        "contentPlanes": 4,
+        "frame": 1,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.38,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.40547619053319184,
+            1.55
+          ],
+          [
+            0.75,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 52,
+        "receiver": "full-viewport",
+        "renderedChapter": "silhouette",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 3510177432,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 0.5,
+        "art": "studies/shadow-boundary.png",
+        "auto": true,
+        "chapter": "boundary",
+        "contentPlanes": 4,
+        "frame": 2,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.2457608491908231,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.5062136800885292,
+            1.55
+          ],
+          [
+            0.7010330247561491,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 46,
+        "receiver": "full-viewport",
+        "renderedChapter": "boundary",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 3510177432,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0,
+        "angle": 0.5,
+        "art": "studies/shadow-boundary.png",
+        "auto": true,
+        "chapter": "boundary",
+        "contentPlanes": 4,
+        "frame": 2,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.2457608491908231,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.5062136800885292,
+            1.55
+          ],
+          [
+            0.7010330247561491,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 43,
+        "receiver": "full-viewport",
+        "renderedChapter": "boundary",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "canvasHash": 1095127821,
+      "checks": [
+        "all four original chapter artworks decoded",
+        "current chapter has actually painted",
+        "three independent lights share the full-page receiver",
+        "two typographic planes and two image planes rendered",
+        "canvas spans the page width and height",
+        "no horizontal document overflow",
+        "headline follows the selected chapter",
+        "chapter narrative synchronized",
+        "artwork caption synchronized",
+        "spatial note synchronized",
+        "reading block clears content navigation",
+        "filmstrip points to current chapter",
+        "all eight peer experiences remain linked",
+        "live receiver contains rendered artwork and typography"
+      ],
+      "state": {
+        "age": 0.13879999999999998,
+        "angle": 0.009021999999999863,
+        "art": "studies/shadow-silhouette.png",
+        "auto": true,
+        "chapter": "silhouette",
+        "contentPlanes": 4,
+        "frame": 6,
+        "height": 900,
+        "id": "shadow",
+        "lights": [
+          [
+            -0.3774738742699509,
+            -0.65,
+            1.3
+          ],
+          [
+            1.45,
+            0.40788212352177655,
+            1.55
+          ],
+          [
+            0.7499837208136229,
+            1.65,
+            1.45
+          ]
+        ],
+        "playing": false,
+        "portrait": false,
+        "rafHz": 10,
+        "receiver": "full-viewport",
+        "renderedChapter": "silhouette",
+        "renderer": "multi-light-spatial-typography",
+        "shadowDirections": 3,
+        "strength": 0.9,
+        "texturesLoaded": 4,
+        "time": 0.13879999999999998,
+        "view": 0,
+        "width": 1440
+      },
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    }
+  ],
+  "assertionCount": 516,
+  "playback": {
+    "start": {
+      "age": 0.2724000000000016,
+      "angle": 0.017705999999991562,
+      "art": "studies/shadow-silhouette.png",
+      "auto": true,
+      "chapter": "silhouette",
+      "contentPlanes": 4,
+      "frame": 91,
+      "height": 900,
+      "id": "shadow",
+      "lights": [
+        [
+          -0.3750425790367347,
+          -0.65,
+          1.3
+        ],
+        [
+          1.45,
+          0.4101804036550889,
+          1.55
+        ],
+        [
+          0.7499373011508459,
+          1.65,
+          1.45
+        ]
+      ],
+      "playing": true,
+      "portrait": false,
+      "rafHz": 152,
+      "receiver": "full-viewport",
+      "renderedChapter": "silhouette",
+      "renderer": "multi-light-spatial-typography",
+      "shadowDirections": 3,
+      "strength": 0.9,
+      "texturesLoaded": 4,
+      "time": 0.7112000000000008,
+      "view": 0,
+      "width": 1440
+    },
+    "later": {
+      "age": 11.507800000000016,
+      "angle": 1.2480069999999976,
+      "art": "studies/shadow-boundary.png",
+      "auto": true,
+      "chapter": "boundary",
+      "contentPlanes": 4,
+      "frame": 2698,
+      "height": 900,
+      "id": "shadow",
+      "lights": [
+        [
+          -0.114460796672761,
+          -0.65,
+          1.3
+        ],
+        [
+          1.45,
+          0.5053934739916701,
+          1.55
+        ],
+        [
+          0.4768852245007374,
+          1.65,
+          1.45
+        ]
+      ],
+      "playing": false,
+      "portrait": false,
+      "rafHz": 27,
+      "receiver": "full-viewport",
+      "renderedChapter": "boundary",
+      "renderer": "multi-light-spatial-typography",
+      "shadowDirections": 3,
+      "strength": 0.9,
+      "texturesLoaded": 4,
+      "time": 29.964400000000197,
+      "view": 0,
+      "width": 1440
+    }
+  },
+  "browserErrors": []
+}

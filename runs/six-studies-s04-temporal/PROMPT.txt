@@ -1,0 +1,22 @@
+Repo: D:\AI_Projects\chromatic-tile-transport
+Branch: feat/visual-lab-six-studies
+HEAD ~5ed39c5. Chrome (eight peer top + page-local bottom) and 03 portal remodel are done — do not regress them.
+
+THIS PASS = ONLY page 04 时差场 / temporal-field content-first remodel.
+
+USER INTENT (match 01/02 + 03):
+- Invent product/tech-blog style content (OK to fabricate).
+- Bottom strip switches must change VISUALS + COPY together (headline/body/kicker/notes).
+- Effects showcase content; not a single low still with empty flex.
+- Current page is “too low / one image / cannot carry content” — expand into multiple rich chapters with Codex-generated art.
+- Keep page-local strip (not eight-experience jumping). Prefer upgrading existing temporal scenes (圆形/矩形/视频/重置 etc.) into real content beats.
+
+Do:
+1) Invent 4–5 coherent chapters (CN) for temporal-field; wire catalog + UI so strip selection syncs art + prose.
+2) Generate chapter stills / textures with Codex image tools → assets/studies/temporal-*.
+3) Upgrade temporal.mjs + styles for cinematic transitions (01/03 spirit).
+4) Rebuild; run studies/hall/temporal browser checks.
+5) Commit + push origin feat/visual-lab-six-studies.
+6) Write runs/six-studies-s04-temporal/RESULT.md with sha, content outline, assets.
+
+Model gpt-6-astra / xhigh, full write. Do NOT open Chrome for the user. Stop after RESULT + push.

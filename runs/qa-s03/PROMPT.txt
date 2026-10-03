@@ -1,0 +1,15 @@
+只做只读验收，不要改仓库源码，不要 commit，不要 push。只验第 03 页，不要打开 04–08 去改任何东西。
+
+用官方 Chrome 扩展（agent.browsers.get("chrome")）。不要用 Chrome DevTools，不要用内置浏览器 iab。扩展不可用就写明原因并停止。
+
+仓库 D:\AI_Projects\chromatic-tile-transport ，当前应在 feat/visual-lab-six-studies。若 http://127.0.0.1:8765/ 没开，只启动 python scripts/serve.py --directory . --port 8765，不要改代码。打开画中门页面（dist/portal-threshold.html 或展厅里的 03）。
+
+按这个口径写结论，只写你实际看到的：
+1. 顶栏是不是八个页面并排直接点，而不是从第三个收成下拉。
+2. 底栏是不是只切换本页内容（章节/图片/文案），而不是跳到别的体验。
+3. 切换底栏时，画面和文字是否一起换。有没有真正的介绍内容，还是只剩一个粗糙、没有纹理的 3D 展厅。
+4. 和前两页（寻色迁移、Matrix）比，这页是在用特效展示内容，还是网页在展示特效本身。
+
+截图放到 D:\AI_Projects\chromatic-tile-transport\runs\qa-s03\shots\
+结论写到 D:\AI_Projects\chromatic-tile-transport\runs\qa-s03\RESULT.md
+不要把开发者的通过说法当证据。明确写通过或不通过。

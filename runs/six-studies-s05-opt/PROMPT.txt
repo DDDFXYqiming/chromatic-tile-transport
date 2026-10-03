@@ -1,0 +1,7 @@
+Worktree: D:\AI_Projects\chromatic-wt-s05-opt branch remodel/s05-perf-region from feat/visual-lab-six-studies.
+
+User+QA on page 05 liquid canvas:
+1) Keep the stunning fluid effect, but optimize: high CPU/GPU, feels stuttery. Reduce cost (resolution scale, particle count, sim steps, dirty-rect, throttle when idle, etc.) without killing the look.
+2) Mouse disturbance must NOT affect the whole page. Only the meaningful liquid/powder region can be stirred; UI chrome and empty areas stay calm.
+
+Do: edit fluid study sources, build_studies + check_studies, optional Chrome screenshot via agent.browsers.get("chrome") on http://127.0.0.1:8765/dist/liquid-canvas.html, write runs/six-studies-s05-opt/RESULT.md in main repo path D:\AI_Projects\chromatic-tile-transport\runs\six-studies-s05-opt\, commit+push remodel/s05-perf-region.

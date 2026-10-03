@@ -1,0 +1,13 @@
+Repo WORKTREE: D:\AI_Projects\chromatic-wt-s06
+Branch: remodel/s06-optical (forked from feat/visual-lab-six-studies @ b1fe944)
+Do NOT push to feat/visual-lab-six-studies. Commit+push ONLY remodel/s06-optical.
+Do NOT open interactive Chrome for the user. Headless Playwright OK. Avoid competing for GUI Chrome.
+
+SCOPE: ONLY page 06 光学展柜 / optical-vault remodel.
+
+USER: remake as BLACK vs WHITE dual space (Titanfall-like), ONE page carrying TWO contents. Optical/glass can be the vehicle; not an ugly empty cabinet. Invent product/tech-blog dual narratives; strip switches visuals+copy together (and/or flip between black/white worlds). Generate art with Codex Image Gen → assets/studies/optical-*.
+
+Touch mainly: src/studies/optical.mjs, optical.css (create if needed), catalog.json optical entry only, assets/studies/optical-*, tests for optical, dist rebuild for this page. Avoid rewriting portal/temporal/fluid/shadow/folding modules.
+
+After done: commit, push remodel/s06-optical, write D:\AI_Projects\chromatic-tile-transport\runs\six-studies-s06-optical\RESULT.md (path is on MAIN repo runs/, create if needed) with sha + outline.
+Model gpt-6-astra / xhigh.

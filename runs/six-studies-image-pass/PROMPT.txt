@@ -1,0 +1,27 @@
+Task for chromatic-tile-transport at D:\AI_Projects\chromatic-tile-transport (HEAD 063f968 already contains the six studies).
+
+Goal: replace SVG placeholder art with model-generated images using YOUR image generation tools. Then wire them into the studies, rebuild, run tests, commit, and push. Do NOT claim done until files exist on disk.
+
+Constraints from user:
+- Keep prompts SIMPLE: few subjects, large shapes, negative space. Do not over-detail.
+- No video generation this pass; reuse assets/matrix-battle/03-clash.mp4 for temporal.
+- No sound.
+- Actually call your image tool; do not fake generation.
+- Prefer PNG outputs. Update asset paths in src/studies/ if changing .svg to .png.
+- Keep existing two effects (transport + matrix) untouched.
+- Create/use branch feat/visual-lab-six-studies before commit if not already on it.
+
+Prepared simplified prompts (from assets/studies/README.md):
+1) Quiet orbit 16:10 — Minimal editorial illustration. One pale moon, two teal mountain silhouettes, still water. Five colors, broad flat shapes, soft shading, large empty sky. No people, buildings, text, fine texture, tiny objects.
+2) Tidal garden 16:10 — Minimal abstract poster. One terracotta sun, one teal flowing river, two leaves on warm ivory. Four colors, broad smooth shapes, generous negative space. No text, realistic textures, tiny patterns.
+3) Paper world 16:10 — Minimal paper-cut illustration. One golden sun, three broad mountain layers, one simple arch. Ivory, sage, teal, ochre. Flat frontal view. No perspective, text, ornate decoration.
+Also generate 6 simple gallery covers for portal, temporal, fluid, optical, shadow, folding — same simplicity rules.
+
+Deliverables:
+1) Generated images under assets/studies/ (update README provenance to mark Image Gen ran).
+2) Update src/studies references + rebuild via python scripts/build_studies.py
+3) Run: node tests/studies_math.mjs and python tests/studies_browser.py (install playwright if needed)
+4) Commit on feat/visual-lab-six-studies and push origin
+5) Write summary to runs/six-studies-image-pass/RESULT.md with file list, commit sha, test outcomes
+
+Do not open Chrome yet. Stop after push + RESULT.md.

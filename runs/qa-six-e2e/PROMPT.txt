@@ -1,0 +1,14 @@
+只做只读验收，不要改仓库源码，不要 commit，不要 push。
+
+用官方 Chrome 扩展控制浏览器（agent.browsers.get("chrome")）。不要用 Chrome DevTools，不要用内置浏览器 iab。若扩展不可用，写明原因后停止，不要换别的浏览器。
+
+仓库：D:\AI_Projects\chromatic-tile-transport
+若 http://127.0.0.1:8765/ 没开，只启动 python scripts/serve.py --directory . --port 8765，不要改代码。
+
+打开展厅和六个新页面，以及原来的寻色迁移、Matrix 两个效果。记录：
+1. 底部栏能否在全部效果之间切换，还是只有原来两个，新的六套只能从单独列表进。
+2. 六个新页面和原来两套相比，视觉是否明显更粗糙。
+3. 每个页面是否能加载、有无明显报错、主要交互是否有反应。
+截图存到 D:\AI_Projects\chromatic-tile-transport\runs\qa-six-e2e\shots\
+把结论写到 D:\AI_Projects\chromatic-tile-transport\runs\qa-six-e2e\RESULT.md
+结论只写你实际看到的，不要把开发者的通过说法当证据。

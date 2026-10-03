@@ -1,0 +1,130 @@
+127.0.0.1 - - [04/Oct/2026 01:50:39] "GET /dist/portal-threshold.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:39] "GET /src/studies/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:39] "GET /src/studies/main.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:39] "GET /src/studies/portal.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:39] "GET /assets/studies/atlas/transport.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:39] "GET /assets/studies/atlas/portal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:39] "GET /assets/studies/atlas/matrix.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:39] "GET /assets/studies/atlas/temporal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:39] "GET /assets/studies/atlas/fluid.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:39] "GET /assets/studies/atlas/optical.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:39] "GET /assets/studies/atlas/shadow.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:39] "GET /assets/studies/atlas/folding.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:40] "GET /src/studies/core.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:40] "GET /src/studies/filmstrip.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:40] "GET /src/studies/math.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:40] "GET /src/studies/portal.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:40] "GET /assets/studies/portal-tidal-archive.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:40] "GET /assets/studies/portal-night-coordinates.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:40] "GET /assets/studies/portal-slow-expedition.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:40] "GET /assets/studies/portal-canopy-frequencies.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 01:50:40] "GET /assets/studies/portal-patina.png HTTP/1.1" 200 -
+PASS five generated textures decoded
+PASS eight peer links retain portal selection
+PASS four local chapters with individual art
+PASS 1440px threshold art and complete copy synchronized
+PASS 1440px threshold local selection and pause preserved
+PASS 1440px threshold no horizontal overflow
+PASS 1440px threshold copy and product card do not overlap
+PASS 1440px through art and complete copy synchronized
+PASS 1440px through local selection and pause preserved
+PASS 1440px through no horizontal overflow
+PASS 1440px through copy and product card do not overlap
+PASS 1440px return art and complete copy synchronized
+PASS 1440px return local selection and pause preserved
+PASS 1440px return no horizontal overflow
+PASS 1440px return copy and product card do not overlap
+PASS 1440px roam art and complete copy synchronized
+PASS 1440px roam local selection and pause preserved
+PASS 1440px roam no horizontal overflow
+PASS 1440px roam copy and product card do not overlap
+PASS 1024px threshold art and complete copy synchronized
+PASS 1024px threshold local selection and pause preserved
+PASS 1024px threshold no horizontal overflow
+PASS 1024px threshold copy and product card do not overlap
+PASS 1024px through art and complete copy synchronized
+PASS 1024px through local selection and pause preserved
+PASS 1024px through no horizontal overflow
+PASS 1024px through copy and product card do not overlap
+PASS 1024px return art and complete copy synchronized
+PASS 1024px return local selection and pause preserved
+PASS 1024px return no horizontal overflow
+PASS 1024px return copy and product card do not overlap
+PASS 1024px roam art and complete copy synchronized
+PASS 1024px roam local selection and pause preserved
+PASS 1024px roam no horizontal overflow
+PASS 1024px roam copy and product card do not overlap
+PASS 768px threshold art and complete copy synchronized
+PASS 768px threshold local selection and pause preserved
+PASS 768px threshold no horizontal overflow
+PASS 768px threshold copy and product card do not overlap
+PASS 768px through art and complete copy synchronized
+PASS 768px through local selection and pause preserved
+PASS 768px through no horizontal overflow
+PASS 768px through copy and product card do not overlap
+PASS 768px return art and complete copy synchronized
+PASS 768px return local selection and pause preserved
+PASS 768px return no horizontal overflow
+PASS 768px return copy and product card do not overlap
+PASS 768px roam art and complete copy synchronized
+PASS 768px roam local selection and pause preserved
+PASS 768px roam no horizontal overflow
+PASS 768px roam copy and product card do not overlap
+PASS 390px threshold art and complete copy synchronized
+PASS 390px threshold local selection and pause preserved
+PASS 390px threshold no horizontal overflow
+PASS 390px threshold copy and product card do not overlap
+PASS 390px through art and complete copy synchronized
+PASS 390px through local selection and pause preserved
+PASS 390px through no horizontal overflow
+PASS 390px through copy and product card do not overlap
+PASS 390px return art and complete copy synchronized
+PASS 390px return local selection and pause preserved
+PASS 390px return no horizontal overflow
+PASS 390px return copy and product card do not overlap
+PASS 390px roam art and complete copy synchronized
+PASS 390px roam local selection and pause preserved
+PASS 390px roam no horizontal overflow
+PASS 390px roam copy and product card do not overlap
+PASS 320px threshold art and complete copy synchronized
+PASS 320px threshold local selection and pause preserved
+PASS 320px threshold no horizontal overflow
+PASS 320px threshold copy and product card do not overlap
+PASS 320px through art and complete copy synchronized
+PASS 320px through local selection and pause preserved
+PASS 320px through no horizontal overflow
+PASS 320px through copy and product card do not overlap
+PASS 320px return art and complete copy synchronized
+PASS 320px return local selection and pause preserved
+PASS 320px return no horizontal overflow
+PASS 320px return copy and product card do not overlap
+PASS 320px roam art and complete copy synchronized
+PASS 320px roam local selection and pause preserved
+PASS 320px roam no horizontal overflow
+PASS 320px roam copy and product card do not overlap
+PASS four visually distinct chapter canvases
+PASS live chapter transition has intermediate frames
+PASS incoming copy shares transition progress
+PASS transition completes with readable copy
+PASS actual playback advances camera/environment
+PASS rapid selections settle to latest art and prose
+PASS content CTA advances visual and copy together
+PASS roaming chapter enables guided sequence
+PASS roam wraps to next full content beat
+PASS paused roaming is visually stable
+PASS clean view hides all editorial layers
+127.0.0.1 - - [04/Oct/2026 01:51:13] "GET /dist/portal-threshold.html HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 01:51:13] "GET /src/studies/portal.css HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 01:51:13] "GET /src/studies/filmstrip.mjs HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 01:51:13] "GET /src/studies/portal.mjs HTTP/1.1" 304 -
+PASS reduced motion threshold switches instantly and stays paused
+PASS reduced motion through switches instantly and stays paused
+PASS reduced motion return switches instantly and stays paused
+PASS reduced motion roam switches instantly and stays paused
+PASS peer navigation stays visible after landscape footer use
+PASS mobile keyboard selects chapter 1
+PASS mobile keyboard selects chapter 2
+PASS mobile keyboard selects chapter 3
+PASS mobile keyboard selects chapter 4
+PASS no failed local assets or runtime errors
+TOTAL 104

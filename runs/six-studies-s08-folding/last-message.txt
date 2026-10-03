@@ -1,0 +1,5 @@
+第 08 页已改为「纸间 FOLIO」：四章生成插画与文案同步切换，支持折叠互动和移动端阅读。
+
+已推送 `remodel/s08-folding`，提交 `b73d058`，远端 SHA 已核对。133 项页面检查及完整仓库检查通过。
+
+素材、录像和完整 SHA 已写入 [RESULT.md](D:/AI_Projects/chromatic-tile-transport/runs/six-studies-s08-folding/RESULT.md)。

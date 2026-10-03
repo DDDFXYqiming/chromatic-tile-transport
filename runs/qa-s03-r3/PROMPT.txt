@@ -1,0 +1,22 @@
+You are independent QA. Read-only. Do not edit source, do not commit, do not push.
+
+Repo: D:/AI_Projects/chromatic-tile-transport
+Expected HEAD starts with 54be389 on feat/visual-lab-six-studies. Record the full HEAD. If it does not start with 54be389, stop and say so.
+
+Browser: official Chrome only, via agent.browsers.get("chrome"). Connected kind must be extension. Do not use Chrome DevTools or the built-in browser. If the extension cannot attach, stop and write that failure. Do not fall back.
+
+Server: if http://127.0.0.1:8765/ is down, start python scripts/serve.py --directory . --port 8765 from the repo. If it is already up, reuse it and hard-refresh the page. Open only:
+http://127.0.0.1:8765/dist/portal-threshold.html
+
+Previous recheck at a290fd7 failed only item 3: during tidal-to-forest, the new forest title and body were readable while the old coast (waves, rocks, water) was still clearly visible. Shot: runs/qa-s03-r2/shots/15-confirmed-tidal-to-forest-04-682ms.jpg. Items 1, 2, and 4 passed. Re-check all four anyway.
+
+Acceptance, each pass or fail from what you actually see:
+1. Top bar shows all eight experiences in one row. No 03-08 dropdown.
+2. Bottom bar switches only this page's four journals. No control turns it into cross-page navigation. Click every bottom control and both arrows. Arrows wrap inside this page. Footer has no links to other study html files. URL stays on portal-threshold.html.
+3. Switching journals: new copy must not be clearly readable while the previous scene is still identifiable. The claimed fix is: old copy fades out during the crossfade, and the new copy appears only after the new scene has settled. Prove it with a mid-transition frame AND a just-settled frame for tidal to forest, and one more switch (forest to night). Fail if new title or body is clearly readable on the previous scene.
+4. Four journals still have real scenes, textures, titles, and body text when settled.
+
+Save JPEGs under D:/AI_Projects/chromatic-tile-transport/runs/qa-s03-r3/shots/.
+Write D:/AI_Projects/chromatic-tile-transport/runs/qa-s03-r3/RESULT.md in Chinese.
+First line must be exactly one of: 验收通过 / 验收不通过.
+Include HEAD, URL, and a shot index. Do not modify source.

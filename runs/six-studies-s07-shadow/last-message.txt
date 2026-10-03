@@ -1,0 +1,5 @@
+第 07 页已完成：四章「半影」设计札记、4 张 Image Gen 配图、图文同步切换和实时投影实验。
+
+已推送 `remodel/s07-shadow`，提交 `af4c6b5`。120 项专项无头检查及原有检查通过，工作区干净。
+
+[结果报告、完整 SHA 与截图](D:/AI_Projects/chromatic-tile-transport/runs/six-studies-s07-shadow/RESULT.md)

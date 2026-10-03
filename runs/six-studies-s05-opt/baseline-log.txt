@@ -1,0 +1,15 @@
+127.0.0.1 - - [04/Oct/2026 05:14:02] "GET /dist/liquid-canvas.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:14:02] "GET /src/studies/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:14:02] "GET /src/studies/fluid.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:14:02] "GET /src/studies/main.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:14:02] "GET /src/studies/core.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:14:02] "GET /src/studies/filmstrip.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:14:02] "GET /src/studies/math.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:14:02] "GET /assets/studies/fluid-mineral.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:14:02] "GET /assets/studies/fluid-ink.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:14:02] "GET /assets/studies/fluid-paper.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:14:02] "GET /assets/studies/fluid-light.png HTTP/1.1" 200 -
+PROFILE reading {"seconds": 3.0217940000002272, "main_thread_ms_per_second": 351.5689686325144, "frames_per_second": 33.75478275487751, "simulation_steps": 0, "uploads": 0, "state": {"id": "fluid", "playing": true, "frame": 105, "width": 1386, "height": 637, "rafHz": 34, "chapter": "mineral", "chapterIndex": 0, "art": "studies/fluid-mineral.png", "source": "art", "texturesLoaded": 4, "transition": 1, "transitionSeconds": 2.2, "holdSeconds": 18, "tour": false, "chapterTime": 0, "steps": 0, "damping": 1.1, "disturbed": false, "renderer": "texture-flow", "grid": [96, 64], "flowSize": [144, 96], "divergence": 0, "finite": true}}
+PROFILE flow {"seconds": 3.0923150000016904, "main_thread_ms_per_second": 999.0673653875208, "frames_per_second": 13.905439775694422, "simulation_steps": 129, "uploads": 0, "state": {"id": "fluid", "playing": true, "frame": 156, "width": 1386, "height": 637, "rafHz": 21, "chapter": "mineral", "chapterIndex": 0, "art": "studies/fluid-mineral.png", "source": "art", "texturesLoaded": 4, "transition": 1, "transitionSeconds": 2.2, "holdSeconds": 18, "tour": false, "chapterTime": 0, "steps": 137, "damping": 1.1, "disturbed": true, "renderer": "texture-flow", "grid": [96, 64], "flowSize": [144, 96], "divergence": 0.03337323543158101, "finite": true}}
+PROFILE settled {"seconds": 3.1971279999997932, "main_thread_ms_per_second": 999.2999967471449, "frames_per_second": 9.696202341602215, "simulation_steps": 93, "uploads": 0, "state": {"id": "fluid", "playing": true, "frame": 269, "width": 1386, "height": 637, "rafHz": 20, "chapter": "mineral", "chapterIndex": 0, "art": "studies/fluid-mineral.png", "source": "art", "texturesLoaded": 4, "transition": 1, "transitionSeconds": 2.2, "holdSeconds": 18, "tour": false, "chapterTime": 0, "steps": 476, "damping": 1.1, "disturbed": true, "renderer": "texture-flow", "grid": [96, 64], "flowSize": [144, 96], "divergence": 1.2037590033316369e-09, "finite": true}}
+PASS no browser runtime errors

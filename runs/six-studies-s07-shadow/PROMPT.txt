@@ -1,0 +1,13 @@
+Repo WORKTREE: D:\AI_Projects\chromatic-wt-s07
+Branch: remodel/s07-shadow (forked from feat/visual-lab-six-studies @ b1fe944)
+Do NOT push to feat/visual-lab-six-studies. Commit+push ONLY remodel/s07-shadow.
+Do NOT open interactive Chrome for the user. Headless OK. Avoid GUI Chrome contention.
+
+SCOPE: ONLY page 07 影子机关 / shadow-apparatus remodel.
+
+USER: content-first (product/tech blog OK to invent). Effects showcase content; bottom strip changes visuals+copy together. Not empty flex. Codex Image Gen → assets/studies/shadow-*.
+
+Touch mainly: src/studies/shadow.mjs, shadow.css if needed, catalog.json shadow entry only, assets, related tests. Do not rewrite other studies.
+
+Commit+push remodel/s07-shadow; write D:\AI_Projects\chromatic-tile-transport\runs\six-studies-s07-shadow\RESULT.md with sha.
+Model gpt-6-astra / xhigh.

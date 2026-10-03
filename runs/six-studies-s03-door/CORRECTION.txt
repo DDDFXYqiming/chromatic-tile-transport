@@ -1,0 +1,11 @@
+MID-COURSE CORRECTION from user+QA (must follow, overrides prior prompt):
+
+03 portal direction is CLOSE — keep the walk-through-door / 3D travel feel.
+BUT: generated images must NOT be shrunk into a tiny panel inside the door.
+Generated textures/images + 3D modeling must TOGETHER fill MOST of the page as one integrated stage.
+Not a small framed photo in a 3D set. Not PPT crossfade. Not a corner vignette.
+
+Continue from current WIP in this worktree (dirty files ok). Commit+push remodel/s03-door-travel.
+Write RESULT.md to D:\AI_Projects\chromatic-tile-transport\runs\six-studies-s03-door\RESULT.md
+Model: gpt-6-astra / xhigh already.
+build_studies + check_studies.

@@ -1,0 +1,178 @@
+127.0.0.1 - - [04/Oct/2026 03:06:21] "GET /dist/optical-vault.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 03:06:21] "GET /src/studies/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 03:06:21] "GET /src/studies/optical.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 03:06:21] "GET /src/studies/main.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 03:06:21] "GET /assets/studies/atlas/portal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 03:06:21] "GET /assets/studies/atlas/matrix.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 03:06:21] "GET /assets/studies/atlas/transport.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 03:06:21] "GET /assets/studies/atlas/temporal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 03:06:21] "GET /assets/studies/atlas/fluid.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 03:06:21] "GET /assets/studies/atlas/optical.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 03:06:21] "GET /assets/studies/atlas/shadow.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 03:06:21] "GET /assets/studies/atlas/folding.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 03:06:22] "GET /src/studies/core.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 03:06:22] "GET /src/studies/filmstrip.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 03:06:22] "GET /src/studies/math.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 03:06:22] "GET /src/studies/optical.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 03:06:22] "GET /assets/studies/optical-black.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 03:06:22] "GET /assets/studies/optical-white.png HTTP/1.1" 200 -
+PASS both original world images decoded
+PASS eight peer links retain page 06
+PASS four local chapters have decoded art
+PASS 1440px night artwork and full narrative synchronized
+PASS 1440px night local selection preserves URL and pause
+PASS 1440px night no horizontal overflow
+PASS 1440px night header navigation clears the artwork
+PASS 1440px night hero fits theater without wordmark overlap
+PASS 1440px night selected card visible in strip
+PASS 1440px survey artwork and full narrative synchronized
+PASS 1440px survey local selection preserves URL and pause
+PASS 1440px survey no horizontal overflow
+PASS 1440px survey header navigation clears the artwork
+PASS 1440px survey hero fits theater without wordmark overlap
+PASS 1440px survey selected card visible in strip
+PASS 1440px optics artwork and full narrative synchronized
+PASS 1440px optics local selection preserves URL and pause
+PASS 1440px optics no horizontal overflow
+PASS 1440px optics header navigation clears the artwork
+PASS 1440px optics hero fits theater without wordmark overlap
+PASS 1440px optics selected card visible in strip
+PASS 1440px calibration artwork and full narrative synchronized
+PASS 1440px calibration local selection preserves URL and pause
+PASS 1440px calibration no horizontal overflow
+PASS 1440px calibration header navigation clears the artwork
+PASS 1440px calibration hero fits theater without wordmark overlap
+PASS 1440px calibration selected card visible in strip
+PASS 1024px night artwork and full narrative synchronized
+PASS 1024px night local selection preserves URL and pause
+PASS 1024px night no horizontal overflow
+PASS 1024px night header navigation clears the artwork
+PASS 1024px night hero fits theater without wordmark overlap
+PASS 1024px night selected card visible in strip
+PASS 1024px survey artwork and full narrative synchronized
+PASS 1024px survey local selection preserves URL and pause
+PASS 1024px survey no horizontal overflow
+PASS 1024px survey header navigation clears the artwork
+PASS 1024px survey hero fits theater without wordmark overlap
+PASS 1024px survey selected card visible in strip
+PASS 1024px optics artwork and full narrative synchronized
+PASS 1024px optics local selection preserves URL and pause
+PASS 1024px optics no horizontal overflow
+PASS 1024px optics header navigation clears the artwork
+PASS 1024px optics hero fits theater without wordmark overlap
+PASS 1024px optics selected card visible in strip
+PASS 1024px calibration artwork and full narrative synchronized
+PASS 1024px calibration local selection preserves URL and pause
+PASS 1024px calibration no horizontal overflow
+PASS 1024px calibration header navigation clears the artwork
+PASS 1024px calibration hero fits theater without wordmark overlap
+PASS 1024px calibration selected card visible in strip
+PASS 768px night artwork and full narrative synchronized
+PASS 768px night local selection preserves URL and pause
+PASS 768px night no horizontal overflow
+PASS 768px night header navigation clears the artwork
+PASS 768px night hero fits theater without wordmark overlap
+PASS 768px night selected card visible in strip
+PASS 768px survey artwork and full narrative synchronized
+PASS 768px survey local selection preserves URL and pause
+PASS 768px survey no horizontal overflow
+PASS 768px survey header navigation clears the artwork
+PASS 768px survey hero fits theater without wordmark overlap
+PASS 768px survey selected card visible in strip
+PASS 768px optics artwork and full narrative synchronized
+PASS 768px optics local selection preserves URL and pause
+PASS 768px optics no horizontal overflow
+PASS 768px optics header navigation clears the artwork
+PASS 768px optics hero fits theater without wordmark overlap
+PASS 768px optics selected card visible in strip
+PASS 768px calibration artwork and full narrative synchronized
+PASS 768px calibration local selection preserves URL and pause
+PASS 768px calibration no horizontal overflow
+PASS 768px calibration header navigation clears the artwork
+PASS 768px calibration hero fits theater without wordmark overlap
+PASS 768px calibration selected card visible in strip
+PASS 390px night artwork and full narrative synchronized
+PASS 390px night local selection preserves URL and pause
+PASS 390px night no horizontal overflow
+PASS 390px night header navigation clears the artwork
+PASS 390px night hero fits theater without wordmark overlap
+PASS 390px night selected card visible in strip
+PASS 390px survey artwork and full narrative synchronized
+PASS 390px survey local selection preserves URL and pause
+PASS 390px survey no horizontal overflow
+PASS 390px survey header navigation clears the artwork
+PASS 390px survey hero fits theater without wordmark overlap
+PASS 390px survey selected card visible in strip
+PASS 390px optics artwork and full narrative synchronized
+PASS 390px optics local selection preserves URL and pause
+PASS 390px optics no horizontal overflow
+PASS 390px optics header navigation clears the artwork
+PASS 390px optics hero fits theater without wordmark overlap
+PASS 390px optics selected card visible in strip
+PASS 390px calibration artwork and full narrative synchronized
+PASS 390px calibration local selection preserves URL and pause
+PASS 390px calibration no horizontal overflow
+PASS 390px calibration header navigation clears the artwork
+PASS 390px calibration hero fits theater without wordmark overlap
+PASS 390px calibration selected card visible in strip
+PASS 390px chapter strip remains in viewport
+PASS 390px reading controls clear the fixed strip at scroll end
+PASS 320px night artwork and full narrative synchronized
+PASS 320px night local selection preserves URL and pause
+PASS 320px night no horizontal overflow
+PASS 320px night header navigation clears the artwork
+PASS 320px night hero fits theater without wordmark overlap
+PASS 320px night selected card visible in strip
+PASS 320px survey artwork and full narrative synchronized
+PASS 320px survey local selection preserves URL and pause
+PASS 320px survey no horizontal overflow
+PASS 320px survey header navigation clears the artwork
+PASS 320px survey hero fits theater without wordmark overlap
+PASS 320px survey selected card visible in strip
+PASS 320px optics artwork and full narrative synchronized
+PASS 320px optics local selection preserves URL and pause
+PASS 320px optics no horizontal overflow
+PASS 320px optics header navigation clears the artwork
+PASS 320px optics hero fits theater without wordmark overlap
+PASS 320px optics selected card visible in strip
+PASS 320px calibration artwork and full narrative synchronized
+PASS 320px calibration local selection preserves URL and pause
+PASS 320px calibration no horizontal overflow
+PASS 320px calibration header navigation clears the artwork
+PASS 320px calibration hero fits theater without wordmark overlap
+PASS 320px calibration selected card visible in strip
+PASS 320px chapter strip remains in viewport
+PASS 320px reading controls clear the fixed strip at scroll end
+PASS four chapter canvases differ
+PASS paused pixels are stable
+PASS drag changes real split pixels while keeping narrative
+PASS split slider End clamps to 91 percent
+PASS split slider Home clamps to 53 percent
+PASS split slider keyboard nudges without chapter navigation
+PASS optical console shares the split state
+PASS reset restores split while retaining chapter
+PASS real composite exports as PNG
+PASS console flip opens paired research narrative
+PASS hero CTA returns to paired product chapter
+PASS secondary narrative preview opens its world
+PASS canvas arrow moves to next chapter
+PASS next wraps all four chapters
+PASS previous wraps all four chapters
+PASS world transition renders intermediate frames
+PASS transition typography reveals with matching world
+PASS world transition resolves complete copy
+PASS live optical scene advances canvas pixels
+PASS rapid reversal settles on last requested chapter
+PASS pause during transition settles readable chapter
+PASS notes open and pause safely
+PASS gallery navigation still works
+PASS white world gallery uses readable theme ink
+PASS clean view hides narrative overlays
+PASS mobile clean scene fills its canvas
+127.0.0.1 - - [04/Oct/2026 03:07:07] "GET /dist/optical-vault.html HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 03:07:07] "GET /src/studies/optical.css HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 03:07:07] "GET /src/studies/optical.mjs HTTP/1.1" 304 -
+PASS reduced motion gives instant legible navigation
+PASS no browser exceptions
+PASS all local resources resolved
+TOTAL 156

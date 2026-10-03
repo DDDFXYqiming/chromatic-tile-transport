@@ -1,0 +1,168 @@
+127.0.0.1 - - [04/Oct/2026 05:11:16] "GET /dist/liquid-canvas.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:11:16] "GET /src/studies/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:11:16] "GET /src/studies/fluid.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:11:16] "GET /src/studies/main.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:11:16] "GET /src/studies/core.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:11:16] "GET /src/studies/filmstrip.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:11:16] "GET /src/studies/math.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:11:16] "GET /src/studies/fluid.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:11:16] "GET /src/studies/fluid-regions.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:11:16] "GET /assets/studies/fluid-mineral.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:11:16] "GET /assets/studies/fluid-ink.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:11:16] "GET /assets/studies/fluid-light.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 05:11:16] "GET /assets/studies/fluid-paper.png HTTP/1.1" 200 -
+PASS four original chapter paintings decoded
+PASS native-resolution texture flow available
+PASS eight peer links keep study 05 selected
+PASS four local chapter buttons with distinct art
+PASS 1440px mineral full chapter copy and artwork synchronized
+PASS 1440px mineral navigation and pause preserved
+PASS 1440px mineral no horizontal overflow
+PASS 1440px mineral editorial blocks do not overlap
+PASS 1440px ink full chapter copy and artwork synchronized
+PASS 1440px ink navigation and pause preserved
+PASS 1440px ink no horizontal overflow
+PASS 1440px ink editorial blocks do not overlap
+PASS 1440px paper full chapter copy and artwork synchronized
+PASS 1440px paper navigation and pause preserved
+PASS 1440px paper no horizontal overflow
+PASS 1440px paper editorial blocks do not overlap
+PASS 1440px light full chapter copy and artwork synchronized
+PASS 1440px light navigation and pause preserved
+PASS 1440px light no horizontal overflow
+PASS 1440px light editorial blocks do not overlap
+PASS 1024px mineral full chapter copy and artwork synchronized
+PASS 1024px mineral navigation and pause preserved
+PASS 1024px mineral no horizontal overflow
+PASS 1024px mineral editorial blocks do not overlap
+PASS 1024px ink full chapter copy and artwork synchronized
+PASS 1024px ink navigation and pause preserved
+PASS 1024px ink no horizontal overflow
+PASS 1024px ink editorial blocks do not overlap
+PASS 1024px paper full chapter copy and artwork synchronized
+PASS 1024px paper navigation and pause preserved
+PASS 1024px paper no horizontal overflow
+PASS 1024px paper editorial blocks do not overlap
+PASS 1024px light full chapter copy and artwork synchronized
+PASS 1024px light navigation and pause preserved
+PASS 1024px light no horizontal overflow
+PASS 1024px light editorial blocks do not overlap
+PASS 768px mineral full chapter copy and artwork synchronized
+PASS 768px mineral navigation and pause preserved
+PASS 768px mineral no horizontal overflow
+PASS 768px mineral editorial blocks do not overlap
+PASS 768px ink full chapter copy and artwork synchronized
+PASS 768px ink navigation and pause preserved
+PASS 768px ink no horizontal overflow
+PASS 768px ink editorial blocks do not overlap
+PASS 768px paper full chapter copy and artwork synchronized
+PASS 768px paper navigation and pause preserved
+PASS 768px paper no horizontal overflow
+PASS 768px paper editorial blocks do not overlap
+PASS 768px light full chapter copy and artwork synchronized
+PASS 768px light navigation and pause preserved
+PASS 768px light no horizontal overflow
+PASS 768px light editorial blocks do not overlap
+PASS 390px mineral full chapter copy and artwork synchronized
+PASS 390px mineral navigation and pause preserved
+PASS 390px mineral no horizontal overflow
+PASS 390px mineral editorial blocks do not overlap
+PASS 390px ink full chapter copy and artwork synchronized
+PASS 390px ink navigation and pause preserved
+PASS 390px ink no horizontal overflow
+PASS 390px ink editorial blocks do not overlap
+PASS 390px paper full chapter copy and artwork synchronized
+PASS 390px paper navigation and pause preserved
+PASS 390px paper no horizontal overflow
+PASS 390px paper editorial blocks do not overlap
+PASS 390px light full chapter copy and artwork synchronized
+PASS 390px light navigation and pause preserved
+PASS 390px light no horizontal overflow
+PASS 390px light editorial blocks do not overlap
+PASS 320px mineral full chapter copy and artwork synchronized
+PASS 320px mineral navigation and pause preserved
+PASS 320px mineral no horizontal overflow
+PASS 320px mineral editorial blocks do not overlap
+PASS 320px ink full chapter copy and artwork synchronized
+PASS 320px ink navigation and pause preserved
+PASS 320px ink no horizontal overflow
+PASS 320px ink editorial blocks do not overlap
+PASS 320px paper full chapter copy and artwork synchronized
+PASS 320px paper navigation and pause preserved
+PASS 320px paper no horizontal overflow
+PASS 320px paper editorial blocks do not overlap
+PASS 320px light full chapter copy and artwork synchronized
+PASS 320px light navigation and pause preserved
+PASS 320px light no horizontal overflow
+PASS 320px light editorial blocks do not overlap
+PASS all four chapters have distinct canvas pixels
+PASS pigment transition renders intermediate frames
+PASS chapter prose shares the transition clock
+PLAYBACK {"wait_seconds": 0.453, "state": {"id": "fluid", "playing": true, "frame": 126, "width": 1386, "height": 637, "rafHz": 47, "chapter": "ink", "chapterIndex": 1, "art": "studies/fluid-ink.png", "source": "art", "texturesLoaded": 4, "transition": 1, "transitionSeconds": 2.2, "holdSeconds": 18, "tour": false, "chapterTime": 0, "steps": 0, "damping": 0.45, "disturbed": false, "renderer": "texture-flow", "grid": [72, 48], "flowSize": [120, 80], "active": false, "speed": 0, "uploads": 0, "renderSize": [1280, 853], "activeCells": 3250, "projectionIterations": 12, "idleHz": 12, "pointerInside": false, "divergence": 0, "finite": true}}
+PASS transition settles to legible prose
+PASS camera playback advances actual pixels
+PLAYBACK {"wait_seconds": 2.031, "state": {"id": "fluid", "playing": true, "frame": 262, "width": 1386, "height": 637, "rafHz": 49, "chapter": "paper", "chapterIndex": 2, "art": "studies/fluid-paper.png", "source": "art", "texturesLoaded": 4, "transition": 1, "transitionSeconds": 2.2, "holdSeconds": 18, "tour": false, "chapterTime": 0, "steps": 0, "damping": 1.55, "disturbed": false, "renderer": "texture-flow", "grid": [72, 48], "flowSize": [120, 80], "active": false, "speed": 0, "uploads": 0, "renderSize": [1280, 853], "activeCells": 3538, "projectionIterations": 12, "idleHz": 12, "pointerInside": false, "divergence": 0, "finite": true}}
+PASS interrupted transitions settle to last chapter
+PLAYBACK {"wait_seconds": 2.093, "state": {"id": "fluid", "playing": true, "frame": 357, "width": 1386, "height": 637, "rafHz": 44, "chapter": "light", "chapterIndex": 3, "art": "studies/fluid-light.png", "source": "art", "texturesLoaded": 4, "transition": 1, "transitionSeconds": 2.2, "holdSeconds": 18, "tour": false, "chapterTime": 0, "steps": 0, "damping": 0.7, "disturbed": false, "renderer": "texture-flow", "grid": [72, 48], "flowSize": [120, 80], "active": false, "speed": 0, "uploads": 0, "renderSize": [1280, 853], "activeCells": 1367, "projectionIterations": 12, "idleHz": 12, "pointerInside": false, "divergence": 0, "finite": true}}
+PASS hero action advances artwork and copy
+PASS keyboard wraps to first chapter
+PASS paused frame is stable
+PASS paused pigment action visibly transports artwork
+PASS pigment interaction retains selected chapter and copy
+PASS flow remains finite and keeps moving after release
+PASS persistent momentum changes transported pixels
+PASS reset restores current chapter and clears momentum
+PASS direct canvas drag changes the persistent field
+PASS clean view hides every editorial overlay
+PASS local image import identifies the test material
+PASS chapter selection exits local-image mode
+PASS flow painting exports a PNG
+PASS paused guided reading freezes its chapter clock
+PLAYBACK {"wait_seconds": 2.109, "state": {"id": "fluid", "playing": true, "frame": 698, "width": 1386, "height": 637, "rafHz": 43, "chapter": "mineral", "chapterIndex": 0, "art": "studies/fluid-mineral.png", "source": "art", "texturesLoaded": 4, "transition": 1, "transitionSeconds": 2.2, "holdSeconds": 18, "tour": true, "chapterTime": 2.219300000000745, "steps": 0, "damping": 1.1, "disturbed": false, "renderer": "texture-flow", "grid": [72, 48], "flowSize": [120, 80], "active": false, "speed": 0, "uploads": 49, "renderSize": [1280, 853], "activeCells": 1296, "projectionIterations": 12, "idleHz": 12, "pointerInside": false, "divergence": 0, "finite": true}}
+PASS guided reading wraps complete content and strip
+PASS manual selection stops guided reading
+127.0.0.1 - - [04/Oct/2026 05:12:03] "GET /dist/liquid-canvas.html HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 05:12:03] "GET /src/studies/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 05:12:03] "GET /src/studies/fluid.css HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 05:12:03] "GET /src/studies/main.mjs HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 05:12:03] "GET /src/studies/core.mjs HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 05:12:03] "GET /src/studies/filmstrip.mjs HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 05:12:03] "GET /src/studies/math.mjs HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 05:12:03] "GET /src/studies/fluid.mjs HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 05:12:03] "GET /src/studies/fluid-regions.mjs HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 05:12:03] "GET /assets/studies/fluid-mineral.png HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 05:12:03] "GET /assets/studies/fluid-ink.png HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 05:12:03] "GET /assets/studies/fluid-paper.png HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 05:12:03] "GET /assets/studies/fluid-light.png HTTP/1.1" 304 -
+PASS reduced motion mineral switches instantly
+PASS reduced motion ink switches instantly
+PASS reduced motion paper switches instantly
+PASS reduced motion light switches instantly
+PASS mobile keyboard reveals chapter 1
+PASS mobile keyboard reveals chapter 2
+PASS mobile keyboard reveals chapter 3
+PASS mobile keyboard reveals chapter 4
+Traceback (most recent call last):
+  File "D:\AI_Projects\chromatic-wt-s05-opt\tests\fluid_browser.py", line 235, in <module>
+  File "D:\AI_Projects\chromatic-wt-s05-opt\tests\fluid_browser.py", line 191, in run
+    check('mobile journal retains local footer and eight header destinations', page.locator('.hall-scene-footer').is_visible() and page.locator('.hall-modes > a').count() == 8)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\39795\AppData\Local\Programs\Python\Python312\Lib\site-packages\playwright\sync_api\_generated.py", line 17876, in click
+    self._sync(
+  File "C:\Users\39795\AppData\Local\Programs\Python\Python312\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\39795\AppData\Local\Programs\Python\Python312\Lib\site-packages\playwright\_impl\_locator.py", line 165, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\39795\AppData\Local\Programs\Python\Python312\Lib\site-packages\playwright\_impl\_frame.py", line 593, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "C:\Users\39795\AppData\Local\Programs\Python\Python312\Lib\site-packages\playwright\_impl\_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\39795\AppData\Local\Programs\Python\Python312\Lib\site-packages\playwright\_impl\_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator(".hall-open-atlas")
+

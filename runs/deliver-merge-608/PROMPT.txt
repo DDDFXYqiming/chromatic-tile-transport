@@ -1,0 +1,15 @@
+你在用户 Windows 本机。仓库 D:\AI_Projects\chromatic-tile-transport，分支 feat/visual-lab-six-studies，HEAD a57dd6f。本地静态服务已在 http://127.0.0.1:8765/ 。
+
+任务：用官方 Chrome 扩展 agent.browsers.get("chrome")（不要 DevTools、不要内置 iab）依次打开并目视确认三页（一次一页，不要并行多窗争用）：
+1) http://127.0.0.1:8765/dist/optical-vault.html  （06 PHASE）
+2) http://127.0.0.1:8765/dist/shadow-apparatus.html （07 PENUMBRA）
+3) http://127.0.0.1:8765/dist/folding-theater.html （08 FOLIO）
+
+每页检查：
+- 顶栏 8 个并排 pill（01–08），无「03—08」下拉
+- 底栏只切本页章节/内容，不跳到别的体验
+- 特效与文案一起切换，不是空白盒 demo
+- 06 须有黑/白双空间两套内容
+
+每页截一张桌面概览图保存到 runs/deliver-merge-608/shots/。
+全部完成后写 runs/deliver-merge-608/RESULT.md（中文）：通过/失败、HEAD、各页 URL、观察要点、截图路径。退出码 0 仅当三页都打开且上述结构可见。

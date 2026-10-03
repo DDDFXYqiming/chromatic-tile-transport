@@ -1,0 +1,11 @@
+已完成。[验收报告](D:/AI_Projects/chromatic-tile-transport/runs/qa-six-e2e/RESULT.md)，共保存 33 张截图。
+
+- **底部栏可切换全部八套**。原两套需先点“八个体验”，新六套默认显示全部入口。
+- **新六套整体更粗糙**，画中门、时差场、液态画布、影子机关的差距最明显。
+- **九个页面均能加载**，已测主要控件有反应，未看到可见报错。
+
+本次仅写验收文件。结束时发现 `src/hall/` 四个文件另有改动，来源未核实，已记入报告。
+
+![八项底部导航](D:/AI_Projects/chromatic-tile-transport/runs/qa-six-e2e/shots/33-nav-wrap-loaded.jpg)
+
+![影子机关的阶梯状轮廓](D:/AI_Projects/chromatic-tile-transport/runs/qa-six-e2e/shots/25-shadow-diamond.jpg)

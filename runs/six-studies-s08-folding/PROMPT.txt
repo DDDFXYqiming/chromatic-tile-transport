@@ -1,0 +1,13 @@
+Repo WORKTREE: D:\AI_Projects\chromatic-wt-s08
+Branch: remodel/s08-folding (forked from feat/visual-lab-six-studies @ b1fe944)
+Do NOT push to feat/visual-lab-six-studies. Commit+push ONLY remodel/s08-folding.
+Do NOT open interactive Chrome for the user. Headless OK. Avoid GUI Chrome contention.
+
+SCOPE: ONLY page 08 折叠剧场 / folding-theater remodel.
+
+USER: content-first (product/tech blog OK). Effects showcase content; strip switches visuals+copy together. Codex Image Gen → assets/studies/folding-*.
+
+Touch mainly: src/studies/folding.mjs, folding.css if needed, catalog.json folding entry only, assets, related tests. Do not rewrite other studies.
+
+Commit+push remodel/s08-folding; write D:\AI_Projects\chromatic-tile-transport\runs\six-studies-s08-folding\RESULT.md with sha.
+Model gpt-6-astra / xhigh.

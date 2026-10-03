@@ -1,0 +1,7 @@
+Completed and pushed `cd729f8` to `remodel/s03-door-travel`.
+
+Artwork now fills the 3D stage. Build, playback, mobile, and reduced-motion checks passed.
+
+[RESULT.md](D:/AI_Projects/chromatic-tile-transport/runs/six-studies-s03-door/RESULT.md)
+
+![Updated stage](D:/AI_Projects/chromatic-wt-s03-door/runs/six-studies-s03-door/r7/01-tidal-stage.jpg)

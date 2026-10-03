@@ -1,0 +1,43 @@
+PASS Both generated MP4s decode through real PixiJS VideoSource textures
+PASS Each shot has visible internal movement with no shader camera drift
+PASS Reverse scrubs reproduce the exact decoded pixels in original and grid modes
+PASS Incoming video time stays continuous at both shot boundaries including the loop
+PASS Both videos continue native playback during the Matrix bridge
+PASS Paused playback freezes pixels and stops continuous drawing
+PASS The actual motion checkbox switches between video movement and its still first frame
+PASS Slow card preview holds both video frames, reverses, and returns to native playback
+PASS Restoring the WebGL context recreates video resources at the same paused frame
+PASS Mobile portrait and landscape keep the character and controls usable
+PASS Reduced motion freezes the videos as well as the transition
+PASS Canvas fallback can also draw real local video frames
+PASS An unavailable video uses its poster and reports the downgrade explicitly
+PASS The standalone artifact embeds both playable videos and makes no external requests
+PASS The website never contacts generation APIs or any remote media host
+PASS No uncaught browser errors
+PASS Five real anime videos load with a 21.5-second cycle
+PASS All five shots are different and contain substantial image changes
+PASS All five video and grid boundaries join continuously including last-to-first
+PASS Scrubbing across five sources returns exact decoded pixels
+PASS Only the two bridging videos play while the other three remain paused
+PASS All five filmstrip buttons and the four version links are available
+PASS Five-shot navigation fits mobile portrait and landscape layouts
+PASS Offline output embeds and decodes all five videos without remote requests
+PASS Normal playback makes no calls to model or external media services
+PASS No uncaught browser errors
+PASS Five real anime videos load with a 21.5-second cycle
+PASS All five shots are different and contain substantial image changes
+PASS All five video and grid boundaries join continuously including last-to-first
+PASS Scrubbing across five sources returns exact decoded pixels
+PASS Only the two bridging videos play while the other three remain paused
+PASS All five filmstrip buttons and the four version links are available
+PASS Five-shot navigation fits mobile portrait and landscape layouts
+PASS Offline output embeds and decodes all five videos without remote requests
+PASS Normal playback makes no calls to model or external media services
+PASS No uncaught browser errors
+PASS The original garden and all three video collections retain full page components
+PASS Archive selection, side navigation, hero action and chapter copy stay synchronized
+PASS Opening the archive freezes image and video motion; Escape restores focus and playback
+PASS Closing the archive preserves a deliberately paused timeline
+PASS Pure image and immersive modes remain available without losing the full page view
+PASS Desktop, small phone and landscape layouts avoid component overlap and horizontal scroll
+PASS Shared page components have no uncaught browser errors

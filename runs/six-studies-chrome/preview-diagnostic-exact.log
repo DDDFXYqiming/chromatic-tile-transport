@@ -1,0 +1,21 @@
+ASSERT 111 True
+ASSERT 111 True
+ASSERT 112 True
+ASSERT 113 True
+ASSERT 115 True
+ASSERT 117 True
+ASSERT 117 True
+ASSERT 119 True
+ASSERT 127 False
+SOURCE                 require(not after['bridgeLoop'] and after['playing'] and after['seconds']==exit_state['before'])
+before 9.451300000000035
+after {"ready": true, "engine": "WEBGL 2", "seconds": 8.391400000000024, "sceneCount": 5, "playing": true, "reduced": false, "config": {"shotSeconds": 6.8, "bridgeSeconds": 0.48, "density": 144, "zoom": 1.65, "parallax": 0.65, "palette": "ice", "mode": "auto", "autoplay": true, "layerMotion": true, "cameraX": 0, "cameraY": 0, "deformation": true, "deformationStrength": 1, "motionStudy": false, "videoMotion": true}, "frame": {"position": 8.391400000000024, "total": 34, "scene": 1, "next": 2, "local": 1.5914000000000241, "phase": 0.25180379746835824, "reduced": false, "bridge": 0, "from": 0, "to": 0, "reveal": 0.18971273752233972, "zoom": 1.0774782575907713, "focus": 0.0009481295011982625, "label": "\u539f\u753b / ORIGINAL", "shade": 1, "forceMatrix": false, "drift": 0.4622165838907656, "direction": -1}, "grid": {"cols": 144, "rows": 70}, "width": 1374, "height": 664, "glError": 0, "contextLost": false, "drawCount": 168, "bridgeLoop": true, "preview": {"position": 8.391400000000024, "phase": "reverse", "cycleSeconds": 17.560000000000002, "bridgeSeconds": 0.96}, "timing": {"shotSeconds": 6.8, "originalSeconds": 4.8032, "bridgeSeconds": 0.48, "accentSeconds": 1.5168}, "composition": null, "warnings": []}
+exit_state {"before": 8.391400000000024, "after": {"ready": true, "engine": "WEBGL 2", "seconds": 8.391400000000024, "sceneCount": 5, "playing": true, "reduced": false, "config": {"shotSeconds": 6.8, "bridgeSeconds": 0.48, "density": 144, "zoom": 1.65, "parallax": 0.65, "palette": "ice", "mode": "auto", "autoplay": true, "layerMotion": true, "cameraX": 0, "cameraY": 0, "deformation": true, "deformationStrength": 1, "motionStudy": false, "videoMotion": true}, "frame": {"position": 8.391400000000024, "total": 34, "scene": 1, "next": 2, "local": 1.5914000000000241, "phase": 0.25180379746835824, "reduced": false, "bridge": 0, "from": 0, "to": 0, "reveal": 0.18971273752233972, "zoom": 1.0774782575907713, "focus": 0.0009481295011982625, "label": "\u539f\u753b / ORIGINAL", "shade": 1, "forceMatrix": false, "drift": 0.4622165838907656, "direction": -1}, "grid": {"cols": 144, "rows": 70}, "width": 1374, "height": 664, "glError": 0, "contextLost": false, "drawCount": 168, "bridgeLoop": true, "preview": {"position": 8.391400000000024, "phase": "reverse", "cycleSeconds": 17.560000000000002, "bridgeSeconds": 0.96}, "timing": {"shotSeconds": 6.8, "originalSeconds": 4.8032, "bridgeSeconds": 0.48, "accentSeconds": 1.5168}, "composition": null, "warnings": []}}
+normal_bridge 0.48
+NOW {"seconds": 8.541400000000026, "playing": true, "preview": null, "bridgeLoop": false, "frame": {"position": 8.541400000000026, "total": 34, "scene": 1, "next": 2, "local": 1.7414000000000263, "phase": 0.27553797468354846, "reduced": false, "bridge": 0, "from": 0, "to": 0, "reveal": 0.22861326642158175, "zoom": 1.0829344312427245, "focus": 0.008385755396539091, "label": "\u539f\u753b / ORIGINAL", "shade": 1, "forceMatrix": false, "drift": 0.49497663114690693, "direction": -1}}
+Traceback (most recent call last):
+  File "<stdin>", line 28, in <module>
+  File "tests/browser_matrix.py", line 127, in looptest
+    require(not after['bridgeLoop'] and after['playing'] and after['seconds']==exit_state['before'])
+  File "<stdin>", line 25, in require
+AssertionError: Assertion failed

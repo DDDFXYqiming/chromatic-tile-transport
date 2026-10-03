@@ -1,0 +1,13 @@
+MID-COURSE CORRECTION from user+QA (HARD FAIL previous direction):
+
+07 must NOT shrink into a small right-side showcase / explanation panel (same failure mode as page 08).
+Do NOT explain "how projection/shadows form" as a didactic demo in a corner.
+
+Wanted: full-page dazzling display — content shown via MULTI-DIRECTIONAL shadows + typography/content across the WHOLE page.
+This project invents new planar/spatial exhibition schemes; not a traditional blog with fancy CSS in a flat column.
+
+Discard corner "apparatus explanation" layouts. Rebuild as full-viewport shadow-driven content exhibition.
+Continue from WIP if useful, else rewrite shadow study.
+Commit+push remodel/s07-shadow-3d.
+RESULT at D:\AI_Projects\chromatic-tile-transport\runs\six-studies-s07-3d\RESULT.md
+build_studies + check_studies. Model gpt-6-astra / xhigh.

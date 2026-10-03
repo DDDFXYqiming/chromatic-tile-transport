@@ -1,0 +1,1 @@
+2026-10-03T18:52:13.469398Z ERROR codex_core::tools::router: error=apply_patch verification failed: invalid patch: multiple operations target D:\AI_Projects\chromatic-wt-s07\src\studies\shadow.mjs

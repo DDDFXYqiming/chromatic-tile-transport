@@ -1,0 +1,25 @@
+You are independent QA. Read-only. Do not edit source, do not commit, do not push.
+
+Repo: D:/AI_Projects/chromatic-tile-transport
+Expected HEAD: a290fd7 on feat/visual-lab-six-studies. Record the actual HEAD. If it is not a290fd7, stop and say so.
+
+Browser: official Chrome only, via agent.browsers.get("chrome"). The connected browser kind must be extension. Do not use Chrome DevTools, do not use the built-in browser. If the ChatGPT desktop client is closed and the extension cannot attach, stop and write that failure. Do not fall back.
+
+Server: if http://127.0.0.1:8765/ is down, start python scripts/serve.py --directory . --port 8765 from the repo. If it is already up, reuse it and hard-refresh. Do not open any page except:
+http://127.0.0.1:8765/dist/portal-threshold.html
+
+Previous fail (do not trust it; re-check the live page):
+- Bottom bar had a control that turned the footer into a cross-page atlas (links to matrix-battle.html and temporal-field.html).
+- During journal switches, new copy appeared on the old scene.
+
+Acceptance, each pass or fail from what you actually see:
+1. Top bar shows all eight experiences in one row. No 03-08 dropdown.
+2. Bottom bar switches only this page journals/content. There is no control that turns it into cross-page navigation. Click every bottom control and both arrows. Arrows must wrap inside this page. Footer must not link to other study html files.
+3. Switching journals: copy and picture change together. Capture a mid-transition frame. Fail if new title or body is clearly readable on the previous scene.
+4. The page presents four written journals with real scenes and textures, not an empty effect demo.
+
+Save JPEGs under D:/AI_Projects/chromatic-tile-transport/runs/qa-s03-r2/shots/.
+Write D:/AI_Projects/chromatic-tile-transport/runs/qa-s03-r2/RESULT.md in Chinese.
+First line must be exactly one of: 验收通过 / 验收不通过.
+Include the HEAD, the URL, and a shot index.
+Do not modify source.

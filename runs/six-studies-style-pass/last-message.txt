@@ -1,0 +1,7 @@
+已完成并推送 `origin/feat/visual-lab-six-studies`，远端确认 HEAD 为 `32bdb81`。
+
+六页已统一展厅样式，八个体验可通过页头和底部 atlas 切换，原机制保留。
+
+数学 7、HTTP 121、离线 122、导航 117 项通过；effect 01 全通过。Matrix 两项既有失败已记录。
+
+详见 [RESULT.md](D:/AI_Projects/chromatic-tile-transport/runs/six-studies-style-pass/RESULT.md)。

@@ -1,0 +1,8 @@
+PASS near clipping stays finite in front of camera
+PASS unit-index sphere does not move background samples
+PASS different refractive indices actually bend different rays
+PASS one immutable solid projects to both required silhouettes
+PASS all sheet hinges stay attached throughout folding
+PASS pressure projection reduces velocity divergence
+PASS fluid remains finite over 240 fixed time steps
+7 tests passed.

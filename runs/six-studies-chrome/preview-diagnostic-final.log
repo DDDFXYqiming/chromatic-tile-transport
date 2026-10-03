@@ -1,0 +1,12 @@
+ASSERT 111 True
+ASSERT 111 True
+ASSERT 112 True
+ASSERT 113 True
+ASSERT 115 True
+ASSERT 117 True
+ASSERT 117 True
+ASSERT 119 True
+ASSERT 127 True
+ASSERT 128 True
+ASSERT 129 True
+{'completeOriginalDwellSeconds': 1.5, 'targetPixelsHeld': True, 'smoothReverse': True, 'normalBridgeSeconds': 0.48}

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#091d26"><title>液态画布 · 星海视觉实验室</title>
+<link rel="stylesheet" href="../src/studies/style.css">
+</head>
+<body data-study="fluid">
+<header><a class="brand" href="../index.html"><span>✦</span> 星海视觉实验室</a><a class="back" href="../index.html">全部实验 ↗</a></header>
+<main>
+<section class="intro"><div><p class="eyebrow">EXPERIMENT 05 / LIQUID CANVAS</p><h1>液态画布<span>MATTER / 物质</span></h1></div><p class="lead">用手指拂过，让一幅画学会流动。</p></section>
+<section class="theater" aria-label="液态画布互动实验"><canvas id="canvas" tabindex="0" aria-label="按住画面拖动，或点击轻推颜料。松手后动量继续影响画面；只有重置才回到原图。支持本地换图。"></canvas><div class="loading" id="loading">正在准备画面…</div></section>
+<div class="transport"><div class="buttons"><button id="play" type="button">暂停</button><button id="reset" type="button">重置</button><button id="snapshot" type="button">保存画面</button></div><p id="status" role="status" aria-live="polite">初始化</p><span class="number">05 / 08</span></div>
+<section class="controls" id="controls" aria-label="实验参数"></section>
+<p class="hint">按住画面拖动，或点击轻推颜料。松手后动量继续影响画面；只有重置才回到原图。支持本地换图。</p>
+<details><summary>它是怎么工作的？</summary><p>半拉格朗日速度输运、20 轮压力投影与独立的连续颜料场。不是方块位移，也不是会自动恢复的波纹滤镜。固定时间步长与反射边界。</p><p class="muted">边界：CPU 低分辨率流体；长时间输运存在数值扩散，细节会变柔。未实现录像倒放或高分辨率 GPU 模拟。</p><p class="muted">图片和视频在浏览器本地处理，不上传。新 SVG 由代码原创制作，不是 Image Gen 输出。已有战斗视频沿用仓库的素材许可。</p></details>
+<nav class="study-nav" aria-label="切换实验"><a href="portal-threshold.html">03 / 画中门</a><a href="temporal-field.html">04 / 时差场</a><a href="liquid-canvas.html" aria-current="page">05 / 液态画布</a><a href="optical-vault.html">06 / 光学展柜</a><a href="shadow-apparatus.html">07 / 影子机关</a><a href="folding-theater.html">08 / 折叠剧场</a></nav>
+</main><footer><span>LOCAL FIRST. NO API. NO CDN.</span><a href="../docs/SIX_STUDIES.md">实现、素材与验收说明 ↗</a></footer>
+<script type="module" src="../src/studies/main.mjs"></script>
+</body></html>

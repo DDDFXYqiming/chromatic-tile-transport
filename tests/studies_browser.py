@@ -14,7 +14,7 @@ from studies_inline import ROOT, bundle, inline_page
 
 
 def run(args):
-    catalog=json.loads((ROOT/'src/studies/catalog.json').read_text())
+    catalog=json.loads((ROOT/'src/studies/catalog.json').read_text(encoding='utf-8'))
     result={'loading':'offline-inline' if args.inline else 'HTTP native modules','checks':[],'screenshots':[]}
     args.output.mkdir(parents=True,exist_ok=True)
     server=None
@@ -81,7 +81,7 @@ def run(args):
     if server:server.shutdown()
     result['passed']=len(result['checks'])
     result['video_fixture']=bool(args.video_fixture)
-    (args.output/'results.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+    (args.output/'results.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print('TOTAL',result['passed'])
 
 if __name__=='__main__':

@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {clipNear,lensRay,shadowSolid,foldingPanels,rx,add} from '../src/studies/math.mjs';
+import {Fluid} from '../src/studies/fluid.mjs';
+let tests=0;
+const near=(a,b,eps=1e-8)=>a.forEach((v,i)=>assert.ok(Math.abs(v-b[i])<eps,`${a} != ${b}`));
+const test=(name,fn)=>{fn();tests++;console.log('PASS',name);};
+test('near clipping stays finite in front of camera',()=>{const p=clipNear([[-1,0,-1],[1,0,2],[0,1,2]]);assert.equal(p.length,4);p.forEach(v=>{assert.ok(v[2]>=.08-1e-10);assert.ok(v.every(Number.isFinite));});});
+test('unit-index sphere does not move background samples',()=>{for(const [x,y] of [[0,0],[.2,.3],[-.6,.5]]){const p=lensRay(x,y,1);near([p.x,p.y],[x,y]);assert.ok(p.length>0);}});
+test('different refractive indices actually bend different rays',()=>{const a=lensRay(.4,.2,1.4),b=lensRay(.4,.2,1.6);assert.ok(Math.abs(a.x-b.x)>.05);assert.ok(a.fresnel>=0&&a.fresnel<=1);assert.equal(lensRay(1.1,0,1.5),null);});
+test('one immutable solid projects to both required silhouettes',()=>{const {a,b,n,voxels}=shadowSolid(27),A=new Uint8Array(n*n),B=new Uint8Array(n*n);for(const [x,y,z] of voxels){A[y*n+x]=1;B[y*n+z]=1;}assert.deepEqual(A,a);assert.deepEqual(B,b);assert.ok(voxels.length>100);});
+test('all sheet hinges stay attached throughout folding',()=>{for(let i=0;i<=100;i++){const open=i/100,p=foldingPanels(open);near(p.left[1],p.center[0]);near(p.left[2],p.center[3]);near(p.right[0],p.center[1]);near(p.right[3],p.center[2]);near(p.floor[0],p.center[0]);near(p.floor[1],p.center[1]);near(p.popup[0],add(rx([-.65,-1.35,0],-open*Math.PI/2),[0,-1,0]));}});
+test('pressure projection reduces velocity divergence',()=>{const f=new Fluid(48,30);f.splat(.45,.52,.2,-.1);const before=f.divergenceEnergy();f.project(40);assert.ok(f.divergenceEnergy()<before*.75,`${before} -> ${f.divergenceEnergy()}`);});
+test('fluid remains finite over 240 fixed time steps',()=>{const f=new Fluid(32,20);f.splat(.45,.52,.2,-.1);for(let i=0;i<240;i++)f.step(1/60);assert.ok(f.u.every(Number.isFinite));assert.ok(f.v.every(Number.isFinite));assert.ok(f.divergenceEnergy()<.5);});
+console.log(`${tests} tests passed.`);

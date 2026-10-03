@@ -1,0 +1,123 @@
+PASS portal initialized
+PASS portal eight atlas destinations
+PASS portal thumbnails decoded
+PASS portal global SPACE toggles once
+PASS portal clean canvas hides HUD
+PASS portal canvas H restores clean-view control
+PASS portal canvas SPACE toggles once
+PASS portal header switch has all eight links
+PASS portal switch closes on Escape
+PASS portal notes pause playback
+PASS portal notes restore playback
+PASS portal pause is stable
+PASS camera crosses portal plane
+PASS turn back uses camera yaw
+PASS portal exports PNG
+PASS portal mobile layout fits
+PASS portal mobile menu stays on screen
+PASS portal narrow phone fits
+PASS portal honors reduced motion
+PASS portal no uncaught exceptions: []
+PASS temporal initialized
+PASS temporal eight atlas destinations
+PASS temporal thumbnails decoded
+PASS temporal global SPACE toggles once
+PASS temporal clean canvas hides HUD
+PASS temporal canvas H restores clean-view control
+PASS temporal canvas SPACE toggles once
+PASS temporal header switch has all eight links
+PASS temporal switch closes on Escape
+PASS temporal notes pause playback
+PASS temporal notes restore playback
+PASS temporal pause is stable
+PASS bounded frame cache
+PASS real video decoding fixture
+PASS 2D time field changes sampled pixels
+PASS explicit synthetic source works
+PASS temporal exports PNG
+PASS temporal mobile layout fits
+PASS temporal mobile menu stays on screen
+PASS temporal narrow phone fits
+PASS temporal honors reduced motion
+PASS temporal no uncaught exceptions: []
+PASS fluid initialized
+PASS fluid eight atlas destinations
+PASS fluid thumbnails decoded
+PASS fluid global SPACE toggles once
+PASS fluid clean canvas hides HUD
+PASS fluid canvas H restores clean-view control
+PASS fluid canvas SPACE toggles once
+PASS fluid header switch has all eight links
+PASS fluid switch closes on Escape
+PASS fluid notes pause playback
+PASS fluid notes restore playback
+PASS fluid pause is stable
+PASS pigment is transported
+PASS fluid finite after interaction
+PASS flow continues without pointer
+PASS fluid exports PNG
+PASS fluid mobile layout fits
+PASS fluid mobile menu stays on screen
+PASS fluid narrow phone fits
+PASS fluid honors reduced motion
+PASS fluid no uncaught exceptions: []
+PASS optical initialized
+PASS optical eight atlas destinations
+PASS optical thumbnails decoded
+PASS optical global SPACE toggles once
+PASS optical clean canvas hides HUD
+PASS optical canvas H restores clean-view control
+PASS optical canvas SPACE toggles once
+PASS optical header switch has all eight links
+PASS optical switch closes on Escape
+PASS optical notes pause playback
+PASS optical notes restore playback
+PASS optical pause is stable
+PASS refraction parameter changes pixels
+PASS lens follows drag
+PASS optical exports PNG
+PASS optical mobile layout fits
+PASS optical mobile menu stays on screen
+PASS optical narrow phone fits
+PASS optical honors reduced motion
+PASS optical no uncaught exceptions: []
+PASS shadow initialized
+PASS shadow eight atlas destinations
+PASS shadow thumbnails decoded
+PASS shadow global SPACE toggles once
+PASS shadow clean canvas hides HUD
+PASS shadow canvas H restores clean-view control
+PASS shadow canvas SPACE toggles once
+PASS shadow header switch has all eight links
+PASS shadow switch closes on Escape
+PASS shadow notes pause playback
+PASS shadow notes restore playback
+PASS shadow pause is stable
+PASS projection changes with same geometry
+PASS shadow exports PNG
+PASS shadow mobile layout fits
+PASS shadow mobile menu stays on screen
+PASS shadow narrow phone fits
+PASS shadow honors reduced motion
+PASS shadow no uncaught exceptions: []
+PASS folding initialized
+PASS folding eight atlas destinations
+PASS folding thumbnails decoded
+PASS folding global SPACE toggles once
+PASS folding clean canvas hides HUD
+PASS folding canvas H restores clean-view control
+PASS folding canvas SPACE toggles once
+PASS folding header switch has all eight links
+PASS folding switch closes on Escape
+PASS folding notes pause playback
+PASS folding notes restore playback
+PASS folding pause is stable
+PASS paper closes flat
+PASS paper opens while connected
+PASS folding exports PNG
+PASS folding mobile layout fits
+PASS folding mobile menu stays on screen
+PASS folding narrow phone fits
+PASS folding honors reduced motion
+PASS folding no uncaught exceptions: []
+TOTAL 122

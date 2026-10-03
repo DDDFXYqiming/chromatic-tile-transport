@@ -1,0 +1,281 @@
+{
+  "suite": "matrix-browser",
+  "passed": false,
+  "checks": [
+    {
+      "name": "WebGL 2 runs the actual shader without fallback or warnings",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "All five images have distinct, nonblank actual renders",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Original, duotone, poster, line and matrix are visually different",
+      "passed": true,
+      "detail": {
+        "original": "75b2736534c3",
+        "duotone": "ce8d6a4985c1",
+        "poster": "3fdefaf04264",
+        "line": "6a47410e5ac7",
+        "matrix": "2f4b665e1e26"
+      }
+    },
+    {
+      "name": "Reverse seeking is pixel deterministic",
+      "passed": true,
+      "detail": "Exact pixel-identical reverse seek"
+    },
+    {
+      "name": "Paused frames remain still without continuously burning GPU work",
+      "passed": true,
+      "detail": "No drift and no extra draw calls"
+    },
+    {
+      "name": "All five short bridges continuously change with no blank frame",
+      "passed": true,
+      "detail": [
+        {
+          "scene": 0,
+          "successiveFrameMAD": [
+            1.7025,
+            14.6847,
+            33.9895,
+            42.6348,
+            54.4324,
+            59.8304,
+            38.5137,
+            24.5663,
+            40.1282,
+            34.2134,
+            13.6414,
+            1.3036
+          ]
+        },
+        {
+          "scene": 1,
+          "successiveFrameMAD": [
+            0.605,
+            8.515,
+            27.6742,
+            46.1534,
+            65.564,
+            59.0617,
+            25.3465,
+            21.9862,
+            52.1522,
+            57.6761,
+            26.9856,
+            2.4856
+          ]
+        },
+        {
+          "scene": 2,
+          "successiveFrameMAD": [
+            2.2066,
+            20.8079,
+            45.9768,
+            48.6802,
+            45.4693,
+            59.9548,
+            30.4921,
+            22.5946,
+            42.4047,
+            43.584,
+            19.941,
+            1.665
+          ]
+        },
+        {
+          "scene": 3,
+          "successiveFrameMAD": [
+            1.9739,
+            15.6943,
+            34.7222,
+            41.7417,
+            52.8589,
+            54.6224,
+            34.1225,
+            23.2382,
+            48.2877,
+            47.6089,
+            20.106,
+            2.1184
+          ]
+        },
+        {
+          "scene": 4,
+          "successiveFrameMAD": [
+            1.1472,
+            13.727,
+            37.1736,
+            48.6427,
+            54.5146,
+            46.7237,
+            34.1107,
+            26.4873,
+            49.1185,
+            43.2561,
+            14.9776,
+            1.2212
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Grid entry and exit stay in motion and avoid a whole-screen brightness surge",
+      "passed": true,
+      "detail": [
+        {
+          "scene": 0,
+          "previouslyStillIntervalsMAD": [
+            6.342592592592593,
+            7.8946604938271605
+          ],
+          "maximumEdgeStepMAD": 7.146851851851852
+        },
+        {
+          "scene": 1,
+          "previouslyStillIntervalsMAD": [
+            4.596234567901234,
+            14.314629629629628
+          ],
+          "maximumEdgeStepMAD": 13.800493827160494
+        },
+        {
+          "scene": 2,
+          "previouslyStillIntervalsMAD": [
+            9.744413580246913,
+            10.116203703703704
+          ],
+          "maximumEdgeStepMAD": 10.745246913580246
+        },
+        {
+          "scene": 3,
+          "previouslyStillIntervalsMAD": [
+            6.7525308641975315,
+            11.631635802469136
+          ],
+          "maximumEdgeStepMAD": 10.730216049382717
+        },
+        {
+          "scene": 4,
+          "previouslyStillIntervalsMAD": [
+            6.867376543209876,
+            10.592098765432098
+          ],
+          "maximumEdgeStepMAD": 9.377037037037036
+        }
+      ]
+    },
+    {
+      "name": "All bridge endpoints, including last-to-first, join continuously",
+      "passed": true,
+      "detail": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Timeline, next/previous and all scene controls work",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Director desk pins styles and pauses exactly at the bridge midpoint",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Grid density and shot duration update without stretching the bridge",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Invalid runtime configuration is rejected atomically",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Actual requestAnimationFrame playback advances and pauses",
+      "passed": true,
+      "detail": {
+        "advancedTo": 1.3535000000000001,
+        "fpsClaim": false
+      }
+    },
+    {
+      "name": "Card preview displays both full originals, holds, reverses and exits without jumping",
+      "passed": false,
+      "error": "Assertion failed"
+    },
+    {
+      "name": "Wheel scrub moves through the same timeline",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Immersive entry, resize and Escape exit work",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Phone portrait, narrow phone and landscape have no horizontal overflow",
+      "passed": true,
+      "detail": [
+        {
+          "w": 390,
+          "sw": 390
+        },
+        {
+          "w": 320,
+          "sw": 320
+        },
+        {
+          "w": 844,
+          "sw": 844
+        }
+      ]
+    },
+    {
+      "name": "WebGL context loss restores a working paused renderer",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Explicit Canvas fallback renders and reverses correctly",
+      "passed": true,
+      "detail": "Simplified, deterministic fixed-grid fallback"
+    },
+    {
+      "name": "System reduced-motion preference disables autoplay and transitions",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Standalone effect requests no remote resource",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "Gallery renders, linked targets exist, and preserved original still renders",
+      "passed": false,
+      "error": "Assertion failed"
+    },
+    {
+      "name": "No unhandled JavaScript errors",
+      "passed": true,
+      "detail": true
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "Legacy five-image suite uses inline content and verifies linked targets on disk. The separate browser_layers.py suite tests localhost navigation."
+  ],
+  "environment": "Windows-11-10.0.26200-SP0; headless Chromium; viewport simulation, not physical phone/GPU throughput"
+}

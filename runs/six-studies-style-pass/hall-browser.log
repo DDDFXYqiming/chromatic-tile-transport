@@ -1,0 +1,215 @@
+127.0.0.1 - - [04/Oct/2026 00:52:08] "GET /dist/index.html HTTP/1.1" 200 -
+PASS index reached through atlas next
+PASS index active atlas item
+PASS index atlas fits desktop viewport
+PASS index all eight thumbnails decoded
+PASS index restores scene navigation
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /dist/matrix-battle.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /src/matrix/style.css?v=e415395217ad HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/studies/atlas/transport.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/studies/atlas/matrix.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/studies/atlas/portal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/studies/atlas/temporal.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/studies/atlas/fluid.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /src/vendor/pixi-8.20.1.min.js?v=994859108379 HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /src/matrix/video.js?v=3b2d896299be HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /src/matrix/timeline.js?v=d8ad5c949d9e HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /src/matrix/layers.js?v=404168512e24 HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /src/matrix/renderer.js?v=cfa8d85529c5 HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /src/matrix/main.js?v=139bf0cd528d HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/studies/atlas/shadow.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/studies/atlas/optical.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/studies/atlas/folding.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/matrix-battle/01-faceoff-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/matrix-battle/04-vault-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/matrix-battle/03-clash-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/matrix-battle/02-charge-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/matrix-battle/05-finish-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/matrix-battle/01-faceoff.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/matrix-battle/02-charge.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/matrix-battle/04-vault.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/matrix-battle/03-clash.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 00:52:14] "GET /assets/matrix-battle/05-finish.mp4 HTTP/1.1" 206 -
+PASS matrix-battle reached through atlas next
+PASS matrix-battle active atlas item
+PASS matrix-battle atlas fits desktop viewport
+PASS matrix-battle all eight thumbnails decoded
+PASS matrix-battle restores scene navigation
+127.0.0.1 - - [04/Oct/2026 00:52:16] "GET /dist/portal-threshold.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:16] "GET /src/studies/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:16] "GET /src/studies/main.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:16] "GET /src/studies/core.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:16] "GET /src/studies/math.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:16] "GET /src/studies/portal.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:16] "GET /assets/studies/quiet-orbit.png HTTP/1.1" 200 -
+PASS portal-threshold reached through atlas next
+PASS portal-threshold active atlas item
+PASS portal-threshold atlas fits desktop viewport
+PASS portal-threshold all eight thumbnails decoded
+127.0.0.1 - - [04/Oct/2026 00:52:17] "GET /dist/temporal-field.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:17] "GET /src/studies/temporal.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:17] "GET /assets/matrix-battle/03-clash.mp4 HTTP/1.1" 206 -
+PASS temporal-field reached through atlas next
+PASS temporal-field active atlas item
+PASS temporal-field atlas fits desktop viewport
+PASS temporal-field all eight thumbnails decoded
+127.0.0.1 - - [04/Oct/2026 00:52:17] "GET /dist/liquid-canvas.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:17] "GET /src/studies/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 00:52:17] "GET /src/studies/fluid.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:17] "GET /assets/studies/tidal-garden.png HTTP/1.1" 200 -
+PASS liquid-canvas reached through atlas next
+PASS liquid-canvas active atlas item
+PASS liquid-canvas atlas fits desktop viewport
+PASS liquid-canvas all eight thumbnails decoded
+127.0.0.1 - - [04/Oct/2026 00:52:17] "GET /dist/optical-vault.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:17] "GET /src/studies/optical.mjs HTTP/1.1" 200 -
+PASS optical-vault reached through atlas next
+PASS optical-vault active atlas item
+PASS optical-vault atlas fits desktop viewport
+PASS optical-vault all eight thumbnails decoded
+127.0.0.1 - - [04/Oct/2026 00:52:18] "GET /dist/shadow-apparatus.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:18] "GET /src/studies/shadow.mjs HTTP/1.1" 200 -
+PASS shadow-apparatus reached through atlas next
+PASS shadow-apparatus active atlas item
+PASS shadow-apparatus atlas fits desktop viewport
+PASS shadow-apparatus all eight thumbnails decoded
+127.0.0.1 - - [04/Oct/2026 00:52:18] "GET /dist/folding-theater.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:18] "GET /src/studies/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 00:52:18] "GET /src/studies/folding.mjs HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:18] "GET /assets/studies/paper-world.png HTTP/1.1" 200 -
+PASS folding-theater reached through atlas next
+PASS folding-theater active atlas item
+PASS folding-theater atlas fits desktop viewport
+PASS folding-theater all eight thumbnails decoded
+127.0.0.1 - - [04/Oct/2026 00:52:18] "GET /dist/index.html HTTP/1.1" 304 -
+PASS next wraps 08 to 01
+127.0.0.1 - - [04/Oct/2026 00:52:21] "GET /src/studies/style.css HTTP/1.1" 304 -
+PASS previous wraps 01 to 08
+PASS index 1024px fits
+PASS index 1024px menu visible inside viewport
+PASS index 1024px atlas visible
+PASS index 768px fits
+PASS index 768px menu visible inside viewport
+PASS index 768px atlas visible
+PASS index 320px fits
+PASS index 320px menu visible inside viewport
+PASS index 320px atlas visible
+PASS index 844px fits
+PASS index 844px menu visible inside viewport
+PASS index 844px atlas visible
+PASS index 390px fits
+PASS index 390px menu visible inside viewport
+PASS index 390px atlas visible
+127.0.0.1 - - [04/Oct/2026 00:52:36] "GET /dist/portal-threshold.html HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 00:52:36] "GET /src/studies/style.css HTTP/1.1" 304 -
+PASS index header links to study 03
+127.0.0.1 - - [04/Oct/2026 00:52:36] "GET /dist/matrix-battle.html HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 00:52:36] "GET /assets/matrix-battle/01-faceoff.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 00:52:36] "GET /assets/matrix-battle/02-charge.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 00:52:36] "GET /assets/matrix-battle/04-vault.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 00:52:36] "GET /assets/matrix-battle/03-clash.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 00:52:36] "GET /assets/matrix-battle/05-finish.mp4 HTTP/1.1" 206 -
+PASS matrix-battle 1024px fits
+PASS matrix-battle 1024px menu visible inside viewport
+PASS matrix-battle 1024px atlas visible
+PASS matrix-battle 768px fits
+PASS matrix-battle 768px menu visible inside viewport
+PASS matrix-battle 768px atlas visible
+PASS matrix-battle 320px fits
+PASS matrix-battle 320px menu visible inside viewport
+PASS matrix-battle 320px atlas visible
+PASS matrix-battle 844px fits
+PASS matrix-battle 844px menu visible inside viewport
+PASS matrix-battle 844px atlas visible
+PASS matrix-battle 390px fits
+PASS matrix-battle 390px menu visible inside viewport
+PASS matrix-battle 390px atlas visible
+127.0.0.1 - - [04/Oct/2026 00:52:39] "GET /src/studies/style.css HTTP/1.1" 304 -
+PASS matrix-battle header links to study 03
+127.0.0.1 - - [04/Oct/2026 00:52:39] "GET /dist/matrix-motion.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:39] "GET /src/matrix/deformation.js?v=281a8c76cee6 HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:39] "GET /src/matrix/mesh.js?v=79b7ee283695 HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:39] "GET /assets/matrix-botanical/preview-wide.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:39] "GET /assets/matrix-botanical/preview-closeup.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:39] "GET /assets/matrix-botanical/background.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:39] "GET /assets/matrix-botanical/flowers.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:39] "GET /assets/matrix-botanical/character.png HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:39] "GET /assets/matrix-botanical/preview-air.webp HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:39] "GET /assets/matrix-botanical/fish.png HTTP/1.1" 200 -
+PASS matrix-motion 1024px fits
+PASS matrix-motion 1024px menu visible inside viewport
+PASS matrix-motion 1024px atlas visible
+PASS matrix-motion 768px fits
+PASS matrix-motion 768px menu visible inside viewport
+PASS matrix-motion 768px atlas visible
+PASS matrix-motion 320px fits
+PASS matrix-motion 320px menu visible inside viewport
+PASS matrix-motion 320px atlas visible
+PASS matrix-motion 844px fits
+PASS matrix-motion 844px menu visible inside viewport
+PASS matrix-motion 844px atlas visible
+PASS matrix-motion 390px fits
+PASS matrix-motion 390px menu visible inside viewport
+PASS matrix-motion 390px atlas visible
+127.0.0.1 - - [04/Oct/2026 00:52:42] "GET /src/studies/style.css HTTP/1.1" 304 -
+PASS matrix-motion header links to study 03
+127.0.0.1 - - [04/Oct/2026 00:52:42] "GET /dist/matrix-video.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:42] "GET /assets/matrix-video/garden-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:42] "GET /assets/matrix-video/encounter-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:42] "GET /assets/matrix-video/garden.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 00:52:42] "GET /assets/matrix-video/encounter.mp4 HTTP/1.1" 206 -
+PASS matrix-video 1024px fits
+PASS matrix-video 1024px menu visible inside viewport
+PASS matrix-video 1024px atlas visible
+PASS matrix-video 768px fits
+PASS matrix-video 768px menu visible inside viewport
+PASS matrix-video 768px atlas visible
+PASS matrix-video 320px fits
+PASS matrix-video 320px menu visible inside viewport
+PASS matrix-video 320px atlas visible
+PASS matrix-video 844px fits
+PASS matrix-video 844px menu visible inside viewport
+PASS matrix-video 844px atlas visible
+PASS matrix-video 390px fits
+PASS matrix-video 390px menu visible inside viewport
+PASS matrix-video 390px atlas visible
+127.0.0.1 - - [04/Oct/2026 00:52:45] "GET /dist/portal-threshold.html HTTP/1.1" 304 -
+PASS matrix-video header links to study 03
+127.0.0.1 - - [04/Oct/2026 00:52:45] "GET /dist/matrix-anime.html HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:45] "GET /assets/matrix-anime/01-rooftop-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:45] "GET /assets/matrix-anime/04-tunnel-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:45] "GET /assets/matrix-anime/03-fall-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:45] "GET /assets/matrix-anime/02-turn-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:45] "GET /assets/matrix-anime/05-sky-poster.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [04/Oct/2026 00:52:45] "GET /assets/matrix-anime/01-rooftop.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 00:52:45] "GET /assets/matrix-anime/02-turn.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 00:52:45] "GET /assets/matrix-anime/04-tunnel.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 00:52:45] "GET /assets/matrix-anime/03-fall.mp4 HTTP/1.1" 206 -
+127.0.0.1 - - [04/Oct/2026 00:52:45] "GET /assets/matrix-anime/05-sky.mp4 HTTP/1.1" 206 -
+PASS matrix-anime 1024px fits
+PASS matrix-anime 1024px menu visible inside viewport
+PASS matrix-anime 1024px atlas visible
+PASS matrix-anime 768px fits
+PASS matrix-anime 768px menu visible inside viewport
+PASS matrix-anime 768px atlas visible
+PASS matrix-anime 320px fits
+PASS matrix-anime 320px menu visible inside viewport
+PASS matrix-anime 320px atlas visible
+PASS matrix-anime 844px fits
+PASS matrix-anime 844px menu visible inside viewport
+PASS matrix-anime 844px atlas visible
+PASS matrix-anime 390px fits
+PASS matrix-anime 390px menu visible inside viewport
+PASS matrix-anime 390px atlas visible
+127.0.0.1 - - [04/Oct/2026 00:52:48] "GET /src/studies/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 00:52:48] "GET /assets/studies/atlas/transport.webp HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 00:52:48] "GET /assets/studies/atlas/matrix.webp HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 00:52:48] "GET /assets/studies/atlas/portal.webp HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 00:52:48] "GET /assets/studies/atlas/temporal.webp HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 00:52:48] "GET /assets/studies/atlas/fluid.webp HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 00:52:48] "GET /assets/studies/atlas/optical.webp HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 00:52:48] "GET /assets/studies/atlas/shadow.webp HTTP/1.1" 304 -
+127.0.0.1 - - [04/Oct/2026 00:52:48] "GET /assets/studies/atlas/folding.webp HTTP/1.1" 304 -
+PASS matrix-anime header links to study 03
+PASS no uncaught runtime exceptions
+TOTAL 117

@@ -1,0 +1,23 @@
+PASS WebGL 2 runs the actual shader without fallback or warnings
+PASS All five images have distinct, nonblank actual renders
+PASS Original, duotone, poster, line and matrix are visually different
+PASS Reverse seeking is pixel deterministic
+PASS Paused frames remain still without continuously burning GPU work
+PASS All five short bridges continuously change with no blank frame
+PASS Grid entry and exit stay in motion and avoid a whole-screen brightness surge
+PASS All bridge endpoints, including last-to-first, join continuously
+PASS Timeline, next/previous and all scene controls work
+PASS Director desk pins styles and pauses exactly at the bridge midpoint
+PASS Grid density and shot duration update without stretching the bridge
+PASS Invalid runtime configuration is rejected atomically
+PASS Actual requestAnimationFrame playback advances and pauses
+FAIL Card preview displays both full originals, holds, reverses and exits without jumping Assertion failed
+PASS Wheel scrub moves through the same timeline
+PASS Immersive entry, resize and Escape exit work
+PASS Phone portrait, narrow phone and landscape have no horizontal overflow
+PASS WebGL context loss restores a working paused renderer
+PASS Explicit Canvas fallback renders and reverses correctly
+PASS System reduced-motion preference disables autoplay and transitions
+PASS Standalone effect requests no remote resource
+FAIL Gallery renders, linked targets exist, and preserved original still renders Assertion failed
+PASS No unhandled JavaScript errors

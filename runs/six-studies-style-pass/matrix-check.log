@@ -1,0 +1,206 @@
+Built D:\AI_Projects\chromatic-tile-transport\dist\matrix-motion.html (30,159 bytes; linked)
+Built D:\AI_Projects\chromatic-tile-transport\index.html
+Built D:\AI_Projects\chromatic-tile-transport\dist\matrix-video.html (28,532 bytes; linked)
+Built D:\AI_Projects\chromatic-tile-transport\dist\matrix-anime.html (29,788 bytes; linked)
+Built D:\AI_Projects\chromatic-tile-transport\dist\matrix-battle.html (29,659 bytes; linked)
+PASS WebGL 2 runs the actual shader without fallback or warnings
+PASS All five images have distinct, nonblank actual renders
+PASS Original, duotone, poster, line and matrix are visually different
+PASS Reverse seeking is pixel deterministic
+PASS Paused frames remain still without continuously burning GPU work
+PASS All five short bridges continuously change with no blank frame
+PASS Grid entry and exit stay in motion and avoid a whole-screen brightness surge
+PASS All bridge endpoints, including last-to-first, join continuously
+PASS Timeline, next/previous and all scene controls work
+PASS Director desk pins styles and pauses exactly at the bridge midpoint
+PASS Grid density and shot duration update without stretching the bridge
+PASS Invalid runtime configuration is rejected atomically
+PASS Actual requestAnimationFrame playback advances and pauses
+FAIL Card preview displays both full originals, holds, reverses and exits without jumping Assertion failed
+PASS Wheel scrub moves through the same timeline
+PASS Immersive entry, resize and Escape exit work
+PASS Phone portrait, narrow phone and landscape have no horizontal overflow
+PASS WebGL context loss restores a working paused renderer
+PASS Explicit Canvas fallback renders and reverses correctly
+PASS System reduced-motion preference disables autoplay and transitions
+PASS Standalone effect requests no remote resource
+FAIL Gallery renders, linked targets exist, and preserved original still renders Assertion failed
+PASS No unhandled JavaScript errors
+{
+  "suite": "matrix-timeline",
+  "passed": true,
+  "tests": [
+    {
+      "name": "Shipped director timing prioritizes original art, then the complete grid transition",
+      "passed": true
+    },
+    {
+      "name": "Card preview holds both fully developed originals and slows both bridge crossings",
+      "passed": true
+    },
+    {
+      "name": "Configuration rejects unknown keys, NaN, infinities and numeric booleans",
+      "passed": true
+    },
+    {
+      "name": "Every supported setting validates at both ends of its documented range",
+      "passed": true
+    },
+    {
+      "name": "All five exact chapter boundaries identify the intended image",
+      "passed": true
+    },
+    {
+      "name": "Last-to-first wrap and negative seek are deterministic",
+      "passed": true
+    },
+    {
+      "name": "Bridge duration stays 0.48 seconds when the shot duration changes",
+      "passed": true
+    },
+    {
+      "name": "Every choreography edit joins with the same full image style",
+      "passed": true
+    },
+    {
+      "name": "Camera stays finite and covers the image across every scene and frame",
+      "passed": true
+    },
+    {
+      "name": "Pinned styles are independent of transition progress",
+      "passed": true
+    },
+    {
+      "name": "Reduced motion suppresses camera, bridge and matrix in every mode",
+      "passed": true
+    },
+    {
+      "name": "Cell formation and recovery overlap the flip without a global waiting stage",
+      "passed": true
+    },
+    {
+      "name": "The page shade blends through grid entry and exit instead of switching at thresholds",
+      "passed": true
+    },
+    {
+      "name": "Fixed cell centres do not depend on colour, image or time",
+      "passed": true
+    },
+    {
+      "name": "Reverse timeline sampling returns bit-identical numeric uniforms",
+      "passed": true
+    },
+    {
+      "name": "New timeline does not import a matcher or use randomness",
+      "passed": true
+    }
+  ]
+}
+ 
+{
+  "suite": "matrix-five-shot-clock",
+  "passed": true,
+  "profiles": [
+    {
+      "profile": "anime",
+      "passed": true,
+      "shotCount": 5,
+      "cycleSeconds": 21.5,
+      "playbackRate": 0.9627831715210357,
+      "allFiveJoinsContinuous": true
+    },
+    {
+      "profile": "battle",
+      "passed": true,
+      "shotCount": 5,
+      "cycleSeconds": 21.5,
+      "playbackRate": 0.9627831715210357,
+      "allFiveJoinsContinuous": true
+    }
+  ]
+}
+ 
+{
+  "suite": "matrix-video-clock",
+  "passed": true,
+  "tests": [
+    {
+      "name": "Incoming video continues at exactly the outgoing bridge time on every scene boundary",
+      "passed": true
+    },
+    {
+      "name": "Video time stays decodable at long and short shot settings",
+      "passed": true
+    },
+    {
+      "name": "Still comparison and reduced motion both pin the video to its first frame",
+      "passed": true
+    }
+  ]
+}
+ 
+{
+  "suite": "matrix-deformation",
+  "passed": true,
+  "tests": [
+    {
+      "name": "Face landmarks preserve distances while hair and chest move differently",
+      "passed": true,
+      "detail": {
+        "maximumFaceDistanceChange": 0.00029889722568476884,
+        "nonRigidDisplacement": 0.017923338695025975
+      }
+    },
+    {
+      "name": "Plane deformations do not invert triangles at maximum supported strength",
+      "passed": true,
+      "detail": {
+        "minAreaRatio": 0.4756530865273755
+      }
+    },
+    {
+      "name": "Vertex buffers return exactly to base at zero strength, reverse deterministically and loop",
+      "passed": true
+    }
+  ]
+}
+ 
+{
+  "suite": "matrix-layers",
+  "passed": true,
+  "tests": [
+    {
+      "name": "Every authored shot joins the next camera pose, including the loop",
+      "passed": true
+    },
+    {
+      "name": "Independent layer motion changes relative positions rather than translating one poster",
+      "passed": true
+    },
+    {
+      "name": "Layer animation is reversible and periodic at the composition loop",
+      "passed": true
+    }
+  ]
+}
+ 
+test_bool_is_not_duration (test_matrix_build.MatrixBuildTests.test_bool_is_not_duration) ... ok
+test_default_config (test_matrix_build.MatrixBuildTests.test_default_config) ... ok
+test_inline_contains_assets_and_scripts (test_matrix_build.MatrixBuildTests.test_inline_contains_assets_and_scripts) ... ok
+test_linked_paths_are_relative_and_exist (test_matrix_build.MatrixBuildTests.test_linked_paths_are_relative_and_exist) ... ok
+test_linked_stays_in_repository (test_matrix_build.MatrixBuildTests.test_linked_stays_in_repository) ... ok
+test_matrix_build_preserves_transport_files (test_matrix_build.MatrixBuildTests.test_matrix_build_preserves_transport_files) ... ok
+test_nonfinite_values_fail (test_matrix_build.MatrixBuildTests.test_nonfinite_values_fail) ... ok
+test_outside_focus_fails (test_matrix_build.MatrixBuildTests.test_outside_focus_fails) ... ok
+test_router_sync_does_not_overwrite_legacy_skill (test_matrix_build.MatrixBuildTests.test_router_sync_does_not_overwrite_legacy_skill) ... ok
+test_standalone_outside_repository_has_portable_variant_links (test_matrix_build.MatrixBuildTests.test_standalone_outside_repository_has_portable_variant_links) ... ok
+test_unknown_focus_fails (test_matrix_build.MatrixBuildTests.test_unknown_focus_fails) ... ok
+test_unknown_options_fail (test_matrix_build.MatrixBuildTests.test_unknown_options_fail) ... ok
+test_unknown_top_level_fails (test_matrix_build.MatrixBuildTests.test_unknown_top_level_fails) ... ok
+test_user_text_cannot_break_out_of_script_or_title (test_matrix_build.MatrixBuildTests.test_user_text_cannot_break_out_of_script_or_title) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 1.103s
+
+OK
+

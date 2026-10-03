@@ -1,0 +1,7 @@
+PASS The original garden and all three video collections retain full page components
+PASS Archive selection, side navigation, hero action and chapter copy stay synchronized
+PASS Opening the archive freezes image and video motion; Escape restores focus and playback
+PASS Closing the archive preserves a deliberately paused timeline
+PASS Pure image and immersive modes remain available without losing the full page view
+PASS Desktop, small phone and landscape layouts avoid component overlap and horizontal scroll
+PASS Shared page components have no uncaught browser errors

@@ -1,13 +1,13 @@
 import {clamp} from './math.mjs';
 import {asset,image,range,button} from './core.mjs';
-import {createArchitecture,STOPS,DOORS,routeX,roomAt} from './portal-scene.mjs';
+import {createArchitecture,STOPS,DOORS,APERTURE,EYE_HEIGHT,routeX,roomAt} from './portal-scene.mjs';
 import {createTravel} from './portal-travel.mjs';
 
 export async function create(stage,controls) {
   const chapters=JSON.parse(document.querySelector('#portal-chapters').textContent);
   const art=await Promise.all(chapters.map(chapter=>image(asset(chapter.image))));
   const patina=await image(asset('studies/portal-patina.png'));
-  const architecture=createArchitecture(art,patina),travel=createTravel(STOPS[0]);
+  const architecture=createArchitecture(art,patina),travel=createTravel(STOPS[0],DOORS);
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const theater=document.querySelector('.theater'),hero=document.querySelector('.hero-copy');
   const eyebrow=hero.querySelector('.eyebrow'),heading=hero.querySelector('h1'),body=hero.querySelector('p');
@@ -97,7 +97,8 @@ export async function create(stage,controls) {
       // Turning finishes before returning along the same physical corridor.
       yaw+=clamp(yawTarget-yaw,-dt*.85,dt*.85);
       const turning=Math.abs(yawTarget-yaw)>.12;
-      travel.step(turning?0:dt);
+      if(turning)travel.brake(dt);
+      else travel.step(dt);
       if(auto&&dt&&!travel.moving&&!turning){
         chapterTime+=dt;
         if(chapterTime>=holdSeconds){
@@ -110,7 +111,7 @@ export async function create(stage,controls) {
       const progress=(STOPS[0]-travel.z)/(STOPS[0]-STOPS[3]);
       slider.value=String((progress*100).toFixed(1));
       const {ctx,width:w,height:h,pointer:p}=stage;
-      const eye=[routeX(travel.z)+(reduced.matches?0:(p.x-.5)*.18),2.65+(reduced.matches?0:(p.y-.5)*-.08),travel.z];
+      const eye=[routeX(travel.z)+(reduced.matches?0:(p.x-.5)*.18),EYE_HEIGHT+(reduced.matches?0:(p.y-.5)*-.08),travel.z];
       architecture.render(stage.canvas.width,stage.canvas.height,eye,yaw,reduced.matches?0:stage.t);
       ctx.drawImage(architecture.canvas,0,0,w,h);
       theater.dataset.travelling=String(travel.moving||turning);
@@ -126,8 +127,10 @@ export async function create(stage,controls) {
     },
     inspect:()=>({progress:(STOPS[0]-travel.z)/(STOPS[0]-STOPS[3]),z:travel.z,targetZ:travel.target,velocity:travel.velocity,
       chapter:chapters[chapterIndex].id,chapterIndex,destination,yaw,auto,chapterTime,
-      renderer:'webgl-depth',rooms:4,doorPlanes:DOORS,triangles:architecture.triangles,texturesLoaded:art.length+1,
-      imageSurfaces:['environment-wings','sky','water','outcrops','copper-portals'],holdSeconds}),
+      renderer:'webgl-depth',rooms:4,doorPlanes:DOORS,aperture:APERTURE,eyeHeight:EYE_HEIGHT,
+      insideDoor:DOORS.findIndex(z=>Math.abs(travel.z-z)<APERTURE.depth/2),
+      triangles:architecture.triangles,texturesLoaded:art.length+1,
+      imageSurfaces:['room-walls','ceiling','water','outcrops','copper-portals'],holdSeconds}),
     dispose:()=>architecture.dispose(),
   };
 }

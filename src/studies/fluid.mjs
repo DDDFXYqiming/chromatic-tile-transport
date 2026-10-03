@@ -225,7 +225,7 @@ export async function create(stage,controls) {
     try{const img=await image(url);if(ticket!==generation||disposed)return;original=img;sourceKind='local';sourceName=file.name;tour=false;transition=1;clearFlow();setRegion();renderer.setImage(img);stage.dirty=true;}
     finally{URL.revokeObjectURL(url);}
   });
-  function clearFlow(){field.reset();for(const k of ['u','v','u0','v0','p','p0','div'])fluid[k].fill(0);steps=0;acc=0;last=null;disturbed=false;active=false;flowDirty=false;quietTime=0;pending=null;pointerInside=false;fluid.speed=0;simulationTime=stage.t;nextFrame=0;}
+  function clearFlow(){stage.artworkView=null;field.reset();for(const k of ['u','v','u0','v0','p','p0','div'])fluid[k].fill(0);steps=0;acc=0;last=null;disturbed=false;active=false;flowDirty=false;quietTime=0;pending=null;pointerInside=false;fluid.speed=0;simulationTime=stage.t;nextFrame=0;}
   function setRegion(){
     const {w,h}=field,id=sourceKind==='local'?'local':chapters[chapterIndex].id;
     // Rasterize the full source, without cover-cropping imported aspect ratios.
@@ -283,11 +283,10 @@ export async function create(stage,controls) {
   layoutObserver.observe(theater);
   const cleanObserver=new MutationObserver(()=>{measureOverlays();last=null;pointerInside=false;stage.dirty=true;});
   cleanObserver.observe(document.body,{attributes:true,attributeFilter:['class']});
-  function hit(p,e){
-    const r=stage.canvas.getBoundingClientRect(),cx=e?.clientX??r.left+p.x*r.width,cy=e?.clientY??r.top+p.y*r.height;
-    if(transition<1)return null;
-    const f=fit(),sx=r.width/stage.width,sy=r.height/stage.height;
-    return hitRegion({x:cx,y:cy},r,{x:f.x*sx,y:f.y*sy,width:f.width*sx,height:f.height*sy},weight,overlayBoxes);
+  function hit(client,rect){
+    const view=stage.artworkView;
+    if(!client||transition<1||!view||view.width!==stage.canvas.width||view.height!==stage.canvas.height)return null;
+    return hitRegion(client,rect,view.fit,weight,overlayBoxes,view);
   }
   function drawTransition(dt){
     transition=(!stage.playing||reduced.matches)?1:Math.min(1,transition+dt/transitionSeconds);
@@ -316,6 +315,7 @@ export async function create(stage,controls) {
     // composition while reading; interaction/turning pages returns to 60 Hz.
     get static(){return stage.t<nextFrame;},
     resize(){
+      stage.artworkView=null;last=null;pending=null;pointerInside=false;
       stage.dpr=Math.min(devicePixelRatio||1,1.25);
       stage.canvas.width=Math.round(stage.width*stage.dpr);stage.canvas.height=Math.round(stage.height*stage.dpr);
       stage.ctx.setTransform(stage.dpr,0,0,stage.dpr,0,0);measureOverlays();
@@ -324,15 +324,20 @@ export async function create(stage,controls) {
     key(key){if(key==='ArrowRight')choose(chapterIndex+1);if(key==='ArrowLeft')choose(chapterIndex-1);},
     pointer(p,e){
       if(!p.down){last=null;pointerInside=false;return;}
-      // The Stage clamps captured pointers, so also reject raw client positions
-      // outside the canvas and refresh overlay bounds after scroll/layout changes.
-      measureOverlays();const q=hit(p,e);pointerInside=!!q;
+      // Use Stage's raw viewport sample and the last painted transform, never
+      // reconstruct an event from its clamped normalized pointer coordinates.
+      const client=p.client,rect=stage.canvas.getBoundingClientRect();
+      if(e?.type==='pointerdown')last=null;
+      measureOverlays();const q=hit(client,rect);pointerInside=!!q;
       if(!q){last=null;return;}
-      if(last&&pigmentStroke(weight,last,q,field.w,field.h)){
-        const dx=q.x-last.x,dy=q.y-last.y;
-        if(Math.abs(dx)+Math.abs(dy)>1e-5){tour=false;if(!active)wake();disturbed=true;quietTime=0;
-          pending={...q,dx:clamp((pending?.dx||0)+dx,-.08,.08),dy:clamp((pending?.dy||0)+dy,-.08,.08)};}
-      }last=q;
+      // Scroll/layout motion must not become brush velocity. Map both event
+      // positions through this same painted view, including the idle zoom.
+      const previous=last&&['left','top','width','height'].every(k=>rect[k]===last.rect[k])?hit(last.client,rect):null;
+      if(previous&&pigmentStroke(weight,previous,q,field.w,field.h)){
+        const dx=q.x-previous.x,dy=q.y-previous.y;
+        if(Math.abs(dx)+Math.abs(dy)>1e-5)
+          pending={...q,dx:clamp((pending?.dx||0)+dx,-.08,.08),dy:clamp((pending?.dy||0)+dy,-.08,.08)};
+      }last={client:{...client},rect};
     },
     release(){last=null;pointerInside=false;stage.dirty=true;},
     visibility(on){lastTick=on?performance.now():0;simulationTime=stage.t;acc=0;last=null;pending=null;pointerInside=false;},
@@ -342,9 +347,12 @@ export async function create(stage,controls) {
       const now=performance.now();let visualDt=stage.playing&&lastTick?Math.max(0,(now-lastTick)/1000):0;lastTick=now;
       if(tour&&visualDt){chapterTime+=visualDt;if(chapterTime>=holdSeconds){choose(chapterIndex+1,{continueTour:true});visualDt=0;}}
       const simulationDt=Math.min(.05,Math.max(0,stage.t-simulationTime));simulationTime=stage.t;
-      if(pending){fluid.splat(pending.x,pending.y,pending.dx,pending.dy,.095);pending=null;if(!stage.playing)transport();}
+      if(pending){
+        const changed=fluid.splat(pending.x,pending.y,pending.dx,pending.dy,.095);pending=null;
+        if(changed){tour=false;if(!active)wake();disturbed=true;quietTime=0;if(!stage.playing)transport();}
+      }
       if(active&&stage.playing){acc+=simulationDt;let n=0;while(active&&acc>=fixedStep&&n<3){acc-=fixedStep;transport();n++;}if(n===3)acc=0;}
-      const {ctx,width:w,height:h}=stage,f=fit();ctx.clearRect(0,0,w,h);ctx.imageSmoothingEnabled=true;ctx.drawImage(original,f.x,f.y,f.width,f.height);
+      const {ctx,width:w,height:h}=stage,f=fit();ctx.clearRect(0,0,w,h);ctx.imageSmoothingEnabled=true;ctx.drawImage(original,f.x,f.y,f.width,f.height);stage.captureArtwork(f);
       if(disturbed){const layer=renderer.draw(flowDirty),r=renderer.rect;if(layer)ctx.drawImage(layer,f.x+r.x*f.width,f.y+r.y*f.height,r.width*f.width,r.height*f.height);flowDirty=false;if(!active)renderer.freeze();}
       if(transition<1){drawTransition(visualDt);if(transition===1)measureOverlays();}
       nextFrame=stage.t+((active||transition<1)?0:1/idleHz);
@@ -358,7 +366,7 @@ export async function create(stage,controls) {
         document.querySelector('.telemetry-bottom span').textContent='INKFIELD / ISSUE 01';
       }
     },
-    inspect:()=>({chapter:chapters[chapterIndex].id,chapterIndex,art:chapters[chapterIndex].image,source:sourceKind,texturesLoaded:art.length,
+    inspect:()=>({interactionRevision:'painted-artwork-r3',artworkView:stage.artworkView,chapter:chapters[chapterIndex].id,chapterIndex,art:chapters[chapterIndex].image,source:sourceKind,texturesLoaded:art.length,
       transition,transitionSeconds,holdSeconds,tour,chapterTime,steps,damping,disturbed,renderer:renderer.mode,grid:[fluid.w,fluid.h],flowSize:[field.w,field.h],
       active,speed:fluid.speed,uploads:renderer.uploads,renderSize:renderer.size,activeCells:field.cells.length,projectionIterations:fluid.iterations,idleHz,pointerInside,
       divergence:fluid.divergenceEnergy(),finite:fluid.u.every(Number.isFinite)&&fluid.v.every(Number.isFinite)&&field.uv.every(Number.isFinite)}),

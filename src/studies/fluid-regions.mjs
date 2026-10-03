@@ -1,5 +1,5 @@
 import {clamp} from './math.mjs';
-import {bilinear} from './core.mjs';
+import {bilinear,artworkPoint} from './core.mjs';
 
 export const POINTER_WEIGHT=.15;
 
@@ -63,13 +63,13 @@ export function pigmentRegion(chapter,pixels,w,h){
 
 // Use the raw client position, including captured pointers outside the stage.
 // fit is the same image rectangle used to draw the current artwork.
-export function hitRegion(client,rect,fit,weight,overlays=[]){
+export function hitRegion(client,rect,fit,weight,overlays=[],surface){
   const {x,y}=client;
   if(!Number.isFinite(x)||!Number.isFinite(y)||rect.width<=0||rect.height<=0||
     x<rect.left||x>rect.right||y<rect.top||y>rect.bottom||
     overlays.some(b=>x>=b.left-4&&x<=b.right+4&&y>=b.top-4&&y<=b.bottom+4))return null;
-  const q={x:(x-rect.left-fit.x)/fit.width,y:(y-rect.top-fit.y)/fit.height};
-  return weight(q.x,q.y)>POINTER_WEIGHT?q:null;
+  const q=artworkPoint(client,rect,fit,surface);
+  return q&&weight(q.x,q.y)>POINTER_WEIGHT?q:null;
 }
 
 export function pigmentStroke(weight,a,b,w=120,h=80){

@@ -13,6 +13,7 @@ for chapter in chapters:
     with Image.open(ROOT/'assets'/chapter['image']) as image:
         pixels = image.convert('RGBA').resize((120, 80), Image.Resampling.BILINEAR)
         samples.append(dict(id=chapter['id'], width=image.width, height=image.height,
-                            pixels=list(pixels.tobytes()), flow=chapter['flow']))
-subprocess.run(['node', str(ROOT/'tests/fluid_regions.mjs')], cwd=ROOT,
-               input=json.dumps(samples), text=True, encoding='utf-8', check=True)
+                            image=chapter['image'], pixels=list(pixels.tobytes()), flow=chapter['flow']))
+for test in ('fluid_regions.mjs', 'fluid_stage.mjs'):
+    subprocess.run(['node', str(ROOT/'tests'/test)], cwd=ROOT,
+                   input=json.dumps(samples), text=True, encoding='utf-8', check=True)

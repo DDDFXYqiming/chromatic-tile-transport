@@ -38,15 +38,35 @@ export function fileInput(parent,label,accept,limitMB,onFile) {
   f.addEventListener('change',async()=>{const file=f.files?.[0];if(!file)return;try{if(file.size>limitMB*1024*1024)throw new Error(`文件不能超过 ${limitMB} MB`);await onFile(file);}catch(e){document.querySelector('#status').textContent=e.message;}finally{f.value='';}});
   wrap.append(f);parent.append(wrap);return f;
 }
+// PointerEvent.clientX/Y and DOMRect are both viewport CSS pixels. Keep the
+// unclamped point: a captured pointer outside the canvas is not an edge hit.
+export function canvasPoint(client,rect){
+  if(![client.x,client.y,rect.left,rect.top,rect.width,rect.height].every(Number.isFinite)||rect.width<=0||rect.height<=0)return null;
+  const x=(client.x-rect.left)/rect.width,y=(client.y-rect.top)/rect.height;
+  return {x,y,inside:x>=0&&x<=1&&y>=0&&y<=1};
+}
+export function artworkPoint(client,rect,fit,surface){
+  const p=canvasPoint(client,rect);
+  if(!p?.inside||!fit||![fit.x,fit.y,fit.width,fit.height].every(Number.isFinite)||fit.width<=0||fit.height<=0)return null;
+  const {width,height,transform}=surface||{width:rect.width,height:rect.height,transform:{a:1,b:0,c:0,d:1,e:0,f:0}};
+  const {a,b,c,d,e,f}=transform,det=a*d-b*c;
+  if(![width,height,a,b,c,d,e,f,det].every(Number.isFinite)||width<=0||height<=0||!det)return null;
+  // CSS -> actual backing pixels -> inverse of the transform used to draw.
+  // Do not multiply client coordinates by devicePixelRatio: the backing store
+  // can use a capped DPR and independently rounded dimensions.
+  const bx=p.x*width-e,by=p.y*height-f;
+  const x=((d*bx-c*by)/det-fit.x)/fit.width,y=((-b*bx+a*by)/det-fit.y)/fit.height;
+  return x>=0&&x<=1&&y>=0&&y<=1?{x,y}:null;
+}
 export class Stage {
   constructor(canvas,status) {
     this.canvas=canvas;this.ctx=canvas.getContext('2d');this.statusElement=status;
-    this.pointer={x:.5,y:.5,down:false,dx:0,dy:0};this.keys=new Set();this.playing=!matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.pointer={x:.5,y:.5,down:false,dx:0,dy:0,client:null,inside:false};this.keys=new Set();this.playing=!matchMedia('(prefers-reduced-motion: reduce)').matches;
     this.width=0;this.height=0;this.t=0;this.frame=0;this.dirty=true;this.rafHz=0;this.last=0;
     this.abort=new AbortController();const options={signal:this.abort.signal};
-    this.resize=()=>{const r=canvas.getBoundingClientRect();this.width=Math.max(1,Math.round(r.width));this.height=Math.max(1,Math.round(r.height));this.dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=Math.round(this.width*this.dpr);canvas.height=Math.round(this.height*this.dpr);this.ctx.setTransform(this.dpr,0,0,this.dpr,0,0);this.dirty=true;this.effect?.resize?.();};
+    this.resize=()=>{this.artworkView=null;const r=canvas.getBoundingClientRect();this.width=Math.max(1,Math.round(r.width));this.height=Math.max(1,Math.round(r.height));this.dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=Math.round(this.width*this.dpr);canvas.height=Math.round(this.height*this.dpr);this.ctx.setTransform(this.dpr,0,0,this.dpr,0,0);this.dirty=true;this.effect?.resize?.();};
     this.observer=new ResizeObserver(this.resize);this.observer.observe(canvas);
-    const move=e=>{const r=canvas.getBoundingClientRect(),x=clamp((e.clientX-r.left)/r.width),y=clamp((e.clientY-r.top)/r.height);this.pointer.dx=x-this.pointer.x;this.pointer.dy=y-this.pointer.y;this.pointer.x=x;this.pointer.y=y;this.effect?.pointer?.(this.pointer,e);this.dirty=true;};
+    const move=e=>{const client={x:e.clientX,y:e.clientY},p=canvasPoint(client,canvas.getBoundingClientRect()),x=clamp(p?.x??this.pointer.x),y=clamp(p?.y??this.pointer.y);this.pointer.dx=e.type==='pointerdown'?0:x-this.pointer.x;this.pointer.dy=e.type==='pointerdown'?0:y-this.pointer.y;this.pointer.x=x;this.pointer.y=y;this.pointer.client=client;this.pointer.inside=!!p?.inside;this.effect?.pointer?.(this.pointer,e);this.dirty=true;};
     canvas.addEventListener('pointerdown',e=>{this.pointer.down=true;canvas.setPointerCapture(e.pointerId);move(e);canvas.focus({preventScroll:true});},options);
     canvas.addEventListener('pointermove',move,options);
     const release=()=>{this.pointer.down=false;this.pointer.dx=0;this.pointer.dy=0;this.effect?.release?.();};
@@ -56,6 +76,10 @@ export class Stage {
     window.addEventListener('keyup',e=>this.keys.delete(e.key),options);
     document.addEventListener('visibilitychange',()=>{this.last=0;this.effect?.visibility?.(!document.hidden&&this.playing);},options);
     this.resize();
+  }
+  captureArtwork(fit){
+    const {a,b,c,d,e,f}=this.ctx.getTransform();
+    this.artworkView={fit:{...fit},width:this.canvas.width,height:this.canvas.height,transform:{a,b,c,d,e,f}};
   }
   status(text){this.statusElement.textContent=text;}
   setPlaying(on){this.playing=on;this.last=0;this.effect?.visibility?.(on&&!document.hidden);this.dirty=true;this.onPlayingChange?.();}

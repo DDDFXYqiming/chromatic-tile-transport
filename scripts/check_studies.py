@@ -80,6 +80,14 @@ for item in json.loads((ROOT/'src/studies/catalog.json').read_text(encoding='utf
                 assert len(chapter['display']) == 2
                 assert all(chapter[key] for key in ('alt', 'material'))
     if item['id'] == 'fluid':
+        from build_studies import fluid_imports, fingerprint
+        imports = json.loads(re.search(r'<script type="importmap">(.*?)</script>', path.read_text(encoding='utf-8')).group(1))['imports']
+        assert imports == fluid_imports()
+        assert imports['../src/studies/main.mjs'] in p.paths
+        for source, versioned in imports.items():
+            parsed = urlsplit(versioned)
+            assert parsed.path == source
+            assert parsed.query == 'v=' + fingerprint(source.removeprefix('../'))
         subprocess.run(['node', str(ROOT/'tests/fluid_math.mjs')], check=True)
         subprocess.run([sys.executable, str(ROOT/'tests/fluid_regions.py')], check=True)
         chapters = item['chapters']

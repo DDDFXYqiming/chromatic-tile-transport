@@ -26,6 +26,15 @@ for item in json.loads((ROOT/'src/studies/catalog.json').read_text(encoding='utf
     path=ROOT/f'dist/{item["slug"]}.html';p=Links();p.feed(path.read_text(encoding='utf-8'))
     for rel in p.paths:assert (path.parent/rel).resolve().is_file(),(path,rel)
     assert (ROOT/'assets/studies'/item['cover']).is_file()
+    if item['id'] == 'portal':
+        chapters = item['chapters']
+        assert len(chapters) == 4
+        assert len({chapter['image'] for chapter in chapters}) == 4
+        for chapter in chapters:
+            assert (ROOT/'assets'/chapter['image']).is_file()
+            assert all(chapter[key] for key in ('headline', 'body', 'feature', 'detail', 'action'))
+        assert (ROOT/'assets/studies/portal-patina.png').is_file()
+        subprocess.run(['node', str(ROOT/'tests/test_portal_travel.mjs')], check=True)
     if item['id'] == 'optical':
         chapters = item['chapters']
         assert len(chapters) == 4

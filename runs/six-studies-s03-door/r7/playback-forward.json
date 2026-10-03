@@ -1,0 +1,448 @@
+{
+  "arrived": true,
+  "samples": [
+    {
+      "chapter": "threshold",
+      "frame": 31,
+      "ms": -5,
+      "velocity": -0.04861999999998079,
+      "yaw": 0,
+      "z": 5.799325925500001
+    },
+    {
+      "chapter": "threshold",
+      "frame": 43,
+      "ms": 101,
+      "velocity": -0.2807199999999808,
+      "yaw": 0,
+      "z": 5.781308673500002
+    },
+    {
+      "chapter": "threshold",
+      "frame": 56,
+      "ms": 212,
+      "velocity": -0.5253600000000063,
+      "yaw": 0,
+      "z": 5.735810445999999
+    },
+    {
+      "chapter": "threshold",
+      "frame": 68,
+      "ms": 312,
+      "velocity": -0.7455799999999868,
+      "yaw": 0,
+      "z": 5.671587507000005
+    },
+    {
+      "chapter": "threshold",
+      "frame": 80,
+      "ms": 417,
+      "velocity": -0.9774600000000058,
+      "yaw": 0,
+      "z": 5.580140068499999
+    },
+    {
+      "chapter": "threshold",
+      "frame": 94,
+      "ms": 523,
+      "velocity": -1.2097799999999863,
+      "yaw": 0,
+      "z": 5.4640080635000094
+    },
+    {
+      "chapter": "threshold",
+      "frame": 106,
+      "ms": 623,
+      "velocity": -1.4299999999999995,
+      "yaw": 0,
+      "z": 5.331274682500003
+    },
+    {
+      "chapter": "threshold",
+      "frame": 118,
+      "ms": 729,
+      "velocity": -1.66341999999998,
+      "yaw": 0,
+      "z": 5.166516671500016
+    },
+    {
+      "chapter": "threshold",
+      "frame": 130,
+      "ms": 840,
+      "velocity": -1.9062999999999992,
+      "yaw": 0,
+      "z": 4.968797338333336
+    },
+    {
+      "chapter": "threshold",
+      "frame": 141,
+      "ms": 945,
+      "velocity": -2.138839999999992,
+      "yaw": 0,
+      "z": 4.754364814166675
+    },
+    {
+      "chapter": "threshold",
+      "frame": 155,
+      "ms": 1051,
+      "velocity": -2.370939999999992,
+      "yaw": 0,
+      "z": 4.515829418166676
+    },
+    {
+      "chapter": "threshold",
+      "frame": 168,
+      "ms": 1156,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": 4.2525641866666595
+    },
+    {
+      "chapter": "threshold",
+      "frame": 181,
+      "ms": 1268,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": 3.963704186666679
+    },
+    {
+      "chapter": "threshold",
+      "frame": 192,
+      "ms": 1373,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": 3.689144186666663
+    },
+    {
+      "chapter": "threshold",
+      "frame": 204,
+      "ms": 1479,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": 3.4148441866666626
+    },
+    {
+      "chapter": "threshold",
+      "frame": 218,
+      "ms": 1579,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": 3.154584186666685
+    },
+    {
+      "chapter": "threshold",
+      "frame": 231,
+      "ms": 1684,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": 2.8805441866666626
+    },
+    {
+      "chapter": "threshold",
+      "frame": 241,
+      "ms": 1784,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": 2.6200241866666683
+    },
+    {
+      "chapter": "threshold",
+      "frame": 251,
+      "ms": 1901,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": 2.3168641866666535
+    },
+    {
+      "chapter": "threshold",
+      "frame": 261,
+      "ms": 2006,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": 2.0425641866666533
+    },
+    {
+      "chapter": "threshold",
+      "frame": 271,
+      "ms": 2123,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": 1.7391441866666606
+    },
+    {
+      "chapter": "threshold",
+      "frame": 280,
+      "ms": 2229,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": 1.4648441866666606
+    },
+    {
+      "chapter": "threshold",
+      "frame": 289,
+      "ms": 2334,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": 1.1902841866666831
+    },
+    {
+      "chapter": "threshold",
+      "frame": 296,
+      "ms": 2440,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": 0.9157241866666688
+    },
+    {
+      "chapter": "threshold",
+      "frame": 303,
+      "ms": 2568,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": 0.5837041866666758
+    },
+    {
+      "chapter": "threshold",
+      "frame": 308,
+      "ms": 2673,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": 0.30914418666666055
+    },
+    {
+      "chapter": "threshold",
+      "frame": 315,
+      "ms": 2790,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": 0.005464186666652944
+    },
+    {
+      "chapter": "through",
+      "frame": 321,
+      "ms": 2907,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": -0.29769581333332423
+    },
+    {
+      "chapter": "through",
+      "frame": 326,
+      "ms": 3012,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": -0.5722558133333392
+    },
+    {
+      "chapter": "through",
+      "frame": 332,
+      "ms": 3129,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": -0.875415813333317
+    },
+    {
+      "chapter": "through",
+      "frame": 335,
+      "ms": 3240,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": -1.0641758133333323
+    },
+    {
+      "chapter": "through",
+      "frame": 341,
+      "ms": 3345,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": -1.33795581333334
+    },
+    {
+      "chapter": "through",
+      "frame": 350,
+      "ms": 3446,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": -1.5982158133333175
+    },
+    {
+      "chapter": "through",
+      "frame": 361,
+      "ms": 3551,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": -1.872255813333341
+    },
+    {
+      "chapter": "through",
+      "frame": 373,
+      "ms": 3657,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": -2.147335813333311
+    },
+    {
+      "chapter": "through",
+      "frame": 384,
+      "ms": 3762,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": -2.421375813333333
+    },
+    {
+      "chapter": "through",
+      "frame": 395,
+      "ms": 3873,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": -2.7102358133333104
+    },
+    {
+      "chapter": "through",
+      "frame": 410,
+      "ms": 3984,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": -2.99935581333334
+    },
+    {
+      "chapter": "through",
+      "frame": 423,
+      "ms": 4090,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": -3.273395813333325
+    },
+    {
+      "chapter": "through",
+      "frame": 435,
+      "ms": 4190,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": -3.53365581333334
+    },
+    {
+      "chapter": "through",
+      "frame": 443,
+      "ms": 4290,
+      "velocity": -2.6,
+      "yaw": 0,
+      "z": -3.7941758133333336
+    },
+    {
+      "chapter": "through",
+      "frame": 452,
+      "ms": 4395,
+      "velocity": -2.439286742413546,
+      "yaw": 0,
+      "z": -4.061635208044632
+    },
+    {
+      "chapter": "through",
+      "frame": 464,
+      "ms": 4501,
+      "velocity": -2.206966742413564,
+      "yaw": 0,
+      "z": -4.306311725043482
+    },
+    {
+      "chapter": "through",
+      "frame": 473,
+      "ms": 4601,
+      "velocity": -1.9863067424135583,
+      "yaw": 0,
+      "z": -4.515989536140902
+    },
+    {
+      "chapter": "through",
+      "frame": 484,
+      "ms": 4712,
+      "velocity": -1.742546742413552,
+      "yaw": 0,
+      "z": -4.721892758533662
+    },
+    {
+      "chapter": "through",
+      "frame": 496,
+      "ms": 4823,
+      "velocity": -1.497906742413558,
+      "yaw": 0,
+      "z": -4.901381822123378
+    },
+    {
+      "chapter": "through",
+      "frame": 508,
+      "ms": 4934,
+      "velocity": -1.2534867424135443,
+      "yaw": 0,
+      "z": -5.05354279370553
+    },
+    {
+      "chapter": "through",
+      "frame": 519,
+      "ms": 5040,
+      "velocity": -1.0211667424135633,
+      "yaw": 0,
+      "z": -5.172998808704392
+    },
+    {
+      "chapter": "through",
+      "frame": 530,
+      "ms": 5151,
+      "velocity": -0.7769667424135634,
+      "yaw": 0,
+      "z": -5.272117426445631
+    },
+    {
+      "chapter": "through",
+      "frame": 543,
+      "ms": 5262,
+      "velocity": -0.5325467424135506,
+      "yaw": 0,
+      "z": -5.344181210527783
+    },
+    {
+      "chapter": "through",
+      "frame": 552,
+      "ms": 5362,
+      "velocity": -0.312106742413557,
+      "yaw": 0,
+      "z": -5.385884680284286
+    }
+  ],
+  "state": {
+    "auto": false,
+    "chapter": "through",
+    "chapterIndex": 1,
+    "chapterTime": 0,
+    "destination": 1,
+    "doorPlanes": [
+      0,
+      -10,
+      -20
+    ],
+    "frame": 559,
+    "height": 709,
+    "holdSeconds": 8,
+    "id": "portal",
+    "imageSurfaces": [
+      "environment-wings",
+      "sky",
+      "water",
+      "outcrops",
+      "copper-portals"
+    ],
+    "playing": true,
+    "progress": 0.358974358974359,
+    "rafHz": 116,
+    "renderer": "webgl-depth",
+    "rooms": 4,
+    "targetZ": -5.4,
+    "texturesLoaded": 5,
+    "triangles": 4384,
+    "velocity": 0,
+    "width": 1494,
+    "yaw": 0,
+    "z": -5.4
+  }
+}

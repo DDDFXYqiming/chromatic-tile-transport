@@ -50,7 +50,7 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
   </header>
   <main class="stage" aria-label="画中门互动实验">
     <div class="theater">
-      <canvas id="canvas" tabindex="0" aria-label="选择下方四册手记，或继续翻页。移动指针探索景深；方向键行走与回望。"></canvas>
+      <canvas id="canvas" tabindex="0" aria-label="选择下方手记，沿展室穿门抵达。拖动进度探索门槛；↑ ↓ 行走，← → 转身。"></canvas>
       <div class="art-shade" aria-hidden="true"></div>
       <div class="stage-tag"><span></span>PORTAL THRESHOLD <b>ELSEWHERE / 彼处</b></div>
       <aside class="telemetry" aria-label="当前实验状态"><div class="telemetry-top"><i></i><span id="play-state">影像准备中</span><b aria-hidden="true">✧</b></div><p id="status" role="status" aria-live="off">初始化</p><div class="telemetry-bottom"><span>A SPATIAL FIELD JOURNAL</span><span>03 / LIVE</span></div></aside>
@@ -59,7 +59,7 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
       <div class="frame-corner tl" aria-hidden="true"></div><div class="frame-corner tr" aria-hidden="true"></div><div class="frame-corner bl" aria-hidden="true"></div><div class="frame-corner br" aria-hidden="true"></div>
       <div class="loading" id="loading" role="status"><span>✦</span>正在准备画面…</div>
     </div>
-    <section class="instrument-bar" aria-label="互动导演台"><div class="instrument-title"><span>INTERACTION / 03</span><strong>画中门</strong></div><div class="controls" id="controls" aria-label="实验参数"></div><div class="utility-actions"><button id="reset" type="button">重置</button><button id="snapshot" type="button">保存画面</button></div><p class="hint">选择下方四册手记，或继续翻页。移动指针探索景深；方向键行走与回望。</p></section>
+    <section class="instrument-bar" aria-label="互动导演台"><div class="instrument-title"><span>INTERACTION / 03</span><strong>画中门</strong></div><div class="controls" id="controls" aria-label="实验参数"></div><div class="utility-actions"><button id="reset" type="button">重置</button><button id="snapshot" type="button">保存画面</button></div><p class="hint">选择下方手记，沿展室穿门抵达。拖动进度探索门槛；↑ ↓ 行走，← → 转身。</p></section>
   </main>
   <footer class="study-footer hall-scene-footer" aria-label="当前作品内容">
     <div class="hall-folio"><span class="hall-label" id="study-atlas-label">THE STUDY ATLAS</span><div><b id="study-current">01</b><span id="study-total"></span><i></i></div></div>
@@ -68,7 +68,7 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
   </footer>
   <!-- HALL:ATLAS omitted on studies: bottom bar stays page-local -->
 </div>
-<dialog class="study-dialog" id="about" aria-labelledby="about-title"><div class="dialog-head"><span>EXHIBITION NOTES / 03</span><button id="about-close" type="button" aria-label="关闭作品说明">×</button></div><h2 id="about-title">画中门</h2><p>彼处 ELSEWHERE 是虚构的空间声音手记产品。四个章节展示空间采集、分层聆听、地点札记与漫游编排的产品构想。铜门、自然场景与文字一起切换，镜头可以穿过门槛并回望。</p><p class="muted">本页是产品概念影像。场景图与铜锈材质由 Image Gen 生成；声音采集与播放属于故事中的产品设定。画面使用二维画布上的三维投影与章节交叉淡化。</p><p class="muted">图片和视频在浏览器本地处理。示例插画与概念封面由 Image Gen 生成。已有战斗视频沿用仓库的素材许可。</p><a href="../docs/SIX_STUDIES.md">实现、素材与验收说明 ↗</a></dialog>
+<dialog class="study-dialog" id="about" aria-labelledby="about-title"><div class="dialog-head"><span>EXHIBITION NOTES / 03</span><button id="about-close" type="button" aria-label="关闭作品说明">×</button></div><h2 id="about-title">画中门</h2><p>彼处 ELSEWHERE 是虚构的空间声音手记产品。四个章节展示空间采集、分层聆听、地点札记与漫游编排的产品构想。潮间带、雨林、星湖与峡湾沿同一条栈道相连。选择手记后，镜头经过实体铜门抵达下一片风景；回程先转身，再沿原路行走。</p><p class="muted">本页是产品概念影像。生成影像铺展为环绕景片、水面与岩石，铜锈材质覆盖立体门框，石质栈道贯穿四境。几何空间以 WebGL 深度测试呈现遮挡和透视；远景采用有限景深的影像曲面。声音采集与播放属于故事中的产品设定。</p><p class="muted">图片和视频在浏览器本地处理。示例插画与概念封面由 Image Gen 生成。已有战斗视频沿用仓库的素材许可。</p><a href="../docs/SIX_STUDIES.md">实现、素材与验收说明 ↗</a></dialog>
 <script>
 (() => {
   const revealItem = (strip, current) => {

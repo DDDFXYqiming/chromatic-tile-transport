@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "checks": [
+    "forward and return: 20 Hz, three apertures crossed",
+    "forward and return: 60 Hz, three apertures crossed",
+    "forward and return: 144 Hz, three apertures crossed",
+    "pause, interrupted selection and reverse travel preserve position",
+    "chapter changes at the physical door planes"
+  ]
+}
+Studies and gallery are reproducible.
+Native module/resource graph, SVGs, eight-entry gallery and generated files: PASS

@@ -34,6 +34,7 @@ def run(args):
         if args.chromium:kw['executable_path']=args.chromium
         browser=p.chromium.launch(**kw)
         for item in catalog:
+            if args.study and item['id'] != args.study:continue
             errors=[]
             page=browser.new_page(viewport={'width':1440,'height':900},device_scale_factor=1,accept_downloads=True)
             page.on('pageerror',lambda e:errors.append(str(e)))
@@ -91,8 +92,8 @@ def run(args):
                 check('fluid finite after interaction',inspect()['finite'])
                 h1=digest();page.evaluate('VisualStudy.play()');page.wait_for_timeout(300);pause();check('flow continues without pointer',digest()!=h1)
             elif item['id']=='optical':
-                change('折射率',1.68);check('refraction parameter changes pixels',digest()!=h0)
-                box=page.locator('#canvas').bounding_box();page.mouse.move(box['x']+box['width']*.5,box['y']+box['height']*.5);page.mouse.down();page.mouse.move(box['x']+box['width']*.66,box['y']+box['height']*.45,steps=8);page.mouse.up();page.wait_for_timeout(80);check('lens follows drag',inspect()['pos'][0]>.6)
+                page.locator('.optical-tools summary').click()
+                change('分界位置',60);check('optical boundary changes pixels',digest()!=h0 and inspect()['split']==.6)
             elif item['id']=='shadow':
                 count=inspect()['voxels'];page.get_by_role('button',name='对齐菱影 · 90°',exact=True).click();page.wait_for_timeout(90);check('projection changes with same geometry',digest()!=h0 and inspect()['voxels']==count and inspect()['angle']>1.5)
             elif item['id']=='folding':
@@ -120,8 +121,8 @@ def run(args):
                     chapter=item['chapters'][i]
                     check(scene+' artwork and material journal',state['chapter']==scene and state['finite'] and state['steps']==0 and state['source']=='art' and state['art']==chapter['image'] and page.locator('h1').inner_text().replace('\n','')==''.join(chapter['headline']) and page.locator('.hero-copy > p').inner_text()==chapter['body'])
                 elif item['id']=='optical':
-                    expected=[(1.46,.018,98),(1.46,.05,98),(1.7,.012,125),(1.18,0,72)][i]
-                    check(scene+' optical parameters',(state['ior'],state['dispersion'],state['radius'])==expected)
+                    chapter=item['chapters'][i]
+                    check(scene+' optical world and narrative',state['chapter']==scene and state['world']==chapter['world'] and state['art']==chapter['image'] and page.locator('h1').inner_text().replace('\n','')==''.join(chapter['headline']))
                 elif item['id']=='shadow':check(scene+' light angle',abs(state['angle']-i*3.141592653589793/6)<1e-8)
                 elif item['id']=='folding':check(scene+' paper pose',state['open']==[.76,0,.5,1,1][i] and abs(state['orbit']-(65*3.141592653589793/180 if scene=='side' else .36))<1e-8)
                 rendered.append(digest())
@@ -134,14 +135,15 @@ def run(args):
             if item['id']=='portal':change('穿越进度',37)
             elif item['id']=='temporal':page.get_by_label('运动源',exact=True).select_option('video');page.get_by_label('时间形状',exact=True).select_option('radial');page.wait_for_timeout(100)
             elif item['id']=='fluid':page.get_by_role('button',name='轻推颜料',exact=True).click();page.wait_for_timeout(100)
-            elif item['id']=='optical':change('折射率',1.31)
+            elif item['id']=='optical':change('分界位置',70)
             elif item['id']=='shadow':change('光源方位',43)
             elif item['id']=='folding':change('展开程度',34)
-            check(item['id']+' controls synchronize selection',page.locator('.study-strip [aria-current]').count()==(1 if item['id'] in ('temporal','fluid') else 0))
+            check(item['id']+' controls synchronize selection',page.locator('.study-strip [aria-current]').count()==(1 if item['id'] in ('temporal','fluid','optical') else 0))
             cards.first.click();pause();page.locator('#clean').click()
             with page.expect_download(timeout=4000) as download:
                 page.get_by_role('button',name='保存画面',exact=True).click()
             check(item['id']+' exports PNG',download.value.suggested_filename.endswith('.png'))
+            if item['id']=='optical':page.locator('.optical-tools summary').click()
             path=args.output/(item['id']+'-desktop.png');page.screenshot(path=str(path),full_page=True);result['screenshots'].append(path.name)
             page.set_viewport_size({'width':390,'height':844});page.wait_for_timeout(100)
             check(item['id']+' mobile layout fits',page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'))
@@ -168,6 +170,7 @@ def run(args):
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--inline',action='store_true',help='Render wholly offline without navigating a URL')
+    parser.add_argument('--study',choices=['portal','temporal','fluid','optical','shadow','folding'],help='Check a single study')
     parser.add_argument('--chromium',help='Optional browser executable path')
     parser.add_argument('--video-fixture',type=Path,help='Optional local MP4 for the offline decoder test; never committed')
     parser.add_argument('--output',type=Path,default=Path(tempfile.gettempdir())/'ctt-study-review')

@@ -1,0 +1,51 @@
+PASS portal initialized
+PASS portal pause is stable
+PASS camera crosses portal plane
+PASS turn back uses camera yaw
+PASS portal exports PNG
+PASS portal mobile layout fits
+PASS portal honors reduced motion
+PASS portal no uncaught exceptions: []
+PASS temporal initialized
+PASS temporal pause is stable
+PASS bounded frame cache
+PASS real video decoding fixture
+PASS 2D time field changes sampled pixels
+PASS explicit synthetic source works
+PASS temporal exports PNG
+PASS temporal mobile layout fits
+PASS temporal honors reduced motion
+PASS temporal no uncaught exceptions: []
+PASS fluid initialized
+PASS fluid pause is stable
+PASS pigment is transported
+PASS fluid finite after interaction
+PASS flow continues without pointer
+PASS fluid exports PNG
+PASS fluid mobile layout fits
+PASS fluid honors reduced motion
+PASS fluid no uncaught exceptions: []
+PASS optical initialized
+PASS optical pause is stable
+PASS refraction parameter changes pixels
+PASS lens follows drag
+PASS optical exports PNG
+PASS optical mobile layout fits
+PASS optical honors reduced motion
+PASS optical no uncaught exceptions: []
+PASS shadow initialized
+PASS shadow pause is stable
+PASS projection changes with same geometry
+PASS shadow exports PNG
+PASS shadow mobile layout fits
+PASS shadow honors reduced motion
+PASS shadow no uncaught exceptions: []
+PASS folding initialized
+PASS folding pause is stable
+PASS paper closes flat
+PASS paper opens while connected
+PASS folding exports PNG
+PASS folding mobile layout fits
+PASS folding honors reduced motion
+PASS folding no uncaught exceptions: []
+TOTAL 50

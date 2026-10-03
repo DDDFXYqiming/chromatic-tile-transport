@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "covers": [
+    {
+      "src": "assets/studies/portal-cover.png",
+      "width": 1586,
+      "height": 992
+    },
+    {
+      "src": "assets/studies/temporal-cover.png",
+      "width": 1586,
+      "height": 992
+    },
+    {
+      "src": "assets/studies/fluid-cover.png",
+      "width": 1586,
+      "height": 992
+    },
+    {
+      "src": "assets/studies/optical-cover.png",
+      "width": 1586,
+      "height": 992
+    },
+    {
+      "src": "assets/studies/shadow-cover.png",
+      "width": 1586,
+      "height": 992
+    },
+    {
+      "src": "assets/studies/folding-cover.png",
+      "width": 1586,
+      "height": 992
+    }
+  ],
+  "mobileFits": true,
+  "pageErrors": []
+}

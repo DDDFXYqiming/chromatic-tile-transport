@@ -1,0 +1,147 @@
+{
+  "environment": "Windows; Playwright Chromium Headless Shell 151.0.7922.34; effect-01 HTML injected with set_content",
+  "passed": 22,
+  "total": 25,
+  "checks": [
+    {
+      "test": "Primary WebGL 2 renderer starts without GL errors",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "test": "Zero external network requests (local Blob worker allowed)",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "test": "All five desktop plans have unique target cells",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "test": "Every actual-image pair lowers mean weighted colour error vs same-position",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "test": "Every actual-image refinement lowers total objective",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "test": "Five pairs produce five distinct maps",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "test": "All five endpoints display different, nonblank complete images",
+      "passed": true,
+      "detail": [
+        "885b72ca8263",
+        "17252b270cb2",
+        "f6f8a5ecab79",
+        "edc2cbc27194",
+        "87bba69e9f1a"
+      ]
+    },
+    {
+      "test": "Reverse seeking returns to exactly the same pixels",
+      "passed": true,
+      "detail": "Exact pixel-identical return to p=.46"
+    },
+    {
+      "test": "Paused transition does not drift",
+      "passed": true,
+      "detail": 0.41
+    },
+    {
+      "test": "A/B modes use visibly different mapping at same progress",
+      "passed": true,
+      "detail": {
+        "color": "3a33d3248c433e85",
+        "geometry": "90147134f89e3118",
+        "position": "01625246f321f1ed"
+      }
+    },
+    {
+      "test": "Original-colour tracking affects late transport",
+      "passed": true,
+      "detail": "Arrival tint is deferred in tracking mode"
+    },
+    {
+      "test": "Spatial preference changes map and reduces travel distance",
+      "passed": true,
+      "detail": {
+        "colourFirstMeanTravel": 0.32742773290784705,
+        "localFirstMeanTravel": 0.20163997956315644
+      }
+    },
+    {
+      "test": "Timeline input seeks precisely",
+      "passed": true,
+      "detail": 0.55
+    },
+    {
+      "test": "Wheel scrub advances current transition",
+      "passed": true,
+      "detail": 0.3094226980536238
+    },
+    {
+      "test": "Autoplay advances, then can be paused",
+      "passed": true,
+      "detail": 0.47044444444444605
+    },
+    {
+      "test": "Loop boundary and negative seek render without errors",
+      "passed": true,
+      "detail": -0.25
+    },
+    {
+      "test": "Fine grid recalculates and renders over 24,000 cells",
+      "passed": true,
+      "detail": 24192
+    },
+    {
+      "test": "Immersive mode recomputes visible crop correctly",
+      "passed": false,
+      "error": "Assertion failed"
+    },
+    {
+      "test": "Reduced-motion control disables animated playback",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "test": "390px mobile layout and settings have no horizontal overflow",
+      "passed": false,
+      "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\".mobile-settings\")\n    - locator resolved to <button type=\"button\" title=\"寻色引擎设置\" aria-label=\"跃迁设置\" data-open=\"settingsDialog\" class=\"icon-button mobile-settings\">…</button>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 100ms\n    56 × waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying click action\n       - waiting 500ms\n"
+    },
+    {
+      "test": "Rapid resize does not apply a stale worker result",
+      "passed": false,
+      "error": "Assertion failed"
+    },
+    {
+      "test": "Canvas fallback uses content-aware bijective plans",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "test": "Canvas fallback renders intermediate transport",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "test": "No Worker environment still calculates valid maps",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "test": "No uncaught browser JavaScript errors",
+      "passed": true,
+      "detail": true
+    }
+  ],
+  "browserErrors": [],
+  "allPassed": false
+}

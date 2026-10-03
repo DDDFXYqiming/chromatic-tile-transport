@@ -1,0 +1,48 @@
+{
+  "created": "2026-10-04",
+  "generator": "Codex built-in Image Gen",
+  "processing": "Original generated PNG bytes, copied unchanged",
+  "project": "ELSEWHERE / portal-threshold",
+  "assets": [
+    {
+      "file": "portal-tidal-archive.png",
+      "role": "Chapter 01: Tidal Archive / spatial capture",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 3266988,
+      "sha256": "b029051bef645e6b4eb2ff9a7b3a198111a6c91b0d7159ec4bcc3e68df3956ba"
+    },
+    {
+      "file": "portal-canopy-frequencies.png",
+      "role": "Chapter 02: Canopy Frequencies / layered listening",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 3419920,
+      "sha256": "17399c2c88138c8d3480306c7eb6e4eb187940385a6a7c9eecdc1d3690528c52"
+    },
+    {
+      "file": "portal-night-coordinates.png",
+      "role": "Chapter 03: Night Coordinates / location journal",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2932293,
+      "sha256": "63a48a359e9361b353726b84ef7a0e7df3eaf7b80f77a9ac8d4a76cf89c76b02"
+    },
+    {
+      "file": "portal-slow-expedition.png",
+      "role": "Chapter 04: Slow Expedition / guided sequence",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 3170113,
+      "sha256": "89b3e0b52858a0d72378ef001b74304a990af1aa812159b1731d81a6ac88a7cd"
+    },
+    {
+      "file": "portal-patina.png",
+      "role": "Patinated copper material / projected jambs and thresholds",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 3599219,
+      "sha256": "909f98f43bcfafe0acb7c37c124b2707130a89401e7f3c47e0bca7697ff71786"
+    }
+  ]
+}

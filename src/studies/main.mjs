@@ -15,7 +15,7 @@ try {
   effect=await (await modules[id]()).create(stage,document.querySelector('#controls'));stage.start(effect);filmstrip(stage,effect.scenes);loading.hidden=true;
   const clean=document.querySelector('#clean'),about=document.querySelector('#about');
   clean.addEventListener('click',()=>{const on=document.body.classList.toggle('study-clean');clean.setAttribute('aria-pressed',String(on));});
-  document.querySelector('#interact').addEventListener('click',()=>{document.body.classList.add('study-clean');clean.setAttribute('aria-pressed','true');canvas.focus({preventScroll:true});});
+  document.querySelector('#interact').addEventListener('click',()=>{if(effect.interact){effect.interact();return;}document.body.classList.add('study-clean');clean.setAttribute('aria-pressed','true');canvas.focus({preventScroll:true});});
   let resume=false;
   document.querySelector('#about-open').addEventListener('click',()=>{resume=stage.playing;stage.setPlaying(false);about.showModal();});
   document.querySelector('#about-close').addEventListener('click',()=>about.close());

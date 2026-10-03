@@ -12,12 +12,13 @@ export function filmstrip(stage, scenes) {
   const buttons=items.map((item,index)=>{
     const button=document.createElement('button');button.type='button';button.className='hall-card study-card';button.dataset.scene=item.id;
     const thumb=document.createElement('span');thumb.className='hall-thumb';
-    const img=document.createElement('img');img.src=asset(`studies/filmstrip/${id}-${item.id}.webp`);img.alt='';img.width=160;img.height=96;thumb.append(img);
+    const img=document.createElement('img');img.src=asset(item.image || `studies/filmstrip/${id}-${item.id}.webp`);img.alt='';img.width=160;img.height=96;thumb.append(img);
     const copy=document.createElement('span');copy.className='hall-card-copy';
     const number=document.createElement('small');number.textContent=String(index+1).padStart(2,'0')+' / '+scenes.kind;
     const title=document.createElement('strong');title.textContent=item.title;copy.append(number,title);button.append(thumb,copy);
     button.addEventListener('click',()=>{item.apply();stage.dirty=true;sync();reveal(button);});
-    button.addEventListener('focus',()=>reveal(button));strip.append(button);return button;
+    // On portal's mobile strip, pointer focus must not move the target before click.
+    button.addEventListener('focus',()=>{if(id!=='portal'||button.matches(':focus-visible'))reveal(button);});strip.append(button);return button;
   });
   function sync(){
     const index=items.findIndex(item=>item.active());

@@ -31,8 +31,8 @@ def bundle(video_fixture: Path | None = None):
 
 def inline_page(slug):
     s=(ROOT/'dist'/f'{slug}.html').read_text(encoding='utf-8')
-    s=re.sub(r'<link rel="stylesheet"[^>]+>',lambda m:'<style>'+(ROOT/'src/studies/style.css').read_text(encoding='utf-8')+'</style>',s)
-    s=re.sub(r'<script\b[^>]*>.*?</script>','',s,flags=re.S)
+    s=re.sub(r'<link rel="stylesheet" href="([^"]+)"[^>]*>',lambda m:'<style>'+(ROOT/'dist'/m[1]).resolve().read_text(encoding='utf-8')+'</style>',s)
+    s=re.sub(r'<script\b(?![^>]*type="application/json")[^>]*>.*?</script>','',s,flags=re.S)
     def thumbnail(match):
         path=(ROOT/'dist'/match[1]).resolve()
         return 'src="data:image/webp;base64,'+base64.b64encode(path.read_bytes()).decode()+'"'

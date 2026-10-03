@@ -5,18 +5,60 @@
     "slug": "portal-threshold",
     "title": "画中门",
     "english": "PORTAL THRESHOLD",
-    "kicker": "SPACE / 空间",
-    "line": "画框不是终点。走进去，另一间展厅仍在呼吸。",
-    "help": "移动指针观察视差；点击穿过画框，或聚焦画面后用方向键行走、转身。",
-    "mechanism": "同一个三维场景中的双房间与实体门洞。镜头真的穿过门所在的平面，可以回头看；没有使用画面交叉淡化。使用轻量软件三维投影与近裁剪，不依赖 WebGL。",
-    "limits": "基础几何场景，不包含复杂场景模型、递归门户或路径追踪。曲面采用多边形近似。",
+    "kicker": "ELSEWHERE / 彼处",
+    "line": "把一段潮声、一束林光、一个没舍得离开的夜晚，收进可以重返的空间。彼处是一册为远方而造的声音手记。",
+    "help": "选择下方四册手记，或继续翻页。移动指针探索景深；方向键行走与回望。",
+    "mechanism": "彼处 ELSEWHERE 是虚构的空间声音手记产品。四个章节展示空间采集、分层聆听、地点札记与漫游编排的产品构想。铜门、自然场景与文字一起切换，镜头可以穿过门槛并回望。",
+    "limits": "本页是产品概念影像。场景图与铜锈材质由 Image Gen 生成；声音采集与播放属于故事中的产品设定。画面使用二维画布上的三维投影与章节交叉淡化。",
     "cover": "portal-cover.png",
     "accent": "#80dcd6",
-    "headline1": "越过画框，",
-    "headline2": "星海在场。",
-    "action": "走入另一间展厅",
-    "medium": "SPATIAL PROJECTION",
-    "signature": "Z / ± ∞"
+    "headline1": "推开门，",
+    "headline2": "潮汐仍在。",
+    "action": "下一册 · 林间频率",
+    "medium": "A SPATIAL FIELD JOURNAL",
+    "signature": "VOL. 01 / TIDE",
+    "chapters": [
+      {
+        "id": "threshold", "title": "潮汐档案", "english": "TIDAL ARCHIVE",
+        "kicker": "01 / CAPTURE THE DISTANCE", "headline": ["推开门，", "潮汐仍在。"],
+        "body": "清晨六点，海水刚刚退下玄武岩。彼处把近处的水纹、岩隙里的回声和远方的浪线，收藏成一枚可以走进去的声音坐标。",
+        "image": "studies/portal-tidal-archive.png", "accent": "#a9e0d5",
+        "location": "北岸 · 潮间带", "time": "06:12 AM", "coordinate": "FIELD NOTE / 001",
+        "feature": "让声音，也有远近", "detail": "空间采集保留声源的方向与距离。再次打开手记，沿着那天的听觉位置，慢慢走回海边。",
+        "tags": ["空间采集", "潮水 / 岩隙 / 海风"], "note": "退潮之后，石头还记得海的声音。",
+        "action": "下一册 · 林间频率", "pose": {"progress": 0, "yaw": 0}
+      },
+      {
+        "id": "through", "title": "林间频率", "english": "CANOPY FREQUENCIES",
+        "kicker": "02 / LISTEN IN LAYERS", "headline": ["穿过林光，", "听见层次。"],
+        "body": "沿溪向林子深处走，雨滴先落在蕨叶上，再落进水里。把一片森林拆成几层聆听，风声退后，脚边的小溪便清晰起来。",
+        "image": "studies/portal-canopy-frequencies.png", "accent": "#ced8a4",
+        "location": "雾谷 · 古老雨林", "time": "09:41 AM", "coordinate": "FIELD NOTE / 002",
+        "feature": "为每一层，留一点安静", "detail": "分层手记把环境、近声与偶然的细节分别收藏。按心情调整它们的距离，给专注的一小时铺一层林荫。",
+        "tags": ["分层聆听", "溪流 / 叶雨 / 林风"], "note": "一滴雨落了两次，我在第二次听见它。",
+        "action": "下一册 · 夜色坐标", "pose": {"progress": 1, "yaw": 0}
+      },
+      {
+        "id": "return", "title": "夜色坐标", "english": "NIGHT COORDINATES",
+        "kicker": "03 / KEEP THE MOMENT", "headline": ["回望时，", "星夜有址。"],
+        "body": "那晚没有赶路。我们在高地湖边等到第一颗星，把风向、天色和一句没说完的话写在一起。以后回望，记忆便有了地址。",
+        "image": "studies/portal-night-coordinates.png", "accent": "#c7c5ee",
+        "location": "高地 · 星镜湖", "time": "11:08 PM", "coordinate": "FIELD NOTE / 003",
+        "feature": "给片刻，添一个坐标", "detail": "声音、影像和文字归入同一张地点卡。沿地图找回一段旅程，也能沿某句话，找回当时的自己。",
+        "tags": ["地点札记", "星空 / 湖面 / 夜风"], "note": "有些夜晚，值得留一个回去的地址。",
+        "action": "下一册 · 缓慢远行", "pose": {"progress": 1, "yaw": 3.141592653589793}
+      },
+      {
+        "id": "roam", "title": "缓慢远行", "english": "SLOW EXPEDITION",
+        "kicker": "04 / MAKE ROOM TO WANDER", "headline": ["留一点时间，", "让远方发生。"],
+        "body": "从海岸到林间，从星湖到冰湾，把几册手记连成一条私人的远行路线。彼处替你缓缓翻页，让熟悉的房间也有辽阔的尽头。",
+        "image": "studies/portal-slow-expedition.png", "accent": "#b4d8e8",
+        "location": "北境 · 微光峡湾", "time": "04:26 AM", "coordinate": "FIELD NOTE / 004",
+        "feature": "把收藏，连成一场远行", "detail": "漫游编排让每个地点停留片刻，再把你送到下一扇门。选好出发的心情，剩下的时间交给风景。",
+        "tags": ["漫游编排", "四册手记 / 循环远行"], "note": "今日的目的地，是多停留一会儿。",
+        "action": "重新出发 · 潮汐档案", "pose": {"progress": 0.45, "yaw": 0}
+      }
+    ]
   },
   {
     "id": "temporal",

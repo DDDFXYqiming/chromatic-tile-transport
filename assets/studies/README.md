@@ -6,7 +6,7 @@ files were copied byte-for-byte, ordered by LastWriteTime, into the names below.
 
 | File | Used by | Role |
 | --- | --- | --- |
-| `quiet-orbit.png` | Portal / Optical | Full-size illustration |
+| `quiet-orbit.png` | Optical | Full-size illustration |
 | `tidal-garden.png` | Fluid | Full-size illustration |
 | `paper-world.png` | Folding | Full-size panorama |
 | `portal-cover.png` | Gallery / Portal | Concept cover |
@@ -28,3 +28,21 @@ pre-existing media retains its own rights and provenance. See
 
 Temporal continues to use `assets/matrix-battle/03-clash.mp4` by default.
 Its provenance remains governed by the original battle media documentation.
+
+## ELSEWHERE / portal chapter art
+
+The 2026-10-04 portal remodel adds five assets generated with the built-in Codex
+Image Gen tool. The source PNGs were copied unchanged into this directory.
+`portal-assets.json` records their dimensions, byte sizes, SHA-256 hashes and roles.
+
+| File | Role |
+| --- | --- |
+| `portal-tidal-archive.png` | Dawn tidal cove and patinated doorway; spatial capture chapter |
+| `portal-canopy-frequencies.png` | Layered rainforest, stream and bronze doorway; layered listening chapter |
+| `portal-night-coordinates.png` | Volcanic lake, stars and engraved doorway; location journal chapter |
+| `portal-slow-expedition.png` | Aurora fjord and stone threshold; guided expedition chapter |
+| `portal-patina.png` | Blue-green aged copper material for projected jambs and threshold slabs |
+
+These are generated environment illustrations and a material texture for the
+fictional ELSEWHERE product story. The four chapter illustrations also supply
+the portal's local filmstrip thumbnails.

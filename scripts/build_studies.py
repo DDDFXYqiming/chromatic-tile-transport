@@ -17,6 +17,12 @@ def outputs() -> dict[Path, str]:
         output = ROOT / f'dist/{item["slug"]}.html'
         shell = runpy.run_path(str(ROOT / 'src/hall/build.py'))['render'](item['id'], output)
         page = template
+        extra = ''
+        if item['id'] == 'portal':
+            chapters = json.dumps(item['chapters'], ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')
+            extra = ('\n<link rel="stylesheet" href="../src/studies/portal.css">'
+                     '\n<script type="application/json" id="portal-chapters">' + chapters + '</script>')
+        page = page.replace('@@STUDYEXTRA@@', extra)
         for key, value in item.items():
             page = page.replace('@@' + key.upper() + '@@', html.escape(str(value), quote=True))
         for key, value in shell.items():

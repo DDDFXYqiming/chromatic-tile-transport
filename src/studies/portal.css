@@ -1,0 +1,70 @@
+/* The ELSEWHERE content treatment is exclusive to study 03. */
+[data-study=portal] .theater{--chapter-enter:1;background:#091918}
+[data-study=portal] .header{position:sticky;top:0;z-index:20;background:#090e13f5;backdrop-filter:blur(16px)}
+[data-study=portal] .art-shade{background:linear-gradient(0deg,#0610128c,transparent 30%);pointer-events:none}
+[data-study=portal] .hero-copy{left:5%;bottom:22%;max-width:425px;opacity:var(--chapter-enter);transform:translateY(calc((1 - var(--chapter-enter))*12px))}
+[data-study=portal] h1{font-size:clamp(38px,3.75vw,70px);line-height:1.4;letter-spacing:.065em}
+[data-study=portal] .hero-copy p{font-size:12px;line-height:2.1;max-width:322px;letter-spacing:.045em;color:#e6ece4;margin-top:22px}
+[data-study=portal] .eyebrow{font-size:9px;letter-spacing:.15em;margin-bottom:24px;color:#dfdec8}
+[data-study=portal] .eyebrow span:first-child{color:#dfdec8}
+[data-study=portal] .next-hero{font-size:11px;margin-top:27px;gap:25px}
+[data-study=portal] .next-hero i{width:36px;height:36px}
+[data-study=portal] .stage-tag{left:5%;top:24px;font-size:8px}
+[data-study=portal] .telemetry{right:25px;top:22px;width:208px;background:#0a16165e;border-color:#eee5c62a;backdrop-filter:blur(10px)}
+[data-study=portal] #status{font-size:9px;min-height:auto}
+[data-study=portal] .telemetry-bottom{font-size:6px}
+[data-study=portal] .study-coordinate{right:23px;bottom:28px}
+.portal-edition{position:absolute;left:5%;top:54px;display:flex;flex-direction:column;gap:9px;pointer-events:none}
+.portal-edition>span{font:25px "SimSun",serif;letter-spacing:.18em}
+.portal-edition b{font:10px ui-monospace,monospace;letter-spacing:.32em;margin-left:12px;font-weight:400;color:#e6dcc4}
+.portal-edition small{font:7px ui-monospace,monospace;letter-spacing:.12em;color:#bbc9bb}
+.portal-folio{position:absolute;right:6%;bottom:7%;width:315px;padding:20px 23px;background:linear-gradient(125deg,#0b201df0,#0b171dcc);border:1px solid #dac99d57;backdrop-filter:blur(18px);box-shadow:0 12px 55px #020a0e40;opacity:var(--chapter-enter);transform:translateY(calc((1 - var(--chapter-enter))*16px));pointer-events:none}
+.portal-folio-top{display:flex;justify-content:space-between;gap:10px;font:7px ui-monospace,monospace;letter-spacing:.11em;color:var(--accent)}
+.portal-folio-top b{font-weight:400;font-size:8px;color:#c8cbbd;letter-spacing:.06em}
+.portal-folio h2{font:20px "SimSun",serif;letter-spacing:.065em;margin:17px 0 11px;font-weight:400;color:#f1eddf}
+.portal-folio p{font-size:10px;line-height:1.95;letter-spacing:.04em;color:#b9c6be;margin:0}
+.portal-tags{display:flex;flex-wrap:wrap;gap:10px;border-top:1px solid #b6c5b126;margin-top:15px;padding-top:13px;font-size:8px;letter-spacing:.06em;color:#d6d7ba}
+.portal-tags span:first-child{color:var(--accent)}
+.portal-note{position:absolute;left:5%;bottom:7%;opacity:var(--chapter-enter);pointer-events:none;max-width:370px;border-left:1px solid #c1cdbb69;padding-left:15px}
+.portal-note>span{font:7px ui-monospace,monospace;letter-spacing:.22em;color:#c9cbb7}
+.portal-note p{font:12px "SimSun",serif;letter-spacing:.1em;color:#d6d9c9;margin:10px 0}
+.portal-note small{font:7px ui-monospace,monospace;letter-spacing:.12em;color:#9eafa7}
+.portal-chapter-mark{position:absolute;right:6%;top:25%;font:italic clamp(80px,10vw,170px) Georgia,serif;line-height:1;color:#f0edd930;text-shadow:0 2px 15px #0002;opacity:var(--chapter-enter);pointer-events:none}
+[data-study=portal] .instrument-bar{padding-block:13px 10px;background:linear-gradient(100deg,#0e1b1f,#0a141b)}
+[data-study=portal] .instrument-title span{color:#b5c7b4}
+[data-study=portal] .study-card{opacity:.65}
+[data-study=portal] .study-card[aria-current]{opacity:1}
+[data-study=portal] .study-strip .hall-thumb{height:54px}
+[data-study=portal].study-clean .portal-edition,[data-study=portal].study-clean .portal-folio,[data-study=portal].study-clean .portal-note,[data-study=portal].study-clean .portal-chapter-mark{display:none}
+@media(max-width:1100px){
+  [data-study=portal] .hero-copy{bottom:28%;max-width:340px}
+  [data-study=portal] h1{font-size:43px}
+  [data-study=portal] .hero-copy p{max-width:275px;font-size:11px}
+  .portal-folio{right:5%;width:270px;padding:17px;bottom:6%}.portal-folio h2{font-size:18px}.portal-note{bottom:6%;max-width:280px}.portal-note p{font-size:10px}
+}
+@media(max-width:800px){
+  [data-study=portal] .hero-copy{bottom:30%}
+  [data-study=portal] h1{font-size:38px}
+  [data-study=portal] .telemetry{width:175px;right:18px}
+  .portal-folio{width:240px}.portal-note{max-width:240px}.portal-edition{top:64px}.portal-chapter-mark{top:25%}
+}
+@media(max-width:600px){
+  [data-study=portal] .stage{grid-template-rows:600px auto}
+  [data-study=portal] .stage-tag{top:20px;left:22px;font-size:6px}
+  [data-study=portal] .hero-copy{left:22px;bottom:auto;top:195px;max-width:calc(100% - 44px)}
+  [data-study=portal] h1{font-size:35px;line-height:1.4}
+  [data-study=portal] .hero-copy p{max-width:285px;font-size:10px;line-height:1.85;margin-top:13px}
+  [data-study=portal] .eyebrow{font-size:7px;gap:10px;margin-bottom:13px}
+  [data-study=portal] .next-hero{font-size:10px;margin-top:14px}
+  [data-study=portal] .next-hero i{width:27px;height:27px}
+  [data-study=portal] .telemetry{display:none}
+  .portal-edition{left:22px;top:57px}.portal-edition>span{font-size:22px}.portal-edition small{font-size:6px}
+  .portal-chapter-mark{top:103px;right:26px;font-size:75px}
+  .portal-folio{left:22px;right:22px;bottom:20px;width:auto;padding:15px 16px}
+  .portal-folio h2{font-size:18px;margin:12px 0 8px}.portal-folio p{font-size:9px;line-height:1.85}.portal-tags{margin-top:11px;padding-top:10px;font-size:7px}
+  .portal-note{display:none}[data-study=portal] .study-coordinate{display:none}
+  [data-study=portal] .study-strip .hall-thumb{height:43px}
+  [data-study=portal] .art-shade{background:linear-gradient(0deg,#061113a8 0%,#06111399 35%,#06111308 72%)}
+}
+@media(max-width:360px){[data-study=portal] h1{font-size:31px}[data-study=portal] .stage{grid-template-rows:700px auto}[data-study=portal] .hero-copy{top:245px}.portal-folio{bottom:24px}}
+@media(min-width:801px) and (max-height:800px){[data-study=portal] .theater{min-height:550px}[data-study=portal] .study-app{min-height:890px}.portal-note{display:none}[data-study=portal] .hero-copy{bottom:15%}.portal-folio{bottom:8%}}

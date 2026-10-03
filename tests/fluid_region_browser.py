@@ -74,15 +74,19 @@ def run(output,baseline=None):
                 def drag(a,b):
                     page.mouse.move(*a);page.mouse.down();page.mouse.move(*b,steps=8);page.mouse.up();page.wait_for_timeout(100)
                 def shot():return Image.open(io.BytesIO(page.locator('#canvas').screenshot())).convert('RGB')
-                points={'mineral':(.60,.71),'ink':(.65,.5),'paper':(.70,.55),'light':(.58,.78)}
+                points={'mineral':(.60,.71),'ink':(.65,.5),'paper':(.70,.55),'light':(.56,.71)}
                 for chapter,point in points.items():
                     page.locator(f'[data-scene="{chapter}"]').click()
                     page.wait_for_timeout(100)
                     page.evaluate('scrollTo(0,0)')
                     b=page.locator('#canvas').bounding_box()
                     # Blank stage area does not even wake the solver.
+                    blank_before=shot()
                     drag((b['x']+b['width']*.1,b['y']+b['height']*.25),(b['x']+b['width']*.2,b['y']+b['height']*.3))
+                    drag((140,218),(480,218))
+                    page.wait_for_timeout(2000)
                     check(chapter+' empty drag stays inert',inspect()['steps']==0 and not inspect()['disturbed'])
+                    check(chapter+' QA blank drag keeps every canvas pixel identical',ImageChops.difference(blank_before,shot()).getbbox() is None)
                     before=shot()
                     drag(source_point(*point),source_point(point[0]+.035,point[1]+.015))
                     after=shot()

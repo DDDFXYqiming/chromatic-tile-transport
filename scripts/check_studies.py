@@ -71,6 +71,8 @@ for item in json.loads((ROOT/'src/studies/catalog.json').read_text(encoding='utf
                 assert len(chapter['display']) == 2
                 assert all(chapter[key] for key in ('alt', 'material'))
     if item['id'] == 'fluid':
+        subprocess.run(['node', str(ROOT/'tests/fluid_math.mjs')], check=True)
+        subprocess.run([sys.executable, str(ROOT/'tests/fluid_regions.py')], check=True)
         chapters = item['chapters']
         assert 4 <= len(chapters) <= 5
         for field in ('id', 'image', 'body', 'note', 'kicker', 'material'):

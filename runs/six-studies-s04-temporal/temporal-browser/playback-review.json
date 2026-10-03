@@ -1,0 +1,18 @@
+{
+  "file": "temporal-tour.webm",
+  "duration": "00:00:17.88",
+  "sampled_seconds": [
+    1,
+    4,
+    7,
+    10,
+    13,
+    16
+  ],
+  "contact_sheet": "tour-review.png",
+  "viewport": [
+    1440,
+    900
+  ],
+  "source": "Headless Chromium real-time screen recording"
+}

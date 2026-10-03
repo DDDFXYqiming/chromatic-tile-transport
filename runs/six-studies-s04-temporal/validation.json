@@ -1,0 +1,46 @@
+{
+  "implementation_commit": "823e215787140d6ce1789df32dae689d0eadb18f",
+  "base_commit": "5ed39c5245f1a6f4be93f33d996f2dd4591b9067",
+  "branch": "feat/visual-lab-six-studies",
+  "static": {
+    "build_reproducible": true,
+    "module_resource_catalog_checks": true,
+    "studies_math": 7
+  },
+  "browser": {
+    "temporal-browser": {
+      "passed": 133,
+      "errors": [],
+      "evidence": "temporal-browser/results.json"
+    },
+    "studies-browser": {
+      "passed": 246,
+      "errors": [],
+      "evidence": "studies-browser/results.json"
+    },
+    "studies-inline": {
+      "passed": 246,
+      "errors": [],
+      "evidence": "studies-inline/results.json"
+    },
+    "hall-browser": {
+      "passed": 1928,
+      "errors": [],
+      "evidence": "hall-browser/results.json"
+    }
+  },
+  "legacy": {
+    "python_unit_tests": 41,
+    "matcher": 8,
+    "timing": 11,
+    "browser": 25,
+    "handoff": 8,
+    "evidence": "legacy-checks.json"
+  },
+  "playback": {
+    "duration": "00:00:17.88",
+    "evidence": "temporal-browser/temporal-tour.webm",
+    "visual_review": "temporal-browser/tour-review.png"
+  },
+  "additional_review": "temporal-browser/final-review.json"
+}

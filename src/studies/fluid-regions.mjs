@@ -2,6 +2,8 @@ import {clamp} from './math.mjs';
 import {bilinear,artworkPoint} from './core.mjs';
 
 export const POINTER_WEIGHT=.15;
+export const MATERIAL_MASKS=Object.freeze(Object.fromEntries(
+  ['mineral','ink','paper','light'].map(id=>[id,`studies/fluid-${id}-mask.png`])));
 
 // Artwork-space contours: powder, the inside of the glass, the painted wash,
 // and the light on the worktable. These move with coverFit at every viewport.
@@ -10,8 +12,8 @@ const contours={
     [[.32,.59],[.39,.58],[.47,.65],[.57,.63],[.63,.65],[.67,.72],[.77,.76],[.81,.73],[.89,.74],[.94,.79],[.95,.88],[.79,.89],[.69,.84],[.61,.84],[.53,.80],[.47,.73],[.37,.69],[.32,.65]],
     [[.645,.55],[.68,.525],[.74,.53],[.81,.59],[.87,.595],[.90,.607],[.86,.615],[.76,.60],[.69,.585]],
   ],
-  ink:[[[.45,.165],[.93,.165],[.945,.69],[.92,.755],[.78,.775],[.56,.75],[.45,.67]]],
-  paper:[[[.39,.55],[.47,.41],[.61,.37],[.72,.20],[.90,.12],[.94,.24],[1,.24],[1,.98],[.82,.99],[.70,.93],[.61,.91],[.51,.80],[.47,.69],[.40,.65]]],
+  ink:[[[.465,.18],[.915,.18],[.915,.70],[.89,.735],[.78,.75],[.56,.725],[.465,.67]]],
+  paper:[[[.44,.57],[.50,.51],[.53,.44],[.61,.41],[.72,.20],[.90,.12],[.94,.24],[1,.24],[1,.98],[.82,.99],[.70,.93],[.61,.91],[.51,.80],[.47,.69],[.46,.65]]],
   light:[[[.18,.70],[.46,.61],[.55,.65],[.78,.72],[.96,.75],[.96,.83],[.70,.88],[.50,.87],[.21,.93],[.16,.86]]],
 };
 
@@ -44,21 +46,36 @@ export function pigmentWeight(chapter,x,y,r,g,b,a=255){
   return regionWeight(chapter,x,y)*colour*a/255;
 }
 
-// All consumers share artwork coordinates and one colour mask. Bilinear
-// filtering may soften an interior edge, but must not expand its support.
-export function pigmentRegion(chapter,pixels,w,h){
+// The generated material plate is authoritative. Colour/contours can only
+// subtract from it, never turn similarly coloured stone, glass or paper on.
+// Keep the plate at artwork resolution; do not average labels down to the
+// solver grid. All consumers (including the renderer) use this same raster.
+export function pigmentRegion(chapter,pixels,w,h,material){
   const weights=new Float32Array(w*h);
   for(let y=0;y<h;y++)for(let x=0;x<w;x++){
     const k=y*w+x,i=k*4;
     weights[k]=pigmentWeight(chapter,(x+.5)/w,(y+.5)/h,...pixels.subarray(i,i+4));
   }
-  return (x,y)=>{
-    const contour=regionWeight(chapter,x,y);
-    if(!contour)return 0;
-    const cell=Math.min(h-1,Math.floor(y*h))*w+Math.min(w-1,Math.floor(x*w));
-    if(!weights[cell])return 0;
-    return Math.min(contour,bilinear(weights,w,h,x*w-.5,y*h-.5,0,1));
+  const width=material?.width||w,height=material?.height||h;
+  const mask=new Uint8Array(width*height),labels=material?.data;
+  const white=k=>labels[k*4]>=240&&labels[k*4+1]>=240&&labels[k*4+2]>=240&&labels[k*4+3]===255;
+  for(let y=0;y<height;y++)for(let x=0;x<width;x++){
+    const i=y*width+x,u=(x+.5)/width,v=(y+.5)/height;
+    // Missing chapter plates fail closed. A four-source-pixel inset protects
+    // the final canvas resampling footprint as well as ambiguous mask edges.
+    if(chapter!=='local'&&(!labels||x<4||y<4||x>=width-4||y>=height-4||
+      !white(i)||!white(i-4)||!white(i+4)||!white(i-width*4)||!white(i+width*4)))continue;
+    const cell=Math.min(h-1,Math.floor(v*h))*w+Math.min(w-1,Math.floor(u*w));
+    if(weights[cell])mask[i]=Math.round(bilinear(weights,w,h,u*w-.5,v*h-.5,0,1)*255);
+  }
+  const weight=(x,y)=>{
+    if(!Number.isFinite(x)||!Number.isFinite(y)||x<0||x>=1||y<0||y>=1)return 0;
+    // Undo only roundoff at exact texel boundaries after a CSS/canvas
+    // roundtrip; the tolerance is one billionth of a source pixel.
+    const ix=Math.min(width-1,Math.floor(x*width+1e-9)),iy=Math.min(height-1,Math.floor(y*height+1e-9));
+    return mask[iy*width+ix]/255;
   };
+  return Object.assign(weight,{mask,width,height});
 }
 
 // Use the raw client position, including captured pointers outside the stage.
@@ -73,6 +90,7 @@ export function hitRegion(client,rect,fit,weight,overlays=[],surface){
 }
 
 export function pigmentStroke(weight,a,b,w=120,h=80){
+  w=Math.max(w,weight.width||0);h=Math.max(h,weight.height||0);
   const steps=Math.max(1,Math.ceil(Math.max(Math.abs(b.x-a.x)*w,Math.abs(b.y-a.y)*h)*2));
   for(let i=0;i<=steps;i++)if(weight(a.x+(b.x-a.x)*i/steps,a.y+(b.y-a.y)*i/steps)<=POINTER_WEIGHT)return false;
   return true;

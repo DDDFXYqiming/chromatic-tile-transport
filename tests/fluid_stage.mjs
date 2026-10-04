@@ -3,12 +3,13 @@ import {readFileSync} from 'node:fs';
 import {Stage,artworkPoint} from '../src/studies/core.mjs';
 import {create,Fluid,PigmentField} from '../src/studies/fluid.mjs';
 import {hitRegion} from '../src/studies/fluid-regions.mjs';
+import {samples as loadSamples,pigmentPoints,qaLayout,qaBlank,qaPigment} from './fluid_fixtures.mjs';
 
 // Exercise the production Stage listeners, effect hit/pending logic and solver.
 // Only DOM/image/canvas I/O is substituted; this is a Node integration test.
-const samples=JSON.parse(readFileSync(0,'utf8'));
+const samples=loadSamples();
 const chapters=JSON.parse(readFileSync(new URL('../src/studies/catalog.json',import.meta.url),'utf8')).find(c=>c.id==='fluid').chapters;
-const points={mineral:[.60,.71],ink:[.65,.5],paper:[.70,.55],light:[.56,.71]};
+const points=pigmentPoints;
 const identity=()=>({a:1,b:0,c:0,d:1,e:0,f:0});
 const box=(left,top,width,height)=>({left,top,width,height,right:left+width,bottom:top+height});
 class Element {
@@ -30,16 +31,17 @@ class Context {
   constructor(canvas){this.canvas=canvas;this.matrix=identity();this.lastImage=null;}
   setTransform(a,b,c,d,e,f){this.matrix={a,b,c,d,e,f};}
   getTransform(){return {...this.matrix};}
-  drawImage(image,...args){this.lastImage=image;if(image.sample)this.artwork={image,args,matrix:this.getTransform()};}
+  drawImage(image,...args){this.lastImage=image;if(image.sample&&!image.isMask)this.artwork={image,args,matrix:this.getTransform()};if(image.ctx?.pixels)this.layer={image,args};}
   getImageData(x,y,w,h){
     const data=new Uint8ClampedArray(w*h*4),sample=this.lastImage?.sample;
+    if(this.lastImage?.isMask){assert.equal(w,sample.material.width);assert.equal(h,sample.material.height);return {data:sample.material.data};}
     if(sample)for(let j=0;j<h;j++)for(let i=0;i<w;i++){
       const from=(Math.min(79,Math.floor(j/h*80))*120+Math.min(119,Math.floor(i/w*120)))*4;
       data.set(sample.pixels.slice(from,from+4),(j*w+i)*4);
     }
     return {data};
   }
-  clearRect(){} putImageData(){} beginPath(){} arc(){} stroke(){} fillRect(){}
+  clearRect(){} putImageData(pixels){this.pixels=pixels;} beginPath(){} arc(){} stroke(){} fillRect(){}
 }
 class Canvas extends Element {
   constructor(){super();this.ctx=new Context(this);this.width=300;this.height=150;}
@@ -72,7 +74,7 @@ async function setup(rect,dpr=1){
     matchMedia:()=>({matches:false}),performance:{now:()=>now},
     ResizeObserver:class{observe(){}disconnect(){}},MutationObserver:class{observe(){}disconnect(){}},
     ImageData:class{constructor(w,h){this.data=new Uint8ClampedArray(w*h*4);}},
-    Image:class{set src(url){this.sample=samples.find(s=>url.endsWith(s.image));assert.ok(this.sample);this.width=this.sample.width;this.height=this.sample.height;queueMicrotask(()=>this.onload());}},
+    Image:class{set src(url){this.sample=samples.find(s=>url.endsWith(s.image)||url.endsWith(s.maskImage));assert.ok(this.sample);this.isMask=url.endsWith(this.sample.maskImage);this.width=this.sample.width;this.height=this.sample.height;queueMicrotask(()=>this.onload());}},
     requestAnimationFrame:fn=>{raf=fn;return 1;},cancelAnimationFrame:()=>{},
   });
   const stage=new Stage(canvas,new Element()),effect=await create(stage,new Element());stage.start(effect);
@@ -101,8 +103,19 @@ async function setup(rect,dpr=1){
 }
 function inert(initial,label){
   assert.deepEqual(calls,{force:0,solve:0,advect:0},label+' zero force and advection calls');
-  assert.ok(flow.u.every(v=>v===0)&&flow.v.every(v=>v===0),label+' zero velocity');
+  for(const key of ['u','v','u0','v0','p','p0','div'])assert.ok(flow[key].every(v=>v===0),label+' zero '+key);
   assert.deepEqual(field.uv,initial,label+' byte-identical pigment UVs');
+}
+function containedLayer(h){
+  const {image:layer,args:[x,y,w,height]}=h.canvas.ctx.layer;
+  const [ax,ay,aw,ah]=h.canvas.ctx.artwork.args,{data}=layer.ctx.pixels;
+  let visible=0;
+  for(let j=0;j<layer.height;j++)for(let i=0;i<layer.width;i++){
+    if(!data[(j*layer.width+i)*4+3])continue;
+    const u=(x+(i+.5)/layer.width*w-ax)/aw,v=(y+(j+.5)/layer.height*height-ay)/ah;
+    assert.ok(flow.weight(u,v)>0,'2D renderer alpha cannot expand into a forbidden material');visible++;
+  }
+  assert.ok(visible>0,'visible moving pigment layer');
 }
 
 // Explicit contain/letterbox and non-uniform backing-store transforms: even an
@@ -121,23 +134,48 @@ for(const matrix of [surface.transform,{a:1.4,b:.1,c:-.2,d:1.1,e:7,f:-11}]){
 console.log('PASS backing-store inverse, fractional CSS geometry and letterbox rejection');
 
 let cases=0;
-for(const dpr of [1,1.25,1.5,2])for(const chapter of [0,1,2,3]){
-  const h=await setup(box(27,85,1453,620),dpr);
+for(const dpr of [1,1.25,1.5,2]){
+  const h=await setup(qaLayout,dpr);
+  for(const chapter of [0,1,2,3]){
   for(const playing of [false,true])for(const frames of [false,true]){
     h.reset(chapter);h.stage.setPlaying(playing);
     const initial=field.uv.slice();
-    h.gesture({clientX:140,clientY:218},{clientX:480,clientY:218},{frames});
+    h.gesture(qaBlank.from,qaBlank.to,{frames});
     inert(initial,`${chapters[chapter].id} DPR ${dpr} playback ${playing} interleaved ${frames}`);
     assert.equal(h.effect.inspect().disturbed,false);assert.equal(h.effect.inspect().active,false);cases++;
   }
   h.reset(chapter);h.stage.setPlaying(true);
   const initial=field.uv.slice(),[u,v]=points[chapters[chapter].id];
-  h.gesture(h.client(u,v),h.client(u+.02,v+.01));
+  h.gesture(h.client(u,v),h.client(u+(chapter===3?.008:.02),v+(chapter===3?.003:.01)));
   assert.ok(calls.force>0&&calls.advect>0,chapters[chapter].id+' real Stage pigment gesture accepted');
   assert.ok(field.uv.some((v,i)=>Math.abs(v-initial[i])>.0001),'interior pigment moves');
+  containedLayer(h);
+  h.reset(chapter);
+  const before=field.uv.slice();
+  h.gesture(h.client(.15,.3),h.client(u,v));
+  inert(before,'blank-origin gesture entering pigment');
+  }
   h.stage.dispose();
 }
 console.log(`PASS ${cases} full Stage QA blank gestures: zero splats, solver/advection calls and UV changes; all four pigment controls flow`);
+
+// Raw QA inputs are independent of the artwork-point helper and remain exact
+// viewport/stage CSS pixels under each backing-store DPR and idle zoom phase.
+let qaCases=0;
+for(const dpr of [1,1.25,1.5,2]){
+  const h=await setup(qaLayout,dpr);
+  for(const t of [0,10,30])for(const qa of qaPigment){
+    h.reset(qa.chapter);h.stage.t=t;h.stage.dirty=true;h.tick();
+    const initial=field.uv.slice();
+    h.gesture(qaBlank.from,qaBlank.to);inert(initial,'exact QA path at zoom phase '+t);
+    h.stage.setPlaying(true);h.gesture(qa.from,qa.to);
+    assert.ok(calls.force>0&&calls.solve>0&&calls.advect>0,'exact QA pigment gesture accepted');
+    assert.ok(field.uv.some((v,i)=>Math.abs(v-initial[i])>.0001),'exact QA pigment UV changes');
+    containedLayer(h);qaCases++;
+  }
+  h.stage.dispose();
+}
+console.log(`PASS ${qaCases} exact QA blank/powder/liquid pairs across DPR and zoom; fallback render alpha stays inside material`);
 
 for(const layout of [box(27.25,-195.5,1453.4,620.2),box(21,79,974,680),box(13,112,364,840),box(-40,-320,800,700)]){
   const h=await setup(layout,2);h.reset(1);

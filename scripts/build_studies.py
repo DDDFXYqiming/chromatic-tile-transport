@@ -65,9 +65,10 @@ def outputs() -> dict[Path, str]:
             extra += '\n<script type="importmap">' + json.dumps({'imports': imports}, separators=(',', ':')) + '</script>'
             entry = '../src/studies/main.mjs'
             page = page.replace(f'src="{entry}"', f'src="{imports[entry]}"')
-            for name in ('style', item['id']):
-                relative = f'src/studies/{name}.css'
-                old = f'../{relative}'
+        for name in ('style', item['id']):
+            relative = f'src/studies/{name}.css'
+            old = f'../{relative}'
+            if (ROOT / relative).exists():
                 page = page.replace(old + '"', old + '?v=' + fingerprint(relative) + '"')
                 extra = extra.replace(old + '"', old + '?v=' + fingerprint(relative) + '"')
         page = page.replace('@@STUDYEXTRA@@', extra)

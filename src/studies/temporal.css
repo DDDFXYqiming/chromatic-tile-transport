@@ -64,6 +64,9 @@
   .temporal-edition{position:relative;order:-1;z-index:1;left:auto;top:auto;margin-top:35px;gap:9px}.temporal-edition>span{font-size:25px}.temporal-edition b{font-size:8px}.temporal-edition small{font-size:6px}
   .temporal-stamp{top:132px;right:25px}.temporal-stamp b{font-size:39px}.temporal-stamp small{font-size:8px}
   [data-study=temporal] .hero-copy{position:relative;top:auto;left:auto;bottom:auto;max-width:none;margin-top:84px}
+  [data-study=temporal][data-chapter=present] .hero-copy{margin-top:260px}
+  [data-study=temporal][data-chapter=present] .temporal-stamp{top:115px}
+  [data-study=temporal][data-chapter=present] .temporal-stamp b{font-size:27px}
   [data-study=temporal] h1{font-size:33px;line-height:1.42;letter-spacing:.04em}
   [data-study=temporal] .hero-copy p{max-width:100%;font-size:11px;line-height:2;letter-spacing:.035em;margin-top:16px}
   [data-study=temporal] .eyebrow{font-size:6px;letter-spacing:.09em;gap:9px;margin-bottom:16px}

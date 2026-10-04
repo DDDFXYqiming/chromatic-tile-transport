@@ -53,6 +53,7 @@ def run(output):
             def copy_matches(c):
                 return (inspect()['chapter'] == c['id'] and inspect()['art'] == c['image'] and
                         inspect()['mode'] == c['mode'] and inspect()['source'] == 'art' and
+                        inspect()['effect'] == c.get('effect', c['mode']) and
                         page.locator('h1').inner_text().replace('\n', '') == ''.join(c['headline']) and
                         page.locator('.hero-copy > p').inner_text() == c['body'] and
                         page.locator('.stage-tag b').inner_text() == c['kicker'] and
@@ -87,8 +88,17 @@ def run(output):
                     if width == 1440:
                         hashes.append(digest())
             check('all five chapters have distinct canvas pixels', len(set(hashes)) == 5)
+            check('Blender fold sequence loaded with complete topology', inspect()['foldFrames'] == 49 and inspect()['foldTriangles'] == 252)
             page.set_viewport_size({'width': 1440, 'height': 900})
             page.evaluate('scrollTo(0,0)')
+            for chapter in [chapters[1], chapters[4]]:
+                choose(chapter)
+                page.locator('#canvas').hover(position={'x': 300, 'y': 180})
+                frame0 = digest()
+                page.locator('#canvas').hover(position={'x': 1050, 'y': 300})
+                page.wait_for_timeout(100)
+                check(chapter['id'] + ' pointer changes its content-specific effect while paused', digest() != frame0)
+            page.locator('#canvas').hover(position={'x': 720, 'y': 300})
             choose(chapters[0])
             page.evaluate('VisualStudy.play()')
             choose(chapters[1])

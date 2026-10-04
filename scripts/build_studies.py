@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PORTAL_MODULES = ('main', 'core', 'filmstrip', 'math', 'portal', 'portal-scene', 'portal-travel')
 FLUID_MODULES = ('main', 'core', 'filmstrip', 'math', 'fluid', 'fluid-regions')
 SHADOW_MODULES = ('main', 'core', 'filmstrip', 'math', 'shadow', 'shadow-apparatus', 'shadow-geometry')
+TEMPORAL_MODULES = ('main', 'core', 'filmstrip', 'math', 'temporal', 'temporal-plates')
 
 def fingerprint(relative: str) -> str:
     source = (ROOT / relative).read_text(encoding='utf-8').encode('utf-8')
@@ -34,6 +35,11 @@ def shadow_imports() -> dict[str, str]:
             f'../src/studies/{name}.mjs?v={fingerprint(f"src/studies/{name}.mjs")}'
             for name in SHADOW_MODULES}
 
+def temporal_imports() -> dict[str, str]:
+    return {f'../src/studies/{name}.mjs':
+            f'../src/studies/{name}.mjs?v={fingerprint(f"src/studies/{name}.mjs")}'
+            for name in TEMPORAL_MODULES}
+
 def outputs() -> dict[Path, str]:
     catalog = json.loads((ROOT / 'src/studies/catalog.json').read_text(encoding='utf-8'))
     template = (ROOT / 'src/studies/page.html').read_text(encoding='utf-8')
@@ -47,11 +53,13 @@ def outputs() -> dict[Path, str]:
             chapters = json.dumps(item['chapters'], ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')
             extra = (f'\n<link rel="stylesheet" href="../src/studies/{item["id"]}.css">'
                      f'\n<script type="application/json" id="{item["id"]}-chapters">' + chapters + '</script>')
-        if item['id'] in ('portal', 'fluid', 'shadow'):
+        if item['id'] in ('portal', 'fluid', 'shadow', 'temporal'):
             if item['id'] == 'portal':
                 imports = portal_imports()
             elif item['id'] == 'fluid':
                 imports = fluid_imports()
+            elif item['id'] == 'temporal':
+                imports = temporal_imports()
             else:
                 imports = shadow_imports()
             extra += '\n<script type="importmap">' + json.dumps({'imports': imports}, separators=(',', ':')) + '</script>'

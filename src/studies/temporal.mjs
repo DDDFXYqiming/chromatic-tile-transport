@@ -1,9 +1,14 @@
 import {clamp,mix} from './math.mjs';
 import {asset,image,offscreen,range,select,fileInput,button,sky,coverFit,sourcePointer} from './core.mjs';
+import {drawRainEcho,drawDawnLetter,rainDelay,foldOpening} from './temporal-plates.mjs';
 
 export async function create(stage,controls) {
   const chapters=JSON.parse(document.querySelector('#temporal-chapters').textContent);
   const art=await Promise.all(chapters.map(chapter=>image(asset(chapter.image))));
+  const foldChapter=chapters.find(c=>c.fold);
+  const foldResponse=await fetch(asset(foldChapter.fold));
+  if(!foldResponse.ok)throw new Error('晨光折页读取失败');
+  const fold=await foldResponse.json();
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const theater=document.querySelector('.theater'),hero=document.querySelector('.hero-copy');
   const hint=document.querySelector('.hint'),help=hint.textContent;
@@ -28,7 +33,7 @@ export async function create(stage,controls) {
   hero.setAttribute('aria-live','polite');hero.setAttribute('aria-atomic','true');
 
   const field=select(controls,'时间形状',[
-    ['radial','圆形 · 余光采样'],['wave','矩形 · 街角切片'],['ribbon','水平 · 流动备忘'],['echo','叠层 · 记忆比较'],['clear','归零 · 重返此刻'],
+    ['radial','圆形 · 余光采样'],['wave','倒影 · 雨后回声'],['ribbon','水平 · 流动备忘'],['echo','叠层 · 记忆比较'],['clear','折页 · 晨光折信'],
   ],v=>choose(chapters.findIndex(c=>c.mode===v)));
   const depthControl=range(controls,'历史深度（秒）',0,2.6,depth,.1,v=>{depth=v;stage.dirty=true;});
   const sourcePicker=select(controls,'运动源',[
@@ -121,22 +126,6 @@ export async function create(stage,controls) {
   function sliceDelay(i,field){
     return clamp((i+.5)/field.layers+Math.sin(field.t*1.1+i*.9)*.16+(field.y-.5)*.18);
   }
-  function drawPresent(ctx,w,h,draw){
-    const field=movingField(),px=w*(.62+(field.x-.5)*.56),py=h*(.46+(field.y-.5)*.6);
-    const radius=Math.min(w,h)*(.205+Math.sin(field.t*1.2)*.008),zoom=1.075+Math.sin(field.t*.9)*.012;
-    // A lens re-samples the current exposure only; zero depth stays at this instant.
-    ctx.save();ctx.beginPath();ctx.arc(px,py,radius,0,Math.PI*2);ctx.clip();
-    ctx.translate(px,py);ctx.scale(zoom,zoom);ctx.translate(-px,-py);draw();ctx.restore();
-    ctx.save();ctx.strokeStyle=chapters[chapterIndex].accent;ctx.lineWidth=1;
-    ctx.globalAlpha=.27;ctx.beginPath();ctx.arc(px,py,radius,0,Math.PI*2);ctx.stroke();
-    for(let i=0;i<2;i++){
-      const a=field.t*.42+i*Math.PI;
-      ctx.globalAlpha=.38-i*.12;ctx.beginPath();ctx.arc(px,py,radius+9+i*10,a,a+Math.PI*.65);ctx.stroke();
-    }
-    const light=ctx.createRadialGradient(px-radius*.25,py-radius*.3,0,px,py,radius);
-    light.addColorStop(0,'#fff4d514');light.addColorStop(1,'#fff4d500');
-    ctx.globalAlpha=1;ctx.fillStyle=light;ctx.beginPath();ctx.arc(px,py,radius,0,Math.PI*2);ctx.fill();ctx.restore();
-  }
   function drawSlices(ctx,w,h){
     const field=movingField(),vertical=mode==='wave',steps=24;
     for(let i=0;i<field.layers;i++){
@@ -182,7 +171,7 @@ export async function create(stage,controls) {
     buffers[head]=sctx.getImageData(0,0,W,H).data;timestamps[head]=clock;head=(head+1)%CAP;count=Math.min(count+1,CAP);lastTime=t;
   }
   function drawHistory(ctx,w,h){
-    if(!count){drawArt(ctx,w,h,stage.t);return;}
+    if(!count){drawTimeField(ctx,w,h);return;}
     const p=sourcePointer(stage.pointer,W,H,w,h),at=age=>(head-1-age+CAP*2)%CAP;
     const newest=timestamps[at(0)],seconds=Math.min(depth,newest-timestamps[at(count-1)]);let j=0;
     for(let i=0;i<=256;i++){
@@ -191,12 +180,12 @@ export async function create(stage,controls) {
       const newer=timestamps[at(j)],older=timestamps[at(Math.min(j+1,count-1))];
       ageTable[i]=Math.min(count-1,j+clamp((newer-wanted)/(newer-older||1)));
     }
-    const sliced=mode==='wave'||mode==='ribbon',field=movingField(),fit=coverFit(W,H,w,h);
+    const sliced=mode==='ribbon',field=movingField(),fit=coverFit(W,H,w,h);
     const edges=Array.from({length:sliced?W:0},(_,x)=>Array.from({length:field.layers+1},(_,i)=>sliceEdge(i,x/W,field)));
     const delays=Array.from({length:field.layers},(_,i)=>sliceDelay(i,field));
     for(let y=0;y<H;y++)for(let x=0;x<W;x++){
       const nx=x/W,ny=y/H,dx=nx-p.x,dy=ny-p.y;
-      let v=mode==='clear'?0:mode==='radial'?clamp(Math.hypot(dx*W/H,dy)*1.7):clamp((Math.sin(dx*12)+1)*.5);
+      let v=mode==='clear'?0:mode==='wave'?rainDelay(nx,ny,p):mode==='radial'?clamp(Math.hypot(dx*W/H,dy)*1.7):clamp((Math.sin(dx*12)+1)*.5);
       if(sliced){
         // Convert visible slice edges into source coordinates after cover fitting.
         const sx=(nx*fit.width+fit.x)/w,sy=(ny*fit.height+fit.y)/h;
@@ -208,14 +197,16 @@ export async function create(stage,controls) {
       const A=buffers[at(a)],B=buffers[at(Math.min(a+1,count-1))],k=(y*W+x)*4;
       for(let ch=0;ch<3;ch++)out.data[k+ch]=mix(A[k+ch],B[k+ch],f);out.data[k+3]=255;
     }
-    rctx.putImageData(out,0,0);const draw=()=>ctx.drawImage(result,fit.x,fit.y,fit.width,fit.height);draw();
-    if(mode==='clear')drawPresent(ctx,w,h,draw);
+    rctx.putImageData(out,0,0);
+    if(mode==='clear')drawDawnLetter(ctx,w,h,result,fold,stage.t,stage.pointer,{reduced:reduced.matches});
+    else ctx.drawImage(result,fit.x,fit.y,fit.width,fit.height);
   }
   function drawTimeField(ctx,w,h){
+    if(mode==='wave'){drawRainEcho(ctx,w,h,art[chapterIndex],stage.t,stage.pointer,depth,{reduced:reduced.matches});return;}
+    if(mode==='clear'){drawDawnLetter(ctx,w,h,art[chapterIndex],fold,stage.t,stage.pointer,{reduced:reduced.matches});return;}
     drawArt(ctx,w,h,stage.t);
-    if(mode==='clear'){drawPresent(ctx,w,h,()=>drawArt(ctx,w,h,stage.t));return;}
     if(depth===0)return;
-    if(mode==='wave'||mode==='ribbon'){drawSlices(ctx,w,h);return;}
+    if(mode==='ribbon'){drawSlices(ctx,w,h);return;}
     const px=w*(.62+(stage.pointer.x-.5)*.28),py=h*(.43+(stage.pointer.y-.5)*.28);
     ctx.save();ctx.strokeStyle=chapters[chapterIndex].accent;ctx.lineWidth=.7;
     const layers=mode==='radial'?3:mode==='echo'?3:7;
@@ -271,6 +262,8 @@ export async function create(stage,controls) {
     },
     inspect:()=>({chapter:chapters[chapterIndex].id,chapterIndex,chapterTime,art:chapters[chapterIndex].image,
       text:chapters[chapterIndex].headline.join(''),texturesLoaded:art.length,transition,transitionSeconds,holdSeconds,tour,
+      effect:chapters[chapterIndex].effect||mode,foldFrames:fold.frameCount,foldTriangles:fold.faces.length,
+      foldOpening:mode==='clear'?foldOpening(stage.t,stage.pointer,reduced.matches):null,
       count,capacity:CAP,bytes:CAP*W*H*4,source:sourceKind,historySeconds:count?clock-timestamps[(head-count+CAP)%CAP]:0,mode,depth,readyState:video.readyState}),
     dispose(){disposed=true;video.pause();video.removeAttribute('src');video.load();if(objectURL)URL.revokeObjectURL(objectURL);buffers=[];},
   };

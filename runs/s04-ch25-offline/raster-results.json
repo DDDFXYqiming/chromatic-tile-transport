@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "rain 1440px: stable pause, moving pixels, reduced motion",
+    "fold 1440px: stable pause, moving pixels, reduced motion",
+    "1440px: dry scene invariant and zero-depth identity",
+    "rain 390px: stable pause, moving pixels, reduced motion",
+    "fold 390px: stable pause, moving pixels, reduced motion",
+    "390px: dry scene invariant and zero-depth identity"
+  ],
+  "passed": 6
+}

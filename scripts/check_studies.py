@@ -80,9 +80,19 @@ for item in json.loads((ROOT/'src/studies/catalog.json').read_text(encoding='utf
             assert all(chapter[key] for key in ('headline', 'detail', 'feature', 'action'))
             if item['id'] == 'temporal':
                 assert chapter['annotation']
+                if chapter.get('fold'):
+                    assert (ROOT/'assets'/chapter['fold']).is_file()
             else:
                 assert len(chapter['display']) == 2
                 assert all(chapter[key] for key in ('alt', 'material'))
+        if item['id'] == 'temporal':
+            from build_studies import temporal_imports
+            generated = path.read_text(encoding='utf-8')
+            imports = json.loads(re.search(r'<script type="importmap">(.*?)</script>', generated).group(1))['imports']
+            assert imports == temporal_imports()
+            assert imports['../src/studies/main.mjs'] in p.paths
+            subprocess.run(['node', str(ROOT/'tests/temporal_plates.mjs')], check=True)
+            subprocess.run(['node', str(ROOT/'tests/temporal_runtime.mjs')], check=True)
         if item['id'] == 'shadow':
             from build_studies import shadow_imports, fingerprint
             generated = path.read_text(encoding='utf-8')

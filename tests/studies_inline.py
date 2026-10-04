@@ -4,14 +4,17 @@ forbids navigation. Static graph checks separately verify native ES-module paths
 """
 from pathlib import Path
 import re,json,base64
+from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[1]
-ORDER=['math','core','filmstrip','portal','fluid','temporal','optical','shadow-apparatus','shadow','folding']
+ORDER=['math','core','filmstrip','portal','fluid','temporal-plates','temporal','optical','shadow-apparatus','shadow','folding']
 
 def bundle(video_fixture: Path | None = None):
     entries=[]
     image_types={'.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp'}
     assets={p.relative_to(ROOT/'assets').as_posix():'data:'+image_types[p.suffix]+';base64,'+base64.b64encode(p.read_bytes()).decode() for p in (ROOT/'assets/studies').rglob('*') if p.suffix in image_types}
+    fold=ROOT/'assets/studies/temporal-fold/dawn-fold.json'
+    assets[fold.relative_to(ROOT/'assets').as_posix()]='data:application/json;base64,'+base64.b64encode(fold.read_bytes()).decode()
     if video_fixture:
         assets['matrix-battle/03-clash.mp4']='data:video/mp4;base64,'+base64.b64encode(video_fixture.read_bytes()).decode()
     for name in ORDER:
@@ -31,7 +34,7 @@ def bundle(video_fixture: Path | None = None):
 
 def inline_page(slug):
     s=(ROOT/'dist'/f'{slug}.html').read_text(encoding='utf-8')
-    s=re.sub(r'<link rel="stylesheet" href="([^"]+)"[^>]*>',lambda m:'<style>'+(ROOT/'dist'/m[1]).resolve().read_text(encoding='utf-8')+'</style>',s)
+    s=re.sub(r'<link rel="stylesheet" href="([^"]+)"[^>]*>',lambda m:'<style>'+(ROOT/'dist'/urlsplit(m[1]).path).resolve().read_text(encoding='utf-8')+'</style>',s)
     s=re.sub(r'<script\b(?![^>]*type="application/json")[^>]*>.*?</script>','',s,flags=re.S)
     def thumbnail(match):
         path=(ROOT/'dist'/match[1]).resolve()

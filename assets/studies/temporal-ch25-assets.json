@@ -1,0 +1,45 @@
+{
+  "created": "2026-10-04",
+  "project": "AFTERLIGHT / chapters 02 and 05",
+  "source": "Two original generated plates and deterministic Blender geometry",
+  "media_license": "See docs/MEDIA_LICENSE.md",
+  "blender_script": "src/studies/blender/build_temporal_fold.py",
+  "assets": [
+    {
+      "file": "temporal-rain-echo.png",
+      "role": "Chapter 02 / rain reflection plate",
+      "generator": "Codex built-in image_gen",
+      "processing": "Generated PNG bytes copied unchanged",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2133041,
+      "sha256": "cc9f3b56be3efa08ab2c8e343334e23259113ad0b32a053c71ebdc7c572c6ec8",
+      "prompt": "Use case: stylized-concept. Asset type: wide 16:9 full-bleed illustration plate for an editorial visual journal called AFTERLIGHT. Create a cinematic, exquisitely detailed painterly photograph of an old teal-and-cream electric tram at a rain-soaked coastal city street at blue hour. Warm amber windows, overhead tram wires, dark indigo buildings, a small lone pedestrian holding a burnt orange umbrella on the far sidewalk. The tram and pedestrian sit in the right half, approximately x 62% y 38%. The left third is quiet dark blue streetscape with low detail for editorial type. Crucial composition: a large shallow rain puddle occupies the lower half from y 60% to the bottom edge, reflecting the tram's warm windows and two vertical amber streetlights. Puddle horizon level at 60%; reflections are strongly legible, with fine broken amber vertical streaks on inky blue water. Rails curve from foreground toward the tram. Restrained coral / amber highlights and petrol blue shadows, tangible wet stone, film grain, premium independent travel journal atmosphere. A single coherent landscape scene, landscape 1536x864 if possible. No text or lettering, no frame, no graphic overlays, no duplicated trams. This is an actual scene asset, not a website mockup."
+    },
+    {
+      "file": "temporal-dawn-letter.png",
+      "role": "Chapter 05 / continuous panorama UV texture",
+      "generator": "Codex built-in image_gen",
+      "processing": "Generated PNG bytes copied unchanged",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2426655,
+      "sha256": "6994b6b1ee37805f43203ca0d6763c3e280f4c1cfda87744372f9f0c2f618a3d",
+      "prompt": "Use case: stylized-concept. Asset type: wide landscape fine-art photographic plate to be printed across one folded accordion letter in an editorial time journal AFTERLIGHT. A breathtaking coastal mountain valley at sunrise, viewed from a small studio high on the ridge: terraced dark blue mountains, a sinuous silver river catches molten peach sunrise, fine low cloud sea, one impossibly delicate golden sun just above the horizon. Foreground a few dark cypress silhouettes, distant tiny white coastal town and deep turquoise water. Open airy panoramic composition. Detailed painterly analog photography, restrained warm cream / copper highlights against teal and slate blue, tactile subtle silver-halide grain, exquisite atmospheric perspective. The sun centered slightly right of center at x 62% y 33%. The image should read beautifully as a single connected panorama split into seven vertical folded paper panels. The entire image is ONLY the landscape itself edge to edge, no physical paper, no desk, no borders, no writing, no UI. Wide 16:9 landscape, 1536x864 if possible."
+    },
+    {
+      "file": "temporal-fold/dawn-fold.json",
+      "role": "Chapter 05 / Blender evaluated fold sequence",
+      "generator": "Blender 5.2.1 LTS",
+      "bytes": 230756,
+      "sha256": "351bdc38acf68c1db4c665a016cd0e12afa23ca4b24dd2a21f9a3c448ff19bcb"
+    },
+    {
+      "file": "temporal-fold/dawn-letter.blend",
+      "role": "Editable Blender authoring scene with packed texture",
+      "generator": "Blender 5.2.1 LTS",
+      "bytes": 2527286,
+      "sha256": "2471183d56713635ee8bf16494d109ec91d62dc7949d8c7278290d9bc7fdc08a"
+    }
+  ]
+}

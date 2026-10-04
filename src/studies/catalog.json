@@ -75,7 +75,7 @@
     "accent": "#edc993",
     "headline1": "把最后一束光，",
     "headline2": "多留一会儿。",
-    "action": "下一页 · 街角切片",
+    "action": "下一页 · 雨后回声",
     "medium": "A JOURNAL OF PASSING TIME",
     "signature": "VOL. 01 / AFTERGLOW",
     "chapters": [
@@ -87,17 +87,17 @@
         "location": "山顶观测站", "time": "18:06", "mode": "radial", "depth": 1.8,
         "feature": "一次回看，只借几秒", "detail": "留刻为影像放上一枚时间透镜。选择你在意的细节，让周围的光先慢下来，再把这一刻和一句话收进手记。",
         "note": "太阳沉下去之前，窗帘还亮着。", "annotation": "圆形时间波 · 从中心向外回看",
-        "tags": ["01 / CAPTURE", "光线 / 局部 / 停留"], "action": "下一页 · 街角切片"
+        "tags": ["01 / CAPTURE", "光线 / 局部 / 停留"], "action": "下一页 · 雨后回声"
       },
       {
-        "id": "wave", "title": "街角切片", "english": "A STREET IN SECONDS",
-        "kicker": "02 / 切片编排", "headline": ["一条街，", "几种经过。"],
-        "body": "雨刚停，末班电车从橱窗前驶过。我们把连续的几秒排成窄窄的玻璃片，让车灯、行人和倒影各自停在最动人的位置。",
-        "image": "studies/temporal-street-slices.png", "accent": "#ecb29e",
+        "id": "wave", "effect": "rain-reflection", "title": "雨后回声", "english": "THE RAIN REMEMBERS",
+        "kicker": "02 / 水面回看", "headline": ["车灯已经远去，", "雨水还记得。"],
+        "body": "末班电车停在南港的弯道上，橱窗和路灯落进同一片积水。街道留在此刻，水面却慢了半拍。移动指针，让金色倒影沿着雨纹重新聚拢。",
+        "image": "studies/temporal-rain-echo.png", "accent": "#ecb29e",
         "location": "南港电车站", "time": "19:24", "mode": "wave", "depth": 2.4,
-        "feature": "把经过，排成一页", "detail": "矩形切片给每段时间留出位置。先读雨水，再读车灯，最后看见街角的人。相邻的画面共同写完一句长长的街景。",
-        "note": "我们等的那班车，带走了路面的晚霞。", "annotation": "矩形时间片 · 每一道窗格错开片刻",
-        "tags": ["02 / COMPOSE", "街景 / 顺序 / 切片"], "action": "下一页 · 流动备忘"
+        "feature": "把一场雨，留在灯下", "detail": "雨纹只经过路面的积水，车身与远处的楼宇依然清晰。把历史深度往回拨，灯影便拖长；归零时，水面重新安静下来。",
+        "note": "车站很安静，地上的灯还在说话。", "annotation": "水面回声 · 指针牵动灯影，历史深度调节雨纹",
+        "tags": ["02 / REFLECT", "电车 / 雨水 / 灯影"], "action": "下一页 · 流动备忘"
       },
       {
         "id": "ribbon", "title": "流动备忘", "english": "LET THE MOMENT RUN",
@@ -117,17 +117,17 @@
         "location": "旧植物温室", "time": "00:32", "mode": "echo", "depth": 2.6,
         "feature": "让细微变化，彼此照见", "detail": "叠层浏览保留前一刻的轮廓，再让现在的光穿过它。看清一片花瓣怎样落下，也看清自己为什么总在同一个地方停步。",
         "note": "花开过很多次，这一次我们看得慢。", "annotation": "记忆叠层 · 三次曝光相互照见",
-        "tags": ["04 / COMPARE", "底片 / 轮廓 / 重逢"], "action": "下一页 · 重返此刻"
+        "tags": ["04 / COMPARE", "底片 / 轮廓 / 重逢"], "action": "下一页 · 晨光折信"
       },
       {
-        "id": "present", "title": "重返此刻", "english": "BACK TO THE PRESENT",
-        "kicker": "05 / 回到当下", "headline": ["收好昨天，", "把今天打开。"],
-        "body": "清晨回到桌前，杯口的热气正穿过第一道阳光。把时差归零，让所有切片重新合在一起。这本手记到这里翻完，新的一天刚刚开始。",
-        "image": "studies/temporal-present-tense.png", "accent": "#cedcb6",
+        "id": "present", "effect": "blender-fold-letter", "fold": "studies/temporal-fold/dawn-fold.json", "title": "晨光折信", "english": "A LETTER TO MORNING",
+        "kicker": "05 / 展开晨光", "headline": ["把整座山谷，", "折进一封信。"],
+        "body": "清晨六点，山谷的第一束光落在银盐相纸上。七道折页缓缓打开，藏在背面的远山、云海和河流连成一幅长景。轻轻移动指针，把今天展开。",
+        "image": "studies/temporal-dawn-letter.png", "accent": "#e5c49d",
         "location": "山谷工作室", "time": "06:17", "mode": "clear", "depth": 0,
-        "feature": "给当下，留一张空白页", "detail": "回到此刻，收起叠影与延迟。留刻替你留住值得回看的片段，也在每次翻阅的终点，提醒你抬头看看窗外。",
-        "note": "今天的第一束光，不必和昨天一样。", "annotation": "时差归零 · 所有位置回到同一刻",
-        "tags": ["05 / RESET", "晨光 / 归零 / 重新出发"], "action": "再翻一遍 · 余光采样"
+        "feature": "等一封，来自清晨的信", "detail": "光沿着折痕走过，画面随纸面转向。展开时看见完整山谷，合拢时把晨色收进口袋。每一次翻阅，都让同一张照片有了新的角度。",
+        "note": "远山寄来的信，今天才拆开。", "annotation": "七连折页 · 左右移动展开相纸，上下移动轻转视角",
+        "tags": ["05 / UNFOLD", "晨光 / 折痕 / 新的一页"], "action": "再翻一遍 · 余光采样"
       }
     ]
   },

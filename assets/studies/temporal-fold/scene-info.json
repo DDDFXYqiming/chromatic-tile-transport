@@ -1,0 +1,18 @@
+{
+  "generator": "Blender 5.2.1 LTS",
+  "panels": 7,
+  "vertices": 154,
+  "triangles": 252,
+  "frames": 49,
+  "texture": "temporal-dawn-letter.png",
+  "bounds": {
+    "closed": [
+      -1.036983,
+      1.036983
+    ],
+    "open": [
+      -3.49605,
+      3.49605
+    ]
+  }
+}

@@ -2,12 +2,14 @@ import {clamp} from './math.mjs';
 import {asset,image,range,button} from './core.mjs';
 import {createArchitecture,STOPS,DOORS,APERTURE,EYE_HEIGHT,SCENE_REVISION,routeX,roomAt} from './portal-scene.mjs';
 import {createTravel} from './portal-travel.mjs';
+import {loadDoorAsset} from './portal-door.mjs';
 
 export async function create(stage,controls) {
   const chapters=JSON.parse(document.querySelector('#portal-chapters').textContent);
   const art=await Promise.all(chapters.map(chapter=>image(asset(chapter.image))));
   const patina=await image(asset('studies/portal-patina.png'));
-  const architecture=createArchitecture(art,patina),travel=createTravel(STOPS[0],DOORS);
+  const doorAsset=await loadDoorAsset();
+  const architecture=createArchitecture(art,patina,doorAsset),travel=createTravel(STOPS[0],DOORS);
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const theater=document.querySelector('.theater'),hero=document.querySelector('.hero-copy');
   const eyebrow=hero.querySelector('.eyebrow'),heading=hero.querySelector('h1'),body=hero.querySelector('p');
@@ -112,7 +114,7 @@ export async function create(stage,controls) {
       slider.value=String((progress*100).toFixed(1));
       const {ctx,width:w,height:h,pointer:p}=stage;
       const eye=[routeX(travel.z)+(reduced.matches?0:(p.x-.5)*.18),EYE_HEIGHT+(reduced.matches?0:(p.y-.5)*-.08),travel.z];
-      architecture.render(stage.canvas.width,stage.canvas.height,eye,yaw);
+      architecture.render(stage.canvas.width,stage.canvas.height,eye,yaw,travel.doors);
       ctx.drawImage(architecture.canvas,0,0,w,h);
       theater.dataset.travelling=String(travel.moving||turning);
       route.style.setProperty('--travel',String(progress));
@@ -124,12 +126,14 @@ export async function create(stage,controls) {
       stage.canvas.dataset.travel=travel.moving?'moving':'settled';
       stage.canvas.dataset.renderer='webgl-depth';
       stage.canvas.dataset.sceneRevision=SCENE_REVISION;
-      stage.status(chapters[chapterIndex].location+' · Z '+travel.z.toFixed(2)+' m'+(!stage.playing&&(travel.moving||turning)?' · 待继续':turning?' · 转身中':travel.moving?' · 穿门中':auto?' · 漫游中':' · 已抵达'));
+      stage.canvas.dataset.doorAngles=travel.doors.map(door=>(door.angle*180/Math.PI).toFixed(1)).join(',');
+      stage.status(chapters[chapterIndex].location+' · Z '+travel.z.toFixed(2)+' m'+(!stage.playing&&(travel.moving||turning)?' · 待继续':turning?' · 转身中':travel.waiting?' · 铜门开启中':travel.moving?' · 穿门中':auto?' · 漫游中':' · 已抵达'));
     },
     inspect:()=>({progress:(STOPS[0]-travel.z)/(STOPS[0]-STOPS[3]),z:travel.z,targetZ:travel.target,velocity:travel.velocity,
       chapter:chapters[chapterIndex].id,chapterIndex,destination,yaw,auto,chapterTime,
       renderer:'webgl-depth',sceneRevision:SCENE_REVISION,rooms:4,doorPlanes:DOORS,aperture:APERTURE,eyeHeight:EYE_HEIGHT,
       insideDoor:DOORS.findIndex(z=>Math.abs(travel.z-z)<APERTURE.depth/2),
+      doorLeaves:travel.doors,waitingForDoor:travel.waiting,doorAsset:doorAsset.revision,
       triangles:architecture.triangles,texturesLoaded:art.length+1,
       imageSurfaces:['recessed-wall-murals','side-wall-murals','bronze-portals'],holdSeconds}),
     dispose:()=>architecture.dispose(),

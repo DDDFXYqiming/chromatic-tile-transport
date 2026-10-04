@@ -44,6 +44,10 @@ for item in json.loads((ROOT/'src/studies/catalog.json').read_text(encoding='utf
             assert all(chapter[key] for key in ('headline', 'body', 'feature', 'detail', 'action'))
         assert (ROOT/'assets/studies/portal-patina.png').is_file()
         subprocess.run(['node', str(ROOT/'tests/test_portal_travel.mjs')], check=True)
+        subprocess.run(['node', str(ROOT/'tests/portal_door.mjs')], check=True)
+        subprocess.run(['node', str(ROOT/'tests/portal_runtime.mjs')], check=True)
+        for model in ('bronze-door.blend', 'bronze-door.glb', 'door.mesh.json'):
+            assert (ROOT/'assets/studies/portal-door'/model).is_file()
     if item['id'] == 'optical':
         chapters = item['chapters']
         assert len(chapters) == 4

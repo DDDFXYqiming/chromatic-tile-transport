@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "blender": "5.2.1 LTS",
+  "reimportedMeshes": 126,
+  "triangles": {
+    "-1": 5928,
+    "0": 1080,
+    "1": 5928
+  },
+  "leafThicknessMetres": 0.14,
+  "thresholdDepthMetres": 2.38,
+  "hinges": [
+    "Left_hinge",
+    "Right_hinge"
+  ]
+}

@@ -79,6 +79,15 @@ for item in json.loads((ROOT/'src/studies/catalog.json').read_text(encoding='utf
             else:
                 assert len(chapter['display']) == 2
                 assert all(chapter[key] for key in ('alt', 'material'))
+        if item['id'] == 'shadow':
+            from build_studies import shadow_imports, fingerprint
+            generated = path.read_text(encoding='utf-8')
+            imports = json.loads(re.search(r'<script type="importmap">(.*?)</script>', generated).group(1))['imports']
+            assert imports == shadow_imports()
+            assert imports['../src/studies/main.mjs'] in p.paths
+            assert '../src/studies/shadow.css?v=' + fingerprint('src/studies/shadow.css') in p.paths
+            subprocess.run(['node', str(ROOT/'tests/shadow_geometry.mjs')], check=True)
+            subprocess.run(['node', str(ROOT/'tests/shadow_runtime.mjs')], check=True)
     if item['id'] == 'fluid':
         from build_studies import fluid_imports, fingerprint
         imports = json.loads(re.search(r'<script type="importmap">(.*?)</script>', path.read_text(encoding='utf-8')).group(1))['imports']

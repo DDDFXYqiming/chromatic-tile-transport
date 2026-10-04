@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-PORTAL_MODULES = ('main', 'core', 'filmstrip', 'math', 'portal', 'portal-scene', 'portal-travel')
+PORTAL_MODULES = ('main', 'core', 'filmstrip', 'math', 'portal', 'portal-scene', 'portal-travel', 'portal-door')
 FLUID_MODULES = ('main', 'core', 'filmstrip', 'math', 'fluid', 'fluid-regions')
 SHADOW_MODULES = ('main', 'core', 'filmstrip', 'math', 'shadow', 'shadow-apparatus', 'shadow-geometry')
 

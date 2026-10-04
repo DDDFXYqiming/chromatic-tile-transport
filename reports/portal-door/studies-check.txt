@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "checks": [
+    "forward and return: 20 Hz, three apertures crossed",
+    "forward and return: 60 Hz, three apertures crossed",
+    "forward and return: 144 Hz, three apertures crossed",
+    "pause, interrupted selection and reverse travel preserve position",
+    "chapter changes at the physical door planes",
+    "return turn brakes before walking back",
+    "adjacent walk 7.52 s, inside the doorway 1.53 s",
+    "5432 production triangles: all three apertures, wall occlusion, deep jambs, lintels and sills verified in both directions",
+    "continuous forward and reverse camera segments clear the mesh at both pointer extremes",
+    "doorway framing and approach parallax cover portrait through wide landscape",
+    "120 depth-rasterized frames: architecture coverage, aperture-only reveal and outgoing mural occlusion across three doors in both directions"
+  ],
+  "firstDoorCoverage": [
+    {
+      "distance": 4.6,
+      "structure": 0.598,
+      "outgoing": 0.391,
+      "incoming": 0.011
+    },
+    {
+      "distance": 2.5,
+      "structure": 0.89,
+      "outgoing": 0.087,
+      "incoming": 0.023
+    },
+    {
+      "distance": 0.6,
+      "structure": 0.94,
+      "outgoing": 0,
+      "incoming": 0.06
+    },
+    {
+      "distance": -0.6,
+      "structure": 0.726,
+      "outgoing": 0,
+      "incoming": 0.274
+    },
+    {
+      "distance": -2.5,
+      "structure": 0.662,
+      "outgoing": 0,
+      "incoming": 0.338
+    }
+  ]
+}
+{
+  "passed": true,
+  "triangles": 44240,
+  "cameraSegments": 366,
+  "doorReveal": [
+    {
+      "direction": -1,
+      "occluded": [
+        1,
+        0.775,
+        0.525,
+        0.3
+      ]
+    },
+    {
+      "direction": 1,
+      "occluded": [
+        1,
+        0.775,
+        0.525,
+        0.3
+      ]
+    }
+  ],
+  "checks": [
+    "Blender mesh and opaque GLB",
+    "bidirectional widening aperture",
+    "wait for full opening",
+    "six physical threshold crossings",
+    "camera capsule clears animated leaves",
+    "pause, interrupted selection and inside-door reversal",
+    "production hinge transforms"
+  ]
+}
+Portal runtime PASS: 41985 opaque draw commands; 4 chapter selections, two hinge directions, copy, pause, reset, reduced motion and shared texture lifecycle.
+PASS still map, persistent advection, finite bounds, 16-bit texture encoding and reset
+PASS four region masks keep exterior coordinates fixed, preserve flow and settle
+PASS mineral: 8813 blank origins, QA path/crops, overlays, contained pressure and persistent pigment flow
+PASS ink: 6886 blank origins, QA path/crops, overlays, contained pressure and persistent pigment flow
+PASS paper: 6057 blank origins, QA path/crops, overlays, contained pressure and persistent pigment flow
+PASS light: 9009 blank origins, QA path/crops, overlays, contained pressure and persistent pigment flow
+PASS disconnected regions, stroke gaps, local artwork bounds and transparency
+PASS backing-store inverse, fractional CSS geometry and letterbox rejection
+PASS 64 full Stage QA blank gestures: zero splats, solver/advection calls and UV changes; all four pigment controls flow
+PASS scroll, CSS offsets/scaling, mobile crops, stationary zoom, resize, captured pointers and overlays through Stage
+PASS each point-light ray intersects the common receiver plane
+PASS three lights cast shadows into distinct directions
+PASS shadow moves continuously and does not mutate the letter plane
+PASS the receiver contact has zero shadow displacement
+PASS landscape and portrait distribute content across the exhibition
+PASS all four sculptures remain in the first viewport and above the receiver
+PASS chapter solids are distinct, deterministic and retain depth
+PASS shadow silhouettes change under all three lights without changing the solid
+8 shadow geometry tests passed.
+Shadow runtime: 20 chapter/viewport combinations, draw determinism, motion, controls, reset, chapter clock and reduced motion PASS
+Studies and gallery are reproducible.
+Native module/resource graph, SVGs, eight-entry gallery and generated files: PASS

@@ -1,4 +1,5 @@
 import {box,cross,sub,unit} from './math.mjs';
+import {doorBatches,doorPose} from './portal-door.mjs';
 
 // One continuous world: chapters change only when the eye crosses an aperture.
 export const STOPS=[4.6,-5.4,-15.4,-25.4];
@@ -8,7 +9,7 @@ export const roomAt=z=>DOORS.filter(door=>z<door).length;
 export const APERTURE={halfWidth:1.18,height:3.25,depth:2.4};
 export const EYE_HEIGHT=1.72;
 export const ROOM={halfWidth:5.6,height:4.6};
-export const SCENE_REVISION='solid-rooms-r9';
+export const SCENE_REVISION='hinged-bronze-r10';
 // Keep the whole doorway visible at rest, including in a portrait viewport.
 export const lensForAspect=aspect=>Math.min(1.42,aspect*1.42);
 
@@ -18,15 +19,20 @@ attribute vec2 uv;
 attribute float material;
 uniform vec3 eye;
 uniform float yaw,aspect,lens,offset;
+uniform vec3 pivot,origin;
+uniform float hingeAngle;
 varying vec3 vPosition,vNormal,vColor;
 varying vec2 vUV;
 varying float vMaterial,vDepth;
 void main(){
-  vec3 p=position-eye;
+  float c=cos(hingeAngle),s=sin(hingeAngle);
+  mat3 rotation=mat3(c,0.,-s,0.,1.,0.,s,0.,c);
+  vec3 world=rotation*(position-pivot)+pivot+origin;
+  vec3 p=world-eye;
   float x=cos(yaw)*p.x+sin(yaw)*p.z;
   float z=sin(yaw)*p.x-cos(yaw)*p.z;
   gl_Position=vec4(x*lens/aspect+offset*z,p.y*lens,1.002*z-.1001,z);
-  vPosition=position;vNormal=normal;vColor=color;vUV=uv;vMaterial=material;vDepth=z;
+  vPosition=world;vNormal=rotation*normal;vColor=color;vUV=uv;vMaterial=material;vDepth=z;
 }`;
 const fragment=`
 precision highp float;
@@ -43,9 +49,6 @@ void main(){
   vec3 c=vColor*light;
   if(textured>.5){
     vec2 uv=vUV;
-    if(vMaterial>.5&&vMaterial<1.5){
-      uv=abs(n.y)>.5?p.xz*.48:abs(n.x)>.5?p.zy*.48:p.xy*.48;
-    }
     c=texture2D(artwork,uv).rgb;
     // Artwork belongs to recessed exhibition walls; architecture has its own material.
     if(vMaterial<.5)c*=.90+.08*abs(n.z);
@@ -188,7 +191,7 @@ export function buildPortalGeometry(art,patina){
   return batches;
 }
 
-export function createArchitecture(art,patina){
+export function createArchitecture(art,patina,doorAsset){
   const canvas=document.createElement('canvas');
   const gl=canvas.getContext('webgl',{alpha:false,antialias:true,preserveDrawingBuffer:false});
   if(!gl)throw new Error('此浏览器需要开启 WebGL 才能游览展室');
@@ -197,14 +200,16 @@ export function createArchitecture(art,patina){
   shaders.forEach(s=>gl.attachShader(program,s));gl.linkProgram(program);
   if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(program));
   gl.useProgram(program);gl.enable(gl.DEPTH_TEST);gl.disable(gl.BLEND);gl.depthMask(true);gl.clearColor(.035,.064,.075,1);
-  const uniforms=Object.fromEntries(['eye','yaw','aspect','lens','offset','artwork','textured'].map(n=>[n,gl.getUniformLocation(program,n)]));
+  const uniforms=Object.fromEntries(['eye','yaw','aspect','lens','offset','artwork','textured','pivot','origin','hingeAngle'].map(n=>[n,gl.getUniformLocation(program,n)]));
   const attributes=Object.fromEntries(['position','normal','color','uv','material'].map(n=>[n,gl.getAttribLocation(program,n)]));
-  const batches=buildPortalGeometry(art,patina);
+  const batches=[...buildPortalGeometry(art,patina),...doorBatches(doorAsset,patina,DOORS,routeX)];
+  const textures=new Map();
   for(const batch of batches){
     batch.count=batch.vertices.length/12;
     batch.buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,batch.buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(batch.vertices),gl.STATIC_DRAW);
     delete batch.vertices;
     if(batch.texture){
+      if(textures.has(batch.texture)){batch.texture=textures.get(batch.texture);continue;}
       const tex=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,tex);
       let source=batch.texture;
       // WebGL 1 repeating materials require a power-of-two upload; originals are untouched.
@@ -212,19 +217,22 @@ export function createArchitecture(art,patina){
       gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,source);
       gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
       const wrap=batch.texture===patina?gl.REPEAT:gl.CLAMP_TO_EDGE;
-      gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,wrap);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,wrap);batch.texture=tex;
+      gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,wrap);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,wrap);
+      textures.set(batch.texture,tex);batch.texture=tex;
       if(source.width===1024&&source.height===1024){gl.generateMipmap(gl.TEXTURE_2D);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR_MIPMAP_LINEAR);}
     }
   }
   return {
     canvas,triangles:batches.reduce((sum,b)=>sum+b.count/3,0),
-    render(width,height,eye,yaw){
+    render(width,height,eye,yaw,doors){
       if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;gl.viewport(0,0,width,height);}
       gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.useProgram(program);
       gl.uniform3fv(uniforms.eye,eye);gl.uniform1f(uniforms.yaw,yaw);gl.uniform1f(uniforms.aspect,width/height);
       gl.uniform1f(uniforms.lens,lensForAspect(width/height));gl.uniform1f(uniforms.offset,width/height>1.2?.12:0);
       gl.uniform1i(uniforms.artwork,0);
       for(const b of batches){
+        const pose=doorPose(b,doors);
+        gl.uniform3fv(uniforms.pivot,pose.pivot);gl.uniform3fv(uniforms.origin,pose.origin);gl.uniform1f(uniforms.hingeAngle,pose.angle);
         gl.bindBuffer(gl.ARRAY_BUFFER,b.buffer);
         for(const [name,size,offset] of [['position',3,0],['normal',3,3],['color',3,6],['uv',2,9],['material',1,11]]){
           gl.enableVertexAttribArray(attributes[name]);gl.vertexAttribPointer(attributes[name],size,gl.FLOAT,false,48,offset*4);
@@ -234,6 +242,6 @@ export function createArchitecture(art,patina){
         gl.drawArrays(gl.TRIANGLES,0,b.count);
       }
     },
-    dispose(){for(const b of batches){gl.deleteBuffer(b.buffer);if(b.texture)gl.deleteTexture(b.texture);}shaders.forEach(s=>gl.deleteShader(s));gl.deleteProgram(program);gl.getExtension('WEBGL_lose_context')?.loseContext();},
+    dispose(){for(const b of batches)gl.deleteBuffer(b.buffer);for(const tex of textures.values())gl.deleteTexture(tex);shaders.forEach(s=>gl.deleteShader(s));gl.deleteProgram(program);gl.getExtension('WEBGL_lose_context')?.loseContext();},
   };
 }

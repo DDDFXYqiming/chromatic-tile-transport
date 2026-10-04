@@ -1,25 +1,33 @@
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
+import {samples,pigmentPoints,qaLayout,qaBlank} from './fluid_fixtures.mjs';
 import {Fluid,PigmentField} from '../src/studies/fluid.mjs';
 import {coverFit} from '../src/studies/core.mjs';
 import {pigmentRegion,hitRegion,pigmentStroke,regionWeight} from '../src/studies/fluid-regions.mjs';
 
-const chapters=JSON.parse(readFileSync(0,'utf8'));
-const pigmentPoints={mineral:[.60,.71],ink:[.65,.5],paper:[.70,.55],light:[.56,.71]};
+const chapters=samples();
 // Independently chosen from the original artwork: background, solid minerals,
 // copper rim, glass walls/rim, blank paper, amber panes and tabletop shadows.
 const excluded={
-  mineral:[[.25,.3],[.58,.25],[.72,.4],[.625,.51],[.78,.655],[.97,.96]],
-  ink:[[.3,.4],[.40,.4],[.43,.35],[.65,.12],[.97,.45],[.75,.84]],
-  paper:[[.2,.4],[.60,.2],[.65,.30],[.44,.87],[.50,.96]],
-  light:[[.2,.4],[.65,.4],[.90,.5],[.1,.6],[.35,.95]],
+  mineral:[[.25,.3],[.58,.25],[.72,.4],[.625,.51],[.78,.655],[.97,.96],[.52,.60],[.415,.70],[.57,.80],[.53,.65]],
+  ink:[[.3,.4],[.40,.4],[.43,.35],[.65,.12],[.97,.45],[.75,.84],[.93,.5],[.92,.70]],
+  paper:[[.2,.4],[.60,.2],[.65,.30],[.44,.87],[.50,.96],[.43,.52]],
+  light:[[.2,.4],[.65,.4],[.90,.5],[.1,.6],[.35,.95],[.56,.80],[.8,.6]],
 };
 for(const c of chapters){
-  const weight=pigmentRegion(c.id,Uint8Array.from(c.pixels),120,80);
+  const start=performance.now(),weight=pigmentRegion(c.id,Uint8Array.from(c.pixels),120,80,c.material);
+  console.log(`MASK ${c.id}: ${weight.width}x${weight.height}, build ${(performance.now()-start).toFixed(1)} ms`);
+  assert.equal(pigmentRegion(c.id,Uint8Array.from(c.pixels),120,80)(...pigmentPoints[c.id]),0,'missing plate fails closed');
   const flow=new Fluid(72,48,12),field=new PigmentField(120,80),initial=field.uv.slice();
   flow.setMask(weight);field.setMask(weight);
   const point=pigmentPoints[c.id];
   assert.ok(weight(...point)>.15,c.id+' pigment anchor stays interactive');
+  let plateBlanks=0;
+  for(let i=0;i<weight.mask.length;i++){
+    if(c.material.data[i*4]<240){
+      assert.equal(weight.mask[i],0,c.id+' material plate black is a hard exclusion');plateBlanks++;
+    }
+  }
+  assert.ok(plateBlanks>weight.mask.length*.4,c.id+' artwork exterior stays rigid');
   for(const p of excluded[c.id]){
     assert.equal(weight(...p),0,`${c.id} excludes artwork point ${p}`);
     assert.equal(flow.splat(...p,.08,-.05,.3),false,c.id+' rejects blank brush origin');
@@ -41,12 +49,12 @@ for(const c of chapters){
   // QA's horizontal blank gesture, sampled throughout, in the original
   // 1521px layout plus other cover crops and the live image zoom range.
   for(const [width,height] of [[1453,620],[1388,620],[974,680],[338,640],[268,640]]){
-    const rect={left:27,top:84,width,height,right:27+width,bottom:84+height};
+    const rect={...qaLayout,width,height,right:qaLayout.left+width,bottom:qaLayout.top+height};
     for(const zoom of [1,1.013,1.023]){
       const fit=coverFit(c.width,c.height,width*zoom,height*zoom);
       fit.x-=(width*zoom-width)/2;fit.y-=(height*zoom-height)/2;
       for(let i=0;i<=40;i++){
-        const x=140+(480-140)*i/40,y=218;
+        const x=qaBlank.from.clientX+(qaBlank.to.clientX-qaBlank.from.clientX)*i/40,y=qaBlank.from.clientY;
         if(width>=1388)assert.equal(hitRegion({x,y},rect,fit,weight),null,c.id+' QA blank path');
       }
       for(const [x,y] of excluded[c.id])assert.equal(hitRegion({x:rect.left+fit.x+x*fit.width,y:rect.top+fit.y+y*fit.height},rect,fit,weight),null,c.id+' excluded region through cover crop');
@@ -66,7 +74,7 @@ for(const c of chapters){
   assert.ok(c.flow.some(s=>weight(s[0],s[1])>.15),c.id+' nudge retains an accepted seed');
   let last={x:point[0],y:point[1]},segments=0;
   for(let i=1;i<=8;i++){
-    const q={x:point[0]+.035*i/8,y:point[1]+.015*i/8};
+    const q={x:point[0]+(c.id==='light'?.01:.035)*i/8,y:point[1]+(c.id==='light'?.004:.015)*i/8};
     if(weight(q.x,q.y)<=.15){last=null;continue;}
     if(last&&pigmentStroke(weight,last,q)){
       assert.ok(flow.splat(q.x,q.y,q.x-last.x,q.y-last.y,.095));segments++;
@@ -81,7 +89,11 @@ for(const c of chapters){
       if(!flow.mask[cell])assert.equal(Math.abs(flow.u[cell])+Math.abs(flow.v[cell])+Math.abs(flow.p[cell]),0);
     }
   }
-  assert.ok(field.uv.some((v,i)=>Math.abs(v-initial[i])>.002),c.id+' pigment keeps flowing');
+  const displacement=Math.max(...field.uv.map((v,i)=>Math.abs(v-initial[i])));
+  console.log(`FLOW ${c.id}: maximum UV displacement ${displacement}`);
+  // The gold dust occupies only a few cells; its displacement is deliberately
+  // much smaller than the broad powder mound and liquid/paper washes.
+  assert.ok(displacement>(c.id==='light'?.0001:.002),c.id+' pigment keeps flowing');
   for(let cell=0;cell<field.mask.length;cell++){
     const k=cell*2;
     if(!field.mask[cell]){
@@ -93,7 +105,7 @@ for(const c of chapters){
     }
   }
   assert.ok(flow.u.every(Number.isFinite)&&flow.v.every(Number.isFinite)&&field.uv.every(Number.isFinite));
-  console.log(`PASS ${c.id}: ${rejected} blank origins, QA path/crops, overlays, contained pressure and persistent pigment flow`);
+  console.log(`PASS ${c.id}: ${plateBlanks} full-resolution plate exclusions, ${rejected} blank solver origins, QA path/crops, overlays, contained pressure and persistent pigment flow`);
 }
 
 // A narrow blank gap must interrupt both a stroke and pressure communication.

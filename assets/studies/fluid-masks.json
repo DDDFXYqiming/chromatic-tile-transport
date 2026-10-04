@@ -1,0 +1,49 @@
+{
+  "tool": "Codex built-in image_gen",
+  "created": "2026-10-04",
+  "use": "Study 05 material segmentation; white allows pigment, black rejects input and rendering",
+  "processing": "Generated PNG bytes copied unchanged. Runtime intersects the plate with source colour/contour support and a four-pixel interior guard; full-resolution labels are never averaged into the pointer mask.",
+  "assets": [
+    {
+      "file": "fluid-mineral-mask.png",
+      "reference": "fluid-mineral.png",
+      "prompt": "Use case: precise-object-edit. Asset type: pixel-aligned binary material segmentation mask for an existing 1536x1024 artwork. Convert the input into a black-and-white mask, preserving the exact framing, all object positions and 3:2 aspect ratio. White means ONLY soft loose fine pigment powder: the large turquoise mound in the lower middle, pale jade fine powder mound at lower right, small spilled powder patches near lower left-middle, fine turquoise powder inside the brass bowl. Black means everything else: all rigid mineral rocks and pebble chunks (including blue/green ones), table, empty dark background, brass bowl walls/rim, grinding pestle. Be conservative at all boundaries and leave a narrow black margin around rigid objects. Pure opaque black background with pure white flat filled powder shapes, no gray photo, no text, no outlines, no shadows. This is a technical segmentation of this exact artwork, not a new scene.",
+      "sha256": "6eed466708490eeb66488e28a740ee7c9e642d52d87b9a84c9c66974691986ad",
+      "reference_sha256": "e6d7cabe95a1a6809e667abff7afe8095ea7ba45bb5a26673146e226102932bd",
+      "bytes": 621976,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "file": "fluid-ink-mask.png",
+      "reference": "fluid-ink.png",
+      "prompt": "Correct this technical segmentation mask. The output must be 1536x1024. Fill all the black holes and dark ink-shaped channels INSIDE the white region with solid white; liquid and ink are BOTH interactive. Make the left side of the white silhouette a straight vertical edge at x=715 and right side a straight vertical edge at x=1400. The top edge is a straight horizontal line at y=170, the bottom edge is gently curved from y=725 at the sides to y=780 in the middle. White interior must be fully solid with absolutely no holes or texture, black everywhere outside. Preserve black background. Output only the corrected binary white liquid-interior silhouette on black, no labels.",
+      "note": "Final correction of an initial segmentation derived from the reference artwork. The runtime contour further excludes glass boundaries.",
+      "sha256": "c1bfab07bc72327c4480d1e2f413a60d8d18d0028324363db5bf2e2496fd790e",
+      "reference_sha256": "43eab7cf9f6b22dd0dda5a73f8290ac3834323690dda03043ffe7cbd0a6188a4",
+      "bytes": 562156,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "file": "fluid-paper-mask.png",
+      "reference": "fluid-paper.png",
+      "prompt": "Use case: precise-object-edit. Asset type: pixel-aligned binary pigment segmentation mask of this exact 1536x1024 image, keep framing and 3:2 aspect ratio. White only on the dense terracotta watercolor pigment wash on the large paper at right. Black on all unpainted cream paper, curled paper corner, background table, bowls, chunks, and other objects. Conservatively trace the organic painted wash boundaries, leaving pale ambiguous paper and a narrow edge margin black. Produce a technical black-and-white material mask, flat solid white pigment interior and opaque pure black exterior, no photographic texture, no lettering, no gray.",
+      "sha256": "352ce5aa65c2d605d88a02624d513ad7bc064099df4f22890051cd6c46f2a252",
+      "reference_sha256": "804f6c923a83751795202a058c1db91cd1210c2f07e855f68090efd3999f7d45",
+      "bytes": 717301,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "file": "fluid-light-mask.png",
+      "reference": "fluid-light.png",
+      "prompt": "Use case: precise-object-edit. Asset type: conservative binary segmentation mask, aligned to this exact 1536x1024 artwork. Trace the 4 small heaps of loose gold pigment directly on the tabletop along the feet of the glass sheets. Represent EACH DENSE POWDER HEAP as ONE SOLID WHITE FILLED SHAPE, with a smooth conservative outline and no speckles or holes. Main powder heaps: just below the small sheet around (720,637), just below the bottom-left tip of the main sheet around (878,715), below the front edge around (1148,777), and just below the right-hand sheet around (1370,768). Follow the actual heap boundaries and exclude sheet material above each heap. Everything else solid black, especially the amber glass sheets, shadows, plain tabletop and reflected light rays. Keep exact framing, no new objects, no labels, no gray, no photo texture. Output 1536x1024 technical mask, small solid white powder shapes on opaque black.",
+      "sha256": "a9fe000a2ba64afc3a712eef0eba39e43e13cd5b0abb67a370c221ddd55aa458",
+      "reference_sha256": "1700b8e6804c889f664e77007741982037bc6a0e6bfa4d3f862b9e0d81e20a44",
+      "bytes": 324143,
+      "width": 1536,
+      "height": 1024
+    }
+  ]
+}

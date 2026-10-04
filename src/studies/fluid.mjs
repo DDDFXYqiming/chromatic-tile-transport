@@ -1,6 +1,6 @@
 import {clamp} from './math.mjs';
 import {asset,image,sampleImage,offscreen,range,button,fileInput,bilinear,coverFit} from './core.mjs';
-import {pigmentRegion,hitRegion,pigmentStroke,POINTER_WEIGHT} from './fluid-regions.mjs';
+import {pigmentRegion,hitRegion,pigmentStroke,POINTER_WEIGHT,MATERIAL_MASKS} from './fluid-regions.mjs';
 /** Semi-Lagrangian velocity transport + pressure projection, in grid-cell units. */
 export class Fluid {
   constructor(w=96,h=60,iterations=20) {
@@ -78,6 +78,7 @@ export class PigmentField {
   constructor(w=144,h=96){this.w=w;this.h=h;this.uv=new Float32Array(w*h*2);this.next=new Float32Array(this.uv.length);this.bytes=new Uint8Array(w*h*4);this.mask=new Uint8Array(w*h).fill(255);this.cells=Array.from(this.mask,(_,i)=>i);this.reset();}
   reset(){for(let y=0;y<this.h;y++)for(let x=0;x<this.w;x++){const k=(y*this.w+x)*2;this.uv[k]=(x+.5)/this.w;this.uv[k+1]=(y+.5)/this.h;}this.next.set(this.uv);}
   setMask(weight){
+    this.weight=weight;
     this.cells=[];
     for(let y=0;y<this.h;y++)for(let x=0;x<this.w;x++){const i=y*this.w+x;this.mask[i]=Math.round(weight((x+.5)/this.w,(y+.5)/this.h)*255);if(this.mask[i])this.cells.push(i);}
   }
@@ -90,7 +91,7 @@ export class PigmentField {
       const u=Math.fround(bilinear(uv,w,h,sx,sy,0,2)),v=Math.fround(bilinear(uv,w,h,sx,sy,1,2));
       // Do not pull tabletop, blank paper or glass into the pigment layer.
       const sourceCell=Math.min(h-1,Math.floor(v*h))*w+Math.min(w-1,Math.floor(u*w));
-      const inside=this.mask[sourceCell]>0;
+      const inside=this.mask[sourceCell]>0&&(!this.weight||this.weight(u,v)>0);
       next[k]=inside?u:uv[k];next[k+1]=inside?v:uv[k+1];
     }
     this.uv=next;this.next=uv;
@@ -112,7 +113,7 @@ function pigmentRenderer(field){
     if(gl){
       const shader=(type,code)=>{const s=gl.createShader(type);gl.shaderSource(s,code);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){const error=gl.getShaderInfoLog(s);gl.deleteShader(s);throw new Error(error);}return s;};
       const vs=shader(gl.VERTEX_SHADER,'attribute vec2 position; varying vec2 uv; uniform vec4 bounds; void main(){uv=bounds.xy+vec2(position.x*.5+.5,.5-position.y*.5)*bounds.zw;gl_Position=vec4(position,0.,1.);}');
-      const fs=shader(gl.FRAGMENT_SHADER,'precision highp float; varying vec2 uv; uniform sampler2D artwork; uniform sampler2D flow; uniform sampler2D region; void main(){float a=texture2D(region,uv).r;if(a<.004){gl_FragColor=vec4(0.);return;}vec4 p=texture2D(flow,uv);vec2 q=vec2(dot(p.rg,vec2(65280.,255.)),dot(p.ba,vec2(65280.,255.)))/65535.;gl_FragColor=vec4(texture2D(artwork,q).rgb*a,a);}');
+      const fs=shader(gl.FRAGMENT_SHADER,'precision highp float; varying vec2 uv; uniform sampler2D artwork; uniform sampler2D flow; uniform sampler2D region; void main(){float a=texture2D(region,uv).r;if(a<.004){gl_FragColor=vec4(0.);return;}vec4 p=texture2D(flow,uv);vec2 q=vec2(dot(p.rg,vec2(65280.,255.)),dot(p.ba,vec2(65280.,255.)))/65535.;if(texture2D(region,q).r<.004)q=uv;gl_FragColor=vec4(texture2D(artwork,q).rgb*a,a);}');
       program=gl.createProgram();gl.attachShader(program,vs);gl.attachShader(program,fs);gl.linkProgram(program);gl.deleteShader(vs);gl.deleteShader(fs);
       if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(program));
       gl.useProgram(program);buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);
@@ -120,7 +121,7 @@ function pigmentRenderer(field){
       const pos=gl.getAttribLocation(program,'position');gl.enableVertexAttribArray(pos);gl.vertexAttribPointer(pos,2,gl.FLOAT,false,0,0);
       for(let unit=0;unit<3;unit++){
         const texture=gl.createTexture();textures.push(texture);gl.activeTexture(gl.TEXTURE0+unit);gl.bindTexture(gl.TEXTURE_2D,texture);
-        for(const p of [gl.TEXTURE_MIN_FILTER,gl.TEXTURE_MAG_FILTER])gl.texParameteri(gl.TEXTURE_2D,p,gl.LINEAR);
+        for(const p of [gl.TEXTURE_MIN_FILTER,gl.TEXTURE_MAG_FILTER])gl.texParameteri(gl.TEXTURE_2D,p,unit===2?gl.NEAREST:gl.LINEAR);
         for(const p of [gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T])gl.texParameteri(gl.TEXTURE_2D,p,gl.CLAMP_TO_EDGE);
       }
       gl.uniform1i(gl.getUniformLocation(program,'artwork'),0);gl.uniform1i(gl.getUniformLocation(program,'flow'),1);gl.uniform1i(gl.getUniformLocation(program,'region'),2);
@@ -155,7 +156,7 @@ function pigmentRenderer(field){
         gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,field.w,field.h,0,gl.RGBA,gl.UNSIGNED_BYTE,null);
         gl.activeTexture(gl.TEXTURE2);gl.bindTexture(gl.TEXTURE_2D,textures[2]);
         gl.pixelStorei(gl.UNPACK_ALIGNMENT,1);
-        gl.texImage2D(gl.TEXTURE_2D,0,gl.LUMINANCE,field.w,field.h,0,gl.LUMINANCE,gl.UNSIGNED_BYTE,field.mask);
+        gl.texImage2D(gl.TEXTURE_2D,0,gl.LUMINANCE,field.weight.width,field.weight.height,0,gl.LUMINANCE,gl.UNSIGNED_BYTE,field.weight.mask);
       }
     },
     draw(changed){
@@ -170,9 +171,11 @@ function pigmentRenderer(field){
       const {width:w,height:h}=fallback;
       for(let y=0;y<h;y++)for(let x=0;x<w;x++){
         const fx=(rect.x+(x+.5)/w*rect.width)*field.w-.5,fy=(rect.y+(y+.5)/h*rect.height)*field.h-.5;
-        const k=(y*w+x)*4,alpha=bilinear(field.mask,field.w,field.h,fx,fy,0,1);pixels.data[k+3]=alpha;
+        const px=(fx+.5)/field.w,py=(fy+.5)/field.h;
+        const k=(y*w+x)*4,alpha=field.weight(px,py)*255;pixels.data[k+3]=alpha;
         if(alpha<1)continue;
-        const u=bilinear(field.uv,field.w,field.h,fx,fy,0,2),v=bilinear(field.uv,field.w,field.h,fx,fy,1,2);
+        let u=bilinear(field.uv,field.w,field.h,fx,fy,0,2),v=bilinear(field.uv,field.w,field.h,fx,fy,1,2);
+        if(!field.weight(u,v)){u=px;v=py;}
         for(let c=0;c<3;c++)pixels.data[k+c]=bilinear(source,sourceWidth,sourceHeight,u*sourceWidth-.5,v*sourceHeight-.5,c);
       }
       ctx.putImageData(pixels,0,0);return cached=fallback;
@@ -193,6 +196,8 @@ function pigmentRenderer(field){
 export async function create(stage,controls) {
   const chapters=JSON.parse(document.querySelector('#fluid-chapters').textContent);
   const art=await Promise.all(chapters.map(c=>image(asset(c.image))));
+  const plates=await Promise.all(chapters.map(c=>image(asset(MATERIAL_MASKS[c.id]))));
+  const regions=new Map();
   const fluid=new Fluid(72,48,12),field=new PigmentField(120,80),renderer=pigmentRenderer(field);
   const reduced=matchMedia('(prefers-reduced-motion: reduce)'),theater=document.querySelector('.theater');
   const before=offscreen(1,1),wash=offscreen(1,1),mask=offscreen(1,1),bctx=before.getContext('2d'),wctx=wash.getContext('2d'),mctx=mask.getContext('2d');
@@ -200,7 +205,7 @@ export async function create(stage,controls) {
   let chapterIndex=0,original=art[0],sourceKind='art',sourceName='',damping=chapters[0].damping;
   let steps=0,acc=0,last=null,disturbed=false,generation=0,disposed=false,transition=1,tour=false,chapterTime=0,lastTick=0;
   let active=false,flowDirty=false,quietTime=0,pending=null,nextFrame=0,simulationTime=stage.t,pointerInside=false;
-  let weight=()=>0,overlayBoxes=[];
+  let weight=()=>0,overlayBoxes=[],gestureAllowed=false;
   let statusKey='';
   const fixedStep=1/60,idleHz=12;
 
@@ -225,13 +230,24 @@ export async function create(stage,controls) {
     try{const img=await image(url);if(ticket!==generation||disposed)return;original=img;sourceKind='local';sourceName=file.name;tour=false;transition=1;clearFlow();setRegion();renderer.setImage(img);stage.dirty=true;}
     finally{URL.revokeObjectURL(url);}
   });
-  function clearFlow(){stage.artworkView=null;field.reset();for(const k of ['u','v','u0','v0','p','p0','div'])fluid[k].fill(0);steps=0;acc=0;last=null;disturbed=false;active=false;flowDirty=false;quietTime=0;pending=null;pointerInside=false;fluid.speed=0;simulationTime=stage.t;nextFrame=0;}
+  function clearFlow(){stage.artworkView=null;field.reset();for(const k of ['u','v','u0','v0','p','p0','div'])fluid[k].fill(0);steps=0;acc=0;last=null;gestureAllowed=false;disturbed=false;active=false;flowDirty=false;quietTime=0;pending=null;pointerInside=false;fluid.speed=0;simulationTime=stage.t;nextFrame=0;}
   function setRegion(){
     const {w,h}=field,id=sourceKind==='local'?'local':chapters[chapterIndex].id;
     // Rasterize the full source, without cover-cropping imported aspect ratios.
-    const sample=offscreen(w,h),context=sample.getContext('2d',{willReadFrequently:true});
-    context.drawImage(original,0,0,w,h);
-    weight=pigmentRegion(id,context.getImageData(0,0,w,h).data,w,h);
+    weight=regions.get(id);
+    if(!weight||id==='local'){
+      const sample=offscreen(w,h),context=sample.getContext('2d',{willReadFrequently:true});
+      context.drawImage(original,0,0,w,h);
+      let material;
+      if(id!=='local'){
+        const plate=plates[chapterIndex],canvas=offscreen(plate.width,plate.height),ctx=canvas.getContext('2d',{willReadFrequently:true});
+        if(plate.width!==original.width||plate.height!==original.height)throw new Error('颜料区域与原画尺寸不一致');
+        ctx.drawImage(plate,0,0);
+        material={data:ctx.getImageData(0,0,plate.width,plate.height).data,width:plate.width,height:plate.height};
+      }
+      weight=pigmentRegion(id,context.getImageData(0,0,w,h).data,w,h,material);
+      if(id!=='local')regions.set(id,weight);
+    }
     field.setMask(weight);fluid.setMask(weight);
   }
   function wake(){active=true;disturbed=true;quietTime=0;nextFrame=0;simulationTime=stage.t;}
@@ -315,7 +331,7 @@ export async function create(stage,controls) {
     // composition while reading; interaction/turning pages returns to 60 Hz.
     get static(){return stage.t<nextFrame;},
     resize(){
-      stage.artworkView=null;last=null;pending=null;pointerInside=false;
+      stage.artworkView=null;last=null;pending=null;gestureAllowed=false;pointerInside=false;
       stage.dpr=Math.min(devicePixelRatio||1,1.25);
       stage.canvas.width=Math.round(stage.width*stage.dpr);stage.canvas.height=Math.round(stage.height*stage.dpr);
       stage.ctx.setTransform(stage.dpr,0,0,stage.dpr,0,0);measureOverlays();
@@ -323,13 +339,16 @@ export async function create(stage,controls) {
     scenes,reset:()=>choose(chapterIndex,{animate:false}),interact:()=>choose(chapterIndex+1),
     key(key){if(key==='ArrowRight')choose(chapterIndex+1);if(key==='ArrowLeft')choose(chapterIndex-1);},
     pointer(p,e){
-      if(!p.down){last=null;pointerInside=false;return;}
+      if(!p.down){last=null;gestureAllowed=false;pointerInside=false;return;}
       // Use Stage's raw viewport sample and the last painted transform, never
       // reconstruct an event from its clamped normalized pointer coordinates.
       const client=p.client,rect=stage.canvas.getBoundingClientRect();
       if(e?.type==='pointerdown')last=null;
       measureOverlays();const q=hit(client,rect);pointerInside=!!q;
-      if(!q){last=null;return;}
+      // A drag belongs to the material where it began. Starting on blank or
+      // an overlay cannot acquire pigment later in the captured gesture.
+      if(e?.type==='pointerdown')gestureAllowed=!!q;
+      if(!q||!gestureAllowed){last=null;pending=null;pointerInside=false;return;}
       // Scroll/layout motion must not become brush velocity. Map both event
       // positions through this same painted view, including the idle zoom.
       const previous=last&&['left','top','width','height'].every(k=>rect[k]===last.rect[k])?hit(last.client,rect):null;
@@ -339,8 +358,8 @@ export async function create(stage,controls) {
           pending={...q,dx:clamp((pending?.dx||0)+dx,-.08,.08),dy:clamp((pending?.dy||0)+dy,-.08,.08)};
       }last={client:{...client},rect};
     },
-    release(){last=null;pointerInside=false;stage.dirty=true;},
-    visibility(on){lastTick=on?performance.now():0;simulationTime=stage.t;acc=0;last=null;pending=null;pointerInside=false;},
+    release(){last=null;gestureAllowed=false;pointerInside=false;stage.dirty=true;},
+    visibility(on){lastTick=on?performance.now():0;simulationTime=stage.t;acc=0;last=null;pending=null;gestureAllowed=false;pointerInside=false;},
     render(dt){
       // Reading/transition time follows visible playback, independently of the
       // solver's capped fixed steps, so a busy renderer cannot stretch a chapter.
@@ -366,7 +385,7 @@ export async function create(stage,controls) {
         document.querySelector('.telemetry-bottom span').textContent='INKFIELD / ISSUE 01';
       }
     },
-    inspect:()=>({interactionRevision:'painted-artwork-r3',artworkView:stage.artworkView,chapter:chapters[chapterIndex].id,chapterIndex,art:chapters[chapterIndex].image,source:sourceKind,texturesLoaded:art.length,
+    inspect:()=>({interactionRevision:'material-plates-r4',materialMask:MATERIAL_MASKS[chapters[chapterIndex].id],artworkView:stage.artworkView,chapter:chapters[chapterIndex].id,chapterIndex,art:chapters[chapterIndex].image,source:sourceKind,texturesLoaded:art.length,
       transition,transitionSeconds,holdSeconds,tour,chapterTime,steps,damping,disturbed,renderer:renderer.mode,grid:[fluid.w,fluid.h],flowSize:[field.w,field.h],
       active,speed:fluid.speed,uploads:renderer.uploads,renderSize:renderer.size,activeCells:field.cells.length,projectionIterations:fluid.iterations,idleHz,pointerInside,
       divergence:fluid.divergenceEnergy(),finite:fluid.u.every(Number.isFinite)&&fluid.v.every(Number.isFinite)&&field.uv.every(Number.isFinite)}),

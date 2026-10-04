@@ -1,5 +1,5 @@
 /* ELSEWHERE: an immersive stage with a journal at its margins. */
-[data-study=portal] .study-app{padding:0 20px;grid-template-rows:72px minmax(0,1fr) 104px;min-height:760px}
+[data-study=portal] .study-app{min-height:760px}
 [data-study=portal] .header{background:#090e13f5}
 [data-study=portal] .theater{background:#091918}
 [data-study=portal] .art-shade{background:linear-gradient(90deg,#061413ad,transparent 33%),linear-gradient(0deg,#06101270,transparent 22%);pointer-events:none}

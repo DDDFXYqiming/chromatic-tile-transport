@@ -15,23 +15,23 @@ svg{display:block}
 [hidden]{display:none!important}
 ::selection{background:var(--accent);color:var(--ink)}
 .ambient{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 65% -30%,color-mix(in srgb,var(--accent) 10%,transparent),transparent 65%)}
-.app{position:relative;height:100svh;min-height:440px;max-width:2600px;margin:0 auto;display:grid;grid-template-rows:96px minmax(0,1fr) 138px;padding:0 32px}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 4px}
-.wordmark{display:flex;align-items:center;gap:14px;min-width:0}
-.wordmark>svg{width:43px;height:43px;color:var(--gold);flex-shrink:0;overflow:visible}
-.wordmark b{display:block;font-size:1.375rem;font-weight:600;letter-spacing:.16em;line-height:1.2}
-.wordmark small{display:block;margin-top:8px;font-size:.6875rem;letter-spacing:.12em;color:var(--muted);white-space:nowrap}
+.app{position:relative;height:100svh;min-height:440px;max-width:2600px;margin:0 auto;display:grid;grid-template-rows:96px minmax(0,1fr) 138px;padding:0 36px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 5px}
+.wordmark{display:flex;align-items:center;gap:13px;min-width:0}
+.wordmark>svg{width:39px;height:39px;color:var(--gold);flex-shrink:0;overflow:visible}
+.wordmark b{display:block;font-size:19px;font-weight:600;letter-spacing:.17em;line-height:1}
+.wordmark small{display:block;margin-top:7px;font-size:8px;letter-spacing:.16em;color:var(--muted);white-space:nowrap}
 .wordmark small span{color:var(--gold);margin:0 7px}
 .topnav{display:flex;align-items:center;gap:6px;padding:6px;border:1px solid var(--line);border-radius:40px;flex-shrink:0}
 .topnav a{font-size:.8125rem;letter-spacing:.04em;padding:12px 20px;color:var(--muted);white-space:nowrap;transition:color .2s}
 .topnav a:hover{color:var(--paper)}
 .topnav .current{color:var(--ink);background:var(--paper);border-radius:40px}
-.top-actions{display:flex;align-items:center;gap:15px}
-.icon-button{width:36px;height:42px;display:grid;place-items:center;color:#a7aab3;padding:7px;flex-shrink:0}
+.top-actions{display:flex;align-items:center;gap:16px}
+.icon-button{width:29px;height:34px;display:grid;place-items:center;color:#a7aab3;padding:0;flex-shrink:0}
 .icon-button:hover{color:var(--paper)}
-.icon-button svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.25}
+.icon-button svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.25}
 #settingsOpen circle{fill:var(--ink)}
-.auto-button{display:flex;align-items:center;justify-content:center;gap:12px;border:1px solid var(--line);min-height:43px;min-width:125px;padding:10px 16px;font-size:.875rem;letter-spacing:.05em;border-radius:2px;white-space:nowrap;transition:border-color .2s,background .2s}
+.auto-button{display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);width:106px;min-width:106px;height:38px;min-height:38px;padding:0 10px;font-size:10px;letter-spacing:.08em;border-radius:2px;white-space:nowrap;box-sizing:border-box;transition:border-color .2s,background .2s}
 .auto-button:hover{border-color:#d4c4a066;background:#ffffff05}
 #playGlyph{font-size:.6875rem;color:var(--gold);min-width:10px;text-align:center}
 .stage{position:relative;isolation:isolate;overflow:hidden;min-height:0;border:1px solid #e6e0d233;border-radius:2px;background:#0b0e1b;touch-action:none;outline:none;box-shadow:0 16px 70px #0003}
@@ -182,8 +182,8 @@ kbd{font-family:ui-monospace,Consolas,monospace;font-size:.625rem;border:1px sol
 .immersive .exit-immersive{display:block}
 
 @media(min-width:1700px){
-  .app{padding:0 38px;grid-template-rows:116px minmax(0,1fr) 154px}
-  .wordmark b{font-size:1.625rem}.wordmark>svg{width:48px;height:48px}.topnav a{padding:14px 23px;font-size:.875rem}
+  .app{padding:0 36px;grid-template-rows:96px minmax(0,1fr) 154px}
+  .wordmark b{font-size:19px;letter-spacing:.17em;line-height:1}.wordmark>svg{width:39px;height:39px}
   .bottom-bar{grid-template-columns:208px minmax(0,1fr) 132px;gap:38px}
   .film-item img{width:86px;height:51px}.filmstrip{gap:28px}.film-item strong{font-size:1rem}
   .sequence-meta strong{font-size:2.625rem}.hero-copy{bottom:13%}.hero-copy h1{font-size:clamp(52px,3.35vw,70px)}

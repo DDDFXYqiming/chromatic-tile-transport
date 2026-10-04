@@ -1,10 +1,10 @@
 /* PENUMBRA: one viewport-sized receiver, sculptural type, live copper forms. */
-[data-study=shadow]{--bg:#102b2a;--text:#f3e8cb;--muted:#c5c9b8;--shadow-header:80px;--shadow-footer:102px;background:var(--bg)}
+[data-study=shadow]{--bg:#102b2a;--text:#f3e8cb;--muted:#c5c9b8;--shadow-header:96px;--shadow-footer:102px;background:var(--bg)}
 [data-study=shadow] .ambient{display:none}
-[data-study=shadow] .study-app{display:block;position:relative;isolation:isolate;width:100%;height:100svh;min-height:0;max-width:none;padding:0 28px;overflow:hidden}
-[data-study=shadow] .header{position:relative;height:var(--shadow-header);z-index:20;border-bottom:1px solid #e4d7b526}
+[data-study=shadow] .study-app{display:block;position:relative;isolation:isolate;width:100%;height:100svh;min-height:0;max-width:none;padding:0 36px;overflow:hidden}
+[data-study=shadow] .header{position:relative;height:var(--shadow-header);z-index:20;box-shadow:inset 0 -1px 0 #e4d7b526}
 [data-study=shadow] .brand-emblem{color:#ead4a4}
-[data-study=shadow] .brand-text strong{font-size:14px}
+[data-study=shadow] .brand-text strong{font-size:19px}
 [data-study=shadow] .hall-modes{background:#102b2950;backdrop-filter:blur(16px)}
 [data-study=shadow] .hall-modes>a{color:#cbd0be}
 [data-study=shadow] .hall-modes>a[aria-current]{background:#e7dcc0;color:#18302c}
@@ -41,7 +41,7 @@
 [data-study=shadow] .instrument-bar{position:absolute;z-index:30;left:4.5%;right:4.5%;bottom:calc(var(--shadow-footer) + 58px);max-height:60%;overflow:auto;display:grid;border:1px solid #cfc29277;background:#102b2af5;box-shadow:0 12px 60px #0007;padding:20px;backdrop-filter:blur(24px)}
 [data-study=shadow] .instrument-bar[hidden]{display:none}
 [data-study=shadow] .controls button[aria-pressed=true]{border-color:#d6c197;background:#d6c1971a}
-[data-study=shadow] .study-footer{position:absolute;z-index:10;left:28px;right:28px;bottom:0;height:var(--shadow-footer);min-height:0;padding:12px 0;border-top:1px solid #d2d4b838;grid-template-columns:130px minmax(0,1fr) 92px;gap:26px;background:transparent;backdrop-filter:none}
+[data-study=shadow] .study-footer{position:absolute;z-index:10;left:36px;right:36px;bottom:0;height:var(--shadow-footer);min-height:0;padding:12px 0;border-top:1px solid #d2d4b838;grid-template-columns:130px minmax(0,1fr) 92px;gap:26px;background:transparent;backdrop-filter:none}
 [data-study=shadow] .hall-track{display:none}
 [data-study=shadow] .study-strip{gap:22px}
 [data-study=shadow] .study-card{flex-direction:row;align-items:center;gap:12px;opacity:.58}

@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#090c13"><title>折叠剧场 · 星海视觉实验室</title>
-<link rel="stylesheet" href="../src/studies/style.css">
-<link rel="stylesheet" href="../src/studies/folding.css">
+<meta name="theme-color" content="#090c13"><title>折叠剧场 · 视觉实验室</title>
+<link rel="stylesheet" href="../src/studies/style.css?v=b486111fdaa5">
+<link rel="stylesheet" href="../src/studies/folding.css?v=f52e8af61cbb">
 <script type="application/json" id="folding-chapters">[{"id":"valley","title":"山谷来信","english":"A LETTER FROM THE VALLEY","kicker":"01 / 把风景装订","headline":["把一座山谷，","寄进一页纸。"],"body":"清晨沿河走到植物站，雾还挂在山腰。我们把远山留在纸的两侧，把温室放在中间。合上时，它是一封薄薄的信；展开后，那条走过的小路又有了深处。","image":"studies/folding-valley.png","accent":"#b9c8a8","ink":"#466456","floor":"#d2d5b9","arch":"#e9dfbd","feature":"一道折痕，给远方留出位置","detail":"先把风景连成一幅画，再沿两侧折起。远山向前围拢，中央的温室留在原处。一页纸里，近与远便有了各自的位置。","note":"信封很轻，里面装着一整座山谷。","location":"第一站 · 山谷植物站","time":"06:20","annotation":"三联画 / 沿折痕读一段远近","action":"下一页 · 星夜书签","pose":{"open":0.64,"orbit":0.14}},{"id":"night","title":"星夜书签","english":"A BOOKMARK AFTER DARK","kicker":"02 / 让夜色立起","headline":["翻过这一页，","星夜有了深处。"],"body":"天暗下来，我们在山顶观星台等第一盏灯。铜色穹顶慢慢退进蓝里，台阶通向一片安静的天空。把书页撑开一点，拱门立起，今晚的星光就有了一个入口。","image":"studies/folding-night.png","accent":"#b9c8eb","ink":"#465b83","floor":"#b4bfd1","arch":"#ddd1af","feature":"让一座拱门，先替目光出发","detail":"在纸页前方加一道小小的门。它随地板一起转起，让视线先经过门洞，再抵达穹顶。轻轻转动画面，前后两层会分得更清楚。","note":"星星还没出来，我们已经把夜晚打开了。","location":"第二站 · 山顶观星台","time":"20:45","annotation":"立体拱门 / 为夜色添一层景深","action":"下一页 · 潮汐慢页","pose":{"open":0.84,"orbit":-0.16}},{"id":"harbor","title":"潮汐慢页","english":"THE TIDE TAKES ITS TIME","kicker":"03 / 留住一个下午","headline":["把海风摊开，","慢慢读一下午。"],"body":"港口的船都停稳了，灯塔把影子落在防波堤上。我们沿岸画下几间小屋、一道浪线和那片浅蓝。将纸景转向光，折面之间的明暗，像潮水一样有了轻轻的起伏。","image":"studies/folding-harbor.png","accent":"#a9d1d1","ink":"#346d71","floor":"#c1d7cf","arch":"#edd7b4","feature":"换个角度，再读一次海岸","detail":"纸景两侧向内环抱，平面的海岸便成为一个可以回望的小港口。试着从左边看到右边，留意灯塔与门洞怎样相互遮挡。","note":"今天没有下一班船，只有下一页海。","location":"第三站 · 南岸小港","time":"15:10","annotation":"侧页环抱 / 转个角度看潮汐","action":"下一页 · 灯火归途","pose":{"open":0.72,"orbit":0.24}},{"id":"home","title":"灯火归途","english":"THE LAST TRAIN HOME","kicker":"04 / 收藏一段归途","headline":["远行折起来，","灯火留在手边。"],"body":"回程的列车停在旧车站，窗里透出暖黄的光。一路收藏的山色与潮声，到这里装订成册。缓缓收起纸景，屋顶回到同一张纸上，下一次展开，旅程还能从这里继续。","image":"studies/folding-home.png","accent":"#e2b5a3","ink":"#945747","floor":"#dbc6b4","arch":"#ecd6bb","feature":"把一本书，留成一次邀请","detail":"折痕替我们记住了展开的顺序。收平、装好，再轻轻打开，立体的街景就能回来。纸间的第一期在车站收尾，也在这里等下一次出发。","note":"把书放回桌边，远方就没有那么远。","location":"终点站 · 暮色车站","time":"18:32","annotation":"收起与重展 / 把远行放回手边","action":"重新出发 · 山谷来信","pose":{"open":0.55,"orbit":-0.12}}]</script>
 <style>
 /* Exhibition tokens and atlas proportions from Transport's header / filmstrip. */
@@ -30,6 +30,27 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
 @media(max-width:800px){.header>.hall-modes{grid-row:2;grid-column:1/-1;justify-self:center;align-self:start}}
 @media(max-width:360px){.hall-modes>a{font-size:8px;padding:9px 8px}}
 @media(prefers-reduced-motion:reduce){.hall-card{transition:none}}
+/* Wide screens share one header. Page themes may recolor it, not move it. */
+@media(min-width:1440px){
+  html body .app,html body .study-app,html body[data-study] .study-app{padding-left:36px;padding-right:36px;max-width:2600px}
+  html body .app{grid-template-rows:96px minmax(0,1fr) 132px}
+  html body .study-app,html body[data-study] .study-app{grid-template-rows:96px minmax(0,1fr) 142px}
+  html body .header,html body .topbar,html body[data-study] .header{position:relative;display:flex;align-items:center;justify-content:space-between;height:96px;min-height:96px;max-height:96px;gap:20px;padding:0 5px;box-sizing:border-box}
+  html body .brand,html body .wordmark,html body[data-study] .brand{display:flex;align-items:center;gap:13px;height:39px;flex-shrink:0}
+  html body .brand-emblem,html body .wordmark>svg,html body[data-study] .brand-emblem{width:39px;height:39px;flex-shrink:0}
+  html body .brand-text,html body .wordmark>span,html body[data-study] .brand-text{display:flex;flex-direction:column;justify-content:center;gap:7px;min-width:0}
+  html body .brand-text small,html body .wordmark small,html body[data-study] .brand-text small{display:block;margin:0;font-size:8px;letter-spacing:.16em;line-height:1}
+  html body .brand-text strong,html body .wordmark b,html body[data-study] .brand-text strong{font-size:19px;font-weight:600;letter-spacing:.17em;line-height:1;margin:0}
+  html body .hall-modes,html body[data-study] .hall-modes{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;flex:none;width:max-content;max-width:calc(100% - 420px);height:auto;margin:0;padding:5px;gap:4px;border-radius:40px;box-sizing:border-box}
+  html body .hall-modes>a,html body[data-study] .hall-modes>a{padding:11px;font-size:12px;line-height:1.4;border-radius:30px;box-sizing:border-box}
+  html body .header-actions,html body .top-actions,html body[data-study] .header-actions{display:flex;align-items:center;justify-content:flex-end;gap:16px;height:38px;flex-shrink:0}
+  html body .auto-button,html body #play.auto-button,html body #playButton.auto-button,html body[data-study] .auto-button{width:106px;min-width:106px;height:38px;min-height:38px;margin:0;padding:0 10px;gap:8px;font-size:10px;line-height:1;letter-spacing:.08em;border-radius:2px;box-sizing:border-box}
+  html body .icon-button,html body[data-study] .icon-button{width:29px;height:34px;min-width:29px;padding:0;box-sizing:border-box}
+  html body .icon-button svg{width:20px;height:20px}
+}
+@media(min-width:1440px) and (max-height:650px){
+  body .app{grid-template-rows:96px minmax(0,1fr) 84px}
+}
 
 </style>
 </head>
@@ -39,13 +60,13 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
   <header class="header">
     <a class="brand" href="../index.html" aria-label="返回效果展厅">
       <svg class="brand-emblem" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 3 26.4 17.6 41 22 26.4 26.4 22 41 17.6 26.4 3 22 17.6 17.6Z" fill="currentColor"/><ellipse cx="22" cy="22" rx="21" ry="7.2" transform="rotate(-34 22 22)" stroke="currentColor" stroke-width=".8"/><path d="M4 35h13M29 9h11" stroke="currentColor" stroke-width=".65"/></svg>
-      <span class="brand-text"><strong>星海视觉实验室</strong><small>FOLDING THEATER <span>/</span> 折叠剧场 · 08</small></span>
+      <span class="brand-text"><strong>视觉实验室</strong><small>FOLDING THEATER <span>/</span> 折叠剧场 · 08</small></span>
     </a>
     <nav class="hall-modes" aria-label="效果导航"><a href="index.html">01 寻色迁移</a><a href="matrix-battle.html">02 MATRIX MOTION</a><a href="portal-threshold.html">03 画中门</a><a href="temporal-field.html">04 时差场</a><a href="liquid-canvas.html">05 液态画布</a><a href="optical-vault.html">06 光学展柜</a><a href="shadow-apparatus.html">07 影子机关</a><a href="folding-theater.html" aria-current="page">08 折叠剧场</a></nav>
     <div class="header-actions">
       <button id="play" class="auto-button" type="button" aria-pressed="true"><span class="play-glyph" aria-hidden="true">Ⅱ</span><span id="play-label">暂停巡航</span></button>
-      <button id="clean" class="icon-button" type="button" aria-label="纯画面" aria-pressed="false" title="纯画面 · H"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 7V3h4m6 0h4v4M3 13v4h4m6 0h4v-4"/></svg></button>
       <button id="about-open" class="icon-button" type="button" aria-label="作品说明" title="作品说明">ⓘ</button>
+      <button id="clean" class="icon-button" type="button" aria-label="纯画面" aria-pressed="false" title="纯画面 · H"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 7V3h4m6 0h4v4M3 13v4h4m6 0h4v-4"/></svg></button>
     </div>
   </header>
   <main class="stage" aria-label="折叠剧场互动实验">

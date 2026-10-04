@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#090c13"><title>影子机关 · 星海视觉实验室</title>
+<meta name="theme-color" content="#090c13"><title>影子机关 · 视觉实验室</title>
 <link rel="stylesheet" href="../src/studies/style.css?v=b486111fdaa5">
-<link rel="stylesheet" href="../src/studies/shadow.css?v=70d3e13a8cb5">
+<link rel="stylesheet" href="../src/studies/shadow.css?v=7ded9dd1d832">
 <script type="application/json" id="shadow-chapters">[{"id":"silhouette","title":"轮廓的开场","english":"THE SHAPE OF SILENCE","kicker":"01 / SILHOUETTE · 轮廓","headline":["让光穿过，","让影留下。"],"body":"一弯铜月，一片微光。青色从远处抵达，绯色擦过边缘，金色在文字下方停住。你走进来，影子便有了新的方向。","image":"studies/shadow-silhouette.png","alt":"暗色展厅内，铜质月牙立在石台上，暖光在墙面留下弯曲影子。","accent":"#d9ba7f","material":"PLATE 01 / 铜 · 石 · 暖光","feature":"在静默中，听见回声","detail":"月牙悬在暗处，字浮在光里。两道轮廓擦肩而过，留下第三种形状。","note":"光照到哪里，故事就从哪里开始。","action":"下一篇 · 边界的温度","display":"半影"},{"id":"boundary","title":"边界的温度","english":"WHERE LIGHT ENDS","kicker":"02 / BOUNDARY · 边界","headline":["光止于此，","故事向外。"],"body":"暖墙上的一条亮边，把两个世界轻轻分开。深处的青与近处的绯交叠，明暗之间，还容得下一次回望。","image":"studies/shadow-boundary.png","alt":"弯曲铜板与错开的薄金属片立在赭色墙前，斜光划出细致明暗边界。","accent":"#dfa68b","material":"PLATE 02 / 曲面 · 赭墙 · 斜光","feature":"明暗相接的地方","detail":"把光留在边缘，让影越过边缘。曲面的一线微亮，接住了整个房间的呼吸。","note":"那条细细的亮边，足够让视线停下来。","action":"下一篇 · 深处的秩序","display":"边界"},{"id":"depth","title":"深处的秩序","english":"READING IN LAYERS","kicker":"03 / DEPTH · 层次","headline":["一层远方，","一层回响。"],"body":"薄片彼此错开，微光沿着缝隙穿行。前面的影子往左，后面的影子向右，视线顺着它们，在平面里走向深处。","image":"studies/shadow-depth.png","alt":"七片错位的铜板悬在石座上，冷光照亮边缘，并在蓝灰墙上投下层叠影子。","accent":"#a4c1d0","material":"PLATE 03 / 薄片 · 冷墙 · 层叠","feature":"层叠之间，自有秩序","detail":"七片铜，七次停顿。眼前的线条退后一步，藏起的面便渐渐浮出。","note":"前与后之间，是留给发现的距离。","action":"下一篇 · 第二种答案","display":"深处"},{"id":"alignment","title":"第二种答案","english":"ANOTHER WAY TO SEE","kicker":"04 / ALIGNMENT · 对齐","headline":["换个方向，","再看一眼。"],"body":"金色的菱面停在半空。来时看过的字，此刻投下另一道影。光仍在缓缓转动，空间替你保留了一次新的相遇。","image":"studies/shadow-alignment.png","alt":"铜质菱形雕塑立在深色圆柱台上，金色侧光在暖墙上形成大幅菱形影子。","accent":"#e6cb91","material":"PLATE 04 / 菱面 · 金光 · 对齐","feature":"转身之后，光还在","detail":"展览走到末尾，影子又回到开头。把那个未看清的角度，留给下一次经过。","note":"物体还在原处，目光已经走了一程。","action":"重新翻阅 · 轮廓的开场","display":"回望"}]</script>
 <script type="importmap">{"imports":{"../src/studies/main.mjs":"../src/studies/main.mjs?v=b09f5e65b507","../src/studies/core.mjs":"../src/studies/core.mjs?v=9a37183db2f2","../src/studies/filmstrip.mjs":"../src/studies/filmstrip.mjs?v=e1cdd27b4366","../src/studies/math.mjs":"../src/studies/math.mjs?v=36cea5790b88","../src/studies/shadow.mjs":"../src/studies/shadow.mjs?v=2bb72d82d32d","../src/studies/shadow-apparatus.mjs":"../src/studies/shadow-apparatus.mjs?v=296296bcfcd4","../src/studies/shadow-geometry.mjs":"../src/studies/shadow-geometry.mjs?v=3aa252d867c5"}}</script>
 <style>
@@ -31,6 +31,27 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
 @media(max-width:800px){.header>.hall-modes{grid-row:2;grid-column:1/-1;justify-self:center;align-self:start}}
 @media(max-width:360px){.hall-modes>a{font-size:8px;padding:9px 8px}}
 @media(prefers-reduced-motion:reduce){.hall-card{transition:none}}
+/* Wide screens share one header. Page themes may recolor it, not move it. */
+@media(min-width:1440px){
+  html body .app,html body .study-app,html body[data-study] .study-app{padding-left:36px;padding-right:36px;max-width:2600px}
+  html body .app{grid-template-rows:96px minmax(0,1fr) 132px}
+  html body .study-app,html body[data-study] .study-app{grid-template-rows:96px minmax(0,1fr) 142px}
+  html body .header,html body .topbar,html body[data-study] .header{position:relative;display:flex;align-items:center;justify-content:space-between;height:96px;min-height:96px;max-height:96px;gap:20px;padding:0 5px;box-sizing:border-box}
+  html body .brand,html body .wordmark,html body[data-study] .brand{display:flex;align-items:center;gap:13px;height:39px;flex-shrink:0}
+  html body .brand-emblem,html body .wordmark>svg,html body[data-study] .brand-emblem{width:39px;height:39px;flex-shrink:0}
+  html body .brand-text,html body .wordmark>span,html body[data-study] .brand-text{display:flex;flex-direction:column;justify-content:center;gap:7px;min-width:0}
+  html body .brand-text small,html body .wordmark small,html body[data-study] .brand-text small{display:block;margin:0;font-size:8px;letter-spacing:.16em;line-height:1}
+  html body .brand-text strong,html body .wordmark b,html body[data-study] .brand-text strong{font-size:19px;font-weight:600;letter-spacing:.17em;line-height:1;margin:0}
+  html body .hall-modes,html body[data-study] .hall-modes{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;flex:none;width:max-content;max-width:calc(100% - 420px);height:auto;margin:0;padding:5px;gap:4px;border-radius:40px;box-sizing:border-box}
+  html body .hall-modes>a,html body[data-study] .hall-modes>a{padding:11px;font-size:12px;line-height:1.4;border-radius:30px;box-sizing:border-box}
+  html body .header-actions,html body .top-actions,html body[data-study] .header-actions{display:flex;align-items:center;justify-content:flex-end;gap:16px;height:38px;flex-shrink:0}
+  html body .auto-button,html body #play.auto-button,html body #playButton.auto-button,html body[data-study] .auto-button{width:106px;min-width:106px;height:38px;min-height:38px;margin:0;padding:0 10px;gap:8px;font-size:10px;line-height:1;letter-spacing:.08em;border-radius:2px;box-sizing:border-box}
+  html body .icon-button,html body[data-study] .icon-button{width:29px;height:34px;min-width:29px;padding:0;box-sizing:border-box}
+  html body .icon-button svg{width:20px;height:20px}
+}
+@media(min-width:1440px) and (max-height:650px){
+  body .app{grid-template-rows:96px minmax(0,1fr) 84px}
+}
 
 </style>
 </head>
@@ -40,13 +61,13 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
   <header class="header">
     <a class="brand" href="../index.html" aria-label="返回效果展厅">
       <svg class="brand-emblem" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 3 26.4 17.6 41 22 26.4 26.4 22 41 17.6 26.4 3 22 17.6 17.6Z" fill="currentColor"/><ellipse cx="22" cy="22" rx="21" ry="7.2" transform="rotate(-34 22 22)" stroke="currentColor" stroke-width=".8"/><path d="M4 35h13M29 9h11" stroke="currentColor" stroke-width=".65"/></svg>
-      <span class="brand-text"><strong>星海视觉实验室</strong><small>SHADOW APPARATUS <span>/</span> 影子机关 · 07</small></span>
+      <span class="brand-text"><strong>视觉实验室</strong><small>SHADOW APPARATUS <span>/</span> 影子机关 · 07</small></span>
     </a>
     <nav class="hall-modes" aria-label="效果导航"><a href="index.html">01 寻色迁移</a><a href="matrix-battle.html">02 MATRIX MOTION</a><a href="portal-threshold.html">03 画中门</a><a href="temporal-field.html">04 时差场</a><a href="liquid-canvas.html">05 液态画布</a><a href="optical-vault.html">06 光学展柜</a><a href="shadow-apparatus.html" aria-current="page">07 影子机关</a><a href="folding-theater.html">08 折叠剧场</a></nav>
     <div class="header-actions">
       <button id="play" class="auto-button" type="button" aria-pressed="true"><span class="play-glyph" aria-hidden="true">Ⅱ</span><span id="play-label">暂停巡航</span></button>
-      <button id="clean" class="icon-button" type="button" aria-label="纯画面" aria-pressed="false" title="纯画面 · H"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 7V3h4m6 0h4v4M3 13v4h4m6 0h4v-4"/></svg></button>
       <button id="about-open" class="icon-button" type="button" aria-label="作品说明" title="作品说明">ⓘ</button>
+      <button id="clean" class="icon-button" type="button" aria-label="纯画面" aria-pressed="false" title="纯画面 · H"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 7V3h4m6 0h4v4M3 13v4h4m6 0h4v-4"/></svg></button>
     </div>
   </header>
   <main class="stage" aria-label="影子机关互动实验">

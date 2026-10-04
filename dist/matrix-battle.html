@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#090c13">
 <meta name="description" content="以分层插画实时演绎镜头、双色、线描与固定数字点阵。">
 <title>绯刃交锋 · 五镜头战斗番</title>
-<link rel="stylesheet" href="../src/matrix/style.css?v=e415395217ad"><style>
+<link rel="stylesheet" href="../src/matrix/style.css?v=e2b87aa505fa"><style>
 /* Exhibition tokens and atlas proportions from Transport's header / filmstrip. */
 .hall-modes{display:flex;flex-wrap:nowrap;align-items:center;gap:4px;border:1px solid var(--hairline,rgba(230,224,210,.14));border-radius:40px;padding:5px;flex:0 1 auto;min-width:0;max-width:100%;overflow-x:auto;scrollbar-width:none;position:relative;z-index:20;font-family:Arial,"Microsoft YaHei",sans-serif}
 .hall-modes::-webkit-scrollbar{display:none}
@@ -29,6 +29,27 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
 @media(max-width:800px){.header>.hall-modes{grid-row:2;grid-column:1/-1;justify-self:center;align-self:start}}
 @media(max-width:360px){.hall-modes>a{font-size:8px;padding:9px 8px}}
 @media(prefers-reduced-motion:reduce){.hall-card{transition:none}}
+/* Wide screens share one header. Page themes may recolor it, not move it. */
+@media(min-width:1440px){
+  html body .app,html body .study-app,html body[data-study] .study-app{padding-left:36px;padding-right:36px;max-width:2600px}
+  html body .app{grid-template-rows:96px minmax(0,1fr) 132px}
+  html body .study-app,html body[data-study] .study-app{grid-template-rows:96px minmax(0,1fr) 142px}
+  html body .header,html body .topbar,html body[data-study] .header{position:relative;display:flex;align-items:center;justify-content:space-between;height:96px;min-height:96px;max-height:96px;gap:20px;padding:0 5px;box-sizing:border-box}
+  html body .brand,html body .wordmark,html body[data-study] .brand{display:flex;align-items:center;gap:13px;height:39px;flex-shrink:0}
+  html body .brand-emblem,html body .wordmark>svg,html body[data-study] .brand-emblem{width:39px;height:39px;flex-shrink:0}
+  html body .brand-text,html body .wordmark>span,html body[data-study] .brand-text{display:flex;flex-direction:column;justify-content:center;gap:7px;min-width:0}
+  html body .brand-text small,html body .wordmark small,html body[data-study] .brand-text small{display:block;margin:0;font-size:8px;letter-spacing:.16em;line-height:1}
+  html body .brand-text strong,html body .wordmark b,html body[data-study] .brand-text strong{font-size:19px;font-weight:600;letter-spacing:.17em;line-height:1;margin:0}
+  html body .hall-modes,html body[data-study] .hall-modes{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;flex:none;width:max-content;max-width:calc(100% - 420px);height:auto;margin:0;padding:5px;gap:4px;border-radius:40px;box-sizing:border-box}
+  html body .hall-modes>a,html body[data-study] .hall-modes>a{padding:11px;font-size:12px;line-height:1.4;border-radius:30px;box-sizing:border-box}
+  html body .header-actions,html body .top-actions,html body[data-study] .header-actions{display:flex;align-items:center;justify-content:flex-end;gap:16px;height:38px;flex-shrink:0}
+  html body .auto-button,html body #play.auto-button,html body #playButton.auto-button,html body[data-study] .auto-button{width:106px;min-width:106px;height:38px;min-height:38px;margin:0;padding:0 10px;gap:8px;font-size:10px;line-height:1;letter-spacing:.08em;border-radius:2px;box-sizing:border-box}
+  html body .icon-button,html body[data-study] .icon-button{width:29px;height:34px;min-width:29px;padding:0;box-sizing:border-box}
+  html body .icon-button svg{width:20px;height:20px}
+}
+@media(min-width:1440px) and (max-height:650px){
+  body .app{grid-template-rows:96px minmax(0,1fr) 84px}
+}
 
 </style>
 </head>
@@ -38,7 +59,7 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
   <header class="topbar">
     <a class="wordmark" href="../index.html" aria-label="返回效果展厅">
       <svg viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 3 26.4 17.6 41 22 26.4 26.4 22 41 17.6 26.4 3 22 17.6 17.6Z" fill="currentColor"/><ellipse cx="22" cy="22" rx="21" ry="7.2" transform="rotate(-34 22 22)" stroke="currentColor" stroke-width=".8"/><path d="M4 35h13M29 9h11" stroke="currentColor" stroke-width=".65"/></svg>
-      <span><b>绯刃交锋</b><small>MATRIX MOTION <span>/</span> 动态显影 · 02</small></span>
+      <span><b>视觉实验室</b><small>MATRIX MOTION <span>/</span> 动态显影 · 02</small></span>
     </a>
     <nav class="hall-modes" aria-label="效果导航"><a href="index.html">01 寻色迁移</a><a href="matrix-battle.html" aria-current="page">02 MATRIX MOTION</a><a href="portal-threshold.html">03 画中门</a><a href="temporal-field.html">04 时差场</a><a href="liquid-canvas.html">05 液态画布</a><a href="optical-vault.html">06 光学展柜</a><a href="shadow-apparatus.html">07 影子机关</a><a href="folding-theater.html">08 折叠剧场</a></nav>
     <div class="top-actions">
@@ -132,35 +153,42 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
   document.querySelector('.hall-modes')?.addEventListener('focusin', e => {
     if (e.target.matches('a:focus-visible')) revealItem(e.currentTarget, e.target);
   });
+  // Study pages: bottom bar stays page-local. Cross-page jumps live in the top bar only.
+  const onStudy = Boolean(document.body.dataset.study);
   const opener = document.querySelector('.hall-open-atlas');
-  opener?.setAttribute('aria-controls', 'hall-experience-atlas');
-  opener?.setAttribute('aria-expanded', 'false');
-  opener?.addEventListener('click', () => {
-    document.body.classList.add('hall-experiences');
-    opener.setAttribute('aria-expanded', 'true');
-    revealCurrent();
-    document.querySelector('.hall-close-atlas').focus({preventScroll:true});
-  });
-  const closeAtlas = () => {
+  const atlas = document.querySelector('#hall-experience-atlas');
+  if (!onStudy && opener && atlas) {
+    opener.setAttribute('aria-controls', 'hall-experience-atlas');
+    opener.setAttribute('aria-expanded', 'false');
+    opener.addEventListener('click', () => {
+      document.body.classList.add('hall-experiences');
+      opener.setAttribute('aria-expanded', 'true');
+      revealCurrent();
+      document.querySelector('.hall-close-atlas')?.focus({preventScroll:true});
+    });
+    const closeAtlas = () => {
+      document.body.classList.remove('hall-experiences');
+      opener.setAttribute('aria-expanded', 'false');
+      opener.focus({preventScroll:true});
+      revealCurrent();
+    };
+    document.querySelector('.hall-close-atlas')?.addEventListener('click', closeAtlas);
+    document.addEventListener('keydown', e => {
+      if (document.querySelector('dialog[open]')) return;
+      if (e.key === 'Escape' && document.body.classList.contains('hall-experiences')) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeAtlas();
+      } else if (e.target.closest('.hall-modes,.hall-atlas,.hall-open-atlas,.study-footer')) {
+        e.stopPropagation();
+      }
+    });
+  } else {
     document.body.classList.remove('hall-experiences');
-    opener?.setAttribute('aria-expanded', 'false');
-    opener?.focus({preventScroll:true});
-    revealCurrent();
-  };
-  document.querySelector('.hall-close-atlas')?.addEventListener('click', closeAtlas);
-  document.addEventListener('keydown', e => {
-    // Native dialogs own Escape before the underlying experience atlas.
-    if (document.querySelector('dialog[open]')) return;
-    if (e.key === 'Escape' && document.body.classList.contains('hall-experiences')) {
-      e.preventDefault();
-      e.stopPropagation();
-      closeAtlas();
-    } else if (e.target.closest('.hall-modes,.hall-atlas,.hall-open-atlas,.study-footer')) {
-      // Let links/buttons keep native keyboard activation without also invoking
-      // a legacy page's global playback or chapter shortcuts.
-      e.stopPropagation();
-    }
-  });
+    document.addEventListener('keydown', e => {
+      if (e.target.closest('.hall-modes,.study-footer')) e.stopPropagation();
+    });
+  }
   window.addEventListener('resize', revealCurrent);
   revealCurrent();
 })();

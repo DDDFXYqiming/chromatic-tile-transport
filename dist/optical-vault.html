@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#090c13"><title>光学展柜 · 星海视觉实验室</title>
-<link rel="stylesheet" href="../src/studies/style.css">
-<link rel="stylesheet" href="../src/studies/optical.css">
+<meta name="theme-color" content="#090c13"><title>光学展柜 · 视觉实验室</title>
+<link rel="stylesheet" href="../src/studies/style.css?v=b486111fdaa5">
+<link rel="stylesheet" href="../src/studies/optical.css?v=f9eb52f2e885">
 <script type="application/json" id="optical-chapters">[{"id":"night","title":"黑场 · 夜航模组","world":"black","pair":"optics","kicker":"01 / FIELD SYSTEM","headline":["暗处，","仍有方向。"],"body":"当最后一盏灯熄灭，探索仍然继续。相界把微弱的光收进一枚镜头，为下一步留下方向。","image":"studies/optical-black.png","zoom":1,"feature":"把夜色，变成可以阅读的地形。","detail":"P—01 夜航模组以一枚悬浮镜体观察环境。外壳隔开风雨，独立云台保持视线，在漫长的巡行中读出路径的转折。","note":"机库熄灯后，镜头里的地平线还亮着。","tag":"PRODUCT / 01","specs":[["P—01","夜航模组"],["360°","环向视野构想"],["01","一体光学核心"]],"action":"进入白场 · 光路拆解"},{"id":"survey","title":"黑场 · 边界感知","world":"black","pair":"calibration","kicker":"02 / EDGE PERCEPTION","headline":["再远一步，","看清边界。"],"body":"一道门缝，一次转弯，一片反光的地面。让视线先抵达，给每一次向前多一点把握。","image":"studies/optical-black.png","zoom":1.19,"feature":"先看见轮廓，再决定下一步。","detail":"收起全景，靠近镜头。在相界的产品构想里，边界感知把门框、台阶与远处的亮点分别留下，让操作者按自己的节奏读取空间。","note":"真正需要看清的，有时只有路边那条细线。","tag":"PRODUCT / 02","specs":[["EDGE","边界观察"],["NEAR","近场细节"],["FAR","远景参照"]],"action":"进入白场 · 白室校准"},{"id":"optics","title":"白场 · 光路拆解","world":"white","pair":"night","kicker":"03 / RESEARCH JOURNAL","headline":["让每束光，","都有来处。"],"body":"回到白色实验室，拆开一次看见的过程。从外层玻璃到镜片深处，沿着光的路径重新认识相界。","image":"studies/optical-white.png","zoom":1,"feature":"研发手记 001 · 一枚镜头里的层次","detail":"斜光先停在保护玻璃，再进入一圈圈镜片。我们在白室里调整入射角，观察反光怎样从边缘滑向中心。留下这些痕迹，下一次修改才有依据。","note":"把灯移开一点，藏在玻璃后的那一层才出现。","tag":"JOURNAL / 001","specs":[["01","保护玻璃"],["02","镜片组"],["03","成像平面"]],"action":"返回黑场 · 夜航模组"},{"id":"calibration","title":"白场 · 白室校准","world":"white","pair":"survey","kicker":"04 / CALIBRATION NOTES","headline":["看清之前，","先学会对齐。"],"body":"一条基准线，一面白墙，一个安静的下午。回到共同的起点，细微的偏差才有机会被看见。","image":"studies/optical-white.png","zoom":1.19,"feature":"研发手记 002 · 给误差一个坐标","detail":"先固定机身，再对齐视线。白墙提供均匀的底色，暗线留下清楚的边缘。我们反复比较中心与四周的轮廓，把每一次调整记在同一页上。","note":"校准完成的那一刻，所有细线终于指向同一个地方。","tag":"JOURNAL / 002","specs":[["ZERO","建立基准"],["ALIGN","光轴对齐"],["REPEAT","重复观察"]],"action":"返回黑场 · 边界感知"}]</script>
 <style>
 /* Exhibition tokens and atlas proportions from Transport's header / filmstrip. */
@@ -30,6 +30,27 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
 @media(max-width:800px){.header>.hall-modes{grid-row:2;grid-column:1/-1;justify-self:center;align-self:start}}
 @media(max-width:360px){.hall-modes>a{font-size:8px;padding:9px 8px}}
 @media(prefers-reduced-motion:reduce){.hall-card{transition:none}}
+/* Wide screens share one header. Page themes may recolor it, not move it. */
+@media(min-width:1440px){
+  html body .app,html body .study-app,html body[data-study] .study-app{padding-left:36px;padding-right:36px;max-width:2600px}
+  html body .app{grid-template-rows:96px minmax(0,1fr) 132px}
+  html body .study-app,html body[data-study] .study-app{grid-template-rows:96px minmax(0,1fr) 142px}
+  html body .header,html body .topbar,html body[data-study] .header{position:relative;display:flex;align-items:center;justify-content:space-between;height:96px;min-height:96px;max-height:96px;gap:20px;padding:0 5px;box-sizing:border-box}
+  html body .brand,html body .wordmark,html body[data-study] .brand{display:flex;align-items:center;gap:13px;height:39px;flex-shrink:0}
+  html body .brand-emblem,html body .wordmark>svg,html body[data-study] .brand-emblem{width:39px;height:39px;flex-shrink:0}
+  html body .brand-text,html body .wordmark>span,html body[data-study] .brand-text{display:flex;flex-direction:column;justify-content:center;gap:7px;min-width:0}
+  html body .brand-text small,html body .wordmark small,html body[data-study] .brand-text small{display:block;margin:0;font-size:8px;letter-spacing:.16em;line-height:1}
+  html body .brand-text strong,html body .wordmark b,html body[data-study] .brand-text strong{font-size:19px;font-weight:600;letter-spacing:.17em;line-height:1;margin:0}
+  html body .hall-modes,html body[data-study] .hall-modes{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;flex:none;width:max-content;max-width:calc(100% - 420px);height:auto;margin:0;padding:5px;gap:4px;border-radius:40px;box-sizing:border-box}
+  html body .hall-modes>a,html body[data-study] .hall-modes>a{padding:11px;font-size:12px;line-height:1.4;border-radius:30px;box-sizing:border-box}
+  html body .header-actions,html body .top-actions,html body[data-study] .header-actions{display:flex;align-items:center;justify-content:flex-end;gap:16px;height:38px;flex-shrink:0}
+  html body .auto-button,html body #play.auto-button,html body #playButton.auto-button,html body[data-study] .auto-button{width:106px;min-width:106px;height:38px;min-height:38px;margin:0;padding:0 10px;gap:8px;font-size:10px;line-height:1;letter-spacing:.08em;border-radius:2px;box-sizing:border-box}
+  html body .icon-button,html body[data-study] .icon-button{width:29px;height:34px;min-width:29px;padding:0;box-sizing:border-box}
+  html body .icon-button svg{width:20px;height:20px}
+}
+@media(min-width:1440px) and (max-height:650px){
+  body .app{grid-template-rows:96px minmax(0,1fr) 84px}
+}
 
 </style>
 </head>
@@ -39,13 +60,13 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
   <header class="header">
     <a class="brand" href="../index.html" aria-label="返回效果展厅">
       <svg class="brand-emblem" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 3 26.4 17.6 41 22 26.4 26.4 22 41 17.6 26.4 3 22 17.6 17.6Z" fill="currentColor"/><ellipse cx="22" cy="22" rx="21" ry="7.2" transform="rotate(-34 22 22)" stroke="currentColor" stroke-width=".8"/><path d="M4 35h13M29 9h11" stroke="currentColor" stroke-width=".65"/></svg>
-      <span class="brand-text"><strong>星海视觉实验室</strong><small>OPTICAL VAULT <span>/</span> 光学展柜 · 06</small></span>
+      <span class="brand-text"><strong>视觉实验室</strong><small>OPTICAL VAULT <span>/</span> 光学展柜 · 06</small></span>
     </a>
     <nav class="hall-modes" aria-label="效果导航"><a href="index.html">01 寻色迁移</a><a href="matrix-battle.html">02 MATRIX MOTION</a><a href="portal-threshold.html">03 画中门</a><a href="temporal-field.html">04 时差场</a><a href="liquid-canvas.html">05 液态画布</a><a href="optical-vault.html" aria-current="page">06 光学展柜</a><a href="shadow-apparatus.html">07 影子机关</a><a href="folding-theater.html">08 折叠剧场</a></nav>
     <div class="header-actions">
       <button id="play" class="auto-button" type="button" aria-pressed="true"><span class="play-glyph" aria-hidden="true">Ⅱ</span><span id="play-label">暂停巡航</span></button>
-      <button id="clean" class="icon-button" type="button" aria-label="纯画面" aria-pressed="false" title="纯画面 · H"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 7V3h4m6 0h4v4M3 13v4h4m6 0h4v-4"/></svg></button>
       <button id="about-open" class="icon-button" type="button" aria-label="作品说明" title="作品说明">ⓘ</button>
+      <button id="clean" class="icon-button" type="button" aria-label="纯画面" aria-pressed="false" title="纯画面 · H"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 7V3h4m6 0h4v4M3 13v4h4m6 0h4v-4"/></svg></button>
     </div>
   </header>
   <main class="stage" aria-label="光学展柜互动实验">

@@ -66,7 +66,7 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
     <nav class="hall-modes" aria-label="效果导航"><a href="index.html">01 寻色迁移</a><a href="matrix-battle.html">02 MATRIX MOTION</a><a href="portal-threshold.html">03 画中门</a><a href="temporal-field.html">04 时差场</a><a href="liquid-canvas.html" aria-current="page">05 液态画布</a><a href="optical-vault.html">06 光学展柜</a><a href="shadow-apparatus.html">07 影子机关</a><a href="folding-theater.html">08 折叠剧场</a></nav>
     <div class="header-actions">
       <button id="play" class="auto-button" type="button" aria-pressed="true"><span class="play-glyph" aria-hidden="true">Ⅱ</span><span id="play-label">暂停巡航</span></button>
-      <button id="about-open" class="icon-button" type="button" aria-label="作品说明" title="作品说明">ⓘ</button>
+      <button id="about-open" class="icon-button" type="button" aria-label="作品札记" title="作品札记">ⓘ</button>
       <button id="clean" class="icon-button" type="button" aria-label="纯画面" aria-pressed="false" title="纯画面 · H"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 7V3h4m6 0h4v4M3 13v4h4m6 0h4v-4"/></svg></button>
     </div>
   </header>
@@ -90,7 +90,7 @@ body[data-hall-legacy] .hall-atlas{padding-top:5px;padding-bottom:8px}body[data-
   </footer>
   <!-- HALL:ATLAS omitted on studies: bottom bar stays page-local -->
 </div>
-<dialog class="study-dialog" id="about" aria-labelledby="about-title"><div class="dialog-head"><span>EXHIBITION NOTES / 05</span><button id="about-close" type="button" aria-label="关闭作品说明">×</button></div><h2 id="about-title">液态画布</h2><p>洇 INKFIELD 是一本虚构的数字材料刊物。本期从矿物取色、墨液调和、纸上洇染走到光下显色，四章原画、文章与材料札记共同翻页。流体交互以半拉格朗日速度输运、12 轮压力投影和局部坐标场平流呈现颜色的流向。</p><p class="muted">四张章节图由 Codex Image Gen 生成，文字为创作手记，画面中的材料属于艺术设定。流动是二维交互示意，不用于预测真实材料。速度与坐标场在有限网格上计算，WebGL 采样原尺寸画面；无 WebGL 时使用 432×288 画布。长时间推流可能拉伸纹理。</p><p class="muted">图片和视频在浏览器本地处理。示例插画与概念封面由 Image Gen 生成。已有战斗视频沿用仓库的素材许可。</p><a href="../docs/SIX_STUDIES.md">实现、素材与验收说明 ↗</a></dialog>
+<dialog class="study-dialog" id="about" aria-labelledby="about-title"><div class="dialog-head"><span>EXHIBITION NOTES / 05</span><button id="about-close" type="button" aria-label="关闭作品札记">×</button></div><h2 id="about-title">液态画布</h2><p>一块矿石、一滴墨、一张纸、一束光。沿着颜色的旅程，翻开洇的四页材料手记。</p><a href="../docs/MEDIA_LICENSE.md">素材与许可 ↗</a></dialog>
 <script>
 (() => {
   const revealItem = (strip, current) => {

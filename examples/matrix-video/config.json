@@ -1,7 +1,7 @@
 {
   "title": "浮光花园 · 动画与点阵",
   "brand": "浮光花园",
-  "notice": "AI 生成的两段本地视频，经实时显影与固定点阵衔接。播放页面不调用模型，不读取密钥。",
+  "notice": "浮光花园 · 双镜头",
   "options": {
     "shotSeconds": 5.2,
     "bridgeSeconds": 1.2,

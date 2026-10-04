@@ -1,5 +1,23 @@
 # New-study media provenance
 
+## Gallery covers 01–02
+
+The 2026-10-05 gallery update adds two concept covers generated with the built-in
+Codex Image Gen tool. The source PNGs were copied unchanged into this directory.
+Both follow the existing covers' matte geometric shapes, paper grain and ivory,
+petrol teal, sea-green and terracotta palette.
+
+| File | Used by | Concept |
+| --- | --- | --- |
+| `transport-cover.png` | Gallery / 01 | Colored mosaic tiles travel along an arc between two arrangements |
+| `matrix-cover.png` | Gallery / 02 | Two curved ribbons cross and dissolve into a regular dot matrix |
+
+Generation source: `01a108ce-dfb2-7bb0-b372-e7eb038bbc35`, outputs
+`exec-63a10734-f203-4dbb-b3ef-d99974758ddf.png` and
+`exec-ca06c208-c881-4bbf-9417-359ad09b8bf0.png` respectively.
+
+## Original studies 03–08 covers
+
 Image Gen ran in the preceding image-generation pass and produced the nine PNG
 assets now used by studies 03–08 and their gallery cards. The original generated
 files were copied byte-for-byte, ordered by LastWriteTime, into the names below.

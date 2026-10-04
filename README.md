@@ -1,6 +1,6 @@
 简体中文 | [English](README.en.md)
 
-# Chromatic Tile Transport
+# 视觉动效实验室 · Visual Motion Lab
 
 一个在浏览器里运行的视觉实验室。
 

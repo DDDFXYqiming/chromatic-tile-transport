@@ -1,7 +1,7 @@
 {
   "title": "浮光花园 · Matrix Motion",
   "brand": "浮光花园",
-  "notice": "原创 AI 生成插画与实时分层动画。图像在浏览器本地合成，无账号、模型调用或上传。",
+  "notice": "浮光花园 · 分层影像",
   "options": {
     "shotSeconds": 5.2,
     "bridgeSeconds": 1.2,
